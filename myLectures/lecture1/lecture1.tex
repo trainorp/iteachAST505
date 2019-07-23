@@ -1,0 +1,226 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\title[Lecture 1]{Lecture 1: Course introduction \& What is statistical inference?}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{August 21, 2019}
+\begin{document}
+	
+\begin{frame}
+    \maketitle
+\end{frame}
+
+\begin{frame}{What is statistics?}
+	\begin{itemize}
+		\item ``\textbf{\textit{Statistics}} is the science of designing studies or experiments, collecting data, and modeling/analyzing data for the purpose of decision making and scientific discovery when the available information is both limited and variable''
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{What is statistics?}
+	\vspace{-12pt}
+	The textbook has a very nice diagram showing the relationship between statistics and the scientific method: \vspace{5pt}
+	
+	\begin{center}
+		\includegraphics[scale = .22]{ScientificMethod}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}
+	\vspace{-12pt}
+	\begin{center}
+		\includegraphics[scale = .22]{ScientificMethod2}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{Statistics \& The Scientific method}{Formulating research goals}
+\begin{itemize}
+	\item All research starts with a question
+	\item[]
+	\item Example questions: 
+	\begin{itemize}
+		\item Does quitting smoking lead to weight gain?
+		\item Is compound X carcinogenic in humans?
+		\item Do most voters support candidate X?
+	\end{itemize}
+	\item[]
+	\item Research questions can then be reformulated as \emph{testable} hypotheses
+	\begin{itemize}
+		\item Quitting smoking is related to weight gain. Quitting smoking is not related to weight gain.
+		\item Compound X is related to the presence of cancer in humans (perhaps the development of malignant tumors). Compound X is not related the presence of cancer in humans.
+		\item Most voters do not support candidate X. Most voters do support candidate X.
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Formulating research goals}
+	\vspace{-12pt}
+	{\Huge Discussion: What research question(s) do you have?}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Formulating research goals}
+	\vspace{-12pt}
+	{\Huge Discussion: How can your research question be formulated as a hypothesis / hypotheses?}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Formulating research goals}
+	\begin{itemize}
+		\item There are multiple types of studies (or experiments), which we will discuss in this course
+		\item[]
+		\item If we want to test the hypothesis that quitting is related to weight gain:
+		\begin{itemize}
+			\item We could survey individuals who quit smoking and ask how much weight they gained / lost during some time period of smoking cessation*
+			\item We could review the medical records of individuals enrolled in a medically supervised smoking cessation program and record weight loss / weight gain**
+			\item We could expose genetically inbred mice on a fixed diet to smoking vapors for a period, cease the exposure, and record weight loss / weight gain**
+		\end{itemize}
+	\end{itemize}
+{\tiny *’s denote the degree of ethical risk (my appraisal)}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}
+	\vspace{-12pt}
+	\begin{center}
+		\includegraphics[scale = .22]{ScientificMethod3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\begin{itemize}
+		\item If we want to test the hypothesis that quitting is related to weight gain:
+		\begin{itemize}
+			\item We could survey individuals who quit smoking and ask how much weight they gained / lost during some time period of smoking cessation*
+			\item We could review the medical records of individuals enrolled in a medically supervised smoking cessation program and record weight loss / weight gain**
+			\item We could expose genetically inbred mice on a fixed diet to smoking vapors for a period, cease the exposure, and record weight loss / weight gain**
+			\item We could recruit a group of individuals who smoke and ask half to quit smoking and ask half to continue smoking and record weight loss / weight gain over an identical time period***
+		\end{itemize}
+	\end{itemize}
+{\tiny *’s denote the degree of ethical risk (my appraisal)}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\vspace{-12pt}
+	\begin{itemize}
+		\item Each of those studies / experiments has a very different design, as well as different benefits and limitations 
+		\item[] 
+		\item In the next lecture we will discuss (a) the difference between a study and (b) some common types of experiments and studies
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\vspace{-12pt}
+	\begin{itemize}
+		\item Each of those studies / experiments has a very different design, as well as different benefits and limitations 
+		\item[] 
+		\item In the next lecture we will discuss (a) the difference between a study and (b) some common types of experiments and studies
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\vspace{-12pt}
+	Three critical design attributes we must define when designing a study or an experiment:
+	\begin{enumerate}
+		\item Experimental unit (study unit)
+		\item[]
+		\item Variables of interest
+		\item[]
+		\item Sampling mechanism \& sample size
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\vspace{-12pt}
+	\begin{itemize}
+		\item The \emph{experimental unit} or \emph{study unit} is often natural to the research question 
+		\item[]
+		\item If we want to test the hypothesis that quitting smoking is related to weight gain it is likely that our \emph{study units} would be individual humans who have recently quit smoking
+		\item[]
+		\item \emph{Variables of interest} are attributes that may vary from study unit to study unit that we need to measure in order to test a hypothesis
+		\item[]
+		\item If we want to test the hypothesis that quitting smoking is related to weight gain our \emph{variables of interest} might include: weight loss / gain of each individual human or BMI
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\vspace{-12pt}
+	\begin{itemize}
+		\item Problem: we are severely limited in how much data we can collect and how many measurements of variables we can make to answer research questions
+		\item[]
+		\item To test the hypothesis that quitting smoking is related to weight gain, we could survey individuals who quit smoking and ask how much weight they gained / lost during some time period of smoking cessation
+		\item[]
+		\item Can we survey every person who ever smoked and then quit smoking (past and present?) and record their weight gain / loss after they quit smoking?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Can we survey every person who ever smoked and then quit smoking (past and present?) and record their weight gain / loss after they quit smoking?
+		\item[]
+		\item Can we review every medical record of every individual who participated in a smoking cessation program and record their weight gain or loss?
+		\item[]
+		\item We must determine what is the ``population'' we are interested in and we must “sample” from it (take a smaller subset)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\vspace{-12pt}
+	\begin{center}
+		\includegraphics[scale = .4]{Sampling}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\begin{columns}
+		\begin{column}{0.5 \textwidth}
+			\includegraphics[scale = .3]{Sampling}
+		\end{column}
+		\begin{column}{0.5 \textwidth}
+			\begin{itemize}
+				\item Population: a natural, geographical, or political collection of people, animals, plants, or objects
+				\item A population is the subject of interest for answering a research question
+				\item Example: People who quit smoking is the population that is of interest for our research question ``is quitting smoking related to weight gain?''
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\begin{columns}
+		\begin{column}{0.5 \textwidth}
+			\includegraphics[scale = .3]{Sampling}
+		\end{column}
+		\begin{column}{0.5 \textwidth}
+			\begin{itemize}
+				\item Example: All humans is the population that is of interest for our research question “is compound X related to cancer in humans?”
+				\item[]
+				\item Example: All people who are going to vote in the election is the population that is of interest for our research question “do most voters support candidate X?”
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Statistics \& The Scientific method}{Designing a study}
+	\begin{columns}
+		\begin{column}{0.5 \textwidth}
+			\includegraphics[scale = .3]{Sampling}
+		\end{column}
+		\begin{column}{0.5 \textwidth}
+			\begin{itemize}
+				\item Sample: A subset of the population
+				\item We want a sample (a smaller subset of the population) to learn about a population
+				\item Example: A survey of 500 people who quit smoking is a sample from the population people who quit smoking
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\end{document}

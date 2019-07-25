@@ -1,0 +1,247 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\title[Lecture 1]{Lecture 3: Descriptive Statistics I}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{August 26, 2019}
+
+\begin{document}
+	
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}{Descriptive vs. Inferential Statistics}
+\begin{columns}
+	\begin{column}{0.5 \textwidth}
+		\includegraphics[scale = .3]{../lecture1_Introduction/Sampling}
+	\end{column}
+	\begin{column}{0.5 \textwidth}
+		\begin{itemize}
+		\item In lecture \#1 we said that:
+		\begin{itemize}
+			\item \textbf{\emph{Statistical inference:}} the theory, methods, and practice of forming judgments about the [characteristics] of a population ... typically on the basis of random sampling
+		\end{itemize}
+		\item Statistical inference $\approx$ inferential statistics
+		\item[]
+		\item In chapter 3 of the text, the authors claim there are two kinds of statistical methods: inferential statistics \& descriptive statistics 
+		\end{itemize}
+	\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Descriptive vs. Inferential Statistics}
+	\begin{itemize}
+		\item In chapter 3 of the text, the authors claim there are two kinds of statistical methods: inferential statistics \& descriptive statistics
+		\item[]
+		\item Book example of descriptive statistics: 
+		\begin{itemize}
+			\item An HMO (a type of health insurance product) has complete data on all of the medical claims it has paid on behalf of its members / beneficiaries
+			\item[]
+			\item This is a rare case in which to make an conclusion about a population (the members / beneficiaries of the HMO) sampling is not needed
+			\item[] 
+			\item If you have a research question (Do 70-75 year olds have more medical claims than 20-25 year olds?), you can answer it without sampling
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Descriptive vs. Inferential Statistics}
+\begin{itemize}
+	\item In chapter 3 of the text, the authors claim there are two kinds of statistical methods: inferential statistics \& descriptive statistics
+	\item[]
+	\item Book example of descriptive statistics: 
+	\begin{itemize}
+		\item An HMO (a type of health insurance product) has complete data on all of the medical claims it has paid on behalf of its members / beneficiaries
+		\item[]
+		\item This is a rare case in which to make an conclusion about a population (the members / beneficiaries of the HMO) sampling is not needed
+		\item[] 
+		\item If you have a research question (Do 70-75 year olds have more medical claims than 20-25 year olds?), you can answer it without sampling
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Exploratory data analysis}
+	\begin{itemize}
+		\item \textbf{\emph{Descriptive statistics:}} the process of organizing, summarizing, and describing data, often without sampling from a population
+		\item[]
+		\item Even if we do utilize sampling from a population (inferential statistics), we often want to summarize and describe data graphically before we do other analyses
+		\item[]
+		\item \textbf{\emph{Exploratory data analysis:}} consists of analyzing data sets to summarize their main characteristics, often with visual methods
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Frequency tables}
+	\begin{itemize}
+		\item Example: Titanic data set
+		\begin{itemize}
+			\item There is disagreement over how many people were actually on board, we will use a dataset from the British Board of Trade with 2,201
+			\item Variables: Passenger Ticket (1\textsuperscript{st} Class, 2\textsuperscript{nd} Class, 3\textsuperscript{rd} Class, Crew), Sex (Male or Female), Age (Child or Adult), Survived (Yes or No)
+		\end{itemize}
+	\begin{center}
+				\begin{tabular}{|c|c|c|c|}
+			\hline 
+			\textbf{Ticket} & \textbf{Sex} & \textbf{Age} & \textbf{Survived}  \\ 
+			\hline \hline
+			1st & Male & Child & Yes \\ 
+			\hline 
+			3rd & Female & Child & No \\ 
+			\hline 
+			2nd & Female & Adult & Yes \\ 
+			\hline 
+			Crew & Male & Adult & Yes \\ 
+			\hline
+			\vdots & \vdots & \vdots & \vdots \\
+			\hline 
+		\end{tabular} 
+	\end{center}
+		\item The first step of \emph{virtually all} descriptive statistics is to make a frequency table
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Frequency tables}
+	\begin{itemize}
+		\item \textbf{\emph{Factors:}} variables that are not numbers or numeric
+		\item[]
+		\item To make a frequency table we add up the number of occurrences for each combination of factors (or combination that we are interested in)
+	\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Ticket} & \textbf{Sex} & \textbf{Frequency} \\
+		\hline \hline
+		1st & Female & 145\\
+		\hline
+		1st &  Male & 180\\
+		\hline
+		2nd & Female & 106\\
+		\hline
+		2nd  & Male & 179\\
+		\hline
+		3rd & Female & 196\\
+		\hline
+		3rd  & Male & 510\\
+		\hline
+		Crew & Female &  23\\
+		\hline
+		Crew  & Male & 862\\
+		\hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Barplots}
+
+\begin{itemize}
+	\item Barplots are a way of visualizing data that has factor variables
+	\item[]
+	\item Process for constructing a barplot from a frequency table
+		\begin{itemize}
+		\item Label frequencies on one axis and categories of the variables on the other
+		\item[] 
+		\item Construct a rectangle at each category with a height equal to the frequency (number of observations) in the category or other measure
+		\item[]
+		\item Leave space between each category
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Barplots}
+\begin{columns}
+	\begin{column}{0.43 \textwidth}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Ticket} & \textbf{Sex} & \textbf{Frequency} \\
+			\hline \hline
+			1st & Female & 145\\
+			\hline
+			1st &  Male & 180\\
+			\hline
+			2nd & Female & 106\\
+			\hline
+			2nd  & Male & 179\\
+			\hline
+			3rd & Female & 196\\
+			\hline
+			3rd  & Male & 510\\
+			\hline
+			Crew & Female &  23\\
+			\hline
+			Crew  & Male & 862\\
+			\hline
+		\end{tabular}
+	\end{column}
+	\begin{column}{0.57 \textwidth}
+		\includegraphics[scale=.425]{TitanicClassSex}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Barplots}
+\includegraphics[width=1\linewidth]{TitanicClassSex}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Relative frequency}
+	\begin{itemize}
+		\item Relative frequency is the frequency of each category divided by the total frequency (for our example 2201)
+		\item Relative frequencies should add up to 1
+		\item Relative frequencies = Proportions
+	\end{itemize}
+	\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{Ticket} & \textbf{Sex} & \textbf{Frequency} & \textbf{Relative Frequency}\\
+			\hline \hline
+			1st & Female & 145 & $145 / 2201 = 0.066$\\
+			\hline
+			1st &  Male & 180 & $180 / 2201 = 0.082$\\
+			\hline
+			2nd & Female & 106 & $106 / 2201 = 0.048$\\
+			\hline
+			2nd  & Male & 179 & $179 / 2201 = 0.081$\\
+			\hline
+			3rd & Female & 196 & $196 / 2201 = 0.089$\\
+			\hline
+			3rd  & Male & 510 & $510 / 2201 = 0.232$\\
+			\hline
+			Crew & Female &  23 & $23 / 2201 = 0.010$\\
+			\hline
+			Crew  & Male & 862 & $862 / 2201 = 0.392$\\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Relative frequency}
+\begin{itemize}
+	\item Relative frequency is the basis of pie charts
+	\item The book outlines a process for making pie charts, but the best advice that can be given is ``don't make pie charts''
+	\item It is hard for us to think of areas in terms of angles and polar coordinates
+\end{itemize}
+\begin{center}
+	\includegraphics[scale=.4]{TitanicPieChart}
+\end{center}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Barplots}
+\includegraphics[width=1\linewidth]{TitanicClassSex3}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Barplots}
+\includegraphics[width=1\linewidth]{TitanicClassSex3b}
+\end{frame}
+
+\begin{frame}{Descriptive statistics}{Barplots}
+\includegraphics[width=1\linewidth]{TitanicClassSex2}
+\end{frame}
+
+\end{document}

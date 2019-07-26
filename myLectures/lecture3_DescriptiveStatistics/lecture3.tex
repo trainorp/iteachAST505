@@ -96,13 +96,13 @@
 
 \begin{frame}{Types of variables}
 \begin{itemize}
-	\item Categorical variables:
+	\item Categorical variables (qualitative):
 	\begin{itemize}
 		\item Nominal: There is no natural ordering among the categories
 		\item Ordinal: There is a natural ordering among the categories
 	\end{itemize}
 	\item[]
-	\item Numerical variables:
+	\item Numerical variables (quantitative):
 	\begin{itemize}
 		\item Discrete: There are a countable number of values
 		\item Continuous: Any value in a range of values
@@ -283,8 +283,176 @@
 \end{frame}
 
 \section{Descriptive statistics for numeric variables}
+\subsection{Histograms}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Histograms}{Example dataset}
+\begin{itemize}
+	\item Histograms look very similar to barplots, but they are for numeric (often continous) data
+	\item[]
+	\item To illustrate the process of constructing a histogram we will data: O. Nativ, Y., et al. (1988). Prognostic value of flow cytometric nuclear DNA analysis in stage C prostate carcinoma. \emph{Surgical Forum, 39}.
+	\item[]
+	\item Let's make a histogram for one of the variables for the 139 patients in this dataset. The variable is the percentage of cells in each sample that are in G2 phase
+	\item[]
+	\item Here are some of the values: 10.26, 9.99, 3.57, 22.56, 6.14, 13.69, 11.77, 27.27, 19.34, 14.82 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Histograms}{Process}
+	\begin{itemize}
+		\item The first step in constructing a histogram is to divide the range of numbers (the difference between the smallest and largest measurements) into \textbf{\emph{class intervals}}
+		\item[]
+		\item From our example data:
+		\begin{itemize}
+			\item Smallest number: 2.4
+			\item Largest number: 54.93
+			\item Range: $54.93 - 2.4 = 52.53$
+		\end{itemize}	
+		\item[]
+		\item We typically want between 5 and 20 class intervals. Let's choose 10. Then to find the width of each class interval:
+		\begin{itemize}
+			\item $52.53 / 10 = 5.253$
+			\item Rounded up (which may give us 9 intervals), the width of each class interval is then 6
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Histograms}{Process}
+	\begin{itemize}
+		\item We now need to set the first class interval so that it contains the smallest number and has a width of 6: 2.001 -- 8.000
+		\item[]
+		\item So now the class intervals are: 2.001 -- 8.000, 8.001 -- 14.000, 14.001 -- 20.000, 20.001 -- 26.000, 26.001 -- 32.000, ... , 50.001 -- 56.000
+		\item[]
+		\item Now we will make a frequency table just as before 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Histograms}{Process: Frequency table}
+Let's assign the first 14 numbers into which class interval they belong:
+10.26,  9.99,  3.57, 22.56,  6.14, 13.69, 11.77, 27.27, 19.34, 14.82, 10.22, 15.66, 17.79, 11.11
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Class interval} & \textbf{Numbers} & \textbf{Frequency} \\
+		\hline \hline
+		2.001 -- 8.000 & & \\  \hline 
+		8.001 -- 14.000 & & \\  \hline 
+		14.001 -- 20.000 & & \\  \hline 
+		20.001 -- 26.000 & & \\  \hline 
+		26.001 -- 32.000 & & \\  \hline 
+		32.001 -- 38.000 & & \\  \hline 
+		38.001 -- 44.000 & & \\  \hline 
+		44.001 -- 50.000 & & \\  \hline 
+		50.001 -- 56.000 & & \\ \hline 
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Histograms}{Process: Frequency table}
+	Let's assign the first 14 numbers into which class interval they belong:
+	10.26,  9.99,  3.57, 22.56,  6.14, 13.69, 11.77, 27.27, 19.34, 14.82, 10.22, 15.66, 17.79, 11.11
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Class interval} & \textbf{Numbers} & \textbf{Frequency} \\
+			\hline \hline
+			2.001 -- 8.000 & 3.57, 6.14 & 2\\ \hline 
+			8.001 -- 14.000 & 9.99, 10.22, 10.26, 11.11, 11.77, 13.69 & 6 \\ \hline 
+			14.001 -- 20.000 & 14.82, 15.66, 17.79, 19.34 & 4\\ \hline 
+			20.001 -- 26.000 & 22.56 & 1 \\ \hline 
+			26.001 -- 32.000 & 27.27 & 1 \\ \hline 
+			32.001 -- 38.000 &  & 0 \\ \hline 
+			38.001 -- 44.000 & & 0 \\ \hline 
+			44.001 -- 50.000 & & 0 \\ \hline 
+			50.001 -- 56.000 & & 0\\ \hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms}{Process: Frequency table}
+If we did this with all of the data we would have:
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Class interval} & \textbf{Frequency } \\
+			\hline \hline
+			2.001 -- 8.000 & 27 \\ \hline 
+			8.001 -- 14.000 & 57 \\ \hline 
+			14.001 -- 20.000 & 32 \\ \hline 
+			20.001 -- 26.000 & 12 \\ \hline 
+			26.001 -- 32.000 & 5 \\ \hline 
+			32.001 -- 38.000 & 2 \\ \hline 
+			38.001 -- 44.000 & 2 \\ \hline 
+			44.001 -- 50.000 & 1 \\ \hline 
+			50.001 -- 56.000 & 1\\ \hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms}{Process: Frequency table}
+	Now we compute the relative frequency:
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Class interval} & \textbf{Frequency} & \textbf{Relative Frequency} \\
+			\hline \hline
+			2.001 -- 8.000 & 27 & $27 / 139 = 0.194$ \\ \hline 
+			8.001 -- 14.000 & 57 & \\ \hline 
+			14.001 -- 20.000 & 32 &\\ \hline 
+			20.001 -- 26.000 & 12 &\\ \hline 
+			26.001 -- 32.000 & 5 &\\ \hline 
+			32.001 -- 38.000 & 2& \\ \hline 
+			38.001 -- 44.000 & 2 &\\ \hline 
+			44.001 -- 50.000 & 1& \\ \hline 
+			50.001 -- 56.000 & 1&\\ \hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms}{Process: Frequency table}
+	Now we compute the relative frequency:
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Class interval} & \textbf{Frequency} & \textbf{Relative Frequency} \\
+			\hline \hline
+			2.001 -- 8.000 & 27 & 0.194 \\ \hline 
+			8.001 -- 14.000 & 57 & 0.410\\ \hline 
+			14.001 -- 20.000 & 32 & 0.230\\ \hline 
+			20.001 -- 26.000 & 12 & 0.086\\ \hline 
+			26.001 -- 32.000 & 5 & 0.036\\ \hline 
+			32.001 -- 38.000 & 2& 0.014\\ \hline 
+			38.001 -- 44.000 & 2 & 0.014\\ \hline 
+			44.001 -- 50.000 & 1& 0.007\\ \hline 
+			50.001 -- 56.000 & 1& 0.007\\ \hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms}{Frequency Histogram}
+\begin{center}
+	\includegraphics[width = .9\linewidth]{g2Hist}
+\end{center}
+\end{frame}
+
+\begin{frame}{Histograms}{Relative Frequency Histogram}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{g2Hist2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms}
+Some fun facts about histograms:
+	\begin{itemize}
+		\item If we select a measurement at random from the set of sample measurements, the \textbf{\emph{probability}} (or chance), that that measurement is in a specific interval is equal to the relative frequency for that interval
+		\begin{itemize}
+			\item For example, if we select a measurement at random the probability that it between 8.001 -- 14.000 is 0.41 or 41\%
+		\end{itemize}
+		\item[]
+		\item Relative frequency histograms are useful as they can be compared between samples with different sample sizes
+	\end{itemize}
 \end{frame}
 
 \end{document}

@@ -426,4 +426,245 @@ What is the mode for teacher pay?
 	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
+\begin{frame}{Variability}{Why do we care?}
+Here's three distributions with the same mean, median, and mode:
+\begin{center}
+	\includegraphics[width=0.7\linewidth]{VarDens}
+\end{center}
+\end{frame}
+
+\begin{frame}{Variability}{Why do we care?}
+The inferences we make when comparing groups can be totally different:
+\begin{center}
+\includegraphics[width=1\linewidth]{histNormal2b}
+\end{center}
+\end{frame}
+
+\subsection{The Range}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Some more notation}
+	\begin{itemize}
+		\item If we have $n$ measurements which we label $\{i = 1, 2, \hdots, n\}$ and the measurements are denoted by $y_i$, then $y_{(1)}$ is the smallest measurement (the \textbf{\emph{minimum}}) and $y_{(n)}$ is the largest (the \textbf{\emph{maximum}})
+			\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline 
+				\textbf{State} & \textbf{Teacher pay (1,000's)} & $y_i$ \\ 
+				\hline \hline
+				AZ & 30 & $y_1$\\ \hline 
+				CO &  31 & $y_2$ \\ \hline 
+				ID & 25 & $y_3$ \\  \hline 
+				MT &  26 & $y_4$ \\ \hline 
+				NV & 32 & $y_5$ \\ \hline 
+				NM &  26 & $y_6$\\ \hline 
+				UT &  25 & $y_7$\\ \hline 
+				WY &  29 & $y_8$\\ \hline 
+			\end{tabular} 
+		\end{center}
+	\item[]
+	\item Let's calculate the minimum, $y_{(1)}$ and maximum $y_{(n)}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Some more notation}
+	\vspace{-5pt}
+	\begin{itemize}
+		\item The minimum, $y_{(1)} = 25$
+		\item The maximum, $y_{(n)} = 32$
+		\vspace{5 pt}
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline 
+				\textbf{State} & \textbf{Teacher pay (1,000's)} & $y_i$ \\ 
+				\hline \hline
+				AZ & 30 & $y_1$\\ \hline 
+				CO &  31 & $y_2$ \\ \hline 
+				ID & 25 & $y_3$ \\  \hline 
+				MT &  26 & $y_4$ \\ \hline 
+				NV & 32 & $y_5$ \\ \hline 
+				NM &  26 & $y_6$\\ \hline 
+				UT &  25 & $y_7$\\ \hline 
+				WY &  29 & $y_8$\\ \hline 
+			\end{tabular} 
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Range}
+	\begin{itemize}
+		\item The \textbf{\emph{range}} of a set of measurements is defined to be the difference between the largest and the smallest measurements of the set
+		\item Formula: $range = y_{(n)} - y_{(1)}$
+		\item Let's calculate the range of teacher pay:
+	\end{itemize}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} \\ 
+			\hline \hline
+			AZ & 30 \\ \hline 
+			CO &  31 \\ \hline 
+			ID & 25  \\  \hline 
+			MT &  26 \\ \hline 
+			NV & 32 \\ \hline 
+			NM &  26 \\ \hline 
+			UT &  25 \\ \hline 
+			WY &  29 \\ \hline 
+		\end{tabular} 
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Range}
+Let's calculate the range of teacher pay:
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} \\ 
+			\hline \hline
+			AZ & 30 \\ \hline 
+			CO &  31 \\ \hline 
+			ID & 25  \\  \hline 
+			MT &  26 \\ \hline 
+			NV & 32 \\ \hline 
+			NM &  26 \\ \hline 
+			UT &  25 \\ \hline 
+			WY &  29 \\ \hline 
+		\end{tabular} 
+	\end{center}
+	\begin{gather*}
+		range = y_{(n)} - y_{(i)} \\
+		range = 32 - 25 = 7
+	\end{gather*}
+\end{frame}
+
+\subsection{Percentiles}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Percentiles}
+	\begin{itemize}
+		\item The $p$\textsuperscript{th} \textbf{\emph{percentile}} of a set of $n$ measurements arranged in order of from least to greatest is the value that has at most $p$\% of the measurements below it and at most $(100 - p$)\% above it
+		\item[]
+		\item This gets complicated...
+		\item[]
+		\item To calculate the percentile of one of the measurements, $y_{(i)}$ we use the formula: $100(i - 0.5)/n$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Percentiles}
+	Let's calculate the percentiles for the teacher pay data:
+		\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} \\ 
+			\hline \hline
+			AZ & 30 \\ \hline 
+			CO &  31 \\ \hline 
+			ID & 25  \\  \hline 
+			MT &  26 \\ \hline 
+			NV & 32 \\ \hline 
+			NM &  26 \\ \hline 
+			UT &  25 \\ \hline 
+			WY &  29 \\ \hline 
+		\end{tabular} 
+	\end{center}
+\end{frame}
+
+\begin{frame}{Percentiles}
+\begin{itemize}
+	\item First, we will reorder the data
+	\item Remember $n = 8$
+\end{itemize}
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} & $y_{(i)}$ & $i$ \\ 
+			\hline \hline 
+			ID & 25 & $y_{(1)}$& 1 \\  \hline 
+			UT &  25  & $y_{(2)}$& 2\\ \hline 
+			MT &  26  & $y_{(3)}$& 3\\ \hline 
+			NM &  26  & $y_{(4)}$& 4\\ \hline 
+			WY &  29  & $y_{(5)}$& 5\\ \hline 
+			AZ & 30  & $y_{(6)}$& 6\\ \hline 
+			CO &  31 & $y_{(7)}$& 7\\ \hline
+			NV & 32  & $y_{(8)}$& 8\\ \hline 
+		\end{tabular} 
+	\end{center}
+\end{frame}
+
+\begin{frame}{Percentiles}
+	\begin{itemize}
+		\item Now we add the formula
+	\end{itemize}
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} & $y_{(i)}$ & $i$ & $100(i - 0.5)/n$ \\ 
+			\hline \hline 
+			ID & 25 & $y_{(1)}$& 1 & $100(1 - 0.5)/8 = 6.25$ \\  \hline 
+			UT &  25  & $y_{(2)}$& 2& $100(2 - 0.5)/8 = 18.75$\\ \hline 
+			MT &  26  & $y_{(3)}$& 3& $100(3 - 0.5)/8 = 31.25$\\ \hline 
+			NM &  26  & $y_{(4)}$& 4& $100(4 - 0.5)/8 = 43.75$\\ \hline 
+			WY &  29  & $y_{(5)}$& 5& $100(5 - 0.5)/8 = 56.25$\\ \hline 
+			AZ & 30  & $y_{(6)}$& 6& $100(6 - 0.5)/8 = 68.75$\\ \hline 
+			CO &  31 & $y_{(7)}$& 7& $100(7 - 0.5)/8 = 81.25$\\ \hline
+			NV & 32  & $y_{(8)}$& 8& $100(8 - 0.5)/8 = 93.75$\\ \hline 
+		\end{tabular} 
+	\end{center}
+\end{frame}
+
+\subsection{Quartiles}
+\begin{frame}{Quartiles}
+	\begin{itemize}
+		\item We just discussed how when given a measurement you can determine the percentile of that measurement
+		\item[]
+		\item We can also go the other direction (determine the measurement value for a given percentile)
+		\item[]
+		\item We have already done this with the median (it is the 50\textsuperscript{th} percentile)
+		\item[]
+		\item In addition to the median, we are often interested in the quartiles of a set of measurements		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Quartiles}
+	\begin{itemize}
+		\item \textbf{\emph{Quartiles:}} the quartiles of a set of measurements are the three numbers (the 25\textsuperscript{th}, 50\textsuperscript{th}, and 75\textsuperscript{th} percentiles) that break the dataset into four parts
+			\item[]
+		\item The process for finding the 25\textsuperscript{th} percentile (called Q1 or the first quartile), and the 75\textsuperscript{th} percentile (called Q3 or the third quartile) is actually easy:
+			\begin{enumerate}
+			\item We find the median (this splits the dataset into two sets: the measurements below the median and the measurements above)
+			\item We find the median of the first set (measurements below the median). This value is Q1
+			\item We find the median of the second set (measurements above the median). This value is Q3
+		\end{enumerate}
+	\item[]
+	\item If there is an odd number of measurements in the dataset, include the median in both the first and second sets
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Quartiles}
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} & $y_{(i)}$ & $i$ \\ 
+			\hline \hline 
+			ID & 25 & $y_{(1)}$& 1 \\  \hline 
+			UT &  25  & $y_{(2)}$& 2\\ \hline 
+			MT &  26  & $y_{(3)}$& 3\\ \hline 
+			NM &  26  & $y_{(4)}$& 4\\ \hline 
+			WY &  29  & $y_{(5)}$& 5\\ \hline 
+			AZ & 30  & $y_{(6)}$& 6\\ \hline 
+			CO &  31 & $y_{(7)}$& 7\\ \hline
+			NV & 32  & $y_{(8)}$& 8\\ \hline 
+		\end{tabular} 
+	\end{center}
+\begin{itemize}
+	\item The set of numbers below the median is $\{25, 25, 26, 26\}$
+	\item The median of $\{25, 25, 26, 26\}$ is 25.5. So this is Q1
+	\item The set of numbers below the median is $\{25, 25, 26, 26\}$
+	\item The median of $\{29, 30, 31, 32\}$ is 30.5. So this is Q3
+\end{itemize}
+\end{frame}
+
 \end{document}

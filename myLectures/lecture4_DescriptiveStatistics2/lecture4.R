@@ -24,7 +24,7 @@ set.seed(55)
 fishweightsSamp <- sample(fishweights, 10)
 mean(fishweightsSamp)
 
-# Trimmed means:
+# Means vs medians:
 fishweightsDF <- data.frame(Weight = fishweights)
 fishweightsDF2 <- fishweightsDF
 fishweightsDF2$Weight[95:100] <- 610
@@ -51,3 +51,34 @@ ggplot(fishweightsDF2, aes(x = Weight)) + geom_histogram(breaks = seq(450, 615, 
   ggtitle("Weight of fish in NMSU pond (Old median in Red; New in Blue)") + 
   theme_bw() + theme(plot.title = element_text(hjust = 0.5)) + ylab("Frequency")
 dev.off()
+
+# Measures of variability:
+df1 <- data.frame(x = seq(-10, 10, .01), y = dnorm(seq(-10, 10, .01), 0, 1), Variability = "Small")
+df2 <- data.frame(x = seq(-10, 10, .01), y = dnorm(seq(-10, 10, .01), 0, 2), Variability = "Medium")
+df3 <- data.frame(x = seq(-10, 10, .01), y = dnorm(seq(-10, 10, .01), 0, 4), Variability = "Large")
+df0 <- rbind(df1, df2, df3)
+png(file = "VarDens.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df0, aes(x = x, y = y, group = Variability, color = Variability)) + geom_line(lwd = 1.25) + theme_bw() +
+  labs(y = "Relative Frequency") 
+dev.off()
+
+# Comparing heights:
+df1 <- data.frame(x2 = c(rnorm(50000, 60, 2), rnorm(50000, 70, 2)), 
+                  Sex = factor(c(rep("Female", 50000), rep("Male", 50000))), Variability = "Small Variability")
+df2 <- data.frame(x2 = c(rnorm(50000, 60, 15), rnorm(50000, 70, 15)), 
+                  Sex = factor(c(rep("Female", 50000), rep("Male", 50000))), Variability = "Large Variability")
+df0 <- rbind(df1, df2)
+df0$Variability <- factor(df0$Variability, levels = c("Small Variability", "Large Variability"))
+
+# Bimodal showing group
+png(filename = "histNormal2b.png", height = 4, width = 7, units = "in", res = 600)
+ggplot(df0, aes(x = x2, y = ..density.., fill = Sex)) + 
+  geom_histogram(bins = 60, color = "black", alpha = .5, position = "identity") + 
+  geom_vline(xintercept = 60, color = "darkred") + geom_vline(xintercept = 70, color = "darkblue") +
+  facet_wrap(~Variability) + theme_bw() + labs(x = "Height (Inches)", y = "Relative Frequency") +
+  ggtitle("Data distribution of the height of some people") + theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+########### Measures of spread ###########
+pTile <- function(i, n) 100*(i - 0.5)/n
+sapply(1:8, function(x) pTile(x, 8))

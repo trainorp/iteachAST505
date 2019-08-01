@@ -52,6 +52,35 @@ ggplot(fishweightsDF2, aes(x = Weight)) + geom_histogram(breaks = seq(450, 615, 
   theme_bw() + theme(plot.title = element_text(hjust = 0.5)) + ylab("Frequency")
 dev.off()
 
+# Empirical rule:
+sum(as.numeric(fishweightsDF$Weight < (mean(fishweightsDF$Weight) - sd(fishweightsDF$Weight))))
+sum(as.numeric(fishweightsDF$Weight > (mean(fishweightsDF$Weight) + sd(fishweightsDF$Weight))))
+
+png(file = "fishEmp00.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(fishweightsDF, aes(x = Weight)) + geom_histogram(breaks = seq(470, 535, 5), color = "black", fill = "grey65") +
+  ggtitle("Weight of fish in NMSU pond") + 
+  theme_bw() + theme(plot.title = element_text(hjust = 0.5)) + ylab("Frequency")
+dev.off()
+png(file = "fishEmp0.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(fishweightsDF, aes(x = Weight)) + geom_histogram(breaks = seq(470, 535, 5), color = "black", fill = "grey65") +
+  geom_vline(xintercept = mean(fishweightsDF$Weight), lwd = 1.5, color = "darkred") + 
+  geom_vline(xintercept = mean(fishweightsDF$Weight) - sd(fishweightsDF$Weight), lwd = 1.5, color = "darkblue") + 
+  geom_vline(xintercept = mean(fishweightsDF$Weight) + sd(fishweightsDF$Weight), lwd = 1.5, color = "darkblue") + 
+  ggtitle("Weight of fish in NMSU pond") + 
+  theme_bw() + theme(plot.title = element_text(hjust = 0.5)) + ylab("Frequency")
+dev.off()
+png(file = "fishEmp.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(fishweightsDF, aes(x = Weight)) + geom_histogram(breaks = seq(470, 535, 5), color = "black", fill = "grey65") +
+  geom_vline(xintercept = mean(fishweightsDF$Weight), lwd = 1.5, color = "darkred") + 
+  geom_vline(xintercept = mean(fishweightsDF$Weight) - sd(fishweightsDF$Weight), lwd = 1.5, color = "darkblue") + 
+  geom_vline(xintercept = mean(fishweightsDF$Weight) + sd(fishweightsDF$Weight), lwd = 1.5, color = "darkblue") + 
+  annotate("label", x = 480, y = 17, label = "14", size = 12) +
+  annotate("label", x = 520, y = 17, label = "15", size = 12) +
+  annotate("label", x = 500, y = 17, label = "71", size = 12) +
+  ggtitle("Weight of fish in NMSU pond") + 
+  theme_bw() + theme(plot.title = element_text(hjust = 0.5)) + ylab("Frequency")
+dev.off()
+
 # Measures of variability:
 df1 <- data.frame(x = seq(-10, 10, .01), y = dnorm(seq(-10, 10, .01), 0, 1), Variability = "Small")
 df2 <- data.frame(x = seq(-10, 10, .01), y = dnorm(seq(-10, 10, .01), 0, 2), Variability = "Medium")
@@ -82,3 +111,18 @@ dev.off()
 ########### Measures of spread ###########
 pTile <- function(i, n) 100*(i - 0.5)/n
 sapply(1:8, function(x) pTile(x, 8))
+
+states$pay[order(states$pay)]
+quantile(states$pay, probs = c(.25, .75))
+quantile(states$pay, probs = c(.25, .75), type = 2)
+IQR(states$pay, type = 2)
+
+# Variance:
+sum((states$pay - mean(states$pay))**2)/7
+
+# CV:
+sd(c(10.03, 9.98, 10.01, 9.97)) / mean(c(10.03, 9.98, 10.01, 9.97))
+
+# MAD:
+mad(states$pay)
+median(abs(states$pay - median(states$pay)))/.6745

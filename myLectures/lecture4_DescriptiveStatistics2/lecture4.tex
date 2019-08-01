@@ -667,4 +667,288 @@ Let's calculate the range of teacher pay:
 \end{itemize}
 \end{frame}
 
+\subsection{The Interquartile Range}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Interquartile Range}
+	\begin{itemize}
+		\item \textbf{\emph{Interquartile Range:}} The interquartile range (IQR) of a set of measurements is the difference between Q3 (75th percentile) and Q1 (25th percentile)
+		\item Let's calculate the IQR for the teacher pay data:
+			\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline 
+				\textbf{State} & \textbf{Teacher pay (1,000's)} & $y_{(i)}$ & $i$ \\ 
+				\hline \hline 
+				ID & 25 & $y_{(1)}$& 1 \\  \hline 
+				UT &  25  & $y_{(2)}$& 2\\ \hline 
+				MT &  26  & $y_{(3)}$& 3\\ \hline 
+				NM &  26  & $y_{(4)}$& 4\\ \hline 
+				WY &  29  & $y_{(5)}$& 5\\ \hline 
+				AZ & 30  & $y_{(6)}$& 6\\ \hline 
+				CO &  31 & $y_{(7)}$& 7\\ \hline
+				NV & 32  & $y_{(8)}$& 8\\ \hline 
+			\end{tabular} 
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Interquartile Range}
+Let's calculate the IQR for the teacher pay data:
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline 
+				\textbf{State} & \textbf{Teacher pay (1,000's)} & $y_{(i)}$ & $i$ \\ 
+				\hline \hline 
+				ID & 25 & $y_{(1)}$& 1 \\  \hline 
+				UT &  25  & $y_{(2)}$& 2\\ \hline 
+				MT &  26  & $y_{(3)}$& 3\\ \hline 
+				NM &  26  & $y_{(4)}$& 4\\ \hline 
+				WY &  29  & $y_{(5)}$& 5\\ \hline 
+				AZ & 30  & $y_{(6)}$& 6\\ \hline 
+				CO &  31 & $y_{(7)}$& 7\\ \hline
+				NV & 32  & $y_{(8)}$& 8\\ \hline 
+			\end{tabular} 
+		\end{center}
+	\begin{gather*}
+		IQR = Q3 - Q1 = 30.5 - 25.5 = 5
+	\end{gather*}
+\end{frame}
+
+\subsection{The Variance \& Standard Deviation}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Deviations}
+	\begin{itemize}
+		\item We are going to discuss two very important measures of variability, the variance and the standard deviation
+		\item[]
+		\item To get there first we need to discuss deviations
+		\item[]
+		\item \textbf{\emph{Deviation:}} A deviation is defined as the difference between a measurement and the average of measurements
+		\item[]
+		\item Formula: $y_i - \bar{y}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Deviations from the mean}
+	\begin{itemize}
+		\item Let's calculate the deviations from the mean for the teacher pay data.
+		\item Remember the mean is 28.0.
+		\item 
+			\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline 
+				\textbf{State} & \textbf{Teacher pay (1,000's)} &  $y_i - \bar{y}$ \\ 
+				\hline \hline
+				AZ & 30 &\\ \hline 
+				CO &  31 &\\ \hline 
+				ID & 25  &\\  \hline 
+				MT &  26 &\\ \hline 
+				NV & 32 &\\ \hline 
+				NM &  26 &\\ \hline 
+				UT &  25 &\\ \hline 
+				WY &  29 &\\ \hline 
+			\end{tabular} 
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Deviations from the mean}
+	\begin{itemize}
+		\item Let's calculate the deviations from the mean for the teacher pay data.
+		\item Remember the mean is 28.0.
+\vspace{5 pt}
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+				\hline 
+				\textbf{State} & \textbf{Teacher pay (1,000's)} &  $y_i - \bar{y}$ \\ 
+				\hline \hline
+				AZ & 30 & 2\\ \hline 
+				CO &  31 & 3\\ \hline 
+				ID & 25  & -3\\  \hline 
+				MT &  26 & -2\\ \hline 
+				NV & 32 & 4\\ \hline 
+				NM &  26 & -2\\ \hline 
+				UT &  25 & -3\\ \hline 
+				WY &  29 & 1\\ \hline 
+			\end{tabular} 
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Sample Variance}
+\begin{itemize}
+	\item \emph{\textbf{Variance:}} The variance of a variable in a population is the mean of the squared deviations from the population mean.
+	\item[]
+	\item Denoted $\sigma^2$ for a population and $s^2$ for a sample 
+	\item[]
+	\item However, we will use a slightly adjusted formula* for computing the \textbf{\emph{sample variance}}, which we denote $s^2$:
+	\begin{gather*}
+		s^2 = \frac{\sum_{i=1}^n (y_i - \bar{y})^2}{n-1}
+	\end{gather*}
+	* An unadjusted version would only divide by $n$ rather than $n-1$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Sample Variance}
+ Let's calculate the sample variance:
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline 
+				\textbf{State} & \textbf{Teacher pay (1,000's)} &  $y_i-\bar{y}$ & $(y_i-\bar{y})^2$\\ 
+				\hline \hline
+				AZ & 30 & 2 &\\ \hline 
+				CO &  31 & 3 &\\ \hline 
+				ID & 25  & -3 &\\  \hline 
+				MT &  26 & -2 &\\ \hline 
+				NV & 32 & 4 &\\ \hline 
+				NM &  26 & -2 &\\ \hline 
+				UT &  25 & -3 &\\ \hline 
+				WY &  29 & 1 &\\ \hline 
+			\end{tabular} 
+		\end{center}
+\end{frame}
+
+\begin{frame}{The Standard Deviation}
+	\begin{itemize}
+		\item \textbf{\emph{Standard deviation:}} The standard deviation is the square root of the variance 
+		\item[]
+		\item Denoted $\sigma$ for a population and $s$ for a sample
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Sample Standard Deviation}
+	Let's calculate the sample standard deviation:
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} &  $y_i-\bar{y}$ & $(y_i-\bar{y})^2$\\ 
+			\hline \hline
+			AZ & 30 & 2 &4\\ \hline 
+			CO &  31 & 3 &9\\ \hline 
+			ID & 25  & -3 &9\\  \hline 
+			MT &  26 & -2 &4\\ \hline 
+			NV & 32 & 4 &16\\ \hline 
+			NM &  26 & -2 &4\\ \hline 
+			UT &  25 & -3 &9\\ \hline 
+			WY &  29 & 1 &1\\ \hline 
+		\end{tabular} 
+	\end{center}
+	\begin{gather*}
+	s = \sqrt{s^2} = \sqrt{8} = 2.828
+	\end{gather*}
+\end{frame}
+
+\subsection{The Coefficient of Variation}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Coefficient of Variation}
+	\begin{itemize}
+		\item \textbf{\emph{Coefficient of Variation:}} The coefficient of variation measures the variability of values in a population (or sample) relative to the magnitude of the population (or sample) mean 
+		\item[]
+		\item Formula:
+		\begin{align*}
+			CV_{population} = \frac{\sigma}{|\mu|} \quad CV_{sample} = \frac{s}{|\bar{y}|}
+		\end{align*}
+		\item We often express the CV as a percent
+		\item[]
+		\item Example. I pipette 10$\mu$L 4 times and the actual volume is: $\{10.03, 9.98, 10.01, 9.97\}$. What is the CV? $CV = 0.02753785 / 9.9975 = 0.002754474 = 0.28 \%$
+	\end{itemize}
+\end{frame}
+
+\subsection{The Median Absolute Deviation}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Median Absolute Deviation}
+	\begin{itemize}
+		\item \textbf{\emph{Median absolute deviation:}} The median absolute deviation, or MAD, is the median of the absolute deviations of the $n$ measurements about the median divided by 0.6745
+		\item[]
+		\item Formula: $MAD = median(\{|y_1-\tilde{y}|,|y_2 - \tilde{y}|,\hdots,|y_n - \tilde{y}|\}) / 0.6745$
+		where $\tilde{y}$ is the median of the set of measurements
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Median Absolute Deviation}
+	Let's calculate the median absolute deviation of the teacher pay data (recall that the median is 27.5):
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} &  $|y_i-\tilde{y}|$ \\ 
+			\hline \hline
+			AZ & 30 & \\ \hline 
+			CO &  31 & \\ \hline 
+			ID & 25  & \\  \hline 
+			MT &  26 & \\ \hline 
+			NV & 32 & \\ \hline 
+			NM &  26 & \\ \hline 
+			UT &  25 & \\ \hline 
+			WY &  29 & \\ \hline 
+		\end{tabular} 
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Median Absolute Deviation}
+	Let's calculate the median absolute deviation of the teacher pay data:
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} &  $|y_i-\tilde{y}|$ \\ 
+			\hline \hline
+			AZ & 30 & 2.5\\ \hline 
+			CO &  31 & 3.5\\ \hline 
+			ID & 25  & 2.5\\  \hline 
+			MT &  26 & 1.5 \\ \hline 
+			NV & 32 & 4.5\\ \hline 
+			NM &  26 & 1.5\\ \hline 
+			UT &  25 & 2.5\\ \hline 
+			WY &  29 & 1.5\\ \hline 
+		\end{tabular} 
+	\end{center}
+\begin{gather*}
+	MAD = median(\{|y_1-\tilde{y}|,|y_2 - \tilde{y}|,\hdots,|y_n - \tilde{y}|\}) / 0.6745 \\
+	MAD = 2.5 / 0.6745 = 3.7065
+\end{gather*}
+\end{frame}
+
+\section{The Empirical rule}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Empirical rule}
+	\begin{itemize}
+		\item \textbf{\emph{The empirical rule:}} Given a set of $n$ measurements having a ``bell shape'' or mound-shaped distribution, the $\bar{y} \pm s$ interval contains approximately 68\% of the measurements; the $\bar{y} \pm 2s$ interval contains approximately 95\%; the $\bar{y} \pm 3s$ interval contains approximately 99.7\%
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Empirical rule}
+\begin{center}
+	\includegraphics[width=0.95\linewidth]{fishEmp00}
+\end{center}
+\end{frame}
+
+\begin{frame}{The Empirical rule}
+	\begin{center}
+		\includegraphics[width=0.95\linewidth]{fishEmp0}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Empirical rule}
+	\begin{center}
+		\includegraphics[width=0.95\linewidth]{fishEmp}
+	\end{center}
+\end{frame}
+
+\section{title}
+\begin{frame}
+	content...
+\end{frame}
+
 \end{document}

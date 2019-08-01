@@ -946,9 +946,63 @@ Let's calculate the IQR for the teacher pay data:
 	\end{center}
 \end{frame}
 
-\section{title}
-\begin{frame}
-	content...
+\section{The Boxplot}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Boxplot}
+	\begin{itemize}
+		\item The \textbf{\emph{boxplot}} is a graphical representation of a distribution that shows the quartiles of the distribution (Q1, median, and Q3), and demonstrates what values are outliers (and which are not)
+		\item[] 
+		\item Before we can draw:
+		\begin{itemize}
+			\item Quartiles: (Q1, Median, Q3)
+			\item Lower inner fence (LIF): $Q_1 - 1.5 \times IQR$
+			\item Lower outer fence (LOF): $Q_1 - 3 \times IQR$
+			\item Upper inner fence (UIF): $Q_3 + 1.5 \times IQR$
+			\item Upper outer fence (LIF): $Q_3 + 3 \times IQR$
+		\end{itemize}
+	\item[]
+	\item Lower adjacent value: smallest data value that isn't an outlier (less than LIF)
+	\item Upper adjacent value: greatest data value that isn't an outlier (greater than UIF)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Boxplot}{Before we draw}
+	\begin{itemize}
+		\item Example data. Simulated flow rate data from the Salt River, Kentucky ($m^3 / s$): \\
+		$\{0.14, 0.22, 0.45, 0.75, 0.91, 0.92, 1.15, 1.27, 2.80, 3.85\}$
+		\item[]
+		\item Median: 0.915
+		\item Q1: 0.45
+		\item Q3: 1.27
+		\item Lower inner fence (LIF): $Q_1 - 1.5 \times IQR = -0.78 $
+		\item Lower outer fence (LOF): $Q_1 - 3 \times IQR = -2.01$
+		\item Upper inner fence (UIF): $Q_3 + 1.5 \times IQR = 2.50 $
+		\item Upper outer fence (LIF): $Q_3 + 3 \times IQR = 3.73 $
+		\item Lower adjacent value: $0.14$
+		\item Upper adjacent value: $1.27$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Boxplot}{Drawing step 1: The box}
+	We draw a rectangle with the bottom at Q1 and the top at Q3. Width is your choice--be reasonable 
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{saltRiver1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Boxplot}{Drawing step 2: Add the median}
+	Now we add a solid horizontal line at the median
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{saltRiver2}
+	\end{center}
+\end{frame}
+
+\section{Summarizing data from more than one variable }
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
 \end{document}

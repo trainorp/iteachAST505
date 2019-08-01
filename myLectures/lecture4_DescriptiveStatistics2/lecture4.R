@@ -126,3 +126,42 @@ sd(c(10.03, 9.98, 10.01, 9.97)) / mean(c(10.03, 9.98, 10.01, 9.97))
 # MAD:
 mad(states$pay)
 median(abs(states$pay - median(states$pay)))/.6745
+
+boxplot(states$pay)
+
+########### Boxplots ###########
+set.seed(333)
+x <- rexp(10)
+x[3] <- 3.8533753
+x[7] <- 2.7955990
+x <- x[order(x)]
+x <- round(x, 2)
+quants <- quantile(x, probs = c(.25, .5, .75), type = 2)
+iqr <- quants[3] - quants[1]
+lif <- quants[1] - 1.5 * iqr
+lof <- quants[1] - 3 * iqr
+uif <- quants[3] + 1.5 * iqr
+uof <- quants[3] + 3 * iqr
+boxplot(x)
+
+dfBox <- data.frame(xmin = -.5, xmax = .5, ymin = quants[1], ymax = quants[3])
+
+png(filename = "saltRiver1.png", width = 6, height = 4, units = "in", res = 600)
+ggplot(dfBox, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) + 
+  geom_rect(fill = "grey90", color = "black", lwd = 1) + annotate("label", x = .6, y = quants[1], label = "Q1") +
+  annotate("label", x = .6, y = quants[3], label = "Q3") + xlim(-1, 1) + ylim(0, 5) + 
+  theme_bw() + theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
+  ylab("Cubic meters / second") + ggtitle("Flow Rate of the Salt River, Kentucky") + theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+png(filename = "saltRiver2.png", width = 6, height = 4, units = "in", res = 600)
+ggplot(dfBox, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) + 
+  geom_rect(fill = "grey90", color = "black", lwd = 1) + 
+  geom_segment(aes(x = xmin, xend = xmax, y = 1, yend = 1), lwd = 1) +
+  annotate("label", x = .6, y = quants[1], label = "Q1") + annotate("label", x = .6, y = quants[3], label = "Q3") + 
+  xlim(-1, 1) + ylim(0, 5) + theme_bw() +
+  theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
+  ylab("Cubic meters / second") + ggtitle("Flow Rate of the Salt River, Kentucky") + theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+

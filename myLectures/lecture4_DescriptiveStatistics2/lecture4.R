@@ -143,6 +143,7 @@ lof <- quants[1] - 3 * iqr
 uif <- quants[3] + 1.5 * iqr
 uof <- quants[3] + 3 * iqr
 boxplot(x)
+xVals <-x
 
 dfBox <- data.frame(xmin = -.5, xmax = .5, ymin = quants[1], ymax = quants[3])
 
@@ -164,4 +165,26 @@ ggplot(dfBox, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
   ylab("Cubic meters / second") + ggtitle("Flow Rate of the Salt River, Kentucky") + theme(plot.title = element_text(hjust = 0.5))
 dev.off()
 
+png(filename = "saltRiver3.png", width = 6, height = 4, units = "in", res = 600)
+ggplot(dfBox, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) + 
+  geom_rect(fill = "grey90", color = "black", lwd = 1) + 
+  geom_segment(aes(x = xmin, xend = xmax, y = 1, yend = 1), lwd = 1) +
+  geom_segment(aes(x = 0, xend = 0, y = quants[1], yend = xVals[1]), lwd = 1) +
+  annotate("label", x = .6, y = quants[1], label = "Q1") + annotate("label", x = .6, y = quants[3], label = "Q3") + 
+  xlim(-1, 1) + ylim(0, 5) + theme_bw() +
+  theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
+  ylab("Cubic meters / second") + ggtitle("Flow Rate of the Salt River, Kentucky") + theme(plot.title = element_text(hjust = 0.5))
+dev.off()
 
+png(filename = "saltRiver4.png", width = 6, height = 4, units = "in", res = 600)
+ggplot(dfBox, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) + 
+  geom_rect(fill = "grey90", color = "black", lwd = 1) + 
+  geom_segment(aes(x = xmin, xend = xmax, y = 1, yend = 1), lwd = 1) +
+  geom_segment(aes(x = 0, xend = 0, y = quants[1], yend = xVals[1]), lwd = 1) +
+  annotate("label", x = .6, y = quants[1], label = "Q1") + annotate("label", x = .6, y = quants[3], label = "Q3") + 
+  annotate("point", x = 0, y = xVals[9], size = 2, shape = 1, color = "black") +
+  annotate("point", x = 0, y = xVals[10], size = 2, shape = 16, color = "black") +
+  xlim(-1, 1) + ylim(0, 5) + theme_bw() +
+  theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
+  ylab("Cubic meters / second") + ggtitle("Flow Rate of the Salt River, Kentucky") + theme(plot.title = element_text(hjust = 0.5))
+dev.off()

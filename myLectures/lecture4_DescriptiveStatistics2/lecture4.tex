@@ -1007,10 +1007,66 @@ Let's calculate the IQR for the teacher pay data:
 	\end{center}
 \end{frame}
 
+\begin{frame}{The Boxplot}{Drawing step 4: Add outliers}
+	If any of the measurements lie between inner and outer fences (\textbf{\emph{mild outliers}}) we draw an open circle, if they lie beyond the outer fences (\textbf{\emph{extreme outliers}}) we draw a closed circle:
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{saltRiver4}
+	\end{center}
+\end{frame}
 
-\section{Summarizing data from more than one variable }
+\begin{frame}{The Boxplot}{Advantages of Boxplots}
+Shows: Measure of central tendency, measure of variability, presence / absence of outliers, and skewness. Also can be utilized to compare groups:
+
+\begin{center}
+	\includegraphics[width=0.7\linewidth]{fibrinogen}
+\end{center}
+\end{frame}
+
+\section{Scatterplots and correlation}
 \begin{frame}{Outline}
 	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Scatterplots}
+	\begin{itemize}
+		\item \textbf{\emph{Scatterplot:}} A scatterplot is a two-dimensional plot where the horizontal and vertical axes represent the measurement scales for two variables. Each point in the plot corresponds to the measurement of both variables from one experimental unit / study unit.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Scatterplots}
+	The following data is from a clinical trial of a new therapeutic for HIV. The data represents the measurements of CD4\textsuperscript{+} T cells in a volume of blood:
+	{\tiny
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			   \textbf{Baseline} & \textbf{After treatment} \\ \hline \hline
+			     2.12  &  2.47\\ \hline
+			     4.35  & 4.61\\ \hline
+			     3.39  &  5.26\\ \hline
+			     2.51  & 3.02\\ \hline
+			     4.04  &  6.36\\ \hline
+			     5.10  &  5.93\\ \hline
+			     3.77  &  3.93\\ \hline
+			     3.35  &  4.09\\ \hline
+			     4.10  &  4.88\\ \hline
+			     3.35  &  3.81\\ \hline
+			     4.15  &  4.74\\ \hline
+			     3.56  &  3.29\\ \hline
+			     3.39  &  5.55\\ \hline
+			     1.88  &  2.82\\ \hline
+			     2.56  &  4.23\\ \hline
+			     2.96  &  3.23\\ \hline
+			     2.49  &  2.56\\ \hline
+			     3.03  &  4.31\\ \hline
+			     2.66  &  4.37\\ \hline
+			     3.00  &  2.40\\ \hline
+		\end{tabular}
+	\end{center}}
+Ref: DiCiccio, T.J. and Efron B. (1996) Bootstrap confidence intervals (with Discussion). \emph{Statistical Science, 11}.
+\end{frame}
+
+\begin{frame}{Scatterplots}
+	A scatterplot of the CD4\textsuperscript{+} cell counts:
 \end{frame}
 
 \end{document}

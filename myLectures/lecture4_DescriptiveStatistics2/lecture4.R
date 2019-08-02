@@ -188,3 +188,56 @@ ggplot(dfBox, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax)) +
   theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
   ylab("Cubic meters / second") + ggtitle("Flow Rate of the Salt River, Kentucky") + theme(plot.title = element_text(hjust = 0.5))
 dev.off()
+
+# Two group boxplot example:
+data("plasma", package = "HSAUR")
+png(file = "fibrinogen.png", width = 6, height = 4, units = "in", res = 600)
+ggplot(plasma, aes(y = fibrinogen, x = ESR, fill = ESR)) + geom_boxplot(lwd = .9) + theme_bw() +
+  labs(x = "Erythrocyte sedimentation rate", y = "Fibrinogen concentration") + 
+  scale_fill_manual(values = c("indianred", "dodgerblue")) +
+  ggtitle("Fibrinogen in plasma by ESR") + theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+
+########### Scatterplots & Correlation ###########
+data("cd4", package = "boot")
+
+png(file = "cd4.png", width = 5, height = 4, units = "in", res = 600)
+ggplot(cd4, aes(x = baseline, y = oneyear)) + geom_point() + theme_bw() + 
+  labs(x = "Baseline count", y = "Post-treatment count") + 
+  ggtitle("CD4+ cell count") + theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+########### Correlation examples ###########
+gmc <- function(corr){
+  return(matrix(c(1, corr, corr, 1), nrow = 2, ncol = 2))
+}
+
+corList <- c(-.99, -.9, -.75, -.5, 0, .5, .75, .9, .99)
+matList <- list()
+for(i in 1:length(corList)){
+  set.seed(333)
+  matList[[i]] <- MASS::mvrnorm(n = 300, mu = c(0, 0), Sigma = gmc(corList[i]))
+}
+mats <- do.call("rbind", matList)
+mats <- as.data.frame(mats)
+mats$Correlation <- rep(corList, each = 300)
+
+png(file = "scatter.png", width = 7, height = 6, units = "in", res = 600)
+ggplot(mats, aes(x = V1, y = V2)) + geom_point(size = 1) + facet_wrap(~Correlation, nrow = 3, ncol = 3) +
+  theme_bw() + labs(x = "x", y = "y") + ggtitle("Scatterplots for showing different correlations") + 
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+sx <- sd(states$pay)
+xbar <- mean(states$pay)
+sy <- sd(states$SATM)
+ybar <- mean(states$SATM)
+states$pay - xbar
+states$SATM - ybar
+
+(states$pay - xbar) * (states$SATM - ybar)
+sum((states$pay - xbar) * (states$SATM - ybar))
+sum((states$pay - xbar) * (states$SATM - ybar)) / (sx * sy * 7)
+
+cor(states$pay, states$SATM)

@@ -1039,7 +1039,7 @@ Shows: Measure of central tendency, measure of variability, presence / absence o
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			   \textbf{Baseline} & \textbf{After treatment} \\ \hline \hline
+			   \textbf{Baseline} & \textbf{Post-treatment} \\ \hline \hline
 			     2.12  &  2.47\\ \hline
 			     4.35  & 4.61\\ \hline
 			     3.39  &  5.26\\ \hline
@@ -1066,7 +1066,101 @@ Ref: DiCiccio, T.J. and Efron B. (1996) Bootstrap confidence intervals (with Dis
 \end{frame}
 
 \begin{frame}{Scatterplots}
-	A scatterplot of the CD4\textsuperscript{+} cell counts:
+``Using a scatterplot, the general shape and direction of the relationship between two quantitative variables can be displayed''
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{cd4}
+	\end{center}
 \end{frame}
 
+\begin{frame}{The Correlation coefficient}
+	\begin{itemize}
+		\item \textbf{\emph{Correlation coefficient:}} The correlation coefficient measures the strength of the linear relationship between two quantitative variables. We denote it $r$
+		\item[]
+		\item Formula: 
+		\begin{gather*}
+			r = \frac{\sum_{i=1}(x_i -\bar{x})(y_i - \bar{y})}{(n-1) s_x s_y}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Correlation coefficient}
+	\begin{center}
+		\includegraphics[width=0.75\linewidth]{scatter}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Correlation coefficient}
+	\begin{itemize}
+		\item Let's compute the correlation coefficient between teacher pay and math SAT scores
+		\item Recall that if $x_i$ is teacher pay, $s_x = \sqrt{8}$
+	\end{itemize}
+		\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{SAT Math} & \textbf{\$ per pupil (1,000's)} & \textbf{Teacher pay (1,000's)} \\ 
+			\hline \hline
+			AZ & 497  & 4.231 & 30 \\ \hline 
+			CO & 513  & 4.809 & 31 \\ \hline 
+			ID & 502  & 3.200 & 25  \\  \hline 
+			MT & 523  & 5.184 & 26 \\ \hline 
+			NV & 487  & 4.564 & 32 \\ \hline 
+			NM & 527  & 4.446 & 26 \\ \hline 
+			UT & 539  & 2.993 & 25 \\ \hline 
+			WY & 519  & 5.255 & 29 \\ \hline 
+		\end{tabular} 
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Correlation coefficient}
+	\begin{itemize}
+		\item Let's compute the correlation coefficient between teacher pay and math SAT scores
+		\item Recall that if $x$ is teacher pay, $s_x = \sqrt{8}$ and $\bar{x} = 28$
+	\end{itemize}
+	\begin{center}
+		\begin{tabular}{|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{SAT Math} & \textbf{Teacher pay (1,000's)} \\ 
+			\hline \hline
+			AZ & 497  & 30 \\ \hline 
+			CO & 513  & 31 \\ \hline 
+			ID & 502  & 25  \\  \hline 
+			MT & 523  & 26 \\ \hline 
+			NV & 487  & 32 \\ \hline 
+			NM & 527  & 26 \\ \hline 
+			UT & 539  & 25 \\ \hline 
+			WY & 519  & 29 \\ \hline 
+		\end{tabular} 
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Correlation coefficient}
+	\begin{itemize}
+		\item Recall that if $x$ is teacher pay, $s_x = \sqrt{8}$ and $\bar{x} = 28$
+		\item If $y$ is math SAT score, $\bar{y} = 513.375$ and $s_y = 17.15424$
+	\end{itemize}
+		{\small 
+		\begin{tabular}{|c|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{SAT Math} & \textbf{Teacher pay (1,000's)} & $(x_i -\bar{x})(y_i - \bar{y})$\\ 
+			\hline \hline
+			AZ & 497  & 30 & $2 (-16.375) = -32.750$ \\ \hline 
+			CO & 513  & 31 & $3 (-0.375) = -1.125 $ \\ \hline 
+			ID & 502  & 25 & $-3 (-11.375) = 34.125$ \\  \hline 
+			MT & 523  & 26 & $-2 (9.625) = -19.250$ \\ \hline 
+			NV & 487  & 32 & $4(-26.375) = -105.500 $ \\ \hline 
+			NM & 527  & 26 & $-2 (13.625) = -27.250$\\ \hline 
+			UT & 539  & 25 & $-3 (25.625) =  -76.875$\\ \hline 
+			WY & 519  & 29 & $1 (5.625) = 5.625$\\ \hline 
+		\end{tabular} }
+\begin{align*}
+	r = \frac{\sum_{i=1}(x_i -\bar{x})(y_i - \bar{y})}{(n-1) s_x s_y} = \frac{-223}{(7)(\sqrt{8})(17.15424)} = -0.657
+\end{align*}
+\end{frame}
+
+\begin{frame}{The Correlation coefficient}
+	\begin{itemize}
+		\item What does $r = -0.657$ tell you about the relationship between teacher pay and math SAT scores?
+	\end{itemize}
+\end{frame}
+              
 \end{document}

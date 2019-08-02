@@ -5,6 +5,7 @@ os <- Sys.info()["sysname"]
 baseDir <- ifelse(os == "Windows", "C:/Users/ptrainor/gdrive", "~/gdrive")
 
 library(tidyverse)
+library(ggrepel)
 
 setwd(paste0(baseDir, "/iTeach/AST_505/myLectures/lecture4_DescriptiveStatistics2"))
 
@@ -239,5 +240,60 @@ states$SATM - ybar
 (states$pay - xbar) * (states$SATM - ybar)
 sum((states$pay - xbar) * (states$SATM - ybar))
 sum((states$pay - xbar) * (states$SATM - ybar)) / (sx * sy * 7)
-
 cor(states$pay, states$SATM)
+
+states$State <- rownames(states)
+png(file = "teacherPay.png", height = 4, width = 6, units = "in", res = 600)
+set.seed(33)
+ggplot(states, aes(x = pay, y = SATM, label = State)) + geom_point() +
+  geom_smooth(method = "lm", se = FALSE) + geom_text_repel() + theme_bw() +
+  labs(x = "Teacher Pay (1,000's of $)", y = "SAT Math") + 
+  annotate("label", x = 27, y = 500, label ="italic(r)==-0.657", parse = TRUE) +
+  ggtitle("Teacher pay and SAT math score") + 
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+states2 <- carData::States
+ggplot(states2, aes(x = log10(pop), y = SATM)) + geom_point() + geom_smooth(method = "lm", se = FALSE) +
+  theme_bw()
+
+states2$State <- rownames(states2)
+cor(states2$percent[states2$region == "MTN"], states2$SATM[states2$region == "MTN"])
+cor(states2$percent[states2$region == "MTN"], states2$pay[states2$region == "MTN"])
+
+png(file = "teacherPay2.png", height = 4, width = 8, units = "in", res = 600)
+set.seed(33)
+p1 <- ggplot(states2 %>% filter(region == "MTN"), aes(x = percent, y = SATM, label = State)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) + geom_text_repel() + theme_bw() + 
+  labs(x = "Percent of high schoolers who will take the SAT (%)", y = "SAT Math") +
+  annotate("label", x = 10, y = 500, label ="italic(r)==-0.741", parse = TRUE) +
+  ggtitle("% test takers & SAT math score") + theme(plot.title = element_text(hjust = 0.5))
+
+set.seed(33)
+p2 <- ggplot(states2 %>% filter(region == "MTN"), aes(x = pay, y = percent, label = State)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) + geom_text_repel() + theme_bw() + 
+  labs(y = "Percent of high schoolers who will take the SAT (%)", x = "Teacher Pay") +
+  annotate("label", x = 31, y = 10, label ="italic(r)==0.737", parse = TRUE) +
+  ggtitle("Teacher pay & % test takers") + theme(plot.title = element_text(hjust = 0.5))
+
+gridExtra::grid.arrange(p1, p2, nrow = 1)
+dev.off()
+
+png(file = "teacherPay3.png", height = 4, width = 10, units = "in", res = 600)
+set.seed(33)
+p1 <- ggplot(states2 %>% filter(region == "MTN"), aes(x = percent, y = SATM, label = State)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) + geom_text_repel() + theme_bw() + 
+  labs(x = "Percent test takers (%)", y = "SAT Math") +
+  annotate("label", x = 10, y = 500, label ="italic(r)==-0.741", parse = TRUE) 
+set.seed(33)
+p2 <- ggplot(states2 %>% filter(region == "MTN"), aes(x = pay, y = percent, label = State)) + geom_point() + 
+  geom_smooth(method = "lm", se = FALSE) + geom_text_repel() + theme_bw() + 
+  labs(y = "Percent test takers (%)", x = "Teacher Pay") +
+  annotate("label", x = 31, y = 10, label ="italic(r)==0.737", parse = TRUE)
+set.seed(33)
+p3 <- ggplot(states, aes(x = pay, y = SATM, label = State)) + geom_point() +
+  geom_smooth(method = "lm", se = FALSE) + geom_text_repel() + theme_bw() +
+  labs(x = "Teacher Pay (1,000's of $)", y = "SAT Math") + 
+  annotate("label", x = 27, y = 500, label ="italic(r)==-0.657", parse = TRUE)
+gridExtra::grid.arrange(p1, p2, p3, nrow = 1)
+dev.off()

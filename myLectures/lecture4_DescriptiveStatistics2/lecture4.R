@@ -297,3 +297,6 @@ p3 <- ggplot(states, aes(x = pay, y = SATM, label = State)) + geom_point() +
   annotate("label", x = 27, y = 500, label ="italic(r)==-0.657", parse = TRUE)
 gridExtra::grid.arrange(p1, p2, p3, nrow = 1)
 dev.off()
+
+lm1 <- lm(SATM ~ percent + pay, data = states2)
+summary(lm1)

@@ -1,0 +1,268 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\title[Lecture 4]{Lecture 5: Events and Probability Laws}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{September 4, 2019}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Uncertainty}
+	\begin{itemize}
+		\item We continuously elude to the fact that we can use samples to make inferences about a population
+		\item[]
+		\item A sample does not perfectly match the population--there is ``uncertainty'' when we use a statistic estimated from a sample (e.g. the sample mean) to make an inference about a population parameter (e.g. the population mean)
+		\item[]
+		\item Probability theory helps us understand the uncertainty of estimates made from samples
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Uncertainty}
+\begin{itemize}
+	\item More importantly, we have to make decisions with imperfect information every day
+	\item[]
+	\item A mathematical understanding of uncertainty (probability theory) can help us make decisions in these cases
+	\item[]
+	\item Sometimes our understanding of uncertainty can have huge consequences. Imagine a positive finding on a genetic test that tells a set of would be parents that if they have a baby, the child could be born with a rare [and terrible] disease)
+	\begin{itemize}
+		\item What if the test has a false positive rate of 80\%?
+		\item What if the test has a false positive rate of 0.01\%?
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Outcomes, events, and probability statements}
+
+\begin{frame}{Outcomes \& events}
+	\begin{itemize}
+		\item \textbf{\emph{An outcome:}} Given a non-deterministic process, a distinct result is called an outcome
+		\begin{itemize}
+			\item Drawing a card from a deck is a non-deterministic process; drawing a 4 of spades is a result (hence it is an outcome)
+		\end{itemize}
+		\item[]
+		\item \textbf{\emph{An event:}} An event is a collection of outcomes
+		\begin{itemize}
+			\item Drawing an even spade is an event, the collection of outcomes is {2 of spades, 4 of spades, 6 of spades, 8 of spades, 10 of spades}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Probabilities}
+	\begin{itemize}
+		\item \textbf{\emph{Probability of an event:}} The probability of an event is the number of outcomes that comprise an event divided by the total number of possible events
+		\item[]
+		\item Mathematical definition: $P(E) = \frac{N_E}{N}$, where $N_E$ is the number of outcomes that comprise an event and $N$ is the total number of possible outcomes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Probabilities}
+\begin{itemize}
+	\item Empirical probabilities: ``If an experiment is
+	repeated a large number of times and event E occurs 30\% of the time, then .30
+	should be a very good approximation to the probability of event E''
+	\item[] 
+	\item Mathematical definition of empirical probabilities: $P(E) \approx \frac{n_E}{n}$ where $n_e$ denotes the number of observed events out of $n$ observations
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Probabilities}{What's the difference?}
+	\begin{itemize}
+		\item Book calls $P(E) = \frac{N_E}{N}$ ``classical probability'' and $P(E) \approx \frac{n_E}{n}$ ``relative frequency probability''
+		\item[]
+		\item When we talk about $P(E) = \frac{N_E}{N}$ we are referring to probabilities we can compute without observing anything
+		\begin{itemize}
+			\item  We know the probability of getting an Ace of Spades is $1/52$ (we don't have to draw cards over and over to figure this out)--it is theoretical
+		\end{itemize}
+	\item[]
+	\item However, if we want to know the probability of death following being struck by lightning we would take a sample of $n$ lightning strike cases and determine how many of them resulted in death $n_e$ to compute $P(E) \approx \frac{n_E}{n}$
+	\begin{itemize}
+		\item This is not theoretical. We have to go count. It is ``empirical''
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Probabilities}{Empirical probabilities converge to theoretical}
+	\begin{center}
+		\includegraphics[width=0.85\linewidth]{bar1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Probabilities}{Empirical probabilities converge to theoretical}
+\begin{center}
+	\includegraphics[width=0.85\linewidth]{bar2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Probabilities}{Empirical probabilities converge to theoretical}
+\begin{center}
+	\includegraphics[width=0.85\linewidth]{bar3}
+\end{center}
+\end{frame}
+
+\begin{frame}{Probabilities}{Empirical probabilities converge to theoretical}
+\begin{center}
+	\includegraphics[width=0.85\linewidth]{bar4}
+\end{center}
+\end{frame}
+
+\begin{frame}{Probabilities}{Empirical probabilities converge to theoretical}
+\begin{center}
+	\includegraphics[width=0.85\linewidth]{bar5}
+\end{center}
+\end{frame}
+
+\begin{frame}{Probabilities}{Empirical probabilities converge to theoretical}
+\begin{center}
+	\includegraphics[width=0.85\linewidth]{bar6}
+\end{center}
+\end{frame}
+
+\section{Probability laws}
+
+\begin{frame}{A first law}
+	\begin{itemize}
+		\item Probabilities are positive and less than or equal to one
+		\item[]
+		\item Let $A$ be an event. Then $0 \leq P(A) \leq 1$
+		\item[]
+		\item The probability of any event is somewhere between impossible and guaranteed
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mutually exclusive}
+	\begin{itemize}
+		\item \textbf{\emph{Mutually exclusive:}} Two events $A$ and $B$ are mutually exclusive if the occurrence of one event precludes the possibility of the occurrence of the other event
+		\item[]
+		\item Let's roll two dice. Define $A$ to be the event that the sum is 7 and define $B$ to be the event that the sum is 11
+		\begin{center}
+			\includegraphics[scale=.1]{dice-25637_640}
+		\end{center}
+		\begin{gather*}
+			P(A \text{ and } B) = 0
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mutually exclusive}
+	\begin{itemize}
+		\item Define $A$ to be the event that the sum is 7 and define $B$ to be the event that the sum is 11. What is the probability of either $A$ or $B$ happening?
+		\begin{center}
+			\includegraphics[scale=.8]{allDice2}
+		\end{center}
+		\item Here are the outcomes that comprise $A$: $\{(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\}$
+		\item Here are the outcomes that comprise $B$: $\{(5,6), (6,5)\}$
+		\item So $P(A \text{ or } B) = \frac{N_{A\text{ or B}}}{N} = \frac{8}{36} = \frac{2}{9}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mutually exclusive}
+\begin{itemize}
+	\item Another law: If two events are mutually exclusive, then $P(A \text{ or } B) = P(A) + P(B)$
+	\item[]
+	\item Define $A$ to be the event that the sum is 7 and define $B$ to be the event that the sum is 11. What is the probability of either $A$ or $B$ happening?
+	\begin{gather*}
+		P(A \text{ or } B) = \frac{6}{36} + \frac{2}{36} = \frac{8}{36} = \frac{2}{9}
+	\end{gather*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The complement}
+	\begin{itemize}
+		\item \textbf{\emph{The complement:}} The complement of an event, $A$, is the event that $A$ does not occur. We denote it $A^c$
+		\begin{itemize}
+			\item The book denotes it as $\bar{A}$
+		\end{itemize}
+	\item[]
+	\item Another law! $P(A) + P(A^c) = 1$
+	\begin{itemize}
+		\item What is the probability of flipping a coin and getting heads or tails?
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Union and Intersection}
+	\begin{itemize}
+		\item \textbf{\emph{Union:}} The union of two events, $A$ and $B$, is the set of all outcomes that are included in either $A$ or $B$ (or both). Denoted $A \cup B$
+		\item[]
+		\item \textbf{\emph{Intersection:}} The intersection of two events, $A$ and $B$, is the set of all outcomes that are included in both $A$ and $B$ (or both). Denoted $A \cap B$
+		\item[]
+		\item The probability of the union of A and B, that is $P(A\cup B)$ is $P(A \cup B) = P(A) + P(B) - P(A\cap B)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Union and Intersection}
+\begin{itemize}
+	\item \textbf{\emph{Union:}} The union of two events, $A$ and $B$, is the set of all outcomes that are included in either $A$ or $B$ (or both). Denoted $A \cup B$
+	\item[]
+	\item \textbf{\emph{Intersection:}} The intersection of two events, $A$ and $B$, is the set of all outcomes that are included in both $A$ and $B$ (or both). Denoted $A \cap B$
+	\item[]
+	\item The probability of the union of A and B, that is $P(A\cup B)$ is $P(A \cup B) = P(A) + P(B) - P(A\cap B)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Break for data}
+\begin{itemize}
+	\item Back to the Titanic passenger data:
+	\begin{center}
+		\begin{tabular}{|c|c|c|} \hline
+			\textbf{Class} & \textbf{Survived} & \textbf{Frequency} \\ \hline \hline
+			1st  & No       &        122 \\ \hline 
+			1st   &Yes       &       203\\ \hline 
+			2nd   &No         &      167\\ \hline 
+			2nd   &Yes         &     118\\ \hline 
+			3rd   &No           &    528\\ \hline 
+			3rd   &Yes           &   178\\ \hline 
+			Crew  &No             &  673\\ \hline 
+			Crew  &Yes             & 212\\ \hline 
+		\end{tabular}
+	\end{center}
+	\item[]
+	\item Let $A$ be the event that a passenger was in first class and let $B$ be the event that the passenger survived. First, let's make a Venn diagram and then compute the union and intersection of the events.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Titanic data}{Venn Diagram}
+	\begin{center}
+		\includegraphics{TitanicVenn}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Titanic data}{Intersection}
+\begin{center}
+	\includegraphics[scale=.75]{TitanicVenn}
+\end{center}
+\begin{align*}
+P(A \cap B) &= 203
+\end{align*}
+\end{frame}
+
+\begin{frame}{Titanic data}{Union}
+\begin{center}
+	\includegraphics[scale=.75]{TitanicVenn}
+\end{center}
+\begin{align*}
+	P(A \cup B) &= P(A) + P(B) - P(A\cap B)\\
+	&= (122 + 203) + (203 + 508) - 203 \\
+	&= 833
+\end{align*}
+\end{frame}
+
+\end{document}

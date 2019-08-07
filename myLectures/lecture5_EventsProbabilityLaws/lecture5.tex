@@ -437,4 +437,120 @@ Let $A$ be the event that a student is admitted, and let $B$ be the event that a
 Since $P(A|B) = P(A)$ we conclude that the student's gender and admission are independent. 
 \end{frame}
 
+\begin{frame}{Another example}
+	Example problem: Is the probability that a passenger survived the sinking of the Titanic independent of whether or not they were a first class passenger? \\
+	Let's check if $P(A|B) = P(A)$ or $P(A|B) \neq P(A)$, where $A$ is the event that the passenger is a first class passenger, and $B$ is the event that the passenger survived.
+	\begin{gather*}
+		P(A|B) = 0.286 \\
+		P(A) = \frac{325}{2201} = 0.148
+	\end{gather*}
+	So we can conclude that whether a passenger survived or not is dependent on whether or not they were first class as $P(A|B) \neq P(A)$.
+\end{frame}
+
+\section{Bayes formula}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Motivation}
+Imagine you are the manager of a small airline that flys super important people around. You need to test your pilots for drugs. I manufacture a drug test and tell you that if a person has done drugs, there is a 97.5\% chance we will catch them (positive test). You test your pilots, and 3 of them fail. One of the drug test failures, Sally, claims she is innocent. Should you believe her? 
+
+\vspace{10pt}
+Answer: \emph{It depends.}
+
+\end{frame}
+
+\begin{frame}{Motivation}
+	There are many ways that we can have a 97.5\% chance of catching those who have done drugs. Here are two different ways:
+	\vspace{10 pt}
+	\begin{columns}
+		\begin{column}{0.5 \textwidth}
+			\begin{tabular}{c|cc}
+				& \textbf{Drug use} & \\
+				\textbf{Test A} & + & - \\ \hline
+				+ & 2925 & 450 \\
+				- & 75 & 6550\\
+			\end{tabular}
+		\end{column}
+		\begin{column}{0.5 \textwidth}
+			\begin{tabular}{c|cc}
+				& \textbf{Drug use} & \\
+				\textbf{Test B} & + & - \\ \hline
+				+ & 2925 & 2100 \\
+				- & 75 & 4900\\
+			\end{tabular}
+		\end{column}
+	\end{columns}
+	\vspace{10 pt}
+	\begin{itemize}
+		\item With both Test A and Test B, 97.5\% of those who used drugs had a positive test result
+		\item With Test A, the probability that a positive test result comes from a person who \emph{did not do} drugs is $\frac{450}{2925 + 450} = 13.3\%$
+		\item With Test B, the probability that a positive test result comes from a person who \emph{did not do} drugs is $\frac{2100}{2925 + 2100}=41.8\%$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes' Formula}
+	\begin{itemize}
+		\item \emph{\textbf{Bayes' formula:}} If $A$ and $B$ are events with $0 < P(A) < 1$ and $0 < P(B) < 1$, then:
+		\begin{gather*}
+		P(A|B) = \frac{P(B|A) P(A)}{P(B|A) P(A) + P(B|A^c) P(A^c)}
+		\end{gather*}
+		\item Let's calculate the probability that a given person did do drugs ($+$Drugs), given a positive test ($+$Test) for test A
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes' Formula}
+\begin{itemize}
+	\item Let's calculate the probability that a given person did do drugs ($+$Drugs), given a positive test ($+$Test) for test A
+	\begin{center}
+		\begin{tabular}{c|cc}
+			& \textbf{Drug use} & \\
+			\textbf{Test A} & + & - \\ \hline
+			+ & 2925 & 450 \\
+			- & 75 & 6550\\
+		\end{tabular}
+	\end{center}
+{\scriptsize
+\begin{align*}
+P(\text{+Drugs}|\text{+Test}) &= \frac{P(\text{+Test}|+\text{Drugs}) P(\text{+Drugs})}{P(\text{+Test}|\text{+Drugs}) P(\text{+Drugs}) + P(\text{+Test}|\text{-Drugs}) P(\text{-Drugs})} \\
+&= \frac{\frac{2925}{3000} \frac{3000}{10000}}{\frac{2925}{3000} \frac{3000}{10000} + \frac{450}{7000}\frac{7000}{10000}} = \frac{\frac{2925}{10000}}{\frac{2925}{10000}+\frac{450}{10000}} \\
+&= \frac{2925}{2925 + 450} = 0.867
+\end{align*}
+}
+\item For test A, $P(\text{+Drugs}|\text{+Test}) = 0.867$
+\item For test B, $P(\text{+Drugs}|\text{+Test}) = 0.582$ 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Diagnostic tests}
+Some important terms about diagnostic tests...
+	\begin{itemize}
+		\item \textbf{\emph{False positive:}} A false positive occurs when a diagnostic test gives a positive reading, but this conclusion is false
+		\begin{itemize}
+			\item For test A, the False Positive Rate is: 0.133
+			\item For test B, the False Positive Rate is: 0.418
+		\end{itemize}
+		\item \textbf{\emph{False negative:}} A false positive occurs when a diagnostic test gives a negative reading, but this conclusion is false
+		\begin{itemize}
+			\item For both test A and B, the False Negative Rate is: 0.025
+		\end{itemize}
+		\item \textbf{\emph{Sensitivity:}} The sensitivity of a diagnostic test is the True Positive Rate
+		\begin{itemize}
+			\item For both test A and B, the sensitivity is: 0.975
+		\end{itemize}
+		\item \textbf{\emph{Specificity:}} The specificity of a diagnostic test is the True Negative Rate
+		\begin{itemize}
+			\item For test A, the specificity is: 0.867
+			\item For test B, the specificity is: 0.582
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Motivation}
+Imagine you are the manager of a small airline that flys super important people around. You need to test your pilots for drugs. I manufacture a drug test and tell you that if a person has done drugs, there is a 97.5\% chance we will catch them (positive test). You test your pilots, and 3 of them fail. One of the drug test failures, Sally, claims she is innocent. Should you believe her? 
+
+\vspace{10pt}
+Answer: If the false positive rate is high (also meaning specificity is low), then we catch a lot of innocent people (possibly Sally). If the false positive rate is low (also meaning specificity is high), then we don't catch a lot of innocent people (Sorry Sally, we know what you did last summer)
+\end{frame}
+
 \end{document}

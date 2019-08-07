@@ -50,6 +50,9 @@
 \end{frame}
 
 \section{Outcomes, events, and probability statements}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
 
 \begin{frame}{Outcomes \& events}
 	\begin{itemize}
@@ -136,6 +139,9 @@
 \end{frame}
 
 \section{Probability laws}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
 
 \begin{frame}{A first law}
 	\begin{itemize}
@@ -250,7 +256,7 @@
 	\includegraphics[scale=.75]{TitanicVenn}
 \end{center}
 \begin{align*}
-P(A \cap B) &= 203
+P(A \cap B) &= \frac{203}{2201} = 0.092
 \end{align*}
 \end{frame}
 
@@ -260,9 +266,175 @@ P(A \cap B) &= 203
 \end{center}
 \begin{align*}
 	P(A \cup B) &= P(A) + P(B) - P(A\cap B)\\
-	&= (122 + 203) + (203 + 508) - 203 \\
-	&= 833
+	&= \frac{(122 + 203)}{2201} + \frac{(203 + 508)}{2201} - \frac{203}{2201} \\
+	&= \frac{833}{2201} = 0.378
 \end{align*}
+\end{frame}
+
+\begin{frame}{Titanic data}{A few more problems}
+	\begin{enumerate}
+		\item What do the events $A^c$ and $B^c$ represent? What are their probabilities?
+		\item[]
+		\item What is the probability $P(A^c \cap B)$? What does this event represent?
+		\item[] 
+		\item What is the probability $P(A^c \cap B)$? What does this event represent?
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Titanic data}{A few more problems}
+\begin{enumerate}
+	\item What do the events $A^c$ and $B^c$ represent? What are their probabilities?\\
+	$A^c$ is the event that a passenger is not in first class. $B^c$ is the event a passenger did not survive. 
+	\begin{align*}
+		P(A^c) &= \frac{1876}{2201} = 0.852 \\
+		P(B^c) &= \frac{1490}{2201} = 0.677
+	\end{align*}
+	\item What is the probability $P(A^c \cap B)$? What does this event represent?
+	\item[] 
+	\item What is the probability $P(A^c \cap B)$? What does this event represent?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Titanic data}{A few more problems}
+\begin{enumerate}
+	\item What do the events $A^c$ and $B^c$ represent? What are their probabilities?
+	\item What is the probability $P(A^c \cap B)$? What does this event represent? \\
+	This is the event that a passenger is not in first class and does survive.
+	\begin{gather*}
+		P(A^c \cap B) = \frac{508}{2201} = 0.231
+	\end{gather*}
+	\item What is the probability $P(A^c \cup B)$? What does this event represent?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Titanic data}{A few more problems}
+\begin{enumerate}
+	\item What do the events $A^c$ and $B^c$ represent? What are their probabilities?
+	\item What is the probability $P(A^c \cap B)$? What does this event represent? 
+	\item What is the probability $P(A^c \cup B)$? What does this event represent? \\
+	This is the event that a passenger is either not in first class or does survive.
+	\begin{align*}
+		P(A^c \cup B) &= P(A^c) + P(B) - P(A^c \cap B)\\ 
+		&= 0.852 + \frac{711}{2201} - 0.231 \\
+		&= 0.852 + 0.323 - 0.231 \\
+		&= 0.944
+	\end{align*}
+\end{enumerate}
+\end{frame}
+
+\section{Conditional probability}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Conditional Probability}
+	\begin{itemize}
+		\item \textbf{\emph{Conditional probability:}} Let $A$ and $B$ be events with nonzero probabilities. The conditional probability of event $A$ given that $B$ has occured is:
+		\begin{gather*}
+		P(A|B) = \frac{P(A \cap B)}{P(B)}
+		\end{gather*}
+		\item Let $A$ be the event that a passenger was in first class and let $B$ be the event that the passenger survived. The conditional probability a passenger is a first class passenger given that they survived is:
+		\begin{align*}
+		P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
+		&=\frac{203 / 2201}{711 / 2201}\\ 
+		&= 0.286
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Conditional Probability}
+\begin{itemize}
+	\item The conditional probability of interest can be switched: 
+	\begin{align*}
+	P(B|A) &= \frac{P(B \cap A)}{P(A)}
+	\end{align*}
+	\item Let's calculate this conditional probability. What event is represented by $B|A$?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conditional Probability}
+\begin{itemize}
+	\item Let's calculate this conditional probability. What event is represented by $B|A$? \\
+	
+	The event $B|A$ is the probability a passenger survived given that they were a first class passenger.
+	\begin{align*}
+	P(B|A) &= \frac{P(B \cap A)}{P(A)} \\
+	&= \frac{203 / 2201}{325 / 2201} \\
+	&=  0.625
+	\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conditional Probability}
+	\begin{itemize}
+		\item \textbf{\emph{The multiplication law:}} The probability of the intersection of two events, $A$ and $B$, is:
+		\begin{align*}
+		P(A \cap B) &= P(A) P(B|A) \\
+		&= P(B)P(A|B)
+		\end{align*}
+		\item If we know $P(A)$ and $P(B|A)$ we can calculate $P(A \cap B$)
+		\item[]
+		\item We know the probability a passenger is a first class passenger, $P(A)$, and we know the probability a passenger survived given they were a first class passenger $P(B|A)$, so we can calculate the probability a passenger was a first class passenger and survived $P(A \cap B$).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Conditional probability}
+Example problem: The probability a passenger was not in first class is 0.852 and the probability a passenger survived given that they were not in first class is 0.271. What is the probability that a randomly chosen passenger was not in first class and did survive?
+\end{frame}
+
+\begin{frame}{Conditional probability}
+	Example problem: The probability a passenger was not in first class is 0.852 and the probability a passenger survived given that they were not in first class is 0.271. What is the probability that a randomly chosen passenger was not in first class and did survive?
+	\begin{align*}
+		P(A^c \cap B) &= P(A^c) P(B|A^c) \\
+		&= 0.852 \times 0.271 \\
+		&= 0.231
+	\end{align*}
+\end{frame}
+
+\section{Independence}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Independence}
+	\begin{itemize}
+		\item \textbf{\emph{Independent events:}} Suppose that the probability of an event, $A$, is the same regardless of whether event $B$ has occured. Then $A$ and $B$ are independent events.
+		\item[]
+		\item Mathematically, if $P(A|B) = P(A)$ or equivalently, $P(A|B) = P(A|B^c) = P(A)$, or $P(B|A) = P(B)$, then $A$ and $B$ are independent.  
+		\item[]
+		\item \textbf{\emph{Dependent events:}} If two events $A$ and $B$ are not independent, then they are dependent, that is $P(A|B) \neq P(A)$ and it will also be true that $P(B|A) \neq P(B)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Independence}{Example}
+A school admits the following number of students by gender:
+\begin{center}
+		\begin{tabular}{c|cc}
+		& \textbf{Gender} & \\
+		\textbf{Admitted} & Male & Female \\ \hline
+		Yes & 202 & 210 \\
+		No & 303 & 315
+	\end{tabular}
+\end{center}
+Are the gender of the student and whether the student was admitted independent?
+\end{frame}
+
+\begin{frame}{Independence}{Example}
+\begin{center}
+	\begin{tabular}{c|cc}
+		& \textbf{Gender} & \\
+		\textbf{Admitted} & Male & Female \\ \hline
+		Yes & 202 & 210 \\
+		No & 303 & 315
+	\end{tabular}
+\end{center}
+Are the gender of the student and whether the student was admitted independent? \\ 
+Let $A$ be the event that a student is admitted, and let $B$ be the event that a student is male. Let's check if $P(A|B) = P(A)$ or $P(A|B) \neq P(A)$.
+\begin{gather*}
+	P(A|B) = P(A \cap B) P(B) = \frac{202/1030}{505/1030}= \frac{202}{505} = 0.4 \\
+	P(A) = \frac{412}{1030} = 0.4
+\end{gather*}
+Since $P(A|B) = P(A)$ we conclude that the student's gender and admission are independent. 
 \end{frame}
 
 \end{document}

@@ -447,7 +447,7 @@ Since $P(A|B) = P(A)$ we conclude that the student's gender and admission are in
 	So we can conclude that whether a passenger survived or not is dependent on whether or not they were first class as $P(A|B) \neq P(A)$.
 \end{frame}
 
-\section{Bayes formula}
+\section{Bayes' formula}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
@@ -551,6 +551,68 @@ Imagine you are the manager of a small airline that flys super important people 
 
 \vspace{10pt}
 Answer: If the false positive rate is high (also meaning specificity is low), then we catch a lot of innocent people (possibly Sally). If the false positive rate is low (also meaning specificity is high), then we don't catch a lot of innocent people (Sorry Sally, we know what you did last summer)
+\end{frame}
+
+\begin{frame}{Bayes' Formula}
+
+\begin{itemize}
+	\item Bayes' Formula can be extended to multiple events
+	\item[]
+	\item In our last example we were interested in $P(A|B)$ where A was the event that someone did use drugs and $B$ was a positive drug test
+	\begin{itemize}
+		\item Events $B$ are called observable events
+		\item Events $A$ are called states of nature
+	\end{itemize}
+	\item[]
+	\item Example observable events:
+	\begin{itemize}
+		\item $B_1$ is the event of a positive drug test
+		\item $B_2$ is the event of a negative drug test
+		\item $B_3$ is the event of an ``inconclusive'' drug test
+	\end{itemize}
+	\item[]
+	\item Example states of nature:
+	\begin{itemize}
+		\item $A_1$ the person did not use and was not exposed to drugs
+		\item $A_2$ the person did not use but was exposed to drugs
+		\item $A_3$ the person did use drugs
+	\end{itemize}
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes' Formula}
+	\begin{itemize}
+		\item If $A_1, A_2, \hdots, A_k$ are $k$ mutually exclusive states of nature, and if $B_1, B_2, \hdots, B_m$ are $m$ possible, mutually exclusive, observable events, then:
+		\begin{align*}
+		P(A_i|B_j) &= \frac{P(B_j|A_i)P(A_i)}{P(B_j|A_1)P(A_1) + P(B_j|A_2)P(A_2) + \hdots + P(B_j|A_k)P(A_k)} \\
+		&= \frac{P(B_j|A_i)P(A_i)}{\sum_i P(B_j|A_i)P(A_i)}
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes' Formula}{Titanic Example}
+	\begin{itemize}
+		\item Let $A_1$ be the event a passenger is in 1\textsuperscript{st} Class, $A_2$ in 2\textsuperscript{nd}, $A_3$ in 3\textsuperscript{rd}, and $A_4$ in the crew; Let $B_1$ be the event a passenger survived, let $B_2$ be the event the passenger did not survive
+		\item[]
+		\item Let's calculate $P(A_1|B_1)$, $P(A_2|B_1)$, $P(A_3|B_1)$, and $P(A_4|B_1)$:
+		{\scriptsize
+		\begin{align*}
+			P(A_1|B_1) &= \frac{P(B_1|A_1)P(A_1)}{P(B_1|A_1)P(A_1) + P(B_1|A_2)P(A_2) + P(B_1|A_3)P(A_3) + P(B_1|A_4)P(A_4)} \\
+			&= \frac{\frac{203}{325}\frac{325}{2201}}{\frac{203}{325}\frac{325}{2201} + \frac{118}{285}\frac{285}{2201} + \frac{178}{706}\frac{706}{2201} + \frac{212}{885}\frac{885}{2201}} \\
+			&= \frac{0.092}{0.092 + 0.054 + 0.081 + 0.096} \\
+			&= \frac{0.092}{0.323} = 0.285
+		\end{align*}}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{align*}
+		P(A_1|B_1) &= \frac{0.092}{0.092 + 0.054 + 0.081 + 0.096} = 0.285 \\ \\
+		P(A_2|B_1) &= \frac{0.054}{0.092 + 0.054 + 0.081 + 0.096} = 0.167\\ \\
+		P(A_3|B_1) &= \frac{0.081}{0.092 + 0.054 + 0.081 + 0.096} = 0.251\\ \\
+		P(A_4|B_1) &= \frac{0.096}{0.092 + 0.054 + 0.081 + 0.096} = 0.297\\
+	\end{align*}
 \end{frame}
 
 \end{document}

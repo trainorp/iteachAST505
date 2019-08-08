@@ -71,3 +71,8 @@ titanicDF$Class2 <- ifelse(titanicDF$Class == "1st", "1st", "Not 1st")
 titanicDF %>% group_by(Class2, Survived) %>% summarize(sum(Freq))
 titanicDF %>% group_by(Class2) %>% summarize(sum(Freq))
 titanicDF %>% group_by(Survived) %>% summarize(sum(Freq))
+
+
+titanicDF %>% group_by(Class, Survived) %>% summarize(sum(Freq))
+titanicDF %>% group_by(Class) %>% summarize(sum(Freq))
+titanicDF %>% group_by(Survived) %>% summarize(sum(Freq))

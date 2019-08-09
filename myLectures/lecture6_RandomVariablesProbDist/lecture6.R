@@ -59,3 +59,34 @@ ggplot(df3, aes(x = Sum, y = (..count..)/sum(..count..))) +
   ylab("Relative Frequency") + ggtitle("10000 simulated dice rolls")+
   theme(plot.title = element_text(hjust = 0.5))
 dev.off()
+
+########### Tick example ###########
+dbinom(0, 10, .18) + dbinom(1, 10, .18) + dbinom(2, 10, .18)
+1 - pbinom(2, 10, .18)
+
+set.seed(333)
+df4 <- data.frame(x = rbinom(100000, 100, .18))
+
+png(file = "TickBinom.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df4, aes(x = x, y = (..count..)/sum(..count..))) + 
+  geom_histogram(breaks = 0:100, color = "black", fill = "grey70") + 
+  xlim(0, 40) + labs(x = "y (# of Ticks with Bacteria)", y = "Relative Frequency") + theme_bw() +
+  ggtitle(expression(paste('Tick binomial experiment: ', n == 100, ", ", pi == 0.18)))+
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+sqrt(100*.18*(1-.18))
+
+png(file = "TickBinom2.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df4, aes(x = x, y = (..count..)/sum(..count..))) + 
+  geom_histogram(breaks = 0:100, color = "black", fill = "grey70") + 
+  geom_segment(aes(x = 18, xend = 18 + sqrt(100*.18*(1-.18)), y = .005, yend = .005), color = "darkred", lwd = 1.5) +
+  geom_segment(aes(x = 18, xend = 18 - sqrt(100*.18*(1-.18)), y = .005, yend = .005), color = "darkred", lwd = 1.5) +
+  geom_vline(xintercept = 18, color = "darkblue", lwd = 1.5) +
+  xlim(0, 40) + labs(x = "y (# of Ticks with Bacteria)", y = "Relative Frequency") + theme_bw() +
+  ggtitle(expression(paste('Tick binomial experiment: ', n == 100, ", ", pi == 0.18)))+
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+
+18 + 2 * sqrt(100*.18*(1-.18))

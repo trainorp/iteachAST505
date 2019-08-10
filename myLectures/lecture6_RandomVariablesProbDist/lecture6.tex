@@ -1,0 +1,487 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\title[Lecture 6]{Lecture 6: Random Variables and Probability Distributions}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{September 9, 2019}
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+	\tableofcontents[hideallsubsections]
+\end{frame}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\section{Random Variables}
+\begin{frame}{Random Variables}
+	\begin{itemize}
+		\item \textbf{\emph{Random Variable:}}
+		\item[]
+		\item \textbf{\emph{Qualitative random variable:}} A random variable in which the possible responses are categories that do not correspond to numerical amounts
+		\begin{itemize}
+			\item Example: In a study of the relationship between sugary beverages and diabetes, diabetes status: \{yes, no\} would be a qualitative RV
+			\item Example 2: In a study of gene variants and the color of peas, \{yellow, green, white\} would be a qualitative RV
+			\item There is no natural ordering of the values. It doesn't make sense to say no $<$ yes or that yellow $<$ green $<$ white
+			\item May also be called a nominal random variable or sometimes a categorical variable*
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Random Variables}
+	\begin{itemize}
+		\item \textbf{\emph{Quantitative random variable:}} A random variable in which the possible responses vary in numerical magnitude
+		\begin{itemize}
+			\item Example: In a study of the relationship between sugary beverages and diabetes, blood glucose concentration would be a quantitative RV
+			\item There exists a natural ordering between the values. It does make sense to say 10 mg/dL $>$ 5 mg/dL
+			\item May also be called a numeric random variable
+		\end{itemize}
+	\item[]
+	\item Types of quantitative random variables:
+	\begin{itemize}
+		\item \textbf{\emph{Discrete random variable:}} When values of a quantitative rv can assume only a countable number of values, the variable is called a discrete random variable
+		\item \textbf{\emph{Continuous random variable:}} When the values of a quantitative rv can assume any of an uncountable number of values on a line interval, the variable is a continuous random variable
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Probability Distribution Functions}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{A Probability Distribution}
+	\begin{itemize}
+		\item The sum of a roll of two dice is a discrete random variable
+		\item Here are all of the possible rolls--remember these are not the sum yet!
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{../lecture5_EventsProbabilityLaws/allDice2}
+		\end{center}
+		\item Here are the number of ways to get possible sums:
+		{ \tiny
+		\begin{center}
+			\begin{tabular}{|c|c|} \hline
+					\textbf{Sum} & \textbf{\# of Ways} \\ \hline \hline
+				      2 &    1\\ \hline
+				     3  &   2\\ \hline
+				     4  &   3\\ \hline
+				     5  &   4\\ \hline
+				     6  &   5\\ \hline
+				     7  &   6\\ \hline
+				     8  &   7\\ \hline
+				     9  &   6\\ \hline
+				    10  &   5\\ \hline
+				    11  &   4\\ \hline
+				    12  &   3\\ \hline
+				    13  &   2\\ \hline
+				    14  &   1\\ \hline
+			\end{tabular}
+		\end{center}}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{A Probability Distribution}
+	\begin{itemize}
+		\item The sum of a roll of two dice is a discrete random variable 
+		\item[]
+		\item Now we add the relative frequency of each sum:
+		{ \tiny
+			\begin{center}
+				\begin{tabular}{|c|c|c|} \hline
+					\textbf{Sum} & \textbf{\# of Ways} & Relative Frequency  \\ \hline \hline
+					2 &    1 & 0.020 \\ \hline
+					3  &   2 & 0.041\\ \hline
+					4  &   3 &  0.061\\ \hline
+					5  &   4 &   0.082\\ \hline
+					6  &   5 & 0.102\\ \hline
+					7  &   6 & 0.122\\ \hline
+					8  &   7 & 0.143\\ \hline
+					9  &   6 & 0.122\\ \hline
+					10  &   5 & 0.102\\ \hline
+					11  &   4 & 0.082\\ \hline
+					12  &   3 & 0.061\\ \hline
+					13  &   2 & 0.041\\ \hline
+					14  &   1 &  0.020\\ \hline
+				\end{tabular}
+		\end{center}}
+	\item If we define the random variable $y$, where $y = 2, 3, 4, \hdots, 14$, then the probability distribution of $y$ is $P(y)$, where $P(2) = 0.077, P(3) = 0.154, P(4) = 0.231, \hdots, P(14) = 0.077$ 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{A Probability Distribution Function}
+	\begin{itemize}
+		\item The sum of a roll of two dice is a discrete random variable 
+		\vspace{10pt}
+		{ \tiny
+			\begin{center}
+				\begin{tabular}{|c|c|} \hline
+					$y $ & $P(y)$  \\ \hline \hline
+					2 &   0.020 \\ \hline
+					3  &   0.041\\ \hline
+					4  &   0.061\\ \hline
+					5  &  0.082\\ \hline
+					6  &  0.102\\ \hline
+					7  &  0.122\\ \hline
+					8  & 0.143 \\ \hline
+					9  &   0.122\\ \hline
+					10  & 0.102\\ \hline
+					11  & 0.082\\ \hline
+					12  & 0.061 \\ \hline
+					13  &  0.041 \\ \hline
+					14  & 0.020\\ \hline
+				\end{tabular}
+		\end{center}}
+	\vspace{10pt}
+		\item \emph{\textbf{Probability Distribution Function:}} The probability distribution function of a random variable describes for each possible value of the random variable, the probability (or likelihood) of that value
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{A Probability Distribution Function}
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{diceRollPDF}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms \& Probability Distribution Functions}
+	The Histogram of real data often looks more and more like a probability distribution function as the number of samples gets large:
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{diceRollHist1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms \& Probability Distribution Functions}
+	The Histogram of real data often looks more and more like a probability distribution function as the number of samples gets large:
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{diceRollHist2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms \& Probability Distribution Functions}
+	The Histogram of real data often looks more and more like a probability distribution function as the number of samples gets large:
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{diceRollHist3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Histograms \& Probability Distribution Functions}
+	The Histogram of real data often looks more and more like a probability distribution function as the number of samples gets large:
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{diceRollHist4}
+	\end{center}
+\end{frame}
+
+\section{Discrete Random Variables}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Discrete Random Variable Facts}
+	A few things that are true about discrete random variables:
+	\begin{itemize}
+		\item $0 < P(y) < 1$ for all $y$
+		\item[]
+		\item The sum of all the $P(y)$ is 1. That is $\sum_{i} P(y_i) = 1$
+		\item[]
+		\item The probabilities are additive. For example if we are rolling two dice and $y$ is the sum, $P(2 \text{ or } 7) = P(2) + P(7) = 0.020 + 0.122 = 0.142$
+	\end{itemize}
+\end{frame}
+
+\subsection{Binomial Random Variables}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}
+	\begin{itemize}
+		\item On the first day of class I mentioned that there are common types of data encountered in all scientific disciplines--here some are!
+		\item[]
+		\item Many experiments and/or studies generate ``binary'' data where there are two possible responses:
+		\begin{itemize}
+			\item Political polls: ``Do you approve of this proposed law?''
+			\item Classic toxicology experiments: An experiment where a litter of rats are injected with a potential carcinogen. Random variable of whether or not a tumor was found after a specific time \{yes, no\}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial experiments}
+	\begin{itemize}
+		\item \textbf{\emph{Binomial experiment:}} An experiment is a binomial experiment if:
+		\begin{enumerate}
+			\item The experiment consists of $n$ identical trials
+			\item Each trial results in one of two outcomes (``success'' and ``failure'')
+			\item The probability of sucess on a single trial is equal to $\pi$, and $\pi$ remains the same from trial to trial
+			\item The trials are independent--the outcome of one does not influence the outcome of another
+			\item The random variable $y$ is the number of successes during the $n$ trials
+		\end{enumerate}
+	\item[]
+	\item Example: we test a lot of pregnancy tests (1000 tests) to estimate the proportion that give negative readings (a failure) when exposed to synthetic hormones
+	\begin{enumerate}
+		\item The experiment does consist of 1,000 identical trials
+		\item There are only two outcomes--``success'' and ``failure''
+		\item The probability of success is constant
+		\item The trials are independent 
+		\item The random variable $y$ is the number of successes during the $n$ trials
+	\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}
+	\begin{itemize}
+		\item We can compute $P(y)$ for a binomial random variable if we know $\pi$
+		\item Given a fixed $n$, the probability distribution function for a binomial random variable is: 
+		\begin{gather*}
+		P(y) = \frac{n!}{y!(n-y)!} \pi^y (1-\pi)^{n-y}
+		\end{gather*}
+		where:
+		\begin{align*}
+		n &= \text{number of trials} \\
+		\pi &= \text{probability of success on a single trial} \\ 
+		1- \pi &= \text{probability of failure on a single trial} \\
+		y &= \text{number of successes in $n$ trials} \\
+		n! &= n \times (n-1) \times (n-2) \times 3 \times 2 \times 1
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}
+	\begin{itemize}
+		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. 
+		\item Example question \#1: What is the probability that 2 out of 10 field-captured ticks carry the bacteria?
+		\begin{itemize}
+			\item $n = 10$
+			\item $\pi = 0.18$
+			\item $y = 2$
+		\end{itemize}
+		\begin{align*}
+			P(y) &= \frac{n!}{y!(n-y)!} \pi^y (1-\pi)^{n-y} \\
+			P(2) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} \\
+			&= 45 \times 0.0324 \times 0.2044 \\
+			&= 0.2980
+ 		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}
+	\begin{itemize}
+		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. 
+		\item Example question \#2: What is the probability that two or less (0, 1, 2) of 10 field-captured ticks carry the bacteria?
+		\begin{itemize}
+			\item $n = 10$
+			\item $\pi = 0.18$
+		\end{itemize}
+		\begin{align*}
+		P(0) &= \frac{10!}{0! \times 10!} \times 0.18^{0} \times 0.82^{10} = 0.1375 \\
+		P(1) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} = 0.3017 \\
+		P(2) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} = 0.2980\\
+		P(0) + P(1) + P(2) &= 0.7372
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}
+	\begin{itemize}
+		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. 
+		\item Example question \#2: What is the probability that two or less (0, 1, 2) of 10 field-captured ticks carry the bacteria?
+		\begin{itemize}
+			\item $n = 10$
+			\item $\pi = 0.18$
+		\end{itemize}
+		\begin{align*}
+		P(0) &= \frac{10!}{0! \times 10!} \times 0.18^{0} \times 0.82^{10} = 0.1375 \\
+		P(1) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} = 0.3017 \\
+		P(2) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} = 0.2980\\
+		P(y \leq 2) &= P(0) + P(1) + P(2) = 0.7372
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}
+	\begin{itemize}
+		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. 
+		\item[]
+		\item Example question \#3: What is the probability that more than two (3, 4, 5, 6, 7, 8, 9, 10) of 10 field-captured ticks carry the bacteria?
+		\begin{itemize}
+			\item Recall that if $A$ is an event, then $P(A^c) = 1- P(A)$
+		\end{itemize}
+		\begin{align*}
+			P(y > 2) &= 1 - P(y\leq 2) \\
+			&= 1 - 0.7372 \\
+			&= 0.2628
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}
+	Binomial random variables (generated by binomial experiments) do produce histograms
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{TickBinom}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}{Mean and Standard Deviation}
+	\begin{center}
+		\includegraphics[width=.65\linewidth]{TickBinom}
+	\end{center}
+	\begin{itemize}
+		\item We have formulas for both the mean and standard deviation:
+		\begin{itemize}
+			\item $\mu = n \pi$
+			\item $\sigma = \sqrt{n \pi (1-\pi)}$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}{Repeated experiments}
+	\begin{center}
+		\includegraphics[width=.65\linewidth]{TickBinom2}
+	\end{center}
+	\begin{itemize}
+		\item So if we repeat the experiment many times, we have:
+		\begin{itemize}
+			\item $\mu = 100 (0.18) = 18$
+			\item $\sigma = \sqrt{100 (0.18) (1-0.18)} = 3.842$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial Random Variables}{Repeated experiments}
+	\begin{columns}
+		\begin{column}{0.5 \textwidth}
+				\begin{center}
+				\includegraphics[width=1\linewidth]{TickBinom2}
+			\end{center}
+		\begin{itemize}
+			\item $\mu = 100 (0.18) = 18$
+			\item $\sigma = \sqrt{100 (0.18) (1-0.18)} = 3.842$
+		\end{itemize}
+		\end{column}
+		\begin{column}{0.5 \textwidth}
+			\begin{itemize}
+				\item This gives us an idea of whether an observed set of data is ``rare'' or ``typical'' assuming that our belief that 18\% of the ticks carry the bacteria is true
+				\item[]
+				\item If we go to a new state and in a field sample of 100 ticks 30 carry the bacteria, do we still believe that 18\% of the population carry the bacteria?
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Poisson Random Variables}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Poisson Random Variables}
+	\begin{itemize}
+		\item Another common type of random variable observed in the sciences is Poisson random variables
+		\item[]
+		\item Describe processes in which events occur ``randomly'' in time and we are interested in the number of events over a time interval
+		\item[]
+		\item Examples: 
+		\begin{itemize}
+			\item Number of photons (or some type of particle) hitting a detector over a minute
+			\item Number of new DNA variants arising in a population over a day
+			\item Number of cars arriving at a toll booth between 10 and 11 PM
+			\item Number of patients presenting to an Emergency room between 10 and 11 PM
+			\item Number of calls arriving at a call center during an hour
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Poisson Random Variables}
+	\textbf{\emph{Poisson Random Variables:}} Let $y$ be the number of events occurring during a fixed interval of time. $y$ is a Poisson random variable provided the following are true:
+		\begin{enumerate}
+			\item Events occur one at a time; cannot have two or more events at the same time*
+			\item The occurrence of one event in a given period of time is independent of the timing of other events
+			\item The expected number of events during one time interval is the same as the expected number of events in another time interval (of equal length)
+		\end{enumerate}
+		{\tiny
+			*although two events could take place at very close times (e.g. 13.3456839358 seconds is not the same as 13.3456839359)}
+\end{frame}
+
+\begin{frame}{Poisson Random Variables}
+	\begin{itemize}
+		\item Let $y$ be the number of events occurring during a fixed interval of time, the probability distribution function for a Poisson random variable is:
+		\begin{gather*}
+			P(y) = \frac{\mu ^ y e^{-mu}}{y!}
+		\end{gather*}
+		where $\mu$ is the event rate per unit time
+		\item[]
+		\item Example: Assume that on average a call center receives 10 calls per hour. What is the probability that the call center receives exactly 5 calls in one hour?
+		\begin{itemize}
+			\item $\mu = 10$ (10 calls per hour)
+			\item $y = 5$
+		\end{itemize}
+		\begin{align*}
+			P(5) = \frac{10^5 e^{-10}}{5!} = 0.038
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Poisson Random Variables}
+	\begin{itemize}
+		\item Example 2: Assume that on average a call center receives 10 calls per hour. What is the probability that the call center receives four or less calls in one hour?
+		\begin{itemize}
+			\item $\mu = 10$ (10 calls per hour)
+			\item $y = 5$
+		\end{itemize}
+	{\scriptsize
+		\begin{align*}
+		P(y \leq 4) &= P(0) + P(1) + P(2) + P(3) + P(4) \\
+		&= \frac{10^0 e^{-10}}{0!} + \frac{10^1 e^{-10}}{1!} + \frac{10^2 e^{-10}}{2!} + \frac{10^3 e^{-10}}{3!} + \frac{10^4 e^{-10}}{4!} \\
+		&=  0.00004539993 + 0.0004539993 + 0.002269996 + 0.007566655 + 0.01891664 \\
+		&= 0.02925269
+		\end{align*}}
+	\item Example 3: What is the probability that the call center receives more than four calls in one hour?
+	\begin{align*}
+		P(y > 4) &= 1 - P(y \leq 4) \\
+		&= 1- 0.02925269 \\
+		&=  0.9707473
+	\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Poisson Random Variables}
+	\begin{itemize}
+		\item While typically a Poisson RV describes events over time intervals, it can be over other types of intervals (time, volume, \& space)
+		\item[]
+		\item Space example: Assume you stain a tissue sample for a specific protein. Assume on average you count 10 cells in a field that express the protein. The number of cells that express the protein is a Poisson random variable 
+		\item[]
+		\item Volume example: A count of the number of particles in a volume of water
+	\end{itemize}
+\end{frame}
+
+\section{Continuous Random Variables}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Continuous Random Variables}
+	\begin{itemize}
+	\item A continuous RV is one that can take any of infinitely many values on a line interval
+	\item Example: if we had a tape measure with unlimited precision, every person in the class would have a unique height. If there were an infinite number of humans measured, there would be an infinite number of heights
+	
+	\item Complication: when we have a probability distribution function for a continous random variable, $P(y)$, there is no single $y$ value for which $P(y) > 0$,
+	however intervals such as $P(a<y<b) > 0$. 
+	\begin{itemize}
+		\item The probability that a student in this class has height $y = 67.35719549248350910351...4427824$ on our unlimited precision tape measure is 0 (we won't find a single student with that exact height). 
+		\item However, it is likely that we will find a student with a height between 67.0 and 67.5 inches. That is $P(67.0 < y < 67.5) > 0$. 
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\end{document}

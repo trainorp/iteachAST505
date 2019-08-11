@@ -93,3 +93,88 @@ dev.off()
 
 
 ########### Continuous RV's ###########
+png(file = "NormalHeights.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(24, 104)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x, 64, 8), xlim = c(55, 60), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x, 64, 8), lwd = 1, n = 50000) + 
+  theme_bw() + labs(x = "y (Height in inches)", y = expression(f(y))) +
+  ggtitle("Probability distribution function for heights") +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+png(file = "StandardNorm1.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-5, 5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(-1, 1), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
+  scale_x_continuous(breaks = c(-1, 0, 1), labels = c(expression(-sigma==-1), expression(mu==0), expression(sigma==1))) +
+  theme_bw() + labs(x = "y", y = expression(f(y))) +
+  annotate("label", 0, 0.1, label = "68.27%\n or 0.6827") +
+  ggtitle("The Standard Normal Distribution") +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+png(file = "StandardNorm2.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-5, 5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(-2, 2), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
+  scale_x_continuous(breaks = c(-2, 0, 2), labels = c(expression(-2*sigma==-2), expression(mu==0), expression(2*sigma==2))) +
+  theme_bw() + labs(x = "y", y = expression(f(y))) +
+  annotate("label", 0, 0.1, label = "95.45%\n or 0.9545") +
+  ggtitle("The Standard Normal Distribution") +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+png(file = "StandardNorm3.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-5, 5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(-3, 3), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
+  scale_x_continuous(breaks = c(-3, 0, 3), labels = c(expression(-3*sigma==-3), expression(mu==0), expression(3*sigma==3))) +
+  theme_bw() + labs(x = "y", y = expression(f(y))) +
+  annotate("label", 0, 0.1, label = "99.73%\n or 0.9973") +
+  ggtitle("The Standard Normal Distribution") +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+png(file = "StandardNorm4.png", height = 4, width = 6, units = "in", res = 600)
+p1 <- ggplot(data.frame(x = c(-5, 5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(-5, 1), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + xlim(-3, 3) +
+  scale_x_continuous(breaks = c(1), labels = c(expression(z==1))) +
+  theme_bw() + labs(x = "z", y = "Normal density") +
+  annotate("label", 0, 0.15, label = expression(P(Z <= z)==0.8413)) +
+  ggtitle("The Standard Normal Distribution") +
+  theme(plot.title = element_text(hjust = 0.5))
+show(p1)
+dev.off()
+
+p2 <- ggplot(data.frame(x = c(-5, 5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(1, 5), geom = "area", fill = "hotpink", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + xlim(-3, 3) +
+  scale_x_continuous(breaks = c(1), labels = c(expression(z==1))) +
+  theme_bw() + labs(x = "z", y = "Normal density") +
+  annotate("label", 3.7, 0.175, label = expression(P(Z > z)==1-P(Z<=z))) +
+  annotate("label", 3.7, 0.125, label = expression(1-P(Z<=z)==1-0.8413)) +
+  annotate("label", 3.7, 0.075, label = expression(1-P(Z<=z)==0.1587)) +
+  ggtitle("The Standard Normal Distribution") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+png(file = "StandardNorm5.png", height = 7, width = 6, units = "in", res = 600)
+print(gridExtra::grid.arrange(p1, p2))
+dev.off()
+
+png(file = "StandardNorm6.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-5, 5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(0, 1), geom = "area", fill = "limegreen", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + xlim(-3, 3) +
+  scale_x_continuous(breaks = c(0, 1), labels = c(expression(z[1]==0), expression(z[2]==1))) +
+  theme_bw() + labs(x = "z", y = "Normal density") +
+  annotate("label", 3.7, 0.175, label = expression(P(z[2] <= Z)-P(z[1] <= Z))) +
+  annotate("label", 3.7, 0.125, label = expression(P(z[2] <= 1)-P(z[1] <= 0))) +
+  annotate("label", 3.7, 0.075, label = expression(0.841-0.500 == 0.341)) +
+  ggtitle("The Standard Normal Distribution") +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+########### Trout ###########
+(5.00-4.03)/(1.65)
+pnorm((5.00-4.03)/(1.65))

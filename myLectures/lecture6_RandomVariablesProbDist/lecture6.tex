@@ -24,14 +24,14 @@
 	\tableofcontents[hideallsubsections]
 \end{frame}
 
+\section{Random Variables}
 \begin{frame}{Outline}
 	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
-\section{Random Variables}
 \begin{frame}{Random Variables}
 	\begin{itemize}
-		\item \textbf{\emph{Random Variable:}}
+		\item \textbf{\emph{Random Variable:}} A variable whose values depend on outcomes of a stochastic process or phenomenon that is ``random''
 		\item[]
 		\item \textbf{\emph{Qualitative random variable:}} A random variable in which the possible responses are categories that do not correspond to numerical amounts
 		\begin{itemize}
@@ -774,5 +774,131 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Sampling Distributions}{Motivation}
+	\begin{itemize}
+		\item The population mean of the fish data is $\mu = 500.595$ and the population standard deviation is $\sigma = 10.02815$
+		\item[]
+		\item Here are 5 simple random samples (with sample mean at the bottom):
+	\end{itemize}
+\begin{center}
+	\includegraphics[width = .8 \linewidth]{randomFish}
+\end{center}
+\end{frame}
+
+\begin{frame}{Sampling Distributions}{Motivation}
+	\begin{itemize}
+		\item The population mean of the fish data is $\mu = 500.595$ and the population standard deviation is $\sigma = 10.02815$
+		\item And now a histogram of the sample means from 1,000 simple random samples:
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width = .65 \linewidth]{sampleMeanHist}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Sampling Distributions}
+	\begin{columns}
+		\begin{column}{.7 \textwidth}
+		\begin{center}
+			\includegraphics[width = 1 \linewidth]{sampleMeanHist2}
+		\end{center}
+		\end{column}
+		\begin{column}{.3 \textwidth}
+				\begin{itemize}
+				\item The spread of a sampling distribution depends on the sample size
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Sampling Distributions}
+	\begin{columns}
+		\begin{column}{.5 \textwidth}
+			\begin{center}
+				\includegraphics[width = 1 \linewidth]{sampleMeanHist2}
+			\end{center}
+		\end{column}
+		\begin{column}{.5 \textwidth}
+			\begin{tabular}{|p{1.25cm}|p{1.7cm}|p{1.75cm}|} \hline
+  \textbf{Sample Size}   &  \textbf{Mean (of $\bar{y}$)}  &  \textbf{Standard Deviation (of $\bar{y}$)} \\ \hline \hline
+        5 &500.5901& 4.417413 \\ \hline
+        10 &500.6141& 3.062839 \\ \hline
+	     50& 500.6128 &1.010857 \\ \hline
+			\end{tabular}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Sampling Distributions}
+	\begin{columns}
+		\begin{column}{.5 \textwidth}
+			\begin{center}
+				\includegraphics[width = 1 \linewidth]{sampleMeanHist2}
+			\end{center}
+		\end{column}
+		\begin{column}{.5 \textwidth}
+			The sampling distribution is related to the population distribution by:
+			\begin{itemize}
+				\item $\mu_{\bar{y}} = \mu$ 
+				\item[]
+				\item $\sigma_{\bar{y}} =\frac{\sigma}{\sqrt{n}} $
+				\item[]
+				\item $\sigma_{\bar{y}}$ is called the standard error of $\bar{y}$
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}
+	\textbf{\emph{The Central Limit Theorem:}} Let $\bar{y}$ denote the sample mean computed from a random sample of $n$ measurements from a population having mean $\mu$ and finite standard deviation $\sigma$. Let $\mu_{\bar{y}}$ and $\sigma_{\bar{y}}$ denote the mean and standard deviation of the sampling distribution of $\bar{y}$, respectively. Then:
+	\begin{enumerate}
+		\item $\mu_{\bar{y}} = \mu$
+		\item $\sigma_{\bar{y}} = \sigma / \sqrt{n}$
+		\item If $n$ is sufficiently large, the distribution of $\bar{y}$, will be approximately normal
+		\item If the population distribution is normal, then $\bar{y}$ is normal for any sample size $n$ (as opposed to approximately normal if $n$ is large)
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}{Why is it important}
+	One of the most significant results of the Central Limit Theorem is that even if the distribution of measurement in a population has a very ``non-normal'' distribution, the sampling distributions of many of the statistics we are interested in (mean, median, standard deviation), are normal distributions* \\
+	
+	\vspace*{20 pt}
+	*If this was not the case your textbook would be 20,000 pages long instead of 1,000 pages
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}{Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{smHist1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}{Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{smHist2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}{Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{smHist3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}{Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{smHist4}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}{Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{smHist5}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}{Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{smHist6}
+	\end{center}
+\end{frame}
 
 \end{document}

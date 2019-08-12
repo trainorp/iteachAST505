@@ -1,0 +1,175 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\title[Lecture 8]{Lecture 8: Inferences about the mean}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{September 16, 2019}
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+	\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{columns}
+		\begin{column}{.4 \textwidth}
+			\begin{center}
+				\includegraphics[width=1.2 \linewidth]{./../lecture1_Introduction/Sampling.png}
+				\end{center}
+		\end{column}
+		\begin{column}{.5 \textwidth}
+				\begin{itemize}
+				\item All the way back in Lecture \#1 we discussed how we use samples to make inferences about larger populations
+				\item[]
+				\item In general, the two types of inference we want to make are:
+				\begin{itemize}
+					\item an estimate of the value of a population parameter 
+					\item[]
+					\item a test of a hypothesis about the value of a parameter(s)
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Introduction}{Inference examples}
+	\begin{columns}
+		\begin{column}{.5 \textwidth}
+			Population parameter estimations:
+			\begin{itemize}
+				\item What is the prevalence of Type 2 Diabetes in the United States (or in New Mexico, or in Las Cruces)?
+				\item[]
+				\item What percent of middle school-aged youth are bullied online?
+				\item[]
+				\item What percentage of \emph{Ixodes scapularis} (deer ticks) carry the bacterium \emph{Borrelia burgdorferi} in Kentucky?
+			\end{itemize}
+		\end{column}
+	
+		\begin{column}{.5 \textwidth}
+			Test of hypotheses about the value of parameters:
+			\begin{itemize}
+				\item Is the prevalence of Type 2 Diabetes in the United States increasing? 
+				\item[]
+				\item Are more middle school-aged youth bullied online or at school?
+				\item[]
+				\item Does treatment of clothing with permethrin reduce incidence of lyme disease?
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Estimation of Normal population mean}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The sample mean}
+	\begin{itemize}
+		\item There is an entire field of mathematical statistics devoted to determining the best estimator for different types of population parameters
+		\item[]
+		\item For Normal distributions, the sample mean is the ``best'' estimate (or estimator) of the population mean 
+		\item[]
+		\item That the sample mean is a good guess of the value of the population mean is intuitive, but an important question remains...\emph{How confident should we be in the reliability of the sample mean as an estimate of the population mean?}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The sample mean}
+	\begin{itemize}
+		\item Let's play a guessing game!
+		\item[] 
+		\item Sally says that the average high temperature in Louisville, Kentucky in September is between 84 and 84.5. Paul says that the average is between 0 and 150 degrees.
+	\end{itemize}
+\begin{center}
+	\includegraphics[width=.7\linewidth]{Louisville}
+\end{center}
+\end{frame}
+
+\begin{frame}{The sample mean}
+	\begin{itemize}
+		\item Sally says that the average high temperature in Louisville, Kentucky in September is between 84 and 84.5. Paul says that the average is between 0 and 150 degrees.
+		\item[]
+		\item Who is more ``right'' if the true (population) value is 82 degrees?
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=.7\linewidth]{Louisville}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The sample mean}
+	\begin{itemize}
+		\item Sally says that the average high temperature in Louisville, Kentucky in September is between 84 and 84.5. Paul says that the average is between 0 and 200 degrees.
+		\item[]
+		\item Who is more ``right'' if the true (population) value is 82 degrees?
+		\item[]
+		\item Paul wins!
+		\item[]
+		\item But this highlights what we desire when we are using a sample mean to estimate a population mean
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	\begin{center}
+		\includegraphics[width=.8 \linewidth]{point1}
+	\end{center}
+\begin{itemize}
+	\item For continuous random variables the probability that the sample mean is equal to the population mean is zero for a finite sample size $n$
+	\item[]
+	\item Unfortunately the picture above would never happen
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	\begin{center}
+		\includegraphics[width=.8 \linewidth]{point2}
+	\end{center}
+	\begin{itemize}
+		\item For continuous random variables the probability that the sample mean is equal to the population mean is zero for a finite sample size $n$
+		\item[]
+		\item Instead we have something like the above picture
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	\begin{center}
+		\includegraphics[width=.8 \linewidth]{point3}
+	\end{center}
+	\begin{itemize}
+		\item With the above picture we want to propose an interval like the blue line between blue dots that is likely to contain the population mean
+		\item The most straightforward interval would be to make an interval that is centered on the sample mean but extends a little to the left and a little to the right
+		\item But how far to the left and right?!?!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	\begin{center}
+		\includegraphics[width=.8 \linewidth]{point3}
+	\end{center}
+	\begin{itemize}
+		\item But how far to the left and right?!?!
+		\item We want an interval that is wide enough to contain the population mean \emph{most of the time}*, but not so wide that it has little information** \\
+		\vspace{2.5pt}
+		{\tiny *Sally's interval was bad because it doesn't contain the population mean
+			**Paul's interval, while trivially containing the population mean, didn't really inform us where the population mean was likely to be}
+	\end{itemize}
+\end{frame}
+
+\end{document}

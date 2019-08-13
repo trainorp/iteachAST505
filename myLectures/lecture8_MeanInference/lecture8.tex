@@ -450,7 +450,7 @@
 		\end{itemize}
 	\item Now imagine that we want to test whether $\mu$ is less than, equal to, or greater than some pre-specified value $\mu_0$
 	\item[]
-	\item Example: I want to test whether mean the population mean of systolic blood pressure in Asian-Americans is less than 123.5 (the mean in Caucasian Americans in a large study)
+	\item Example: I want to test whether mean the population mean of systolic blood pressure in Asian-Americans is less than 133.5 (the mean in Caucasian Americans in a large study)
 	
 	\end{itemize}
 \end{frame}
@@ -469,16 +469,16 @@
 \end{frame}
 
 \begin{frame}{Process}{Example}
-Example: We want to test whether the population mean of systolic blood pressure (SBP) in Asian-Americans is less than 123.5\\
+Example: We want to test whether the population mean of systolic blood pressure (SBP) in Asian-Americans is less than 133.5\\
 \vspace{10 pt}
 	\begin{enumerate}
 		\item Define a ``research hypothesis'' / alternative hypothesis. We denote this $H_a$
 		\begin{itemize}
-			\item $H_a$: The population mean of SBP is less than 123.5. $\mu < 123.5$
+			\item $H_a$: The population mean of SBP is less than 133.5. $\mu < 133.5$
 		\end{itemize}
 		\item Determine the appropriate null hypothesis. We denote this $H_0$
 		\begin{itemize}
-			\item $H_0$: The population mean of SBP is greater than or equal to 123.5. $\mu \geq 123.5$
+			\item $H_0$: The population mean of SBP is greater than or equal to 133.5. $\mu \geq 133.5$
 		\end{itemize}
 		\item Using a simple random sample, we compute a test statistic
 		\item[]
@@ -512,5 +512,200 @@ Example: We want to test whether the population mean of systolic blood pressure 
 		\includegraphics[width = .95 \linewidth]{nullTests2}
 	\end{center}
 \end{frame}
+
+\begin{frame}{Distribution of test statistics}
+	\begin{itemize}
+		\item We define rejection regions based on our hypotheses:
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width = .9 \linewidth]{nullTests3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Distribution of test statistics}
+	\begin{itemize}
+		\item We reject a null hypothesis if the test statistic is in the rejection region
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width = .85 \linewidth]{nullTests4}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Distribution of test statistics}
+	\begin{itemize}
+		\item We don't reject a null hypothesis if the test statistic is in the acceptance region
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width = .85 \linewidth]{nullTests5}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Rejection regions}{Types of errors}
+	\begin{itemize}
+		\item \textbf{\emph{Type I error:}} A Type I error is commited if we reject the null hypothesis when it is true. This is denoted $\alpha$.
+		\item[]
+		\item \textbf{\emph{Type II error:}} A Type II error is commited if we accept the null hypothesis when it is false and the alternative hypothesis is true. This is denoted $\beta$
+	\end{itemize}
+\begin{center}
+	\begin{tabular}{c|cc}
+		& \textbf{Null hypothesis} & \\
+		\textbf{Decision} & \textbf{True} & \textbf{False} \\ \hline
+		Reject $H_0$ & Type I error & Correct \\
+		& $\alpha$ & $1-\beta$ \\ \hline
+		Accept $H_0$ & Correct & Type II error \\
+		& $1-\alpha$ & $\beta$ \\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Rejection regions}
+	\begin{center}
+				\includegraphics[width = .65 \linewidth]{nullTests3b}
+	\end{center}
+\begin{itemize}
+	\item We define rejection regions based on fixing the Type I error rate $\alpha$ at a level that is ``acceptable'' such as $\alpha = 0.05$ 
+	\item If $H_a$: $\mu < \mu_0$ this would correspond to a rejection region in the lower tail with an area of 0.05
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Rejection regions}
+	\begin{center}
+		\includegraphics[width = .65 \linewidth]{nullTests3Flipb}
+	\end{center}
+	\begin{itemize}
+		\item We define rejection regions based on fixing the Type I error rate $\alpha$ at a level that is ``acceptable'' such as $\alpha = 0.05$ 
+		\item If $H_a$: $\mu > \mu_0$ this would correspond to a rejection region in the upper tail with an area of 0.05
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Rejection regions}
+	\begin{center}
+		\includegraphics[width = .65 \linewidth]{nullTests6b}
+	\end{center}
+	\begin{itemize}
+		\item We define rejection regions based on fixing the Type I error rate $\alpha$ at a level that is ``acceptable'' such as $\alpha = 0.05$ 
+		\item If $H_a$: $\mu = \mu_0$ this would correspond to a rejection region in the lower tail with an area of 0.025 and in the upper tail with an area of 0.025
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Test statistic}
+	\begin{itemize}
+		\item Earlier we mentioned that the test statistics we use for testing hypotheses regarding a Normal population mean, $\mu$, is the sample mean $\bar{y}$
+		\item[]
+		\item This is true, however, we want to standardize the test statistic so that we can use a standard normal distribution in our calculations:
+		\begin{gather*}
+			z = \frac{\bar{y} - \mu_0}{\sigma / \sqrt{n}}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Process}
+	\begin{itemize}
+		\item Hypotheses:
+		\begin{itemize}
+			\item Case 1. $H_0: \mu \leq \mu_0$ vs $H_a: \mu > \mu_0$ (upper/right-tailed test)
+			\item Case 2. $H_0: \mu \geq \mu_0$ vs $H_a: \mu < \mu_0$ (lower/left-tailed test)
+			\item Case 3. $H_0: \mu = \mu_0$ vs $H_a: \mu \neq \mu_0$ (two-tailed test)
+		\end{itemize}
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+					z = \frac{\bar{y} - \mu_0}{\sigma / \sqrt{n}}
+		\end{gather*}
+		
+		\item For a fixed $\alpha$, the rejection region is:
+		\begin{itemize}
+			\item Case 1. Reject $H_0$ if $z \geq z_{1-\alpha}$ 
+			\item Case 2. Reject $H_0$ if $z \leq z_{\alpha}$ 
+			\item Case 3. Reject $H_0$ if $|z| \geq z_{1-\alpha/2}$ 
+		\end{itemize}
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+	Example: You want to test whether the population mean of systolic blood pressure (SBP) in Asian-Americans is less than 133.5. \\
+	\vspace{10 pt}
+	\begin{enumerate}
+		\item Define a ``research hypothesis'' / alternative hypothesis. We denote this $H_a$
+		\begin{itemize}
+			\item $H_a$: The population mean of SBP is less than 133.5. $\mu < 133.5$
+		\end{itemize}
+		\item Determine the appropriate null hypothesis. We denote this $H_0$
+		\begin{itemize}
+			\item $H_0$: The population mean of SBP is greater than or equal to 133.5. $\mu \geq 133.5$
+		\end{itemize}
+		\item Using a simple random sample, we compute a test statistic
+		\item[]
+		\item We evaluate whether the test statistic supports the rejection of the null hypothesis
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Example}
+	\textbf{Example:} You want to test whether the population mean of systolic blood pressure (SBP) in Asian-Americans is less than 133.5. Assume $\sigma = 20$ is known. You recruit 800 participants and measure their SBP. You find that the sample mean is 135.5. \\
+	\vspace{5pt}
+	
+	We want to test $H_a$ vs $H_0$ by seeing if our test statistic is in the rejection region (lower-tail). Let's pre-specify $\alpha = 0.05$ as acceptable. First we compute the test statistic:
+	\begin{align*}
+	z &= \frac{\bar{y} - \mu_0}{\sigma / \sqrt{n}} \\
+	z &= \frac{135.5 - 133.5}{20 / \sqrt{800}} \\
+	z &= 2.828
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Example}
+	\textbf{Example:} You want to test whether the population mean of systolic blood pressure (SBP) in Asian-Americans is less than 133.5. Assume $\sigma = 20$ is known. You recruit 800 participants and measure their SBP. You find that the sample mean is 135.5. \\
+	\vspace{15pt}
+	
+	The rejection region will be to the left of $z_{\alpha} = z_{.05} = -1.645$.
+\end{frame}
+
+\begin{frame}{Example}
+	\begin{center}
+		\includegraphics[width = .8\linewidth]{SBP1}
+	\end{center}
+
+\vspace{-10pt}
+Clearly, 2.828 is not less than -1.645; the test statistic is not in the rejection region. We fail to reject the null hypothesis.
+\end{frame}
+
+\begin{frame}{Example 2}
+	\begin{itemize}
+		\item Research question: Cells spend on average 16.7\% of their life in G2 phase (so we expect that in a large population of cells 16.7\% will be in this phase). The population standard deviation is 9\%. You want to know if the \% of cells in G2 phase is abnormal (different from 16.7\%) in prostate cancer tumors. You measured the \% of cells in G2 phase from 139 tumors and found a sample mean of 14.275. You decide that you will test at $\alpha = 0.10$.
+		\item[]
+		\item Hypotheses:
+		\begin{itemize}
+			\item $H_0: \mu = 16.7$ 
+			\item $H_A: \mu \neq 16.7$ 
+		\end{itemize}
+	\item[]
+	\item Rejection region: Reject $H_0$ if $|z| \geq z_{1-\alpha / 2} = z_{.95} = 1.645$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example 2}
+	\begin{itemize}
+		\item Research question: Cells spend on average 16.7\% of their life in G2 phase (so we expect that in a large population of cells 16.7\% will be in this phase). The population standard deviation is 9\%. You want to know if the \% of cells in G2 phase is abnormal (different from 16.7\%) in prostate cancer tumors. You measured the \% of cells in G2 phase from 139 tumors and found a sample mean of 14.275. You decide that you will test at $\alpha = 0.10$.
+		\begin{align*}
+			z &= \frac{\bar{y} - \mu_0}{\sigma / \sqrt{n}} \\
+			&= \frac{14.275 - 16.7}{9 / \sqrt{139}} \\
+			&= -3.177
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example 2}
+	\begin{itemize}
+		\item Research question: Cells spend on average 16.7\% of their life in G2 phase (so we expect that in a large population of cells 16.7\% will be in this phase). The population standard deviation is 9\%. You want to know if the \% of cells in G2 phase is abnormal (different from 16.7\%) in prostate cancer tumors. You measured the \% of cells in G2 phase from 139 tumors and found a sample mean of 14.275. You decide that you will test at $\alpha = 0.10$.
+		
+		\item[]
+		
+		\item Since $|-3.177| \geq 1.645$, we have that $|z| \geq z_{1-\alpha / 2}$, and we do reject the null hypothesis. We have evidence to conclude that the \% of cells in G2 phase is abnormal in prostate cancer tumors. 
+	\end{itemize}
+\end{frame}
+
+\subsection{Level of significance}
+
+\subsection{Tests given $\sigma$ is unknown}
 
 \end{document}

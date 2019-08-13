@@ -107,27 +107,84 @@ dev.off()
 ########### Rejection regions ############
 png(file = "nullTests3.png", height = 4, width = 6, units = "in", res = 600)
 ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) + 
-  stat_function(fun = function(x) dnorm(x), xlim = c(-3.4, -1.96), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), xlim = c(-3.4, qnorm(.05)), geom = "area", fill = "cyan", n = 10000) +
   stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
-  geom_segment(aes(x = -1.96, xend = -1.96, y = 0, yend = dnorm(-1.96))) +
+  geom_segment(aes(x = qnorm(.05), xend = qnorm(.05), y = 0, yend = dnorm(qnorm(.05)))) +
   scale_x_continuous(breaks = c(0), labels = c(expression(mu[0]))) +
   labs(x = "", y = "Density") + theme_bw() +
   ggtitle(expression(paste("Rejection region for alternative hypothesis: ", mu < mu[0]))) +
   theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
 
-# LOH
+png(file = "nullTests3Flip.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(qnorm(.95), 3.4), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
+  geom_segment(aes(x = qnorm(.95), xend = qnorm(.95), y = 0, yend = dnorm(qnorm(.95)))) +
+  scale_x_continuous(breaks = c(0), labels = c(expression(mu[0]))) +
+  labs(x = "", y = "Density") + theme_bw() +
+  ggtitle(expression(paste("Rejection region for alternative hypothesis: ", mu > mu[0]))) +
+  theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
 png(file = "nullTests4.png", height = 4, width = 6, units = "in", res = 600)
 ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) + 
-  stat_function(fun = function(x) dnorm(x), xlim = c(-3.4, -1.96), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), xlim = c(-3.4, qnorm(.05)), geom = "area", fill = "cyan", n = 10000) +
   stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
-  geom_segment(aes(x = -1.96, xend = -1.96, y = 0, yend = dnorm(-1.96))) +
-  scale_x_continuous(breaks = c(0), labels = c(expression(mu[0]))) +
-  annotate("point", x = -2.2, y = 0, color = "red", size = 2) +
+  geom_segment(aes(x = qnorm(.05), xend = qnorm(.05), y = 0, yend = dnorm(qnorm(.05)))) +
+  scale_x_continuous(breaks = c(-2.5, 0), labels = c(expression(bar(y)), expression(mu[0]))) +
+  annotate("point", x = -2.5, y = 0, color = "red", size = 3) +
+  annotate("label", x = -2.75, y = .1, label = "Test statistic is in RR") +
   labs(x = "", y = "Density") + theme_bw() +
   ggtitle(expression(paste("Rejection region for alternative hypothesis: ", mu < mu[0]))) +
   theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
+
+png(file = "nullTests5.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(-3.4, qnorm(.05)), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
+  geom_segment(aes(x = qnorm(.05), xend = qnorm(.05), y = 0, yend = dnorm(qnorm(.05)))) +
+  scale_x_continuous(breaks = c(-.5, 0), labels = c(expression(bar(y)), expression(mu[0]))) +
+  annotate("point", x = -.25, y = 0, color = "red", size = 3) +
+  annotate("label", x = -.25, y = .1, label = "Test statistic is not in RR") +
+  labs(x = "", y = "Density") + theme_bw() +
+  ggtitle(expression(paste("Rejection region for alternative hypothesis: ", mu < mu[0]))) +
+  theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+png(file = "nullTests6.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(-3.4, qnorm(.025)), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), xlim = c(qnorm(.975), 3.4), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
+  geom_segment(aes(x = qnorm(.025), xend = qnorm(.025), y = 0, yend = dnorm(qnorm(.025)))) +
+  geom_segment(aes(x = qnorm(.975), xend = qnorm(.975), y = 0, yend = dnorm(qnorm(.975)))) +
+  scale_x_continuous(breaks = c(0), labels = c(expression(mu[0]))) +
+  labs(x = "", y = "Density") + theme_bw() +
+  ggtitle(expression(paste("Rejection region for alternative hypothesis: ", mu == mu[0]))) +
+  theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+# SBP example:
+png(file = "SBP1.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(-3.4, qnorm(.05)), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
+  geom_segment(aes(x = qnorm(.05), xend = qnorm(.05), y = 0, yend = dnorm(qnorm(.05)))) +
+  scale_x_continuous(breaks = c(-1.645, 0, 2.828), labels = c(expression(z = -1.645), 0, 2.828)) +
+  annotate("point", x = 2.828, y = 0, color = "red", size = 3) +
+  annotate("label", x = 2.828, y = .025, label = "Test statistic") +
+  labs(x = "", y = "Density") + theme_bw() +
+  ggtitle(expression(paste("Rejection region for alternative hypothesis: ", mu < mu[0]))) +
+  theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+########### Prostate cancer and cell cycle ############
+stagec <- rpart::stagec
+stagec <- stagec[!is.na(stagec$g2),]
+
+(mean(stagec$g2) - (1/6 * 100)) / (sd(stagec$g2) / sqrt(length(stagec$g2)))
 
 ########### Student's t-distribution ############
 set.seed(33333)

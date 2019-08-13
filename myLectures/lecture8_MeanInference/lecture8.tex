@@ -131,7 +131,7 @@
 		\includegraphics[width=.8 \linewidth]{point1}
 	\end{center}
 \begin{itemize}
-	\item For continuous random variables the probability that the sample mean is equal to the population mean is zero for a finite sample size $n$
+	\item For continuous random variables the probability that the sample mean is equal to the population mean is zero (for a finite sample size $n$)
 	\item[]
 	\item Unfortunately the picture above would never happen
 \end{itemize}
@@ -142,7 +142,7 @@
 		\includegraphics[width=.8 \linewidth]{point2}
 	\end{center}
 	\begin{itemize}
-		\item For continuous random variables the probability that the sample mean is equal to the population mean is zero for a finite sample size $n$
+		\item For continuous random variables the probability that the sample mean is equal to the population mean is zero (for a finite sample size $n$)
 		\item[]
 		\item Instead we have something like the above picture
 	\end{itemize}
@@ -170,6 +170,347 @@
 		{\tiny *Sally's interval was bad because it doesn't contain the population mean
 			**Paul's interval, while trivially containing the population mean, didn't really inform us where the population mean was likely to be}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	\begin{itemize}
+		\item We want to make \textbf{\emph{interval estimates}} for a population mean $\mu$ such that for a fixed \textbf{\emph{level of confidence}}, called $1-\alpha$,
+		we expect that the population mean will be contained in the interval estimate $(1-\alpha) * 100 \%$ of the time
+		\item[]
+		\item For example, if we fix the level of confidence at .95, we expect that 95\% of the confidence intervals that we construct by sampling from a population will contain the population mean $\mu$. In this case $\alpha = .05$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{coverage1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	Why we say that ``we expect that the population mean will be contained in the interval estimate 95\% of the time''
+	\begin{center}
+		\includegraphics[width = .85\linewidth]{coverage2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	Why we say that ``we expect that the population mean will be contained in the interval estimate 95\% of the time''
+	\begin{center}
+		\includegraphics[width = .85\linewidth]{coverage3}
+	\end{center}
+\end{frame}
+
+\subsection{Confidence intervals for $\mu$ given known $\sigma$}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The sample mean}{Confidence intervals}
+	\begin{itemize}
+		\item To construct confidence intervals for the population mean, $\mu$, for a fixed confidence level of $\alpha$ if $y$ has a normal distribution with known $\sigma$:
+		\begin{enumerate}
+			\item Compute the sample mean: $\bar{y}$
+			\item[]
+			\item Compute the lower confidence interval endpoint: $\bar{y} - z_{1-\alpha / 2} \times \sigma / \sqrt{n}$
+			\item[]
+			\item Compute the upper confidence interval endpoint: $\bar{y} + z_{1-\alpha / 2} \times \sigma / \sqrt{n}$
+		\end{enumerate}
+	\item[]
+	\item \#2 and \#3 are often written together as $\bar{y} \pm z_{1-\alpha / 2} \times \sigma / \sqrt{n}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}
+		\begin{itemize}
+			\item Suppose we knew the weight of every fish in the pond by the horseshoe. This group of fish would constitute a \textbf{population}
+			\item The weights of the fish are: \\
+			498.64 499.59 510.11 498.42 478.43 504.99 492.45 507.79 507.55 489.00 501.67 499.71 518.76 502.45 507.02 499.85
+			498.57 503.21 501.22 494.05 495.58 502.91 507.24 504.60 501.85 502.34 505.93 520.01 481.63 491.38 515.83 501.55
+			497.25 507.88 497.77 513.92 495.11 501.37 500.04 492.73 492.79 498.09 513.35 503.56 508.43 507.75 500.80 493.27
+			518.36 497.93 494.60 484.99 502.68 500.34 490.05 492.30 494.22 490.67 478.23 494.86 500.89 502.94 506.92 483.88
+			501.88 500.77 498.26 486.01 496.31 504.51 516.26 519.23 498.37 495.61 511.91 516.70 511.33 484.83 527.31 504.99
+			485.08 509.22 494.83 521.05 491.13 498.32 509.09 486.05 508.14 490.43 496.30 514.79 493.96 497.09 482.16 522.58
+			493.33 504.78 488.39 496.20
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}
+	\begin{itemize}
+		\item Example problem 1: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33 \}$ and that the population standard deviation is known, $\sigma = 10.028$. Compute a 95\% confidence interval for the population mean.
+		\begin{gather*}
+			\bar{y} = 504.026 \\
+			1 - \alpha = 0.95 \\
+			\alpha = 0.05 \\
+			1 - \alpha / 2 = 0.975 \\
+			z_{1 - \alpha / 2} = z_{0.975} = 1.96 
+		\end{gather*}
+		
+		So the lower endpoint is:
+		\begin{align*}
+			\bar{y} - z_{1 - \alpha / 2} \times \sigma / \sqrt{n} &= 504.026 - (1.96)(10.028)/\sqrt{5} \\
+			&= 504.026 - 8.790 \\
+			&= 495.236
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence interval for $\mu$}
+	\begin{itemize}
+		\item Example problem 1: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33 \}$ and that the population standard deviation is known, $\sigma = 10.028$. Compute a 95\% confidence interval for the population mean.\\ \vspace{10pt}
+		
+		And the upper endpoint is:
+		\begin{align*}
+		\bar{y} + z_{1 - \alpha / 2} \times \sigma / \sqrt{n} &= 504.026 + (1.96)(10.028)/\sqrt{5} \\
+		&= 504.026 + 8.790 \\
+		&= 512.816
+		\end{align*}
+		
+		So the 95\% confidence interval for the population mean is $(495.236, 512.816)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}
+	\begin{itemize}
+		\item Example problem 2: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33 \}$ and that the population standard deviation is known, $\sigma = 10.028$. Compute a 90\% confidence interval and a 99\% confidence interval for the population mean.\\  \vspace{10pt}
+		
+		For the 90\% confidence interval, $\alpha = .10$ and 
+		\begin{gather*}
+			z_{1-\alpha / 2} = z_{0.95} = 1.645
+		\end{gather*}
+		
+		For the 99\% confidence interval, $\alpha = .01$ and 
+		\begin{gather*}
+		z_{1-\alpha / 2} = z_{0.995} = 2.576
+		\end{gather*}
+		
+		For both the 90\% and 99\% confidence intervals, the other values, such as $\bar{y}$, $\sigma$, and $n$ will remain as before
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}
+	\begin{itemize}
+		\item Example problem 2: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33 \}$ and that the population standard deviation is known, $\sigma = 10.028$. Compute a 90\% confidence interval and a 99\% confidence interval for the population mean.\\  \vspace{10pt}
+		
+		For the 90\% confidence interval, $\alpha = .10$ and 
+		\begin{gather*}
+		z_{1-\alpha / 2} = z_{0.95} = 1.645
+		\end{gather*}
+		
+		For the 99\% confidence interval, $\alpha = .01$ and 
+		\begin{gather*}
+		z_{1-\alpha / 2} = z_{0.995} = 2.576
+		\end{gather*}
+		
+		For both the 90\% and 99\% confidence intervals, the other values, such as $\bar{y}$, $\sigma$, and $n$ will remain as before
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}
+	\begin{itemize}
+		\item Example problem 2: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33 \}$ and that the population standard deviation is known, $\sigma = 10.028$. Compute a 90\% confidence interval and a 99\% confidence interval for the population mean.\\  \vspace{8pt}
+		
+		For the 90\% confidence interval: 
+		\begin{align*}
+			\bar{y} &\pm z_{1-\alpha / 2} \times \sigma / \sqrt{n} \\
+			504.026 &\pm (1.645)(10.028)/\sqrt{5} \\
+			(496.649&, 511.403)
+		\end{align*}
+		
+		For the 99\% confidence interval: 
+		\begin{align*}
+		\bar{y} &\pm z_{1-\alpha / 2} \times \sigma / \sqrt{n} \\
+		504.026 &\pm (2.576)(10.028)/\sqrt{5} \\
+		(492.474&, 515.578)
+		\end{align*}
+		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}{Width of the interval}
+	\begin{itemize}
+		\item Here are the three confidence intervals we have computed:
+		\begin{itemize}
+			\item 90\%: $(496.649, 511.403)$
+			\item 95\%: $(495.236, 512.816)$
+			\item 99\%: $(492.474, 515.578)$
+		\end{itemize}
+	\item[]
+	\item Question \#1: How does the width of the confidence interval change as you increase the confidence level $1-\alpha$?
+	\item[]
+	\item Question \#2: How would the width of a confidence interval change (for a fixed $\sigma$ and $\alpha$) as $n$ is increased?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}{Width of the interval}
+	\begin{itemize}
+		\item Question \#2: How would the width of a confidence interval change (for a fixed $\sigma$ and $\alpha$) as $n$ is increased?
+		\item[]
+		\item We have both intuition and a mathematical solution:
+		\begin{itemize}
+			\item Intuition: If we have more measurements from a distribution, we should have a more precise estimates of a population parameter $=$ smaller interval
+			\item[]
+			\item Mathematical solution: Let $n_2 > n_1$, then:
+			\begin{gather*}
+				\sqrt{n_2} > \sqrt{n_1} \text{ and } \frac{\sigma}{\sqrt{n_2}} < \frac{\sigma}{\sqrt{n_1}} \\
+				\text{so...} \\
+				z_{1-\alpha / 2} \frac{\sigma}{\sqrt{n_2}} < z_{1-\alpha / 2} \frac{\sigma}{\sqrt{n_1}} \\
+				width_{n_2} < width_{n_1}
+			\end{gather*}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection{Confidence intervals for $\mu$ when $\sigma$ is unknown}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}{$\sigma$ unknown}
+\begin{columns}
+	\begin{column}{.4 \textwidth}
+		\begin{center}
+			\includegraphics[width=1.2 \linewidth]{./../lecture1_Introduction/Sampling.png}
+		\end{center}
+	\end{column}
+	\begin{column}{.5 \textwidth}
+		\begin{itemize}
+			\item When we draw a sample from a population in order to estimate the population mean $\mu$ of a normal random variable, the vast majority of the time we don't know the population standard deviation $\sigma$
+			\item[]
+			\item It seem sensible that we can estimate $\sigma$ with $s$, the sample standard deviation, and use this value when we need it (e.g. to construct confidence intervals)
+		\end{itemize}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The Student's t-distribution}
+	\begin{columns}
+		\begin{column}{.5 \textwidth}
+			\includegraphics[width=1 \linewidth]{guiness}
+		\end{column}
+		\begin{column}{.5 \textwidth}
+			\includegraphics[width=.8 \linewidth]{William_Sealy_Gosset}
+			William Sealy Gosset (Head Experimental Brewer at Guinness)
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}{$\sigma$ unknown}
+	\begin{itemize}
+		\item William Sealy Gosset knew that confidence intervals for estimating $\mu$ constructed using $s$ instead of $\sigma$ systematically do not contain $\mu$ as often as expected
+		\item[]
+		\item He proposed using a different type of distribution for computing the width of confidence intervals
+		\begin{itemize}
+			\item Instead of using $z_{1-\alpha / 2}$, where $z$ is the value from the standard normal distribution, use $t_{1-\alpha / 2, n - 1}$ where $t$ is a value from a ``Student's t-distribution'' with $n-1$ ``degrees of freedom''
+			\item We will talk about the Student's t-distribution in more detail later in the lecture
+				\item[]
+		\end{itemize}
+			\item Confidence intervals for $\mu$ if $\sigma$ is unknown: $\bar{y} \pm t_{1-\alpha / 2, n - 1} \times s / \sqrt{n}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Student's $t$-distribution}
+	Find the value $t_{1-\alpha / 2, df}$ if $\alpha = .05$ and $df = 4$. 
+	\begin{center}
+		\includegraphics[width = .8\linewidth]{tTable}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\mu$}{$\sigma$ unknown}
+	\begin{itemize}
+		\item Example problem 1: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33\}$. Calculate a 95\% confidence interval for $\mu$ using the given sample (we don't know the population $\sigma$). \\
+		\vspace{10 pt}
+		First we note that $\alpha = 0.05$, so $1-\alpha / 2 = 0.975$; and that $n - 1 = 4$. So the $t$-value that we are looking for is:
+		\begin{gather*}
+			t_{1-\alpha / 2, n - 1} = t_{0.975, 4} = 2.776
+		\end{gather*}
+		From before we have that $\bar{y}=504.026$. Then we compute the sample standard deviation, $s = 6.124$. We are almost there:
+		\begin{align*}
+			\bar{y} &\pm t_{1-\alpha / 2, n - 1} \times s / \sqrt{n} \\
+			504.026 &\pm 2.776 \times 6.124 / 2.236 \\
+			(496.423&, 511.629)
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\section{Tests of hypotheses regarding Normal population mean}
+
+\subsection{Tests given a known $\sigma$}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Tests regarding Normal population means}
+	\begin{itemize}
+		\item Up until now we have been discussing how to use a random sample to estimate the value of $\mu$, the population mean of random variable that has a Normal distribution
+		\begin{itemize}
+			\item We used $\bar{y}$ as a point estimate for $\mu$, and $\bar{y} \pm z_{1-\alpha / 2} \times \sigma / \sqrt{n}$ or $\bar{y} \pm t_{1-\alpha / 2, n - 1} \times s / \sqrt{n}$ as an interval estimate
+			\item[]
+		\end{itemize}
+	\item Now imagine that we want to test whether $\mu$ is less than, equal to, or greater than some pre-specified value $\mu_0$
+	\item[]
+	\item Example: I want to test whether mean the population mean of systolic blood pressure in Asian-Americans is less than 123.5 (the mean in Caucasian Americans in a large study)
+	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Process}
+	The process for testing hypotheses regarding a Normal population mean is: 
+	\begin{enumerate}
+		\item Define a ``research hypothesis'' / alternative hypothesis. We denote this $H_a$
+		\item[]
+		\item Determine the appropriate null hypothesis. We denote this $H_0$
+		\item[]
+		\item Using a simple random sample, we compute a test statistic
+		\item[]
+		\item We evaluate whether the test statistic supports the rejection of the null hypothesis
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Process}{Example}
+Example: We want to test whether the population mean of systolic blood pressure (SBP) in Asian-Americans is less than 123.5\\
+\vspace{10 pt}
+	\begin{enumerate}
+		\item Define a ``research hypothesis'' / alternative hypothesis. We denote this $H_a$
+		\begin{itemize}
+			\item $H_a$: The population mean of SBP is less than 123.5. $\mu < 123.5$
+		\end{itemize}
+		\item Determine the appropriate null hypothesis. We denote this $H_0$
+		\begin{itemize}
+			\item $H_0$: The population mean of SBP is greater than or equal to 123.5. $\mu \geq 123.5$
+		\end{itemize}
+		\item Using a simple random sample, we compute a test statistic
+		\item[]
+		\item We evaluate whether the test statistic supports the rejection of the null hypothesis
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Process}
+	\begin{itemize}
+		\item We now need a \textbf{\emph{test statistic}} that will inform us whether we have evidence from the sample to reject the null hypothesis
+		\item[]
+		\item For normally distributed random variables, we will use the sample mean $\bar{y}$ as the test statistic
+		\item[] So how can our test statistic $\bar{y}$ inform us whether we have evidence from the sample to reject the null hypothesis
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Distribution of test statistics}
+	\begin{itemize}
+		\item We know what the distribution of test statistics is if the null hypothesis is true, that is $\mu = \mu_0$
+	\end{itemize}
+\begin{center}
+	\includegraphics[width = .95 \linewidth]{nullTests}
+\end{center}
+\end{frame}
+
+\begin{frame}{Distribution of test statistics}
+	\begin{itemize}
+		\item So when a test statistic is observed that is inconsistent with the null hypothesis we will see it:
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width = .95 \linewidth]{nullTests2}
+	\end{center}
 \end{frame}
 
 \end{document}

@@ -705,7 +705,223 @@ Clearly, 2.828 is not less than -1.645; the test statistic is not in the rejecti
 \end{frame}
 
 \subsection{Level of significance}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Level of significance}
+	\begin{itemize}
+		\item \textbf{\emph{Level of significance:}} The probability of obtaining a value of the test statistic that would have been as likely or more likely to have led to the rejection of $H_0$ as the observed value, given that $H_0$ is true. Also called the \textbf{\emph{p-value}} for the test
+		\item[]
+		\item We are about to see some example pictures from a test of $H_0: \mu > \mu_0$ versus $H_a: \mu \leq \mu_0$. In this example we did observe a test statistic that is in the lower-tail of the distribution. We want to think about how rare this observed test statistic is if the null hypothesis is true
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Level of significance}
+	\begin{center}
+		\includegraphics[width=1 \linewidth]{rare1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Level of significance}
+\begin{center}
+	\includegraphics[width=1 \linewidth]{rare2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Level of significance}
+\begin{center}
+	\includegraphics[width=1 \linewidth]{rare3}
+\end{center}
+\end{frame}
+
+\begin{frame}{Level of significance}
+\begin{center}
+	\includegraphics[width=.6 \linewidth]{rare3}
+\end{center}
+\vspace{-10pt}
+\begin{itemize}
+	\item \textbf{\emph{Level of significance:}} The probability of obtaining a value of the test statistic that would have been as likely or more likely to have led to the rejection of $H_0$ as the observed value, given that $H_0$ is true
+	\item In this case, the level of significance is roughly $1/10000$ or $0.0001$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Level of significance}{Back to SBP example}
+\begin{itemize}
+	\item Let's test $H_0: SBP > 133.5$ versus $H_a: SBP \leq 133.5$ 
+	\item[]
+	\item The sample mean is $135.5$ from 800 measurements and the population $\sigma = 20$
+	\item[]
+	\item Let's compute the test statistic:
+	\begin{align*}
+	z &= \frac{\bar{y} - \mu_0}{\sigma / \sqrt{n}} = \frac{135.5 - 133.5}{20 / \sqrt{800}} = 2.828
+	\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Level of significance}{Back to SBP example}
+\begin{itemize}
+	\item Our test statistic TS is $z = 2.828$. And $P(Z \geq 2.828) = 0.002$. $p$-value = 0.002
+\end{itemize}
+\vspace{-10pt}
+\begin{center}
+	\includegraphics[width = .8\linewidth]{sig1}
+\end{center}
+\end{frame}
+
+\begin{frame}{Level of significance}
+	\begin{itemize}
+		\item Case 1:
+		\begin{itemize}
+			\item $H_0: \mu \leq \mu_0$
+			\item $H_a: \mu > \mu_0$
+			\item $p$-value: $P(z \geq TS)$
+		\end{itemize}
+		\item[]
+		\item Case 2:
+		\begin{itemize}
+			\item $H_0: \mu \geq \mu_0$
+			\item $H_a: \mu < \mu_0$
+			\item $p$-value: $P(z \leq TS)$
+		\end{itemize}
+		\item[]
+		\item Case 3:
+		\begin{itemize}
+			\item $H_0: \mu = \mu_0$
+			\item $H_a: \mu \neq \mu_0$
+			\item $p$-value: $2\times P(z \geq |TS|)$ 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{P-values for two sided tests}
+\begin{itemize}
+	\item When we conduct two-sided tests there are two ways we can observe test statistics as extreme as ours given the null hypothesis is true
+	\item $p$-value: $2\times P(z \geq |TS|)$ 
+\end{itemize}
+\vspace{-8 pt}
+\begin{center}
+	\includegraphics[width = .775 \linewidth]{sig2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Level of significance}{Back to Cells in G2 phase example}
+		\begin{itemize}
+		\item Research question: Cells spend on average 16.7\% of their life in G2 phase (so we expect that in a large population of cells 16.7\% will be in this phase). The population standard deviation is 9\%. You want to know if the \% of cells in G2 phase is abnormal (different from 16.7\%) in prostate cancer tumors. You measured the \% of cells in G2 phase from 139 tumors and found a sample mean of 14.275.
+		
+		\item[]
+		
+		\item Recall that we tested $H_0: \mu = \mu_0$ versus $H_a: \mu \neq \mu_0$ and that our test statistic was $z = -3.177$ 
+		
+		\item[]
+		
+		\item $p$-value: $2\times P(z \geq |TS|) = 2 \times P(z \geq 3.177) = 2 (0.0007) = 0.0014$ 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Decision rules}
+	\begin{itemize}
+		\item Most of the time, we want to fix our Type I error rate ($\alpha$) before doing any statistical testing
+		
+		\item[]
+		
+		\item We then can use decision rules for determining whether or not to reject a null hypothesis
+		
+		\item[]
+		
+		\item Decision rules:
+		\begin{enumerate}
+			\item If $p$-value $\leq \alpha$, then we reject $H_0$
+			\item If $p$-value $\geq \alpha$, then we fail to reject $H_0$
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Words of caution about $p$-values}
+	\begin{itemize}
+		\item In the sciences many forms of $p$-value abuse are rife
+		\item[]
+		\item \textbf{Abuse \#1:} Confusing practical significance with statistical level of significance. Consider three test statistics from different size samples:
+		\begin{align*}
+		z_{n=800} &= \frac{\bar{y} - \mu_0}{\sigma / \sqrt{n}} = \frac{135.5 - 133.5}{20 / \sqrt{800}} = 2.828 \\
+		z_{n=8} &= \frac{\bar{y} - \mu_0}{\sigma / \sqrt{n}} = \frac{135.5 - 133.5}{20 / \sqrt{8}} = 0.283 \\
+		z_{n=8000} &= \frac{\bar{y} - \mu_0}{\sigma / \sqrt{n}} = \frac{135.5 - 133.5}{20 / \sqrt{8000}} = 8.944
+		\end{align*}
+		These yield the following $p$-values:
+		\begin{align*}
+			P(Z >z_{n=800}) &= 0.002 \\
+			P(Z >z_{n=8}) &= 0.39 \\
+			P(Z >z_{n=8000}) &= 0.0000000000000000002
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Words of caution about $p$-values}
+\begin{itemize}
+	\item These yield the following $p$-values:
+	\begin{align*}
+	P(Z >z_{n=800}) &= 0.002 \\
+	P(Z >z_{n=8}) &= 0.39 \\
+	P(Z >z_{n=8000}) &= 0.0000000000000000002
+	\end{align*}
+	So the level of significance is very different. However, in each case the difference between 135.5 and 133.5 is 2.0. Whether 2 mmHg is a ``significant difference'' from the null value is a question for a medical doctor not a statistician.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Words of caution about $p$-values}
+	\begin{itemize}
+		\item \textbf{Abuse \#2:} The choice of $\alpha = 0.05$ is completely arbitrary, so $p$-value based decision rules are as well
+		\begin{itemize}
+			\item Imagine your chances of winning the lottery go from 4.9\% (today) to 5.1\% (tomorrow). Should you change your decision to play the lottery based on this improvement? Do you feel like it makes a difference?
+			\item Rejecting a null hypothesis if the $p$-value is 0.049 but not 0.051 is like this lottery decision
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
 \subsection{Tests given $\sigma$ is unknown}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Student's t-distribution}
+\begin{columns}
+	\begin{column}{.5 \textwidth}
+		\includegraphics[width=1 \linewidth]{guiness}
+	\end{column}
+	\begin{column}{.5 \textwidth}
+		\includegraphics[width=.8 \linewidth]{William_Sealy_Gosset}
+		
+		William Sealy Gosset (Head Experimental Brewer at Guinness)
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{The Student's t-distribution}
+	\begin{itemize}
+		\item Gosset's great discovery: Gosset realized that when he used the test statistic $z = \frac{\bar{y}-\mu_0}{\sigma / \sqrt{n}}$, with $\sigma$ being replaced by $s$, the null hypothesis was falsely rejected at a higher rate than a specified $\alpha$. 
+		\item[]
+		\item Gosset derived the correct distribution for the test statistic $z = \frac{\bar{y}-\mu_0}{s / \sqrt{n}}$
+		\item[]
+		\item Since scientists at Guinness were not allowed to publish their work, he published it under the pseudonym ``Student'', hence the name ``Student's'' $t$-distribution
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Student's t-distribution}{Facts}
+\begin{enumerate}
+	\item There are many different $t$ distributions. The parameter ``degrees of freedom'' (df) is what determines what the distribution looks like
+	\item[]
+	\item The $t$ distribution is symmetric (about 0)
+	\item[]
+	\item Each $t$ distribution has variance $df / (df - 2)$, which is greater than the standard normal distribution
+	\item[]
+	\item As $df$ increases, the $t$ distribution approaches the standard normal distribution 
+\end{enumerate}	
+\end{frame}
+
+\begin{frame}{The Student's t-distribution}
+	\begin{center}
+		\includegraphics[width = .9 \linewidth]{tDists}
+	\end{center}
+\end{frame}
 
 \end{document}

@@ -104,6 +104,47 @@ ggplot(df4, aes(x = x, y = y)) + geom_line(lwd = 1) + geom_point(data = df3, aes
   theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
 
+# or 1,000 or 10,000 test statistics
+set.seed(1111111)
+df3b <- data.frame(x = replicate(100000, mean(rnorm(10))), y = runif(100000, 0, .07))
+df3b$Test <- "Null is true"
+
+png(file = "rare1.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df4, aes(x = x, y = y)) + geom_line(lwd = 1) + 
+  geom_point(data = df3b[1:100,], aes(x = x, y = y, color = Test), size = .5) + 
+  scale_x_continuous(breaks = c(0), labels = c(expression(mu[0]))) +
+  annotate("point", x = -1.4, y = 0.0175, color = "blue", size = 1.25) + 
+  annotate("label", x = -1.6, y = 0.15, label = "Observed TS") + 
+  labs(x = "", y = "Density", color = "Test Statistic") + theme_bw() +
+  ggtitle(expression(paste("TS's from 100 samples given the null hypothesis:", mu > mu[0])),
+          "0/100 of the 'null is true TS' are as extreme as the Observed TS") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) 
+dev.off()
+
+png(file = "rare2.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df4, aes(x = x, y = y)) + geom_line(lwd = 1) + 
+  geom_point(data = df3b[1:1000,], aes(x = x, y = y, color = Test), size = .5) + 
+  scale_x_continuous(breaks = c(0), labels = c(expression(mu[0]))) +
+  annotate("point", x = -1.4, y = 0.0175, color = "blue", size = 1.25) + 
+  annotate("label", x = -1.6, y = 0.15, label = "Observed TS") + 
+  labs(x = "", y = "Density", color = "Test Statistic") + theme_bw() +
+  ggtitle(expression(paste("TS's from 1000 samples given the null hypothesis:", mu > mu[0])),
+          "0/1000 of the 'null is true TS' are as extreme as the Observed TS") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) 
+dev.off()
+
+png(file = "rare3.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df4, aes(x = x, y = y)) + geom_line(lwd = 1) + 
+  geom_point(data = df3b[1:10000,], aes(x = x, y = y, color = Test), size = .5) + 
+  scale_x_continuous(breaks = c(0), labels = c(expression(mu[0]))) +
+  annotate("point", x = -1.4, y = 0.0175, color = "blue", size = 1.25) + 
+  annotate("label", x = -1.6, y = 0.15, label = "Observed TS") + 
+  labs(x = "", y = "Density", color = "Test Statistic") + theme_bw() +
+  ggtitle(expression(paste("TS's from 1000 samples given the null hypothesis:", mu > mu[0])),
+          "1/10000 of the 'null is true TS' is as extreme as the Observed TS") +
+  theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) 
+dev.off()
+
 ########### Rejection regions ############
 png(file = "nullTests3.png", height = 4, width = 6, units = "in", res = 600)
 ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) + 
@@ -180,6 +221,34 @@ ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) +
   theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
 
+########### Significance level ############
+png(file = "sig1.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-3.5, 4.5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(2, 4.5), geom = "area", fill = "magenta", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = .5, n = 50000) +
+  scale_x_continuous(breaks = c(0, 2), labels = c(0, "TS")) +
+  annotate("label", x = 3, y = .075, label = expression(paste("p-value is: ", P(Z >= TS)))) +
+  labs(x = "", y = "Density") + theme_bw() +
+  ggtitle(expression(paste("Alternative hypothesis: ", mu > mu[0]))) +
+  theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+png(file = "sig2.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-4.5, 4.5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(2, 4.5), geom = "area", fill = "magenta", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), xlim = c(-4.5, -2), geom = "area", fill = "magenta", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = .5, n = 50000) +
+  scale_x_continuous(breaks = c(-2, 0, 2), labels = c("-|TS|", 0, "|TS|")) +
+  annotate("label", x = 3, y = .075, label = expression(P(Z >= TS))) +
+  annotate("label", x = -3, y = .075, label = expression(P(Z <= TS))) +
+  labs(x = "", y = "Density") + theme_bw() +
+  ggtitle(expression(paste("Alternative hypothesis: ", mu == mu[0]))) +
+  theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+# SBP example:
+round(pnorm(2.828, lower.tail = FALSE), 3)
+
 ########### Prostate cancer and cell cycle ############
 stagec <- rpart::stagec
 stagec <- stagec[!is.na(stagec$g2),]
@@ -187,16 +256,17 @@ stagec <- stagec[!is.na(stagec$g2),]
 (mean(stagec$g2) - (1/6 * 100)) / (sd(stagec$g2) / sqrt(length(stagec$g2)))
 
 ########### Student's t-distribution ############
-set.seed(33333)
-df4 <- rbind(data.frame(x = seq(-6, 6, .001), y = dnorm(seq(-6, 6, .001), mean = 0, sd = 1/sqrt(3)), Distribution = "Normal"),
-             data.frame(x = seq(-6, 6, .001), y = dt(seq(-6, 6, .001), df = 2), Distribution = "t (2 df)"),
-             data.frame(x = seq(-6, 6, .001), y = dt(seq(-6, 6, .001), df = 9), Distribution = "t (9 df)"))
+df6 <- data.frame(x = seq(-5, 5, .001))
+df6$Normal <- dnorm(df6$x)
+df6$t1 <- dt(df6$x, 1) 
+df6$t2 <- dt(df6$x, 2)
+df6$t5 <- dt(df6$x, 5)
+df6 <- df6 %>% gather(key = "Distribution", value = "value", -x)
+df6$Distribution <- factor(df6$Distribution, levels = c("t1", "t2", "t5", "Normal"))
+levels(df6$Distribution) <- c("t (df = 1)", "t (df = 2)", "t (df = 5)", "Normal")
 
-ggplot(df4, aes(x = x, y = y, group = Distribution, color = Distribution)) + geom_line() + theme_bw()
-
-set.seed(333333)
-df5 <- data.frame(x = replicate(100000, mean(rnorm(3))))
-
-ggplot(df4, aes(x = x, y = ..density..)) + geom_histogram(bins = 60, fill = "grey65", color = "black") + 
-  geom_line(data = df3 %>% filter(Distribution == "Normal"), aes(x = x, y = y)) + xlim(-1, 6) +
-  theme_bw()
+png(file = "tDists.png", height = 5, width = 7, units = "in", res = 600)
+ggplot(df6, aes(x = x, y = value, group = Distribution, color = Distribution)) + geom_line() + theme_bw() +
+  labs(x = "", y = "Density") + ggtitle("Some Student's t-distributions") +
+  theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()

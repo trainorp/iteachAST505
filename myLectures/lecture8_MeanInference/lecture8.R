@@ -270,3 +270,13 @@ ggplot(df6, aes(x = x, y = value, group = Distribution, color = Distribution)) +
   labs(x = "", y = "Density") + ggtitle("Some Student's t-distributions") +
   theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
+
+########### Renal Cell carcinoma example ############
+set.seed(3)
+x <- rnorm(8, mean = 5.2)
+x <- round(x, 3)
+x
+mean(x)
+sd(x)
+
+t.test(x, mu = 3.34)

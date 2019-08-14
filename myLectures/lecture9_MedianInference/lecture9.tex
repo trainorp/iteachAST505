@@ -1,0 +1,178 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\title[Lecture 9]{Lecture 9: Inferences about the median}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{September 23, 2019}
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+	\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{The median}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Why the median?}
+	\begin{itemize}
+		\item You are conducting a study of the salaries of NMSU employees (faculty, staff, student employees). You select 6 individuals at random who have the following salaries: \$39,293, \$40,434, \$53,050, \$39,025, \$15,044, \$46,908
+		\item[]
+		\item What is the best measure of centrality (or central tendency)?
+		\begin{itemize}
+			\item Sample mean: \$38,959
+			\item Sample median: \$39,863.5
+			\item[]
+		\end{itemize}
+	\item You decide you want to collect one more measurement. You randomly select Doug Martin (football coach) who has a salary of \$419,640
+	\item[]
+			\item What is the best measure of centrality (or central tendency)?
+	\begin{itemize}
+		\item Sample mean: \$93,342
+		\item Sample median: \$40,434
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Why the median?}
+	\begin{itemize}
+		\item If we are using a measure of central tendency to get a sense of what the ``typical'' salary is at NMSU, the mean may be a very poor measure
+		\item[]
+		\item The inclusion of one outlier (Coach Martin) brings the sample mean up to \$93,342 although $6/7$ employees in the sample make less than \$47,000
+		\item[]
+		\item When a random variable has a distribution that is either skewed or a random sample has outlier(s), the sample median is a better measure of ``typical'' than the sample mean 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Computation}
+	\begin{itemize}
+		\item To find the sample mean we first order our measurements making a list $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$
+		\begin{itemize}
+			\item In our salary example: $\{15044, 39025, 39293, 40434, 46908, 53050, 419640\}$
+			\item[]
+		\end{itemize}
+		\item Then to find the sample median $\hat{M}$:
+		\begin{itemize}
+			\item If $n$ is an odd number, then $\hat{M} = y_{(m)}$, where $m = (n+1)/2$
+			\item If $n$ is an even number, then $\hat{M} = (y_{(m)} + y_{(m+1)})/2$ where $m = n/2$
+			\item[]
+		\end{itemize}
+		\item In our example, $n = 7$, so we $m = (7+1)/2 = 4$, and $\hat{M} = y_{(4)} = 40434$
+	\end{itemize}
+\end{frame}
+
+\section{Evaluating whether data is ``approximately normal''}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Normal distributions versus not so Normal distributions}
+	\begin{itemize}
+		\item In the last lecture we dealt with samples that came from populations that follow a Normal distribution
+		\begin{itemize}
+			\item We used the sample mean as an estimate for the population mean
+			\item We developed confidence intervals for the population mean
+			\item We tested hypotheses about the population mean
+			\item[]
+		\end{itemize}
+		\item Those approaches are still valid if $n$ is very large
+		\item[]
+		\item However, if our sample comes from a population that is highly skewed and not mound shaped: 
+		\begin{itemize}
+			\item We should use the median as the measure of centrality
+			\item We will develop confidence intervals based on the median
+			\item We will test hypotheses based on the location of the median
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{How to determine if a distribution is not Normal}
+\begin{center}
+	\includegraphics[width=.775 \linewidth]{NormNotNorm}
+\end{center}
+\end{frame}
+
+\begin{frame}{Q-Q Plots}
+	\begin{itemize}
+		\item To determine if a distribution is not normal, generate a Q-Q plot
+		\item[]
+		\item Preparation:
+		\begin{enumerate}
+			\item Order the measurements in the dataset from smallest to largest: $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$
+			\item Compute the quantile for each measurement in the dataset: $Q((i-0.5) /n)$
+		\end{enumerate}
+	\item Example. Our salary dataset: $\{15044, 39025, 39293, 40434, 46908, 53050, 419640\}$
+	\begin{align*}
+		15044 &= Q((1-0.5)/7) = 0.071 \\
+		39025 &= Q((2-0.5)/7) = 0.214 \\
+		39239 &= Q((3-0.5)/7) = 0.357 \\
+		\vdots & \\
+		419640 &= Q((7-0.5)/7) = 0.929
+	\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Q-Q Plots}
+\begin{columns}
+	\begin{column}{.45 \textwidth}
+Process:
+			\begin{enumerate}
+				\item Order the measurements in the dataset from smallest to largest: $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$
+				\item Compute the quantile for each measurement in the dataset: $Q((i-0.5) /n)$
+				\item Find normal quantiles: $z_{(i-0.5)/n}$
+				\item Plot: $\{(z_{(0.5)/n}, y_{(1)}),(z_{(1.5)/n}, y_{(2)}),\hdots, (z_{(n-0.5)/n}, y_{(n)})\}$
+			\end{enumerate}
+	\end{column}
+	\begin{column}{0.5 \textwidth}
+		\vspace{-20pt}
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline 
+				$i$ & $y_{(i)}$ & $(i-0.5)/n$ & $z_{(i-0.5)/n}$ \\
+				\hline \hline
+				1 & 15044 & 0.071 & -1.468 \\ \hline
+				2 & 39025 & 0.214 & -0.793 \\ \hline
+				3 & 39293 & 0.356 & -0.366 \\ \hline
+				4 & 40434 & 0.500 & 0 \\ \hline
+				5 & 46908 & 0.643 & 0.366 \\ \hline
+				6 & 53050 & 0.786 & 0.793 \\ \hline
+				7 & 419640 & 0.929 & 1.468 \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Q-Q Plots}{Salary Data}
+	\begin{center}
+		\includegraphics[width = .8 \linewidth]{qq1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Q-Q Plots}{Sample of Normally distributed data}
+\begin{center}
+	\includegraphics[width = .8 \linewidth]{qq2}
+\end{center}
+\end{frame}
+
+\section{Confidence intervals}
+
+\section{Hypothesis tests}
+
+\end{document}

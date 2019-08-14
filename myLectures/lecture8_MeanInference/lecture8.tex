@@ -924,4 +924,72 @@ Clearly, 2.828 is not less than -1.645; the test statistic is not in the rejecti
 	\end{center}
 \end{frame}
 
+\begin{frame}{The Student's t-distribution}{Degrees of freedom}
+	\begin{itemize}
+		\item There are multiple conceptual ways to think about ``degrees of freedom''
+		\item[]
+		\item One is that if we have $n$ measurements we have $n$ pieces of information. When we compute the sample mean we ``use up'' one piece of information, so when we compute the sample standard deviation we have $n-1$ pieces of information left. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Process}
+\begin{itemize}
+	\item Hypotheses:
+	\begin{itemize}
+		\item Case 1. $H_0: \mu \leq \mu_0$ vs $H_a: \mu > \mu_0$ (upper/right-tailed test)
+		\item Case 2. $H_0: \mu \geq \mu_0$ vs $H_a: \mu < \mu_0$ (lower/left-tailed test)
+		\item Case 3. $H_0: \mu = \mu_0$ vs $H_a: \mu \neq \mu_0$ (two-tailed test)
+	\end{itemize}
+	\item[]
+	\item Test statistic:
+	\begin{gather*}
+	t^* = \frac{\bar{y} - \mu_0}{s / \sqrt{n}}
+	\end{gather*}
+	
+	\item For a fixed $\alpha$, the rejection region is:
+	\begin{itemize}
+		\item Case 1. Reject $H_0$ if $t^* \geq t_{1-\alpha, n-1}$. Significance: $p\text{-value}=P(t \geq t^*)$
+		\item Case 2. Reject $H_0$ if $t^* \leq t_{\alpha, n-1}$. Significance: $p\text{-value}=P(t \leq t^*)$
+		\item Case 3. Reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, n-1}$. Significance: $p\text{-value}=2 \times P(t \geq |t^*|)$
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+
+{\scriptsize  \textbf{Research question:} You want to know if the epidermal growth factor receptor (EGFR) gene expression (or amount) is high in renal cell carcinoma (kidney cancer) tumor tissue. Normal levels in kidney tissue of this gene are 3.34 RPKM (a unit). You have the following 8 measurements of EGFR expression from tumor tissue: $\{4.238, 4.907, 5.459, 4.048, 5.396, 5.230, 5.285, 6.317\}$. Are levels of EGFR expression higher in kidney tumors than normal? Assume you will test at $\alpha = 0.05$.}
+
+	\begin{itemize}
+		\item First we formulate hypotheses:
+		\begin{itemize}
+			\item $H_0: \mu = 3.34$
+			\item $H_a: \mu \neq 3.34$
+			\item[]
+		\end{itemize}
+	\item Then we compute our test statistic:
+	\begin{itemize}
+		\item $\bar{y} = 5.110$
+		\item $s = 0.721$
+		\item $t^* = \frac{5.110 - 3.340}{0.721 / \sqrt{8}} = 6.944$
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+
+{\scriptsize  \textbf{Research question:} You want to know if the epidermal growth factor receptor (EGFR) gene expression (or amount) is high in renal cell carcinoma (kidney cancer) tumor tissue. Normal levels in kidney tissue of this gene are 3.34 RPKM (a unit). You have the following 8 measurements of EGFR expression from tumor tissue: $\{4.238, 4.907, 5.459, 4.048, 5.396, 5.230, 5.285, 6.317\}$. Are levels of EGFR expression higher in kidney tumors than normal? Assume you will test at $\alpha = 0.05$.}
+
+\begin{itemize}
+	\item We formulate our rejection rule: 
+	\begin{itemize}
+		\item Reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, n-1}$
+		\item Reject $H_0$ if $|t^*| \geq t_{0.975, 7} = 2.365$
+		\item[] 
+	\end{itemize}
+	\item We reject the null hypothesis as $|t^*| \geq t_{1-\alpha / 2, n-1}$ since $6.944 > 2.365$
+	\item[]
+	\item We now compute the $p$-value or level of significance: $p\text{-value}=2 \times P(t \geq |t^*|) = 2\times P(t \geq 6.944) = 0.0002$
+\end{itemize}
+\end{frame}
+
 \end{document}

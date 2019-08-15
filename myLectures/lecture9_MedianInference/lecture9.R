@@ -54,3 +54,30 @@ png(filename = "NormNotNorm.png", height = 5.5, width = 7, units = "in", res = 6
 show(gridExtra::grid.arrange(p1, p2))
 dev.off()
 
+############ Median confidence interval ############
+phos <- robustbase::phosphor
+phos$plant[16] <- 222
+phos$plant[14] <- 383
+qqPhos <- qqnorm(phos$plant)
+
+qqPhosDF <- data.frame(x = qqPhos$x, y = qqPhos$y)
+
+png(filename = "phosQQ.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(qqPhosDF, aes(x = x, y = y)) + geom_point() + geom_smooth(method = 'lm', se = FALSE) +
+  theme_bw() + ggtitle("Q-Q Plot") + theme(plot.title = element_text(hjust = 0.5)) + 
+  labs(x = "Theoretical Normal quantiles", y = "Sample quantiles")
+dev.off()
+
+pp <- phos$plant[order(phos$plant)]
+
+# Sign test:
+w <- pp - 75
+B <- sum(w > 0)
+wilcox.test(pp, mu = 75, alternative = "greater", conf.int = TRUE, correct = FALSE)
+pnorm((12-9) / sqrt(18/4), lower.tail = FALSE)
+
+w2 <- pp - 100
+B2 <- sum(w2 > 0)
+wilcox.test(pp, mu = 100, alternative = "less", conf.int = TRUE)
+
+############ Melanoma tumors ############

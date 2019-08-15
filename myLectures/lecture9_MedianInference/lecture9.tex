@@ -176,6 +176,11 @@ Process:
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
+\subsection{Small sample method $n \leq 50$}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
 \begin{frame}{Confidence intervals for the median}
 	\begin{itemize}
 		\item A confidence interval for $M$, the population median with level of confidence at least $100(1-\alpha)$\% is:
@@ -187,12 +192,244 @@ Process:
 			L_{\alpha / 2} = C_{\alpha(2), n} + 1 \\
 			U_{\alpha / 2} = n - C_{\alpha(2), n}
 		\end{gather*}
+		The values $C_{\alpha(2),n}$ are from the Binomial distribution and are found in the Appendix of the textbook (Table 4).
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for the median}{Example}
+	\begin{itemize}
+		\item The following is data on the amount of phosphorous (in ppm) in a sample of corn: \{64,  60, 71, 61, 54, 77, 81, 93, 93, 51, 76, 96, 77, 383, 95, 222, 168, 99\}. The Q-Q plot suggests that the data is not normally distributed. Let's compute the median phosphorous level and 90\% confidence interval.
+	\end{itemize}
+\vspace{-10pt}
+\begin{center}
+	\includegraphics[width = .6\linewidth]{phosQQ}
+\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals for the median}{Example}
+\begin{itemize}
+	\item First we order the data: \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}
+	\item[]
+	\item Since there are 18 observations:
+	\begin{align*}
+		\hat{M} &= (y_{(m)} + y_{(m+1)})/2 \quad \text{where } m = n/2 \\
+		&=(y_{(9)} + y_{(10)})/2 \\
+		&= (77 + 81)/2 = 79
+	\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for the median}{Example}
+\begin{itemize}
+	\item For our 90\% confidence intervals, we have $\alpha = 0.10$, and we need to calculate:
+	\begin{align*}
+		L_{\alpha /2} = C_{\alpha (2), n} +1 = C_{0.10(2), 18} +1 = 5+1=6 \\
+	\end{align*} 
+	and:
+	\begin{align*}
+		U_{\alpha /2} = n- C_{\alpha (2), n} = 18 - C_{0.10(2), 18} = 18-5 = 13
+	\end{align*}
+	Finally, we are looking for:
+	\begin{align*}
+		(M_L, M_U) = (y_{(L_{\alpha / 2})}, y_{(U_{\alpha/2})}) = (y_{(6)}, y_{(13)}) = (71, 95)
+	\end{align*}
+\end{itemize}
+\end{frame}
+
+\subsection{Normal approximation}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Confidence intervals for the median}{For large $n$}
+	\begin{itemize}
+		\item When the sample size, $n$ is large (for example $>50$), we use a different formula that uses a normal approximation to find $C_{\alpha(2),n}$:
+		\begin{gather*}
+		C_{\alpha(2),n} \approx \frac{n}{2} - z_{1-\alpha / 2} \sqrt{n/4}
+		\end{gather*}
+		\item Example. Determine $C_{\alpha(2),n}$ for $n = 50$ and $\alpha = 0.05$
+		\begin{gather*}
+		C_{0.05(2),50} \approx \frac{50}{2} - z_{0.975} \sqrt{50/4} = 18.07 \approx 18
+		\end{gather*}
 	\end{itemize}
 \end{frame}
 
 \section{Hypothesis tests}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\subsection{Small sample method $n \leq 50$}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Sign Test}{Background}
+	\begin{itemize}
+		\item To test one-sided hypotheses, we use the \textbf{\emph{sign test}}
+		\item[]
+		\item Given a null hypothesis value of $M_0$, we define $W_i = y_i - M_0$
+		\item[]
+		\item The sign test statistic, $B$, is the number of $W_i$'s that are positive
+		\item[]
+		\item If $M = M_0$, there is a 50\% chance that $y_i$ is greater than $M_0$, and 50\% chance that $y_i$ is less than $M_0$
+		\item[]
+		\item $W_i$ is then a binomial random variable, with $\pi = 0.5$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Sign Test}{Process}
+\begin{itemize}
+\item Hypotheses:
+\begin{itemize}
+	\item Case 1. $H_0: M \leq M_0$ versus $H_a: M > M_0$ (right / upper-tailed test)
+	\item Case 2. $H_0: M \geq M_0$ versus $H_a: M < M_0$ (left / lower-tailed test)
+	\item Case 3. $H_0: M = M_0$ versus $H_a: M \neq M_0$ (two-tailed test)
+	\item[]
+\end{itemize}
+\item Test statistic: $B = \# \text{ of positive } W_i$ where $W_i = y_i - M_0$
+\item[]
+\item Rejection region / rules: 
+\begin{itemize}
+	\item Case 1. Reject $H_0$ if $B \geq n - C_{\alpha(1), n}$
+	\item Case 2. Reject $H_0$ if $B \leq C_{\alpha(1), n}$
+	\item Case 3. Reject $H_0$ if $B \geq n - C_{\alpha(2), n}$ or $B \leq C_{\alpha(2), n}$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Sign Test}{Example}
+	\begin{itemize}
+		\item You hypothesize that the median level of phosphorous in a population of corn is greater than 75. Given the following data \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}, what is your conclusion (assume $\alpha = 0.10$)?
+		\item[]
+		\item Hypotheses:
+		\begin{itemize}
+			\item $H_0: M \leq 75$
+			\item $H_a: M > 75$
+			\item Reject $H_0$ if $B \geq n - C_{\alpha(1), n}$
+			\item[]
+		\end{itemize}
+	\item Test statistic:
+	\begin{itemize}
+		\item $W$'s: \{-24, -21, -15, -14, -11,  -4, 1, 2, 2, 6, 18, 18, 20, 21, 24, 93, 147, 308 \}
+		\item $B = 12$
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Sign Test}{Example}
+\begin{itemize}
+	\item You hypothesize that the median level of phosphorous in a population of corn is greater than 75. Given the following data \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}, what is your conclusion (assume $\alpha = 0.10$)?
+	\item[]
+	\item RR: Reject $H_0$ if $B \geq 18 - C_{0.10(1), 18} = 18 - 5 = 13$
+	\item[]
+	\item Since $B = 12$, we fail to reject the null hypothesis
+	\item[]
+	\item This can happen. Although we have evidence that $M > 75$, since $\hat{M} = 79$, the evidence is not convincing enough for us to conclude definitively that $M > 75$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Sign Test}{An Alternative Alternative}
+	\begin{itemize}
+		\item Assume instead that we had hypothesized that the median level of phosphorous in a population of corn is less than 100
+		\item[]
+		\item Given the following data \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}, what is your conclusion (assume $\alpha = 0.10$)?
+		\item[]
+		\item Hypotheses:
+		\begin{itemize}
+			\item $H_0: M \geq 100$
+			\item $H_a: M < 100$
+			\item Reject $H_0$ if $B \leq C_{\alpha(1), n}$
+			\item[]
+		\end{itemize}
+	\item Test statistic:
+	\begin{itemize}
+		\item $W$'s: \{-49, -46, -40, -39, -36, -29, -24, -23, -23, -19, -7, -7, -5, -4, -1, 68, 122, 283\}
+		\item $B = 3$
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Sign Test}{An Alternative Alternative}
+\begin{itemize}
+	\item Assume instead that we had hypothesized that the median level of phosphorous in a population of corn is less than 100. What is your conclusion (assume $\alpha = 0.10$)?
+	\item[]
+	\item RR: Reject $H_0$ if $B \leq C_{0.10(1), 18} = 5 $
+	\item[]
+	\item Since $B = 3$, we reject the null hypothesis, we have evidence to conclude that the population median is less than 100
+\end{itemize}
+\end{frame}
+
+\subsection{Normal approximation}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Sign Test}{Normal Approximation}
+	\begin{itemize}
+		\item When the sample size is large, we use the normal approximation to the binomial
+		\item[]
+		\item We use the following ``standardized'' test statistic:
+		\begin{gather*}
+		B^* = \frac{B-(n/2)}{\sqrt{n/4}}
+		\end{gather*}
+		
+		\item Rejection regions / rules: 
+		\begin{itemize}
+			\item Case 1. Reject $H_0: M \leq M_0$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$
+			\item Case 2. Reject $H_0: M \geq M_0$ if $B^* \leq z_{\alpha}$ with $p$-value $=P(z \leq B^*)$
+			\item Case 3. Reject $H_0: M = M_0$ if $|B^*| \geq z_{1-\alpha/2}$ with $p$-value $=2\times P(z \geq B^*)$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal Approximation Sign Test}{Example}
+	\begin{itemize}
+		\item You know that the median tumor thickness (mm) for melanomas seen in a skin clinic is 1.94. You also know that the tumor thickness does not follow a normal distribution (it is skewed to the right). 
+		\item[]
+		\item You want to determine if larger tumors are associated with a greater risk of death. You review 57 cases for which patient's died from cancer and observed the following initial thicknesses:
+		\begin{center}
+			\includegraphics[width = 1 \linewidth]{melDied}
+		\end{center}
+	\item[]
+		\item Are tumor thicknesses greater for cases in which the patient died? Test hypotheses at $\alpha = 0.05$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal Approximation Sign Test}{Example}
+	\begin{itemize}
+		\item Hypotheses:
+		\begin{itemize}
+			\item $H_0: M \leq 1.94$
+			\item $H_a: M > 1.94$
+			\item[]
+		\end{itemize}
+		\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$
+		\item[]
+		\item We compute $W_i$ for each measurement:
+		\begin{center}
+			\includegraphics[width = \linewidth]{melDied2}
+		\end{center}
+		\item[]
+		\item So $B = 44$ and $B^* = \frac{B-(n/2)}{\sqrt{n/4}} = \frac{44-(57/2)}{\sqrt{57/4}} = 4.106$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal Approximation Sign Test}{Example}
+\begin{itemize}
+	\item So we have $B^* = 4.106$ 
+	\item[]
+	\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$
+	\begin{itemize}
+		\item $z_{1-\alpha} = z_{1-.05} = z_{.95} = 1.645$
+		\item[]
+		\item Since $B^* = 4.106 > 1.645$, we reject the null hypothesis
+		\item[]
+		\item $p$-value $=P(z \geq B^*) =  0.00002$
+		\item[]
+	\end{itemize}
+	\item Conclusion: We have evidence that median tumor size in patients who died is greater than 1.94 mm. The $p$-value is 0.00002. 
+\end{itemize}
 \end{frame}
 
 \end{document}

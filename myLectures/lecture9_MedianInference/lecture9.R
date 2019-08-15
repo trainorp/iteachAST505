@@ -81,3 +81,11 @@ B2 <- sum(w2 > 0)
 wilcox.test(pp, mu = 100, alternative = "less", conf.int = TRUE)
 
 ############ Melanoma tumors ############
+mel <- boot::melanoma
+melDied <- mel[mel$status == "1",]
+melDied$thickness
+
+w <- melDied$thickness - 1.94
+B <- sum(w > 0)
+
+B2 <- (44 - 57/2) / sqrt(57/4)

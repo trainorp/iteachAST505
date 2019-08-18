@@ -1,0 +1,111 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\title[Lecture 2]{Lecture 2: Study Design / Design of Experiments}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{August 22, 2019}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{itemize}
+		\item \textbf{\emph{Observational study:}} In an observational study, the researcher records information, but does not in any way interfere with the process that is generating the information
+		\item[]
+		\item Examples:
+		\begin{itemize}
+			\item The Bureau of Labor Statistics sends personnel to supermarkets \& stores to record the prices of selected goods--the act of showing up and recording prices \emph{should not} interfere with the processes generating the data
+			\item In the Multi-Ethnic Study of Atherosclerosis (MESA), $\approx$ 6000 men and women are followed to see who has heart attacks, strokes, death from coronary artery disease, etc.--the act of interviewing subjects each year (along with physical examination) should not interfere with who has a heart attack (or other event)
+			\item A health insurer analyzes their medical claims data to determine attributes associated with members who have more expensive hip replacement surgeries than those who have less expensive surgeries
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{itemize}
+		\item \textbf{\emph{Experimental study:}} In an experimental study, the researcher does manipulate \textbf{\emph{explanatory variables}}, and then records their effects on \textbf{\emph{response variables}}
+		\item[]
+		\item Examples:
+		\begin{itemize}
+			\item A city's housing agency distributes housing vouchers differently to two groups of families. One group has the stipulation that they can only use the vouchers in high SES neighborhoods. The other group does not have the stipulation (regular voucher). The city measures household income a year later
+			\begin{itemize}
+				\item Explanatory variable: An indicator of whether the family recieved the high SES neighborhood voucher versus regular voucher
+				\item Response variable: Household income a year after voucher was recieved
+				\item The response variable could be influenced by the researcher's manipulation 
+			\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{itemize}
+	\item \textbf{\emph{Experimental study:}} In an experimental study, the researcher does manipulate \textbf{\emph{explanatory variables}}, and then records their effects on \textbf{\emph{response variables}}
+	\item[]
+	\item Examples:
+	\begin{itemize}
+		\item A cancer researcher uses CRISPR (a genetic engineering technique) to knock out a specific gene in a cancer cell line and records the effect on cell viability
+		\begin{itemize}
+			\item Explanatory variable: An indicator of whether the gene is expressed (present) or not-expressed (not present following CRISPR knockout) in the cell samples
+			\item Response variable: Cell viability
+			\item The response variable could be influenced by the researcher's manipulation 
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Observational Studies}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Objective of an Observational Study}
+Observational studies can be categorized based on their objectives into descriptive studies and comparative studies
+		\begin{itemize}
+			\item \textbf{\emph{Descriptive studies:}} Descriptive studies seek to describe a process (which may not be well understood
+			\item[]
+			\item Examples:
+			\begin{itemize}
+				\item Determining the demographic composition of a public university like NMSU
+				\item Determining if HPV genes are present in oral lessions from patients at a dental clinic
+				\item Determining the number of cases of Rocky Mountain Spotted Fever in New Mexico this year
+			\end{itemize}			
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{Objective of an Observational Study}
+Observational studies can be categorized based on their objectives into descriptive studies and comparative studies
+\begin{itemize}
+\item \textbf{\emph{Comparative study:}} Comparative studies seek to compare an attribute or process between two or more groups
+\item[]
+\item Examples:
+\begin{itemize}
+	\item The university administration commissions a study of post-graduation incomes comparing western universities
+	\item A health insurer compares ten year healthcare spend for extreme-BMI members who have bariatric surgery versus those who do not
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}

@@ -41,3 +41,7 @@ miSum <- oxPLDF %>% group_by(migroup) %>%
 
 t.test(x = na.omit(oxPLDF$plateletsT0[oxPLDF$migroup == "Type 1"]),
        y = na.omit(oxPLDF$plateletsT0[oxPLDF$migroup == "Type 2"]))
+
+############ CD4 example ############
+cd4 <- boot::cd4
+t.test(cd4$oneyear, cd4$baseline, paired = TRUE)

@@ -323,23 +323,44 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Unequal variances example}{Part 1}
+\begin{frame}{Unequal variances example}{Part 2}
 \begin{itemize}
-	\item There are 5 types of myocardial infarction (heart attack). You are interested in whether platelet counts (measured in thousands per $\mu$L) differ between two of the types (Type 1: thrombotic MI and Type 2: non-thrombotic MI). You observe the following data from 11 Type 1 MI's and 12 Type 2 MI's: $\bar{y}_{\text{Type 1}}=189.427$, $\bar{y}_{\text{Type 2}}=217.583$, $s_{\text{Type 1}} = 80.095$, and $s_{\text{Type 2}} = 64.945$. Determine a 95\% confidence interval for the difference in platelet count means between the two types
-	\item[] LOH
-	\item Setup:
-	\begin{itemize}
-		\item We will test $H_0: \mu_{\text{Type 1}} - \mu_{\text{Type 2}} =0$ versus $H_0: \mu_{\text{Type 1}} - \mu_{\text{Type 2}} \neq 0$
-		\item We will reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, \text{df}}$
-	\end{itemize}
+	\item You are interested in whether platelet counts (measured in thousands per $\mu$L) differ between Type 1 and Type 2 MI. You observe the following data from 11 Type 1 MI's and 12 Type 2 MI's: $\bar{y}_{\text{Type 1}}=189.427$, $\bar{y}_{\text{Type 2}}=217.583$, $s_{\text{Type 1}} = 80.095$, and $s_{\text{Type 2}} = 64.945$. Determine a point estimate and 95\% confidence interval for the difference in platelet count means between the types
+	\item The point estimate for the difference in means is -28.156 and for the CI:
+	\begin{align*}
+	(\bar{y}_1-\bar{y}_2) &\pm t_{1-\alpha / 2, df} \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} \\
+	(189.427-217.583) &\pm t_{0.975,19} \sqrt{\frac{80.095^2}{11}+\frac{64.945^2}{12}} \\
+	& (-92.145, 35.764)
+	\end{align*}
 \end{itemize}
 \end{frame}
 
 \section{Inferences about $\mu_1 - \mu_2$: Paired Samples}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Paired samples}
+\begin{itemize}
+	\item All of the methods presented earlier in the lecture assume that there is no dependence between the two samples from different populations
+	\item[]
+	\item Many research questions we ask do not meet this assumption
+	\item[]
+	\item Example: 
+	\begin{itemize}
+		\item HIV targets CD4\textsuperscript{+} T cells. You need to test the effecteness of a new drug in reducing viral load and increasing CD4\textsuperscript{+} T cell count. You recruit patients and administer the drug, measuring initial CD4\textsuperscript{+} T cell count and after a year of treatment
+		\item You now have samples from two populations (baseline and after treatment)
+		\item The same experimental unit (a person) is included in each creating ``paired samples''
+		\item The CD4\textsuperscript{+} T cell count in a person at baseline will be related to the count after treatment (\emph{dependence})
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
 \subsection{Confidence intervals}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
+
 
 \subsection{Hypothesis testing}
 \begin{frame}{Outline}

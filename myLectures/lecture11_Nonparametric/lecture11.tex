@@ -14,6 +14,8 @@
 \institute[NMSU]{New Mexico State University}
 \date{September 30, 2019}
 
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
+
 \begin{document}
 
 \begin{frame}
@@ -22,6 +24,162 @@
 
 \begin{frame}{Outline}
 \tableofcontents[hideallsubsections]
+\end{frame}
+
+\begin{frame}{Wilcoxon Rank-Sum Tests}
+	\begin{itemize}
+		\item One of the assumptions of t-tests is that the data be normally distributed. If the sample size is very large, this assumption is less important
+		\item[]
+		\item However, if our data distribution is far from normal, we want to use ``nonparametric tests'' rather than t-tests
+		\item[]
+		\item \textbf{\emph{Wilcoxon rank-sum test:}} The Wilcoxon rank-sum test is a nonparametric test that assumes the following:
+		
+		\begin{enumerate}
+			\item We have two independent random samples with sample sizes $n_1$ and $n_2$: $\{x_1, x_2, \hdots, x_{n_1}\}$ and $\{y_1, y_2, \hdots, y_{n_2}\}$
+			\item[]
+			\item The population distributions of the $x$'s and $y$'s are identical but one may be shifted to the left or right of the other
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Location shift}
+	\begin{center}
+		\includegraphics[width=.9 \linewidth]{locationShift}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Location shift}
+	\begin{itemize}
+		\item Notation for location shift: $y \myeq x + \Delta$
+	\end{itemize}
+\begin{center}
+	\includegraphics[width=.85 \linewidth]{locationShift2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Location shift}
+	\begin{itemize}
+		\item Notation for location shift: $y \myeq x + \Delta$
+		\item[]
+		\item If $\Delta > 0$, then the $y$'s are typically larger and the distribution of $y$'s is to the right of $x$'s
+		\item[]
+		\item If $\Delta > 0$, then the $y$'s are typically smaller and the distribution of $y$'s is to the left of $x$'s
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Wilcoxon Rank-Sum test}
+	\begin{itemize}
+		\item The Wilcoxon rank-sum test is based on ``ranks'' rather than measurement values
+		\begin{itemize}
+			\item The smallest value in the combined sample has rank 1
+			\item[]
+			\item The largest value in the combinded sample has rank $N = n_1 + n_2$
+			\item[]
+		\end{itemize}
+	\item Process for determining Rank-Sum:
+		\begin{enumerate}
+		\item List the data values in the combined data set from smallest to largest
+		\item In the next column assign numbers $1$ to $n$ to the data values by their order
+		\item If there are ties in the combined data set, the ranks for the observations in the tie are taken to be the average of those ranks
+		\item Let $T$ denote the sum of ranks for the observation from the $y$'s
+	\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Calculating the rank-sum}{Example Data}
+\begin{itemize}
+	\item Assume Stage 4 tumors are the $y$'s and Stage 3 tumors are the $x$'s
+\end{itemize}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			    \textbf{Survival Time} &  \textbf{Stage} \\ \hline \hline
+			52.9  &Stage 4 \\ \hline
+			12.9 &Stage 4 \\ \hline
+		    34.9& Stage 4 \\ \hline
+		    38.7 &Stage 4 \\ \hline
+			  22.9& Stage 4 \\ \hline
+		   22.8 &Stage 4 \\ \hline
+		   60.0 &Stage 3 \\ \hline
+			  95.8& Stage 3 \\ \hline
+		   33.2 &Stage 3 \\ \hline
+			  54.5 &Stage 3 \\ \hline
+			 119.3 &Stage 3 \\ \hline
+			  47.0 &Stage 3 \\ \hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Calculating the rank-sum}{Example Data}
+\begin{itemize}
+	\item Our first step is to order the data from smallest to largest
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Survival Time} &  \textbf{Stage} \\ \hline \hline
+		12.9 &Stage 4 \\ \hline
+		22.8 &Stage 4 \\ \hline
+		22.9& Stage 4 \\ \hline
+		33.2 &Stage 3 \\ \hline
+		34.9& Stage 4 \\ \hline
+		38.7 &Stage 4 \\ \hline
+		47.0 &Stage 3 \\ \hline		
+		52.9  &Stage 4 \\ \hline
+		54.5 &Stage 3 \\ \hline				
+		60.0 &Stage 3 \\ \hline
+		95.8& Stage 3 \\ \hline
+		119.3 &Stage 3 \\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Calculating the rank-sum}{Example Data}
+\begin{itemize}
+	\item Now we assign the ranks
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Survival Time} &  \textbf{Stage} & \textbf{Rank}\\ \hline \hline
+		12.9 &Stage 4 & 1 \\ \hline
+		22.8 &Stage 4 & 2\\ \hline
+		22.9& Stage 4 & 3\\ \hline
+		33.2 &Stage 3 & 4\\ \hline
+		34.9& Stage 4 & 5\\ \hline
+		38.7 &Stage 4 & 6\\ \hline
+		47.0 &Stage 3 & 7\\ \hline		
+		52.9  &Stage 4 & 8\\ \hline
+		54.5 &Stage 3 & 9\\ \hline				
+		60.0 &Stage 3 & 10\\ \hline
+		95.8& Stage 3 & 11\\ \hline
+		119.3 &Stage 3 & 12\\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Calculating the rank-sum}{Example Data}
+\begin{itemize}
+	\item Sum: $T = 1 + 2 + 3 + 5 + 6 + 8 = 25$
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Survival Time} &  \textbf{Stage} & \textbf{Rank}\\ \hline \hline
+		12.9 &Stage 4 & 1 \\ \hline
+		22.8 &Stage 4 & 2\\ \hline
+		22.9& Stage 4 & 3\\ \hline
+		33.2 &Stage 3 & 4\\ \hline
+		34.9& Stage 4 & 5\\ \hline
+		38.7 &Stage 4 & 6\\ \hline
+		47.0 &Stage 3 & 7\\ \hline		
+		52.9  &Stage 4 & 8\\ \hline
+		54.5 &Stage 3 & 9\\ \hline				
+		60.0 &Stage 3 & 10\\ \hline
+		95.8& Stage 3 & 11\\ \hline
+		119.3 &Stage 3 & 12\\ \hline
+	\end{tabular}
+\end{center}
 \end{frame}
 
 \end{document}

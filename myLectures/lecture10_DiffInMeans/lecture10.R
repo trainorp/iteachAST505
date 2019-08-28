@@ -44,4 +44,15 @@ t.test(x = na.omit(oxPLDF$plateletsT0[oxPLDF$migroup == "Type 1"]),
 
 ############ CD4 example ############
 cd4 <- boot::cd4
+cd4$d <- cd4$oneyear - cd4$baseline
+
+set.seed(1)
+cd4 <- cd4[sample(1:20, 10),]
+cd4
 t.test(cd4$oneyear, cd4$baseline, paired = TRUE)
+t.test(cd4$oneyear, cd4$baseline, paired = FALSE, var.equal = TRUE)
+cd4 %>% summarize(mean(baseline), mean(oneyear), sd(baseline), sd(oneyear))
+binom.test(10, 10, p = 0.5)
+
+mean(cd4$d)
+sd(cd4$d)

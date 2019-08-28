@@ -356,15 +356,263 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 \end{itemize}
 \end{frame}
 
-\subsection{Confidence intervals}
-\begin{frame}{Outline}
-\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\begin{frame}{Paired samples}{Example gone wrong}
+	\begin{itemize}
+		\item The following 10 observations are CD4\textsuperscript{+} T cell counts from the HIV drug trial:
+		\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Person} & \textbf{Baseline} &  \textbf{After treatment} \\ \hline \hline
+		1  &    5.10 &   5.93  \\ \hline 
+		2  &    3.35 &   4.09 \\ \hline 
+		3  &   4.15  &  4.74  \\ \hline 
+		4  &   2.96  &  3.23  \\ \hline 
+		5  &    2.51 &   3.02 \\ \hline 
+		6  &   1.88  &  2.82  \\ \hline 
+		7  &   2.56  &  4.23 \\ \hline 
+		8  &    4.10 &   4.88 \\ \hline 
+		9  &   2.66  &  4.37  \\ \hline 
+		10  &    2.12  &  2.47 \\ \hline 
+	\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Paired samples}{Example gone wrong}
+	\begin{columns}
+		\begin{column}{.5 \textwidth}
+					{\scriptsize
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Person} & \textbf{Baseline} &  \textbf{After treatment} \\ \hline \hline
+		1  &    5.10 &   5.93  \\ \hline 
+		2  &    3.35 &   4.09 \\ \hline 
+		3  &   4.15  &  4.74  \\ \hline 
+		4  &   2.96  &  3.23  \\ \hline 
+		5  &    2.51 &   3.02 \\ \hline 
+		6  &   1.88  &  2.82  \\ \hline 
+		7  &   2.56  &  4.23 \\ \hline 
+		8  &    4.10 &   4.88 \\ \hline 
+		9  &   2.66  &  4.37  \\ \hline 
+		10  &    2.12  &  2.47 \\ \hline 
+	\end{tabular}
+}
+		\end{column}
+	\begin{column}{.5 \textwidth}
+		\begin{itemize}
+			\item Means: $\bar{y}_{\text{baseline}} = 3.14$ and $\bar{y}_{\text{after}} = 3.98$
+			\item Means: $s_{\text{baseline}} = 1.03$ and $s_{\text{after}} = 1.08$
+			\item[]
+			\item Independent samples t-test for difference in means assuming equal variances:
+			\begin{itemize}
+				\item 95\% CI: $(-0.15,  1.83)$
+				\item $p$-value $=0.09$
+			\end{itemize}
+		\end{itemize}
+	\end{column}
+	\end{columns}
 \end{frame}
 
 
-\subsection{Hypothesis testing}
-\begin{frame}{Outline}
-\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\begin{frame}{Paired samples}{Example gone wrong}
+	\begin{columns}
+		\begin{column}{.4 \textwidth}
+					{\scriptsize
+				\begin{tabular}{|c|c|c|}
+					\hline
+					\textbf{Person} & \textbf{Baseline} &  \textbf{After treatment} \\ \hline \hline
+					1  &    5.10 &   5.93  \\ \hline 
+					2  &    3.35 &   4.09 \\ \hline 
+					3  &   4.15  &  4.74  \\ \hline 
+					4  &   2.96  &  3.23  \\ \hline 
+					5  &    2.51 &   3.02 \\ \hline 
+					6  &   1.88  &  2.82  \\ \hline 
+					7  &   2.56  &  4.23 \\ \hline 
+					8  &    4.10 &   4.88 \\ \hline 
+					9  &   2.66  &  4.37  \\ \hline 
+					10  &    2.12  &  2.47 \\ \hline 
+				\end{tabular}
+			}
+		\end{column}
+		\begin{column}{.6 \textwidth}
+			\begin{itemize}
+				\item Some evidence of a difference...however...
+				\item[]
+				\item We can ask a different question: What is the probability that out of 10 human subjects every single ``after treatment'' measurement is higher than ``baseline''?
+				\item[]
+				\item This is a binomial probability statement. The probability of seeing 10 successes out of 10 trials given $\pi = 0.50$ is: 0.000976
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Paired samples}
+	\begin{itemize}
+		\item We have two different conclusions:
+		\begin{itemize}
+			\item The independent samples t-test tells us that the observed difference between baseline and after treatment measurements is not very inconsistent with the null hypothesis that the drug doesn't have an effect
+			\item[]
+			\item The Binomial probability statement tells us that it would be nearly impossible to see 10 out of 10 ``after treatment'' measurements being higher than the ``baseline'' measurements if the drug doesn't have an effect
+			\item[] 
+			\item \textbf{The problem:} The independent samples t-test overstates the standard error of $\bar{y}_1 - \bar{y}_2$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Paired Samples}{The difference in paired samples}
+\begin{columns}
+	\begin{column}{.5 \textwidth}
+		{\scriptsize
+			\begin{tabular}{|c|c|c|c|}
+				\hline
+				\textbf{Person} & \textbf{Baseline} &  \textbf{After treatment} & $d_i$ \\ \hline \hline
+				1  &    5.10 &   5.93 &  0.83 \\ \hline 
+				2  &    3.35 &   4.09 &  0.74 \\ \hline 
+				3  &   4.15  &  4.74 &  0.59 \\ \hline 
+				4  &   2.96  &  3.23 &  0.27 \\ \hline 
+				5  &    2.51 &   3.02 &  0.51 \\ \hline 
+				6  &   1.88  &  2.82 &  0.94 \\ \hline 
+				7  &   2.56  &  4.23 &  1.67 \\ \hline 
+				8  &    4.10 &   4.88 &  0.78 \\ \hline 
+				9  &   2.66  &  4.37 &  1.71 \\ \hline 
+				10  &    2.12  &  2.47 &  0.35 \\ \hline 
+			\end{tabular}
+		}
+	\end{column}
+	\begin{column}{.5 \textwidth}
+			\begin{itemize}
+			\item For each of $n$ pairs of measurements we can compute the difference and call it a new variable: $d_i = y_{1,i}-y_{2,i}$
+			\item[]
+			\item Once we have each $d_i$ we can compute $\bar{d}$ and $s_d$
+			\begin{itemize}
+				\item $\bar{d} = 0.839$
+				\item $s_d = 0.495$
+			\end{itemize}
+		\end{itemize}
+	\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Hypothesis Tests}
+\begin{itemize}
+	\item Hypotheses:
+	\begin{itemize}
+		\item Case 1. $H_0: \mu_D \leq D_0$ vs. $H_a: \mu_D > D_0$
+		\item Case 2. $H_0: \mu_D \geq D_0$ vs. $H_a: \mu_D < D_0$
+		\item Case 3. $H_0: \mu_D = D_0$ vs. $H_a: \mu_D \neq D_0$
+		\item[]
+	\end{itemize}
+	\item Test statistic:
+	\begin{align*}
+	t^* = \frac{\bar{d}-D_0}{s_d / \sqrt{n}}
+	\end{align*}
+	\item Rejection region / rule:
+	\begin{itemize}
+		\item Case 1. Reject $H_0$ if $t^* \geq t_{1-\alpha, \text{df}}$ with level of significance, $p\text{-value}=P(t \geq t^*)$
+		\item Case 2. Reject $H_0$ if $t^* \leq t_{\alpha, \text{df} }$ with $p\text{-value}=P(t \leq t^*)$
+		\item Case 3. Reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, \text{df}}$ with $p\text{-value}=2 \times P(t \geq |t^*|)$
+	\end{itemize}
+\item[]
+\item $\text{df}= n-1$, given $n$ pairs
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence Intervals}
+	\begin{itemize}
+		\item A $100(1-\alpha)\%$ confidence interval for $\mu_d = \mu_1 - \mu_2$ is:
+		\begin{gather*}
+		\bar{d} \pm t_{1-\alpha / 2, \text{df}}\frac{s_d}{\sqrt{n}}
+		\end{gather*}
+		where $\text{df}= n-1$, given $n$ pairs
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{HIV drug example}
+	\begin{columns}
+		\begin{column}{.4 \textwidth}
+			{\tiny
+				\begin{tabular}{|c|c|c|c|}
+					\hline
+					\textbf{Person} & \textbf{Baseline} &  \textbf{After treatment} & $d_i$ \\ \hline \hline
+					1  &    5.10 &   5.93 &  0.83 \\ \hline 
+					2  &    3.35 &   4.09 &  0.74 \\ \hline 
+					3  &   4.15  &  4.74 &  0.59 \\ \hline 
+					4  &   2.96  &  3.23 &  0.27 \\ \hline 
+					5  &    2.51 &   3.02 &  0.51 \\ \hline 
+					6  &   1.88  &  2.82 &  0.94 \\ \hline 
+					7  &   2.56  &  4.23 &  1.67 \\ \hline 
+					8  &    4.10 &   4.88 &  0.78 \\ \hline 
+					9  &   2.66  &  4.37 &  1.71 \\ \hline 
+					10  &    2.12  &  2.47 &  0.35 \\ \hline 
+				\end{tabular}
+			}
+		\end{column}
+	\begin{column}{.6 \textwidth}
+		\vspace{-5pt}
+		\begin{itemize}
+			\item Let's test $H_0: \mu_D = 0$ vs. $H_a: \mu_D \neq 0$ at $\alpha = 0.05$
+			\begin{align*}
+			t^* = \frac{\bar{d}-D_0}{s_d / \sqrt{n}} = \frac{0.839}{0.495 / \sqrt{10}} = 5.36
+			\end{align*}
+			\item Our critical value is $t_{1-\alpha / 2, n-1} = t_{0.975, 9} = 2.26$
+			\item[]
+			\item Since $|5.36| > 2.26$, we have that $|t^*| \geq t_{1-\alpha / 2, \text{df}}$ and we reject the null hypothesis with
+			\begin{align*}
+				p\text{-value}&=2 \times P(t \geq |t^*|)\\ 
+				&= 2 \times P(t\geq 5.36) \\
+				&= 0.0005
+			\end{align*} 
+		\end{itemize}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{HIV drug example}{Summary}
+\begin{columns}
+	\begin{column}{.4 \textwidth}
+		{\tiny
+			\begin{tabular}{|c|c|c|c|}
+				\hline
+				\textbf{Person} & \textbf{Baseline} &  \textbf{After treatment} & $d_i$ \\ \hline \hline
+				1  &    5.10 &   5.93 &  0.83 \\ \hline 
+				2  &    3.35 &   4.09 &  0.74 \\ \hline 
+				3  &   4.15  &  4.74 &  0.59 \\ \hline 
+				4  &   2.96  &  3.23 &  0.27 \\ \hline 
+				5  &    2.51 &   3.02 &  0.51 \\ \hline 
+				6  &   1.88  &  2.82 &  0.94 \\ \hline 
+				7  &   2.56  &  4.23 &  1.67 \\ \hline 
+				8  &    4.10 &   4.88 &  0.78 \\ \hline 
+				9  &   2.66  &  4.37 &  1.71 \\ \hline 
+				10  &    2.12  &  2.47 &  0.35 \\ \hline 
+			\end{tabular}
+		}
+	\end{column}
+	\begin{column}{.6 \textwidth}
+		\begin{itemize}
+			\item The independent sample's t-test and the paired samples t-test both give the same estimate of the difference, that is $\bar{y}_1-\bar{y}_2 = \bar{d}$
+			\item[]
+			\item However, when there is a dependence between pairs, rather than two independent samples: $s_{\bar{d}} < s_{\bar{y}_1 - \bar{y}_2}$ 
+		\end{itemize}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dependence}
+	\begin{itemize}
+		\item Many statistical tests and procedures require independence between observations. However there are \emph{tons} of study designs and experimental designs in which dependent observations are generated
+		\item[]
+		\item Examples:
+		\begin{itemize}
+			\item You take multiple measurements from the same object at one time (plant, person, animal, stream)
+			\item[]
+			\item You take multiple measurements across time (temporal dependence)
+			\item[]
+			\item You take measurements across a geography (spatial dependence)
+			\item[]
+		\end{itemize}
+	\item We need to ensure that we use tests and procedures that account for dependence
+	\end{itemize}
 \end{frame}
 
 \end{document}

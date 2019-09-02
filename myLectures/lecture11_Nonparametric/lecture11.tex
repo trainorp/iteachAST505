@@ -116,6 +116,12 @@
 \end{frame}
 
 \begin{frame}{Example Data}
+	\begin{center}
+		\includegraphics[width=.9 \linewidth]{boxplot}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Example Data}
 \begin{itemize}
 	\item Assume Stage 4 tumors are the $y$'s and Stage 3 tumors are the $x$'s
 	\item Then we want to know if: $y \myeq x + \Delta$, where $\Delta < 0$
@@ -257,6 +263,8 @@
 \end{frame}
 
 \section{Exact test}
+
+\subsection{Hypothesis Tests}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
@@ -415,9 +423,209 @@
 \end{frame}
 
 \section{Normal approximation}
-
+\subsection{Hypothesis Tests}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Normal approximation}
+	\begin{itemize}
+		\item If both $n_1$ and $n_2$ are large (say $>10$ each), then the sampling distribution of $T$ is approximately normal
+		\item[]
+		\item So we can compute a $z$ statistic:
+		\begin{gather*}
+		z = \frac{T- \mu_T}{\sigma_T}
+		\end{gather*}
+		where:
+		\begin{gather*}
+		\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} \quad \quad \text{and} \quad \quad \sigma_T^{2} = \frac{n_1 n_2}{12}(n_1 +n_2 +1)
+		\end{gather*}
+		and we can use a normal approximation for hypothesis tests and confidence intervals
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal approximation}{Presence of ties}
+\begin{itemize}
+	\item However, if ties are present in our data (and we have averaged ranks), we need to adjust our formula for the variance of $T$:
+	\begin{gather*}
+	\sigma_T^{2} = \frac{n_1 n_2}{12}(n_1 +n_2 +1)
+	\end{gather*}
+	becomes:
+	\begin{gather*}
+	\sigma_T^{2} = \frac{n_1 n_2}{12}\left[(n_1 +n_2 +1)- \frac{\sum_{j=1}^k t_j (t_j^2-1)}{(n_1+n_2)(n_1+n_2-1)}\right]
+	\end{gather*}
+	where $k$ is the number of tied groups and $t_j$ is the number of tied observation in each $j$th group
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example Data}
+	\begin{itemize}
+		\item Phycocyanin, a pigment in cyanobacteria measured by fluorometry
+		\item The USGS measures this to study water quality and the presence of harmful blooms 
+		\item Rough River Lake, KY:
+		\begin{center}
+			\includegraphics[width = .7\linewidth]{RoughRiver} \\
+			{\tiny Source: Patrick Jennings (shutterstock)}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example Data}
+\begin{itemize}
+	\item Assume the USGS takes 100 samples from different locations around the lake in June and August
+\end{itemize}
+	\begin{center}
+		\includegraphics[width = .7 \linewidth]{RoughHist}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Example Data}
+\begin{itemize}
+	\item Research question: Does the level of phycocyanin differ between June and August?
+\end{itemize}
+\begin{center}
+	\includegraphics[width = .7 \linewidth]{RoughHist}
+\end{center}
+\end{frame}
+
+\begin{frame}{Normal approximation}{Process}
+\begin{itemize}
+	\item Null Hypothesis. $H_0$: The population distributions are identical $\Delta = 0$
+	\item[]
+	\item Alternative hypotheses (choose one). $H_a$:
+	\begin{enumerate}
+		\item Population 1 is shifted to the right of popluation 2 ($\Delta >0$)
+		\item Population 1 is shifted to the left of population 2 ($\Delta < 0$)
+		\item Population 1 and 2 are shifted from each other ($\Delta \neq 0$)
+		\item[]
+	\end{enumerate}
+	\item Test statistic: $z^* =\frac{T- \mu_T}{\sigma_T}$ where $T$ is the sum of ranks in sample 1
+	\item[]
+	\item Rejection regions / rejection rules:
+	\begin{enumerate}
+		\item Reject $H_0$ if $z^* > z_{1-\alpha}$ with level of significance: $p\text{-value}=P(z \geq z^*)$
+		\item Reject $H_0$ if $z^* < z_{\alpha}$ with $p\text{-value}=P(z \leq z^*)$
+		\item Reject $H_0$ if $|z^*| \geq z_{1-\alpha/2}$ with $p\text{-value}=2 \times P(z \geq |z^*|)$
+	\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example Data}
+\begin{itemize}
+	\item Research question: Does the level of phycocyanin differ between June and August?
+	\item[]
+	\item Null hypothesis. $H_0$: The two populations (June and August) are identical ($\Delta = 0$)
+	\item[]
+	\item Alternative hypothesis. $H_a$: Population 1 (June) and Population 2 (August) are shifted from each other ($\Delta \neq 0$)
+	\item[]
+	\item Let's test the alternative hypothesis against the null at $\alpha = 0.05$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal approximation}{Example}
+	\begin{itemize}
+		\item From the phycocyanin data we have that $T = 8287$ and the following are ties:
+		\begin{center}
+			\begin{tabular}{|c|c|c|}
+					\hline
+				  \textbf{value} & \textbf{month}&  \textbf{rank} \\ \hline \hline
+				 145.7  & June &  30.5\\ \hline
+				 145.7  & June &  30.5\\ \hline
+				 196.3  & June &  63.5\\ \hline
+				 196.3 &August &  63.5\\ \hline
+				 354.5 &  June & 139.5\\ \hline
+				 354.5& August & 139.5\\ \hline
+			\end{tabular}
+		\end{center}
+	\item Now to calculate our test statistic we need to find $\mu_T$ and $\sigma_T^2$:
+	\begin{align*}
+		\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} = \frac{100(100+100+1)}{2} = 10050
+	\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal approximation}{Sampling distribution variance calculation example}
+\begin{itemize}
+	\item Formula: 	\begin{gather*}
+	\sigma_T^{2} = \frac{n_1 n_2}{12}(n_1 +n_2 +1)- \frac{\sum_{j=1}^k t_j (t_j^2-1)}{(n_1+n_2)(n_1+n_2-1)}
+	\end{gather*}
+	where $k$ is the number of tied groups and $t_j$ is the number of tied observation in each $j$th group
+	\item[]
+	\item We have three groups of ties with 2 observations in each group so:
+	\begin{gather*}
+		\sum_{j=1}^k t_j (t_j^2-1) =  [2(2^2 -1)] + [2(2^2 -1)] + [2(2^2 -1)] = 18
+	\end{gather*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal approximation}{Sampling distribution variance calculation example}
+\begin{itemize}
+	\item Formula for $\sigma_T^{2}$: 	
+	\begin{align*}
+	\sigma_T^{2} &= \frac{n_1 n_2}{12}\left[(n_1 +n_2 +1)- \frac{\sum_{j=1}^k t_j (t_j^2-1)}{(n_1+n_2)(n_1+n_2-1)}\right] \\
+	&= \frac{n_1 n_2}{12}\left[(n_1 +n_2 +1)- \frac{18}{(n_1+n_2)(n_1+n_2-1)}\right] \\
+	&= \frac{(100)(100)}{12}\left[(100 + 100 +1)- \frac{18}{(100+100)(100+100-1)}\right] \\
+	&= 167500 - 0.3768844 \\
+	&= 167499.6
+	\end{align*}
+	\item Also $\sigma_T = \sqrt{\sigma_T^2} = 409.267$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal approximation}{Example}
+	\begin{itemize}
+		\item Recap: we have $T = 8287$, $\mu_T = 10050$ and $\sigma_T = 409.267$
+		\item[]
+		\item So our test statistic is:
+		\begin{align*}
+			z^* =\frac{T- \mu_T}{\sigma_T} = \frac{8287-10050}{409.267} = -4.31
+		\end{align*}
+		\item Since $z_{1-\alpha/2} = z_{0.975} = 1.96$ and $|-4.31| = 4.31 > 1.96$ we reject the null hypothesis
+		\item[]
+		\item The level of significance of this test is $p\text{-value}=2 \times P(z \geq |z^*|) = 2 \times P(z \geq 4.31) = 0.00001633$
+	\end{itemize}
+\end{frame}
+
+\subsection{Confidence intervals for $\Delta$}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\Delta$}{Normal approximation}
+	\begin{itemize}
+		\item For large $n_1$ and $n_2$ we can approximate $C_{\alpha / 2}$ as:
+		\begin{gather*}
+		C_{\alpha / 2} = \frac{n_1 n_2}{2} - z_{1-\alpha / 2} \sqrt{\frac{n_1 n_2(n_1+n_2+1)}{12}}
+		\end{gather*}
+		\item To construct $100(1-\alpha) \%$ confidence intervals we will use:
+		\begin{itemize}
+			\item $\Delta_L = D_{(C_{\alpha / 2})}$
+			\item $\Delta_U = D_{(M + 1 - C_{\alpha / 2})}$
+			\item[]
+		\end{itemize}
+	\item Back to our phycocyanin data, let's calculate a 90\% confidence interval for $\Delta$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\Delta$}{Normal approximation example}
+\begin{itemize}
+	\item For large $n_1$ and $n_2$ we can approximate $C_{\alpha / 2}$ as:
+	\begin{align*}
+	C_{0.10 / 2} &= \frac{n_1 n_2}{2} - z_{0.95} \sqrt{\frac{n_1 n_2(n_1+n_2+1)}{12}} \\
+	&=\frac{100*100}{2} - 1.65 \sqrt{\frac{100*100(100+100+1)}{12}} \\
+	&= 4326.815 \\
+	&\approx 4327
+	\end{align*}
+	\item $(\Delta_L, \Delta_U) = \left(D_{(C_{\alpha / 2})}, D_{(M + 1 - C_{\alpha / 2})} \right) = \left(D_{(4327)}, D_{(5674)}\right) = (-110.2, -51.4)$
+	\item The point estimate will be the medians of the ordered set of differences: $-80.6$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecture \#11}
+	\begin{center}
+		\includegraphics[width=.7 \linewidth]{Princess} \\
+		{\tiny Princess Falls in McCreary County via @ExploreKentucky}
+	\end{center}
 \end{frame}
 
 \end{document}

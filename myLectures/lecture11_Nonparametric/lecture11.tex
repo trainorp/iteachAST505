@@ -26,6 +26,11 @@
 \tableofcontents[hideallsubsections]
 \end{frame}
 
+\section{Introduction}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
 \begin{frame}{Wilcoxon Rank-Sum Tests}
 	\begin{itemize}
 		\item One of the assumptions of t-tests is that the data be normally distributed. If the sample size is very large, this assumption is less important
@@ -86,28 +91,53 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Calculating the rank-sum}{Example Data}
+\begin{frame}{Example Data}
+\begin{itemize}
+	\item Research question: Are survival times worse (lower) for Stage 4 tumors than Stage 3 tumors? 
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Survival Time (months)} &  \textbf{Stage} \\ \hline \hline
+		52.9  &Stage 4 \\ \hline
+		12.9 &Stage 4 \\ \hline
+		34.9& Stage 4 \\ \hline
+		38.7 &Stage 4 \\ \hline
+		22.9& Stage 4 \\ \hline
+		22.8 &Stage 4 \\ \hline
+		60.0 &Stage 3 \\ \hline
+		95.8& Stage 3 \\ \hline
+		33.2 &Stage 3 \\ \hline
+		54.5 &Stage 3 \\ \hline
+		119.3 &Stage 3 \\ \hline
+		47.0 &Stage 3 \\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Example Data}
 \begin{itemize}
 	\item Assume Stage 4 tumors are the $y$'s and Stage 3 tumors are the $x$'s
+	\item Then we want to know if: $y \myeq x + \Delta$, where $\Delta < 0$
 \end{itemize}
-	\begin{center}
-		\begin{tabular}{|c|c|}
-			\hline
-			    \textbf{Survival Time} &  \textbf{Stage} \\ \hline \hline
-			52.9  &Stage 4 \\ \hline
-			12.9 &Stage 4 \\ \hline
-		    34.9& Stage 4 \\ \hline
-		    38.7 &Stage 4 \\ \hline
-			  22.9& Stage 4 \\ \hline
-		   22.8 &Stage 4 \\ \hline
-		   60.0 &Stage 3 \\ \hline
-			  95.8& Stage 3 \\ \hline
-		   33.2 &Stage 3 \\ \hline
-			  54.5 &Stage 3 \\ \hline
-			 119.3 &Stage 3 \\ \hline
-			  47.0 &Stage 3 \\ \hline
-		\end{tabular}
-	\end{center}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Survival Time (months)} &  \textbf{Stage} \\ \hline \hline
+		52.9  &Stage 4 \\ \hline
+		12.9 &Stage 4 \\ \hline
+		34.9& Stage 4 \\ \hline
+		38.7 &Stage 4 \\ \hline
+		22.9& Stage 4 \\ \hline
+		22.8 &Stage 4 \\ \hline
+		60.0 &Stage 3 \\ \hline
+		95.8& Stage 3 \\ \hline
+		33.2 &Stage 3 \\ \hline
+		54.5 &Stage 3 \\ \hline
+		119.3 &Stage 3 \\ \hline
+		47.0 &Stage 3 \\ \hline
+	\end{tabular}
+\end{center}
 \end{frame}
 
 \begin{frame}{Calculating the rank-sum}{Example Data}
@@ -117,7 +147,7 @@
 \begin{center}
 	\begin{tabular}{|c|c|}
 		\hline
-		\textbf{Survival Time} &  \textbf{Stage} \\ \hline \hline
+		\textbf{Survival Time (months)} &  \textbf{Stage} \\ \hline \hline
 		12.9 &Stage 4 \\ \hline
 		22.8 &Stage 4 \\ \hline
 		22.9& Stage 4 \\ \hline
@@ -141,7 +171,7 @@
 \begin{center}
 	\begin{tabular}{|c|c|c|}
 		\hline
-		\textbf{Survival Time} &  \textbf{Stage} & \textbf{Rank}\\ \hline \hline
+		\textbf{Survival Time (months)} &  \textbf{Stage} & \textbf{Rank}\\ \hline \hline
 		12.9 &Stage 4 & 1 \\ \hline
 		22.8 &Stage 4 & 2\\ \hline
 		22.9& Stage 4 & 3\\ \hline
@@ -165,7 +195,7 @@
 \begin{center}
 	\begin{tabular}{|c|c|c|}
 		\hline
-		\textbf{Survival Time} &  \textbf{Stage} & \textbf{Rank}\\ \hline \hline
+		\textbf{Survival Time (monts)} &  \textbf{Stage} & \textbf{Rank}\\ \hline \hline
 		12.9 &Stage 4 & 1 \\ \hline
 		22.8 &Stage 4 & 2\\ \hline
 		22.9& Stage 4 & 3\\ \hline
@@ -191,10 +221,203 @@
 			\item The sum of ranks, $T$, is a random variable that does not depend on the population distributions
 			\item And we have mathematical formulas for the mean and variance of the distribution for the sum of ranks:
 			\begin{gather*}
-			\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} \quad \quad \text{and} \quad \quad \sigma_T^{2}
+			\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} \quad \quad \text{and} \quad \quad \sigma_T^{2} = \frac{n_1 n_2}{12}(n_1 +n_2 +1)
 			\end{gather*}
 		\end{itemize}
+	\item Since $\mu_T$ is the expected value of $T$ when the null hypothesis is true (same population distribution), values of $T$ far from $\mu_T$ would be evidence they are not the same distribution
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Calculating the rank-sum}{Example Data}
+\begin{center}{\tiny
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Survival Time (months)} &  \textbf{Stage} & \textbf{Rank}\\ \hline \hline
+		12.9 &Stage 4 & 1 \\ \hline
+		22.8 &Stage 4 & 2\\ \hline
+		22.9& Stage 4 & 3\\ \hline
+		33.2 &Stage 3 & 4\\ \hline
+		34.9& Stage 4 & 5\\ \hline
+		38.7 &Stage 4 & 6\\ \hline
+		47.0 &Stage 3 & 7\\ \hline		
+		52.9  &Stage 4 & 8\\ \hline
+		54.5 &Stage 3 & 9\\ \hline				
+		60.0 &Stage 3 & 10\\ \hline
+		95.8& Stage 3 & 11\\ \hline
+		119.3 &Stage 3 & 12\\ \hline
+	\end{tabular}}
+\end{center}
+\begin{itemize}
+	\item Sum: $T = 1 + 2 + 3 + 5 + 6 + 8 = 25$
+	\item[]
+	\item $\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} = 6(6+6+1)/2 = 39$
+	\item[]
+	\item Is $T$ sufficiently different from $\mu_T$ to believe that the population distributions are different?
+\end{itemize}
+\end{frame}
+
+\section{Exact test}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Wilcoxon Rank-Sum Test}{Process}
+	\begin{itemize}
+		\item Null Hypothesis. $H_0$: The population distributions are identical $\Delta = 0$
+		\item[]
+		\item Alternative hypotheses (choose one). $H_a$:
+			\begin{enumerate}
+				\item Population 1 is shifted to the right of popluation 2 ($\Delta >0$)
+				\item Population 1 is shifted to the left of population 2 ($\Delta < 0$)
+				\item Population 1 and 2 are shifted from each other ($\Delta \neq 0$)
+				\item[]
+			\end{enumerate}
+		\item Rejection regions / rejection rules:
+		\begin{enumerate}
+			\item Reject $H_0$ if $T > T_U$ (one-tailed)
+			\item Reject $H_0$ if $T < T_L$ (one-tailed)
+			\item Reject $H_0$ if $T > T_U$ or $T < T_L$ (two-tailed)
+		\end{enumerate}
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{Wilcoxon Rank-Sum Test}{Critical values}
+	\begin{center}
+		\includegraphics{table}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Example Data}{Test setup}
+\begin{center}{\tiny
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Survival Time (months)} &  \textbf{Stage} & \textbf{Rank}\\ \hline \hline
+			12.9 &Stage 4 & 1 \\ \hline
+			22.8 &Stage 4 & 2\\ \hline
+			22.9& Stage 4 & 3\\ \hline
+			33.2 &Stage 3 & 4\\ \hline
+			34.9& Stage 4 & 5\\ \hline
+			38.7 &Stage 4 & 6\\ \hline
+			47.0 &Stage 3 & 7\\ \hline		
+			52.9  &Stage 4 & 8\\ \hline
+			54.5 &Stage 3 & 9\\ \hline				
+			60.0 &Stage 3 & 10\\ \hline
+			95.8& Stage 3 & 11\\ \hline
+			119.3 &Stage 3 & 12\\ \hline
+	\end{tabular}}
+\end{center}
+\begin{itemize}
+	\item $H_0$: The population distributions are identical $\Delta = 0$
+	\item $H_a$: Population 1 (Stage 4 tumors) is shifted to the left of population 2 (Stage 3 tumors) ($\Delta < 0$)
+	\item RR: reject $H_0$ if $T < T_L$ (one-tailed)
+	\begin{itemize}
+		\item From the table $T_L = 26$
+		\item We reject the null hypothesis
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Point estimate and confidence intervals for $\Delta$}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Point estimate for $\Delta$}
+	\begin{itemize}
+		\item Now we want to find an estimate and confidence interval for the population $\Delta$ using our sample
+		\item[]
+		\item Process:
+		\begin{itemize}
+			\item Compute $M = n_1 \times n_2$ possible differences: $x_i - y_j$ for $i = 1, 2, \hdots, n_1$ and $j = 1, 2, \hdots, n_2$
+			\item[]
+			\item We then order the set of differences: $D_{(1)} \leq D_{(2)} \leq \hdots \leq D_{(M)}$
+			\item[]
+			\item We then compute our estimate for $\Delta$ as the median of this set of $M$ differences
+			\item[]
+			\item Confidence intervals will also be based on this set of ordered differences
+ 		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Point estimate for $\Delta$}{Set of Differences}
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+	\textbf{Pair \#} & $i$ & $j$ & \textbf{Pop 1 value} & \textbf{Pop 2 value} & \textbf{Difference} \\ \hline \hline
+			1 &    1  &  1 &   52.9  &  60.0  &  -7.1\\ \hline
+			2 &   2  &  1  &  12.9  &  60.0  & -47.1\\ \hline
+			3  &  3  &  1  &  34.9 &   60.0  & -25.1\\ \hline
+			4 &   4  &  1  &  38.7  &  60.0  & -21.3\\ \hline
+			5 &   5  &  1  &  22.9  &  60.0  & -37.1\\ \hline
+			6 &   6  &  1  &  22.8  &  60.0  & -37.2\\ \hline
+			7 &   1  &  2  &  52.9  &  95.8  & -42.9\\ \hline
+			8 &   2  &  2  &  12.9  &  95.8  & -82.9\\ \hline
+			9 &   3  &  2  &  34.9  &  95.8  & -60.9\\ \hline
+			10 &  4  &  2  &  38.7  &  95.8  & -57.1\\ \hline
+			\vdots &\vdots &\vdots &\vdots & \vdots & \vdots \\ \hline
+			35  &    5   &   6   &   22.9   &     47  &   -24.1 \\ \hline
+			36   &   6   &   6   &   22.8   &     47   &  -24.2 \\ \hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate for $\Delta$}{Set of Differences}
+	\begin{itemize}
+		\item Set of ordered differences: 
+		\begin{gather*}
+			\{-106.4,  -96.5,  -96.4,  -84.4,  -82.9,  -80.6,  -73.0,  -72.9,  -66.4,\\ -60.9,  -57.1,  -47.1,  -42.9, -41.6,  -37.2,  -37.1,  -34.1, 
+			-31.7, \\ -31.6,  -25.1,  -24.2,  -24.1,  -21.3,  -20.3,  -19.6,  -15.8,  -12.1, \\ -10.4   -10.3,   -8.3,   -7.1,   -1.6,    1.7,    5.5, 5.9,   19.7\}
+		\end{gather*}
+		\item Point estimate formula: $\hat{\Delta} = D_{((M+1)/2)}$ if $M$ is an odd number or $\hat{\Delta} = \frac{1}{2} (D_{(M/2)} + D_{(M/2+1)})$ if $M$ is an even number
+		\item[]
+		\item Point estimate: $\hat{\Delta} = \frac{1}{2} (D_{18} + D_{(19)}) = .5(-31.7 - 31.6) = -31.65$
+		\begin{itemize}
+			\item We estimate that survival times are 31.65 months less for Stage 4 tumors than stage 3 tumors
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\Delta$}{Process}
+\begin{itemize}
+	\item To construct $100(1-\alpha) \%$ confidence intervals we will use:
+	\begin{itemize}
+		\item $\Delta_L = D_{(C_{\alpha / 2})}$
+		\item $\Delta_U = D_{(M + 1 - C_{\alpha / 2})}$
+		\item where:
+		\begin{gather*}
+		C_{\alpha / 2} = \frac{n_1 (2n_2 + n_1 + 1)}{2} + 1 - T_U
+		\end{gather*}
+				\item If $C_{\alpha / 2}$ is not an integer we round to the nearest integer
+	\end{itemize}
+	\item To construct a 95\% confidence interval ($\alpha = 0.05$) for $\Delta$, use $T_U$ corresponding to a $\alpha /2 = .025$ one-tailed test
+\end{itemize}
+\begin{center}
+	\includegraphics[width=.5 \linewidth]{table}
+\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\Delta$}{Example}
+	\begin{itemize}
+		\item First we find $C_{\alpha/2}$:
+		\begin{align*}
+		C_{0.025} &= \frac{n_1 (2n_2 + n_1 + 1)}{2} + 1 - T_U \\
+		&= \frac{6 (2(6) + 6 + 1)}{2} + 1 - 52 \\
+		&= 6
+		\end{align*}
+		\item Then we have:
+		\begin{itemize}
+			\item $\Delta_L = D_{(C_{\alpha / 2})} = D_{(6)} = -80.6$
+			\item $\Delta_U = D_{(M + 1 - C_{\alpha / 2})} = D_{(36 +1 - 6)} =D_{(31)} = -7.1$
+			\item[]
+		\end{itemize}
+	\item So a 95\% confidence interval for $\Delta$ is: $(-80.6, -7.1)$
+	\end{itemize}
+\end{frame}
+
+\section{Normal approximation}
+
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
 \end{document}

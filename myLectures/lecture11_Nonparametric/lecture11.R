@@ -39,5 +39,23 @@ x1 <- round(rweibull(6, shape = 1.5, scale = 3) * 12,1)
 set.seed(333)
 x2 <- round((rweibull(6, shape = 1.5, scale = 3) + 2.5) * 12,1)
 df3 <- data.frame(time = c(x1, x2), stage = c(rep("Stage 4", times = 6), rep("Stage 3", times = 6)))
+
+# Tests:
 wilcox.test(x = x1, y = x2)
-wilcox.test(time ~ stage, data = df3)
+test1 <- wilcox.test(time ~ stage, data = df3, exact = TRUE, alternative = "greater", conf.int = TRUE)
+test1$statistic + 6 * (6 + 1) / 2
+test1
+
+# Point estimate:
+combList <- expand.grid(x1 = 1:6, x2 = 1:6)
+combList$diff <- combList$x2Val <- combList$x1Val <- NA
+for(i in 1:nrow(combList)){
+  combList$x1Val[i] <- x1[combList$x1[i]]
+  combList$x2Val[i] <- x2[combList$x2[i]]
+}
+combList$diff <- combList$x1Val - combList$x2Val
+
+# Confidence intervals:
+sort(combList$diff)
+
+wilcox.test(time ~ stage, data = df3, exact = TRUE, alternative = "two.sided", conf.int = TRUE)

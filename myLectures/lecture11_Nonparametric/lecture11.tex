@@ -262,7 +262,7 @@
 \end{itemize}
 \end{frame}
 
-\section{Exact test}
+\section{Wilcoxon Rank-Sum test (small $n$)}
 
 \subsection{Hypothesis Tests}
 \begin{frame}{Outline}
@@ -422,7 +422,7 @@
 	\end{itemize}
 \end{frame}
 
-\section{Normal approximation}
+\section{Wilcoxon Rank-Sum test (Normal approximation)}
 \subsection{Hypothesis Tests}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
@@ -619,6 +619,290 @@
 	\item $(\Delta_L, \Delta_U) = \left(D_{(C_{\alpha / 2})}, D_{(M + 1 - C_{\alpha / 2})} \right) = \left(D_{(4327)}, D_{(5674)}\right) = (-110.2, -51.4)$
 	\item The point estimate will be the medians of the ordered set of differences: $-80.6$
 \end{itemize}
+\end{frame}
+
+\section{Wilcoxon Signed-Rank test (Paired data)}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Wilcoxon Signed-Rank Test}
+	\begin{itemize}
+		\item When the population distributions underlying some paired data are non-normal we use a Wilcoxon Signed-Rank test rather than the paired samples t-test
+		\item[]
+		\item Assumptions: 
+		\begin{itemize}
+			\item We assume that the population distributions of differences (between pairs) is symmetric about some unknown median $M$
+			\item[]
+			\item We want to know if the distribution of differences is shifted left or right from some specific value $D_0$ (in most cases $D_0 = 0$)
+			\item[]
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example data}
+\begin{itemize}
+			\item Example: An exercise scientist wants to know if a new swimming program improves athletes' time in swimming a 200M freestyle. The distribution of 200M freestyle times is non-normal. He has 10 swimmers take a baseline test and a follow-up test after 4 weeks of training
+\end{itemize}
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			  \textbf{Athlete} &  \textbf{Baseline} &      \textbf{Post}    & \textbf{Difference} \\ \hline 
+			  \hline
+1  &     119.0 &  118.3 &  -0.7\\ \hline
+2   &    145.6 &  139.6 &  -6.0\\ \hline
+3    &    97.7 &   95.9 &  -1.8\\ \hline
+4    &   123.4 &  116.0 &  -7.4\\ \hline
+5    &   103.0 &  101.3 &  -1.7\\ \hline
+6    &   116.8 &  110.1 &  -6.7\\ \hline
+7     &  135.7 &  134.7 &  -1.0\\ \hline
+8     &  127.8 &  128.1 &   0.2\\ \hline
+9     &  124.3 &  125.4 &   1.1\\ \hline
+10    &  113.5 &  112.0 &  -1.5\\ \hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Example data}
+	\begin{center}
+		\includegraphics[width=.8 \linewidth]{scatter}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Example data}
+\begin{center}
+	\includegraphics[width=.85 \linewidth]{timecourse}
+\end{center}
+\end{frame}
+
+\begin{frame}{Deriving a test statistic}
+\begin{enumerate}
+	\item Calculate the differences in the $n$ pairs of observations
+	\item[]
+	\item Subtract $D_0$ from all of the differences
+	\item[]
+	\item Remove all zero values. Let $n$ be the number of non-zero values
+	\item[]
+	\item List the absolute values of the differences in increasing orders and assign them the ranks $1, 2, \hdots, n$ (or the average of ranks in case of ties)
+	\item[]
+	\item A few intermediate calculations
+	\begin{itemize}
+		\item $n =$ the number of pairs of observations with a nonzero difference
+		\item $T_+ = $  the sum of the positive ranks. If none then $T_+=0$
+		\item $T_- = $ the sum of the negative ranks. If none then $T_- = 0$
+		\item $T = $ the smaller of $T_+ = $ and $T_-$ 
+	\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Example}{Towards a test statistic}
+	\begin{itemize}
+		\item Assume we are going to want to test against $D_0 = 0$ (no change in 200M times)
+	\end{itemize}
+	\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Athlete} &  \textbf{Baseline} &      \textbf{Post}    & \textbf{Difference} \\ \hline 
+		\hline
+		1  &     119.0 &  118.3 &  -0.7\\ \hline
+		2   &    145.6 &  139.6 &  -6.0\\ \hline
+		3    &    97.7 &   95.9 &  -1.8\\ \hline
+		4    &   123.4 &  116.0 &  -7.4\\ \hline
+		5    &   103.0 &  101.3 &  -1.7\\ \hline
+		6    &   116.8 &  110.1 &  -6.7\\ \hline
+		7     &  135.7 &  134.7 &  -1.0\\ \hline
+		8     &  127.8 &  128.1 &   0.2\\ \hline
+		9     &  124.3 &  125.4 &   1.1\\ \hline
+		10    &  113.5 &  112.0 &  -1.5\\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Towards a test statistic}{Step 1}
+\begin{itemize}
+	\item Calculate the differences in the $n$ pairs of observations
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		\textbf{Athlete} &  \textbf{Baseline} &      \textbf{Post}    & \textbf{Difference} \\ \hline 
+		\hline
+		1  &     119.0 &  118.3 &  -0.7\\ \hline
+		2   &    145.6 &  139.6 &  -6.0\\ \hline
+		3    &    97.7 &   95.9 &  -1.8\\ \hline
+		4    &   123.4 &  116.0 &  -7.4\\ \hline
+		5    &   103.0 &  101.3 &  -1.7\\ \hline
+		6    &   116.8 &  110.1 &  -6.7\\ \hline
+		7     &  135.7 &  134.7 &  -1.0\\ \hline
+		8     &  127.8 &  128.1 &   0.2\\ \hline
+		9     &  124.3 &  125.4 &   1.1\\ \hline
+		10    &  113.5 &  112.0 &  -1.5\\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Towards a test statistic}{Step 2}
+\begin{itemize}
+	\item Subtract $D_0$ from all of the differences (in our case $D_0 = 0$)
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Athlete} &  \textbf{Baseline} &      \textbf{Post}    & \textbf{Difference} & $d_i -D_0$ \\ \hline 
+		\hline
+		1  &     119.0 &  118.3 &  -0.7 & -0.7\\ \hline
+		2   &    145.6 &  139.6 &  -6.0 & -6.0\\ \hline
+		3    &    97.7 &   95.9 &  -1.8 &  -1.8\\ \hline
+		4    &   123.4 &  116.0 &  -7.4&  -7.4\\ \hline
+		5    &   103.0 &  101.3 &  -1.7&  -1.7\\ \hline
+		6    &   116.8 &  110.1 &  -6.7&  -6.7\\ \hline
+		7     &  135.7 &  134.7 &  -1.0&  -1.0\\ \hline
+		8     &  127.8 &  128.1 &   0.2&   0.2\\ \hline
+		9     &  124.3 &  125.4 &   1.1&   1.1\\ \hline
+		10    &  113.5 &  112.0 &  -1.5&  -1.5\\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Towards a test statistic}{Step 3}
+\begin{itemize}
+\item Remove all zero values. Let $n$ be the number of non-zero values
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Athlete} &  \textbf{Baseline} &      \textbf{Post}    & \textbf{Difference} & $d_i -D_0$ \\ \hline 
+		\hline
+		1  &     119.0 &  118.3 &  -0.7 & -0.7\\ \hline
+		2   &    145.6 &  139.6 &  -6.0 & -6.0\\ \hline
+		3    &    97.7 &   95.9 &  -1.8 &  -1.8\\ \hline
+		4    &   123.4 &  116.0 &  -7.4&  -7.4\\ \hline
+		5    &   103.0 &  101.3 &  -1.7&  -1.7\\ \hline
+		6    &   116.8 &  110.1 &  -6.7&  -6.7\\ \hline
+		7     &  135.7 &  134.7 &  -1.0&  -1.0\\ \hline
+		8     &  127.8 &  128.1 &   0.2&   0.2\\ \hline
+		9     &  124.3 &  125.4 &   1.1&   1.1\\ \hline
+		10    &  113.5 &  112.0 &  -1.5&  -1.5\\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Towards a test statistic}{Step 4}
+\begin{itemize}
+	\item List the absolute values of the differences in increasing orders and assign them the ranks $1, 2, \hdots, n$ (or the average of ranks for ties)
+\end{itemize}
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		$d_i -D_0$ & \textbf{$|d_i - D_0|$} &  \textbf{Rank}  \\ \hline \hline
+   0.2 & 0.2 &     1\\ \hline
+  -0.7  &0.7  &    2\\ \hline
+  -1.0  &1.0  &    3\\ \hline
+   1.1  & 1.1  &    4\\ \hline
+  -1.5  & 1.5  &    5\\ \hline
+  -1.7  &1.7  &    6\\ \hline
+  -1.8  & 1.8  &    7\\ \hline
+  -6.0  & 6.0  &    8\\ \hline
+  -6.7  & 6.7  &    9\\ \hline
+  -7.4  &7.4  &   10\\ \hline
+	\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Towards a test statistic}{Step 5}
+\begin{itemize}
+	\item $n = 10$ the number of pairs of observations with a nonzero difference
+	\item $T_+ = 5$  the sum of the positive ranks
+	\item $T_- = 50$ the sum of the negative ranks
+	\item $T^* = 5$ the smaller of $T_+ = $ and $T_-$ 
+\end{itemize}
+{\tiny
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		$d_i -D_0$ & \textbf{$|d_i - D_0|$} &  \textbf{Rank}  \\ \hline \hline
+		0.2 & 0.2 &     1\\ \hline
+		-0.7  &0.7  &    2\\ \hline
+		-1.0  &1.0  &    3\\ \hline
+		1.1  & 1.1  &    4\\ \hline
+		-1.5  & 1.5  &    5\\ \hline
+		-1.7  &1.7  &    6\\ \hline
+		-1.8  & 1.8  &    7\\ \hline
+		-6.0  & 6.0  &    8\\ \hline
+		-6.7  & 6.7  &    9\\ \hline
+		-7.4  &7.4  &   10\\ \hline
+	\end{tabular}
+\end{center}}
+\end{frame}
+
+\begin{frame}{The sampling distribution}
+	\begin{itemize}
+		\item The sampling distribution for the test statistic $T$ has the following parameters:
+		\begin{gather*}
+			\mu_{T} = \frac{n (n+1)}{4} \quad \quad \text{and} \quad \quad \sigma_{T}^2 = \frac{n(n+1)(2n+1)}{24}
+		\end{gather*}
+		\item As with the Wilcoxon Rank-Sum test statistic, when there are ties we adjust the variance:
+		\begin{gather*}
+			\sigma_{T}^2 = \frac{n(n+1)(2n+1)-1/2 \sum_j t_j (t_j-1)(t_j+1)}{24}
+		\end{gather*}
+		where $j$ is the index for the groups of ties and $t_j$ is the number of tied ranks in group $j$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Wilcoxon Signed-Rank test}
+		\begin{itemize}
+		\item Null Hypothesis. $H_0$: $M=D_0$ where $M$ is the median of population differences
+		\item[]
+		\item Alternative hypotheses (choose one). $H_a$:
+		\begin{enumerate}
+			\item $M > D_0$
+			\item $M < D_0$
+			\item $M \neq D_0$
+			\item[]
+		\end{enumerate}
+		\item Test statistic: $T^*$ is the smaller of $T_-$ and $T_+$
+		\item[]
+		\item Rejection regions / rejection rules:
+		\begin{enumerate}
+			\item Reject $H_0$ if $T^* \leq T$ for one-sided critical value (Appendix 6)
+			\item Reject $H_0$ if $T^* \leq T$ for one-sided critical value (Appendix 6)
+			\item Reject $H_0$ if $T^* \leq T$ for two-sided critical value (Appendix 6)
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Wilcoxon Signed-Rank test}{Critical values}
+	\begin{center}
+		\includegraphics[width=.8 \linewidth]{critical}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Swim Program example}
+	\begin{itemize}
+		\item Assume the exercise scientist wants to test whether the program improves times (smaller times = negative differences) at $\alpha = .05$
+		{\tiny
+			\begin{center}
+				\begin{tabular}{|c|c|c|}
+					\hline
+					$d_i -D_0$ & \textbf{$|d_i - D_0|$} &  \textbf{Rank}  \\ \hline \hline
+					0.2 & 0.2 &     1\\ \hline
+					-0.7  &0.7  &    2\\ \hline
+					-1.0  &1.0  &    3\\ \hline
+					1.1  & 1.1  &    4\\ \hline
+					-1.5  & 1.5  &    5\\ \hline
+					-1.7  &1.7  &    6\\ \hline
+					-1.8  & 1.8  &    7\\ \hline
+					-6.0  & 6.0  &    8\\ \hline
+					-6.7  & 6.7  &    9\\ \hline
+					-7.4  &7.4  &   10\\ \hline
+				\end{tabular}
+		\end{center}}
+	\item Hypothesis test: $H_0: M = 0$ versus  $H_a: M < 0$ (one-sided test)
+	\item[]
+	\item From before: $n = 10$, $T^* = 5$
+	\item[] 
+	\item From the appendix table our critical value is $T = 8$, so since $T^* < T$ we reject the null hypothesis (we have evidence the program improves times!)
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{The end of Lecture \#11}

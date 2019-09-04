@@ -1,0 +1,122 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\title[Lecture 12]{Lecture 12: Power \& Sample Size}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{October 2, 2019}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Confidence intervals}{What is a 95\% CI?}
+\begin{itemize}
+	\item Back to confidence intervals for $\mu$, with $\sigma$ known:
+	\begin{gather*}
+		\bar{y}\pm z_{1-\alpha/2} \sigma \sqrt{n}
+	\end{gather*}
+	\item The idea was to fix $\alpha$ our probability of making a Type I error or equivalently to fix a level of confidence $100(1-\alpha)\%$
+	\item[]
+	\item For example, if we want a 95\% confidence interval for $\mu$ we have $\alpha = 0.05$
+	\item[]
+	\item We expect that \emph{on average} a 95\% CI will contain $\mu$,  95\% of the time
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals}{What is a 95\% CI?}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{coverage1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals}{What is a 95\% CI?}
+\begin{center}
+	\includegraphics[width=.9\linewidth]{coverage2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals}{What is a 95\% CI?}
+\begin{center}
+	\includegraphics[width=.9\linewidth]{coverage3}
+\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals}{What do we control?}
+\begin{itemize}
+	\item Back to confidence intervals for $\mu$, with $\sigma$ known:
+	\begin{gather*}
+	\bar{y}\pm z_{1-\alpha/2} \sigma \sqrt{n}
+	\end{gather*}
+	\item There are two values that we exercise control over: $\alpha$ and $n$
+	\item[]
+	\item $\bar{y}$ is computed from the data and $\sigma$ is known (or estimated from the data). We cannot control these
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Changing $\alpha$}
+	\begin{center}
+			\includegraphics[width=.9\linewidth]{coverage1b}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Changing $\alpha$}
+\begin{center}
+	\includegraphics[width=.7\linewidth]{coverage1c}
+\end{center}
+\end{frame}
+
+\begin{frame}{Changing $\alpha$}
+\begin{itemize}
+	\item You may notice that the smaller the interval the less likely the population parameter is to be in the interval 
+	\begin{itemize}
+		\item Small $\alpha$ $\rightarrow$ wide interval ($\mu$ is more likely to be in the CI)
+		\item Large $\alpha$ $\rightarrow$ narrow interval ($\mu$ is less likely to be in the CI)
+	\end{itemize}
+	\item[]
+	\item The level of $\alpha$ is ultimately \emph{your} choice
+	\item[]
+	\item Some conventions exist. ($\alpha = .05$) is pervasive
+	\item[]
+	\item Ultimately you decide the level of risk ($\alpha$) you can tolerate for committing a Type 1 error (having a population parameter $\mu$ not being in the CI)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Changing $n$}
+\begin{center}
+	\includegraphics[width=.9\linewidth]{coverage1bb}
+\end{center}
+\end{frame}
+
+\begin{frame}{Changing $n$}
+\begin{center}
+	\includegraphics[width=.9\linewidth]{coverage1bbb}
+\end{center}
+\end{frame}
+
+\begin{frame}{Changing $n$}
+\begin{center}
+	\includegraphics[width=.7\linewidth]{coverage1cc}
+\end{center}
+\end{frame}
+
+\end{document}

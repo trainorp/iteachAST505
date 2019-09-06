@@ -127,3 +127,99 @@ ggplot(df2, aes()) + geom_segment(aes(x = x, xend = x, y = lower, yend = upper, 
   theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
 
+############ Water example ############
+set.seed(333)
+w1 <- data.frame(lead = rnorm(n = 10, mean = 4.5, sd = 1))
+w1$lead <- round(w1$lead, 2)
+w1Mean <- mean(w1$lead)
+w1z <- (w1Mean - 5)/(1 / sqrt(length(w1$lead)))
+
+png(file = "rr.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) + 
+  stat_function(fun = function(x) dnorm(x), xlim = c(-3.5, qnorm(.01)), geom = "area", fill = "cyan", n = 10000) +
+  stat_function(fun = function(x) dnorm(x), lwd = 1, n = 10000) + 
+  geom_segment(aes(x = qnorm(.01), xend = qnorm(.01), y = 0, yend = dnorm(qnorm(.01)))) +
+  scale_x_continuous(breaks = c(w1z, 0), labels = c("z*", 0)) +
+  annotate("point", x = w1z, y = 0, color = "red", size = 3) +
+  annotate("label", x = w1z, y = .1, label = "Test statistic is not in RR") +
+  labs(x = "", y = "Density") + theme_bw() +
+  ggtitle(expression(paste("Rejection region for alternative hypothesis: ", mu < mu[0]))) +
+  theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+w1z2 <- (w1Mean - 5) / (1 / sqrt(100))
+pnorm(w1z2)
+
+
+############ Overlapping histograms ############
+df5 <- data.frame(x = seq(0, 10, .001), Distribution = "Null")
+df5$Density <- dnorm(df5$x, mean = 5, sd = 1)
+df6 <- data.frame(x = seq(4.5 - 5, 4.5 + 5, .001), Distribution = "Specific Alternative\nmu=4")
+df6$Density <- dnorm(df5$x, mean = 4.5, sd = 1)
+df5 <- rbind(df5, df6)
+png(file = "overlap0.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) + theme_bw() +
+  labs(x = "Lead (ppb)") + ggtitle("Population distributions") + theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+df5 <- data.frame(x = seq(0, 10, .001), Distribution = "Null")
+df5$Density <- dnorm(df5$x, mean = 5, sd = 2 / sqrt(5))
+df6 <- data.frame(x = seq(4.5 - 5, 4.5 + 5, .001), Distribution = "Specific Alternative\nmu=4")
+df6$Density <- dnorm(df5$x, mean = 4.5, sd = 2 / sqrt(5))
+df5 <- rbind(df5, df6)
+png(file = "overlap1.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) +
+  geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=4" & x > 3), aes(x = x, y = Density, color = NULL),
+            fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE) +
+  theme_bw() +
+  labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 5)") + theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+df5 <- data.frame(x = seq(0, 10, .001), Distribution = "Null")
+df5$Density <- dnorm(df5$x, mean = 5, sd = 2 / sqrt(10))
+df6 <- data.frame(x = seq(4.5 - 5, 4.5 + 5, .001), Distribution = "Specific Alternative\nmu=4")
+df6$Density <- dnorm(df5$x, mean = 4.5, sd = 2 / sqrt(10))
+df5 <- rbind(df5, df6)
+png(file = "overlap2.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) + 
+  geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=4" & x > 3.7), aes(x = x, y = Density, color = NULL),
+            fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE)+
+  theme_bw() +
+  labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 10)") + theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+df5 <- data.frame(x = seq(0, 10, .001), Distribution = "Null")
+df5$Density <- dnorm(df5$x, mean = 5, sd = 2 / sqrt(25))
+df6 <- data.frame(x = seq(4.5 - 5, 4.5 + 5, .001), Distribution = "Specific Alternative\nmu=4")
+df6$Density <- dnorm(df5$x, mean = 4.5, sd = 2 / sqrt(25))
+df5 <- rbind(df5, df6)
+png(file = "overlap3.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) + 
+  geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=4" & x > 4.15), aes(x = x, y = Density, color = NULL),
+            fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE)+
+  theme_bw() +
+  labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 25)") + theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+df5 <- data.frame(x = seq(0, 10, .001), Distribution = "Null")
+df5$Density <- dnorm(df5$x, mean = 5, sd = 1 / sqrt(100))
+df6 <- data.frame(x = seq(4.5 - 5, 4.5 + 5, .001), Distribution = "Specific Alternative\nmu=4")
+df6$Density <- dnorm(df5$x, mean = 4.5, sd = 1 / sqrt(100))
+df5 <- rbind(df5, df6)
+png(file = "overlap4.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) + theme_bw() +
+  labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 100)") + theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+df5 <- data.frame(x = seq(0, 10, .001), Distribution = "Null")
+df5$Density <- dnorm(df5$x, mean = 5, sd = 2 / sqrt(5))
+df6 <- data.frame(x = seq(3 - 5, 3 + 5, .001), Distribution = "Specific Alternative\nmu=2.5")
+df6$Density <- dnorm(df5$x, mean = 4.5, sd = 2 / sqrt(5))
+df5 <- rbind(df5, df6)
+png(file = "overlap1b.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) +
+  geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=2.5" & x > 3), aes(x = x, y = Density, color = NULL),
+            fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE) +
+  theme_bw() +
+  labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 5)") + theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()

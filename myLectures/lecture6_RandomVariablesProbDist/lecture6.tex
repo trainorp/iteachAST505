@@ -31,13 +31,13 @@
 
 \begin{frame}{Random Variables}
 	\begin{itemize}
-		\item \textbf{\emph{Random Variable:}} A variable whose values depend on outcomes of a stochastic process or phenomenon that is ``random''
+		\item \textbf{\emph{Random Variable:}} A variable whose values depend on outcomes of a stochastic process or phenomenon that is ``random'' \pause
 		\item[]
-		\item \textbf{\emph{Qualitative random variable:}} A random variable in which the possible responses are categories that do not correspond to numerical amounts
+		\item \textbf{\emph{Qualitative random variable:}} A random variable in which the possible responses are categories that do not correspond to numerical amounts \pause
 		\begin{itemize}
-			\item Example: In a study of the relationship between sugary beverages and diabetes, diabetes status: \{yes, no\} would be a qualitative RV
-			\item Example 2: In a study of gene variants and the color of peas, \{yellow, green, white\} would be a qualitative RV
-			\item There is no natural ordering of the values. It doesn't make sense to say no $<$ yes or that yellow $<$ green $<$ white
+			\item Example: In a study of the relationship between sugary beverages and diabetes, diabetes status: \{yes, no\} would be a qualitative RV \pause
+			\item Example 2: In a study of gene variants and the color of peas, \{yellow, green, white\} would be a qualitative RV \pause
+			\item There is no natural ordering of the values. It doesn't make sense to say no $<$ yes or that yellow $<$ green $<$ white \pause
 			\item May also be called a nominal random variable or sometimes a categorical variable*
 		\end{itemize}
 	\end{itemize}
@@ -45,16 +45,16 @@
 
 \begin{frame}{Random Variables}
 	\begin{itemize}
-		\item \textbf{\emph{Quantitative random variable:}} A random variable in which the possible responses vary in numerical magnitude
+		\item \textbf{\emph{Quantitative random variable:}} A random variable in which the possible responses vary in numerical magnitude \pause
 		\begin{itemize}
-			\item Example: In a study of the relationship between sugary beverages and diabetes, blood glucose concentration would be a quantitative RV
-			\item There exists a natural ordering between the values. It does make sense to say 10 mg/dL $>$ 5 mg/dL
+			\item Example: In a study of the relationship between sugary beverages and diabetes, blood glucose concentration would be a quantitative RV \pause
+			\item There exists a natural ordering between the values. It does make sense to say 10 mg/dL $>$ 5 mg/dL \pause
 			\item May also be called a numeric random variable
 		\end{itemize}
 	\item[]
 	\item Types of quantitative random variables:
 	\begin{itemize}
-		\item \textbf{\emph{Discrete random variable:}} When values of a quantitative rv can assume only a countable number of values, the variable is called a discrete random variable
+		\item \textbf{\emph{Discrete random variable:}} When values of a quantitative rv can assume only a countable number of values, the variable is called a discrete random variable \pause
 		\item \textbf{\emph{Continuous random variable:}} When the values of a quantitative rv can assume any of an uncountable number of values on a line interval, the variable is a continuous random variable
 	\end{itemize}
 	\end{itemize}
@@ -67,11 +67,11 @@
 
 \begin{frame}{A Probability Distribution}
 	\begin{itemize}
-		\item The sum of a roll of two dice is a discrete random variable
-		\item Here are all of the possible rolls--remember these are not the sum yet!
+		\item The sum of a roll of two dice is a discrete random variable \pause
+		\item Here are all of the possible rolls--remember these are not the sum yet! \pause
 		\begin{center}
 			\includegraphics[width=0.8\linewidth]{../lecture5_EventsProbabilityLaws/allDice2}
-		\end{center}
+		\end{center} \pause
 		\item Here are the number of ways to get possible sums:
 		{ \tiny
 		\begin{center}
@@ -99,7 +99,7 @@
 	\begin{itemize}
 		\item The sum of a roll of two dice is a discrete random variable 
 		\item[]
-		\item Now we add the relative frequency of each sum:
+		\item Now we add the relative frequency of each sum: \pause
 		{ \tiny
 			\begin{center}
 				\begin{tabular}{|c|c|c|} \hline
@@ -118,7 +118,7 @@
 					13  &   2 & 0.041\\ \hline
 					14  &   1 &  0.020\\ \hline
 				\end{tabular}
-		\end{center}}
+		\end{center}} \pause
 	\item If we define the random variable $y$, where $y = 2, 3, 4, \hdots, 14$, then the probability distribution of $y$ is $P(y)$, where $P(2) = 0.077, P(3) = 0.154, P(4) = 0.231, \hdots, P(14) = 0.077$ 
 	\end{itemize}
 \end{frame}
@@ -145,7 +145,7 @@
 					13  &  0.041 \\ \hline
 					14  & 0.020\\ \hline
 				\end{tabular}
-		\end{center}}
+		\end{center}} \pause
 	\vspace{10pt}
 		\item \emph{\textbf{Probability Distribution Function:}} The probability distribution function of a random variable describes for each possible value of the random variable, the probability (or likelihood) of that value
 	\end{itemize}
@@ -193,9 +193,9 @@
 \begin{frame}{Discrete Random Variable Facts}
 	A few things that are true about discrete random variables:
 	\begin{itemize}
-		\item $0 < P(y) < 1$ for all $y$
+		\item $0 < P(y) < 1$ for all $y$ \pause
 		\item[]
-		\item The sum of all the $P(y)$ is 1. That is $\sum_{i} P(y_i) = 1$
+		\item The sum of all the $P(y)$ is 1. That is $\sum_{i} P(y_i) = 1$ \pause
 		\item[]
 		\item The probabilities are additive. For example if we are rolling two dice and $y$ is the sum, $P(2 \text{ or } 7) = P(2) + P(7) = 0.020 + 0.122 = 0.142$
 	\end{itemize}
@@ -208,11 +208,11 @@
 
 \begin{frame}{Binomial Random Variables}
 	\begin{itemize}
-		\item On the first day of class I mentioned that there are common types of data encountered in all scientific disciplines--here some are!
+		\item On the first day of class I mentioned that there are common types of data encountered in all scientific disciplines--here some are! \pause
 		\item[]
-		\item Many experiments and/or studies generate ``binary'' data where there are two possible responses:
+		\item Many experiments and/or studies generate ``binary'' data where there are two possible responses: \pause
 		\begin{itemize}
-			\item Political polls: ``Do you approve of this proposed law?''
+			\item Political polls: ``Do you approve of this proposed law?'' \pause
 			\item Classic toxicology experiments: An experiment where a litter of rats are injected with a potential carcinogen. Random variable of whether or not a tumor was found after a specific time \{yes, no\}
 		\end{itemize}
 	\end{itemize}
@@ -220,21 +220,21 @@
 
 \begin{frame}{Binomial experiments}
 	\begin{itemize}
-		\item \textbf{\emph{Binomial experiment:}} An experiment is a binomial experiment if:
+		\item \textbf{\emph{Binomial experiment:}} An experiment is a binomial experiment if: \pause
 		\begin{enumerate}
-			\item The experiment consists of $n$ identical trials
-			\item Each trial results in one of two outcomes (``success'' and ``failure'')
-			\item The probability of sucess on a single trial is equal to $\pi$, and $\pi$ remains the same from trial to trial
-			\item The trials are independent--the outcome of one does not influence the outcome of another
+			\item The experiment consists of $n$ identical trials \pause
+			\item Each trial results in one of two outcomes (``success'' and ``failure'') \pause
+			\item The probability of sucess on a single trial is equal to $\pi$, and $\pi$ remains the same from trial to trial \pause
+			\item The trials are independent--the outcome of one does not influence the outcome of another \pause
 			\item The random variable $y$ is the number of successes during the $n$ trials
 		\end{enumerate}
 	\item[]
-	\item Example: we test a lot of pregnancy tests (1000 tests) to estimate the proportion that give negative readings (a failure) when exposed to synthetic hormones
+	\item Example: we test a lot of pregnancy tests (1000 tests) to estimate the proportion that give negative readings (a failure) when exposed to synthetic hormones \pause
 	\begin{enumerate}
-		\item The experiment does consist of 1,000 identical trials
-		\item There are only two outcomes--``success'' and ``failure''
-		\item The probability of success is constant
-		\item The trials are independent 
+		\item The experiment does consist of 1,000 identical trials \pause
+		\item There are only two outcomes--``success'' and ``failure'' \pause
+		\item The probability of success is constant \pause
+		\item The trials are independent \pause
 		\item The random variable $y$ is the number of successes during the $n$ trials
 	\end{enumerate}
 	\end{itemize}
@@ -242,11 +242,11 @@
 
 \begin{frame}{Binomial Random Variables}
 	\begin{itemize}
-		\item We can compute $P(y)$ for a binomial random variable if we know $\pi$
+		\item We can compute $P(y)$ for a binomial random variable if we know $\pi$ \pause
 		\item Given a fixed $n$, the probability distribution function for a binomial random variable is: 
 		\begin{gather*}
 		P(y) = \frac{n!}{y!(n-y)!} \pi^y (1-\pi)^{n-y}
-		\end{gather*}
+		\end{gather*} \pause
 		where:
 		\begin{align*}
 		n &= \text{number of trials} \\
@@ -260,13 +260,13 @@
 
 \begin{frame}{Binomial Random Variables}
 	\begin{itemize}
-		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. 
-		\item Example question \#1: What is the probability that 2 out of 10 field-captured ticks carry the bacteria?
+		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\% \pause
+		\item Example question \#1: What is the probability that 2 out of 10 field-captured ticks carry the bacteria? \pause
 		\begin{itemize}
 			\item $n = 10$
 			\item $\pi = 0.18$
 			\item $y = 2$
-		\end{itemize}
+		\end{itemize} \pause
 		\begin{align*}
 			P(y) &= \frac{n!}{y!(n-y)!} \pi^y (1-\pi)^{n-y} \\
 			P(2) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} \\
@@ -278,12 +278,12 @@
 
 \begin{frame}{Binomial Random Variables}
 	\begin{itemize}
-		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. 
-		\item Example question \#2: What is the probability that two or less (0, 1, 2) of 10 field-captured ticks carry the bacteria?
+		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. \pause
+		\item Example question \#2: What is the probability that two or less (0, 1, 2) of 10 field-captured ticks carry the bacteria? \pause
 		\begin{itemize}
 			\item $n = 10$
 			\item $\pi = 0.18$
-		\end{itemize}
+		\end{itemize} \pause
 		\begin{align*}
 		P(0) &= \frac{10!}{0! \times 10!} \times 0.18^{0} \times 0.82^{10} = 0.1375 \\
 		P(1) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} = 0.3017 \\
@@ -293,31 +293,15 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Binomial Random Variables}
-	\begin{itemize}
-		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. 
-		\item Example question \#2: What is the probability that two or less (0, 1, 2) of 10 field-captured ticks carry the bacteria?
-		\begin{itemize}
-			\item $n = 10$
-			\item $\pi = 0.18$
-		\end{itemize}
-		\begin{align*}
-		P(0) &= \frac{10!}{0! \times 10!} \times 0.18^{0} \times 0.82^{10} = 0.1375 \\
-		P(1) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} = 0.3017 \\
-		P(2) &= \frac{10!}{2! \times 8!} \times 0.18^{2} \times 0.82^{8} = 0.2980\\
-		P(y \leq 2) &= P(0) + P(1) + P(2) = 0.7372
-		\end{align*}
-	\end{itemize}
-\end{frame}
 
 \begin{frame}{Binomial Random Variables}
 	\begin{itemize}
-		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. 
+		\item Ticks such as \emph{Dermacentor andersoni} (the Rocky Mountain wood tick) may carry the bacteria \emph{rickettsia} which causes Rocky Mountain spotted fever. We believe that the probability a tick is a host to the bacteria is 18\%. \pause
 		\item[]
-		\item Example question \#3: What is the probability that more than two (3, 4, 5, 6, 7, 8, 9, 10) of 10 field-captured ticks carry the bacteria?
+		\item Example question \#3: What is the probability that more than two (3, 4, 5, 6, 7, 8, 9, 10) of 10 field-captured ticks carry the bacteria? \pause
 		\begin{itemize}
 			\item Recall that if $A$ is an event, then $P(A^c) = 1- P(A)$
-		\end{itemize}
+		\end{itemize} \pause
 		\begin{align*}
 			P(y > 2) &= 1 - P(y\leq 2) \\
 			&= 1 - 0.7372 \\
@@ -372,7 +356,7 @@
 		\end{column}
 		\begin{column}{0.5 \textwidth}
 			\begin{itemize}
-				\item This gives us an idea of whether an observed set of data is ``rare'' or ``typical'' assuming that our belief that 18\% of the ticks carry the bacteria is true
+				\item This gives us an idea of whether an observed set of data is ``rare'' or ``typical'' assuming that our belief that 18\% of the ticks carry the bacteria is true \pause
 				\item[]
 				\item If we go to a new state and in a field sample of 100 ticks 30 carry the bacteria, do we still believe that 18\% of the population carry the bacteria?
 			\end{itemize}
@@ -387,27 +371,27 @@
 
 \begin{frame}{Poisson Random Variables}
 	\begin{itemize}
-		\item Another common type of random variable observed in the sciences is Poisson random variables
+		\item Another common type of random variable observed in the sciences is Poisson random variables \pause
 		\item[]
-		\item Describe processes in which events occur ``randomly'' in time and we are interested in the number of events over a time interval
+		\item Describe processes in which events occur ``randomly'' in time and we are interested in the number of events over a time interval \pause
 		\item[]
 		\item Examples: 
 		\begin{itemize}
-			\item Number of photons (or some type of particle) hitting a detector over a minute
-			\item Number of new DNA variants arising in a population over a day
-			\item Number of cars arriving at a toll booth between 10 and 11 PM
-			\item Number of patients presenting to an Emergency room between 10 and 11 PM
+			\item Number of photons (or some type of particle) hitting a detector over a minute \pause
+			\item Number of new DNA variants arising in a population over a day \pause
+			\item Number of cars arriving at a toll booth between 10 and 11 PM \pause
+			\item Number of patients presenting to an Emergency room between 10 and 11 PM \pause
 			\item Number of calls arriving at a call center during an hour
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Poisson Random Variables}
-	\textbf{\emph{Poisson Random Variables:}} Let $y$ be the number of events occurring during a fixed interval of time. $y$ is a Poisson random variable provided the following are true:
+	\textbf{\emph{Poisson Random Variables:}} Let $y$ be the number of events occurring during a fixed interval of time. $y$ is a Poisson random variable provided the following are true: \pause
 		\begin{enumerate}
-			\item Events occur one at a time; cannot have two or more events at the same time*
-			\item The occurrence of one event in a given period of time is independent of the timing of other events
-			\item The expected number of events during one time interval is the same as the expected number of events in another time interval (of equal length)
+			\item Events occur one at a time; cannot have two or more events at the same time* \pause
+			\item The occurrence of one event in a given period of time is independent of the timing of other events \pause
+			\item The expected number of events during one time interval is the same as the expected number of events in another time interval (of equal length) \pause
 		\end{enumerate}
 		{\tiny
 			*although two events could take place at very close times (e.g. 13.3456839358 seconds is not the same as 13.3456839359)}
@@ -415,16 +399,16 @@
 
 \begin{frame}{Poisson Random Variables}
 	\begin{itemize}
-		\item Let $y$ be the number of events occurring during a fixed interval of time, the probability distribution function for a Poisson random variable is:
+		\item Let $y$ be the number of events occurring during a fixed interval of time, the probability distribution function for a Poisson random variable is: \pause
 		\begin{gather*}
 			P(y) = \frac{\mu ^ y e^{-mu}}{y!}
 		\end{gather*}
-		where $\mu$ is the event rate per unit time
+		where $\mu$ is the event rate per unit time \pause
 		\item[]
-		\item Example: Assume that on average a call center receives 10 calls per hour. What is the probability that the call center receives exactly 5 calls in one hour?
+		\item Example: Assume that on average a call center receives 10 calls per hour. What is the probability that the call center receives exactly 5 calls in one hour? \pause
 		\begin{itemize}
-			\item $\mu = 10$ (10 calls per hour)
-			\item $y = 5$
+			\item $\mu = 10$ (10 calls per hour) \pause
+			\item $y = 5$ \pause
 		\end{itemize}
 		\begin{align*}
 			P(5) = \frac{10^5 e^{-10}}{5!} = 0.038
@@ -438,14 +422,14 @@
 		\begin{itemize}
 			\item $\mu = 10$ (10 calls per hour)
 			\item $y = 5$
-		\end{itemize}
+		\end{itemize}\pause
 	{\scriptsize
 		\begin{align*}
 		P(y \leq 4) &= P(0) + P(1) + P(2) + P(3) + P(4) \\
 		&= \frac{10^0 e^{-10}}{0!} + \frac{10^1 e^{-10}}{1!} + \frac{10^2 e^{-10}}{2!} + \frac{10^3 e^{-10}}{3!} + \frac{10^4 e^{-10}}{4!} \\
 		&=  0.00004539993 + 0.0004539993 + 0.002269996 + 0.007566655 + 0.01891664 \\
 		&= 0.02925269
-		\end{align*}}
+		\end{align*}} \pause
 	\item Example 3: What is the probability that the call center receives more than four calls in one hour?
 	\begin{align*}
 		P(y > 4) &= 1 - P(y \leq 4) \\
@@ -457,9 +441,9 @@
 
 \begin{frame}{Poisson Random Variables}
 	\begin{itemize}
-		\item While typically a Poisson RV describes events over time intervals, it can be over other types of intervals (time, volume, \& space)
+		\item While typically a Poisson RV describes events over time intervals, it can be over other types of intervals (time, volume, \& space) \pause
 		\item[]
-		\item Space example: Assume you stain a tissue sample for a specific protein. Assume on average you count 10 cells in a field that express the protein. The number of cells that express the protein is a Poisson random variable 
+		\item Space example: Assume you stain a tissue sample for a specific protein. Assume on average you count 10 cells in a field that express the protein. The number of cells that express the protein is a Poisson random variable \pause
 		\item[]
 		\item Volume example: A count of the number of particles in a volume of water
 	\end{itemize}
@@ -472,13 +456,13 @@
 
 \begin{frame}{Continuous Random Variables}
 	\begin{itemize}
-	\item A continuous RV is one that can take any of infinitely many values on a line interval
-	\item Example: if we had a tape measure with unlimited precision, every person in the class would have a unique height. If there were an infinite number of humans measured, there would be an infinite number of heights
+	\item A continuous RV is one that can take any of infinitely many values on a line interval \pause
+	\item Example: if we had a tape measure with unlimited precision, every person in the class would have a unique height. If there were an infinite number of humans measured, there would be an infinite number of heights \pause
 	
 	\item Complication: when we have a probability distribution function for a continous random variable, $P(y)$, there is no single $y$ value for which $P(y) > 0$,
-	however intervals such as $P(a<y<b) > 0$. 
+	however intervals such as $P(a<y<b) > 0$. \pause
 	\begin{itemize}
-		\item The probability that a student in this class has height $y = 67.35719549248350910351...4427824$ on our unlimited precision tape measure is 0 (we won't find a single student with that exact height). 
+		\item The probability that a student in this class has height $y = 67.35719549248350910351...4427824$ on our unlimited precision tape measure is 0 (we won't find a single student with that exact height) \pause
 		\item However, it is likely that we will find a student with a height between 67.0 and 67.5 inches. That is $P(67.0 < y < 67.5) > 0$. 
 	\end{itemize}
 \end{itemize}
@@ -486,7 +470,7 @@
 
 \begin{frame}{Continuous Random Variables}
 	\begin{itemize}
-		\item Now our probability statements will involve ranges: What is the probability a selected person is between 50 and 60 inches? $P(50 < y < 60)$
+		\item Now our probability statements will involve ranges: What is the probability a selected person is between 50 and 60 inches? $P(50 < y < 60)$ \pause
 	\end{itemize}
 \begin{center}
 	\includegraphics[width = .7 \linewidth]{NormalHeights}
@@ -519,9 +503,9 @@
 
 \begin{frame}{Normal Random Variables}
 	\begin{itemize}
-		\item Many variables we are interested in the sciences have a ``mound-shaped'' or ``bell-shaped'' distribution. These data are said to be ``normally'' distributed
+		\item Many variables we are interested in the sciences have a ``mound-shaped'' or ``bell-shaped'' distribution. These data are said to be ``normally'' distributed \pause
 		\item[]
-		\item Sometimes variables do not have a perfect normal distribution, but are well approximated by a normal distribution curve
+		\item Sometimes variables do not have a perfect normal distribution, but are well approximated by a normal distribution curve \pause
 		\item[]
 		\item The ``empirical rule'' that we learned earlier comes from approximating the distribution of data with a normal distribution
 	\end{itemize}
@@ -530,8 +514,8 @@
 
 \begin{frame}{Normal Random Variables}{The Standard Normal Distribution}
 	\begin{itemize}
-		\item The standard normal distribution has $\mu = 0$ and $\sigma = 1$
-		\item The ``empirical rule'' again:
+		\item The standard normal distribution has $\mu = 0$ and $\sigma = 1$ \pause
+		\item The ``empirical rule'' again: \pause
 	\end{itemize}
 \begin{center}
 	\includegraphics[width=.8\linewidth]{StandardNorm1}
@@ -560,13 +544,13 @@
 
 \begin{frame}{Normal Random Variables}
 	\begin{itemize}
-		\item We often need to compute the area under a normal curve
+		\item We often need to compute the area under a normal curve \pause
 		\item[]
-		\item For this we use tables such as the one in the textbook apendix
+		\item For this we use tables such as the one in the textbook appendix \pause
 		\item[]
-		\item Z scores:
+		\item Z scores: \pause
 		\begin{itemize}
-			\item The first step in most probability calculations with normal distributions is to calculate \textbf{\emph{z-scores}}. A $z$-score is defined as:
+			\item The first step in most probability calculations with normal distributions is to calculate \textbf{\emph{z-scores}}. A $z$-score is defined as: \pause
 			\begin{gather*}
 			z = \frac{y-\mu}{\sigma}
 			\end{gather*}
@@ -580,8 +564,8 @@
 		\includegraphics[scale = .15]{Lahontan_cutthroat_trout_image_USFWS}
 	\end{center}
 	\begin{itemize}
-		\item Assume the weights of Lahontan Cutthroat Trout are normally distributed with $\mu = 4.03$ pounds and $\sigma = 1.65$ pounds
-		\item Question 1: What is the z-score for a trout weighting $5$ pounds?
+		\item Assume the weights of Lahontan Cutthroat Trout are normally distributed with $\mu = 4.03$ pounds and $\sigma = 1.65$ pounds \pause
+		\item Question 1: What is the z-score for a trout weighting $5$ pounds? \pause
 		\begin{align*}
 			z &= \frac{y-\mu}{\sigma} \\
 			&= \frac{5.00-4.03}{1.65} \\
@@ -599,9 +583,9 @@
 		\end{column}
 	\begin{column}{.4 \textwidth}
 			\begin{itemize}
-			\item Using a standard normal table is a bit tedious
+			\item Using a standard normal table is a bit tedious \pause
 			\item[]
-			\item All area values in a standard normal table are to the left of the $z$-score
+			\item All area values in a standard normal table are to the left of the $z$-score \pause
 			\item[]
 			\item The values are $P(Z\leq z)$
 		\end{itemize}
@@ -633,8 +617,8 @@
 		\includegraphics[scale = .15]{Lahontan_cutthroat_trout_image_USFWS}
 	\end{center}
 	\begin{itemize}
-		\item Assume the weights of Lahontan Cutthroat Trout are normally distributed with $\mu = 4.03$ pounds and $\sigma = 1.65$ pounds
-		\item Question 2: What is the probability of catching a fish less than $5$ pounds? Remember $z = 0.588$.
+		\item Assume the weights of Lahontan Cutthroat Trout are normally distributed with $\mu = 4.03$ pounds and $\sigma = 1.65$ pounds \pause
+		\item Question 2: What is the probability of catching a fish less than $5$ pounds? Remember $z = 0.588$ \pause
 		\begin{align*}
 		P(Z\leq z) &= P(Z \leq 0.588) = 0.722
 		\end{align*}
@@ -653,8 +637,8 @@
 		\includegraphics[scale = .15]{Lahontan_cutthroat_trout_image_USFWS}
 	\end{center}
 	\begin{itemize}
-		\item Assume the weights of Lahontan Cutthroat Trout are normally distributed with $\mu = 4.03$ pounds and $\sigma = 1.65$ pounds
-		\item Question 2: What is the probability of catching a fish that is greater than $5$ pounds? Remember $z = 0.588$
+		\item Assume the weights of Lahontan Cutthroat Trout are normally distributed with $\mu = 4.03$ pounds and $\sigma = 1.65$ pounds 
+		\item Question 2: What is the probability of catching a fish that is greater than $5$ pounds? Remember $z = 0.588$ \pause
 		\begin{align*}
 		P(Z > z) &= 1 - P(Z \leq z) = 1 - P(Z \leq 0.588)\\
 		&= 1 - 0.722 \\
@@ -675,7 +659,7 @@
 	\end{center}
 	\begin{itemize}
 		\item Assume the weights of Lahontan Cutthroat Trout are normally distributed with $\mu = 4.03$ pounds and $\sigma = 1.65$ pounds
-		\item Question 3: What is the probability of catching a fish that is between 5 and 6 pounds?
+		\item Question 3: What is the probability of catching a fish that is between 5 and 6 pounds? \pause
 		\begin{gather*}
 		z_1 = \frac{5-4.03}{1.65} = 0.588 \quad \quad z_2 = \frac{6-4.03}{1.65} = 1.194\\
 		P(Z \leq z_2) - P(Z \leq z_1) \\
@@ -687,10 +671,10 @@
 
 \begin{frame}{Normal Random Variables}{Percentiles}
 	\begin{itemize}
-		\item We may be interested to know the value of a percentile of a normal random variable
+		\item We may be interested to know the value of a percentile of a normal random variable \pause
 		\begin{itemize}
-			\item The $p$\textsuperscript{th} percentile is the value at which $p$\% of the population values fall below and $(100-p)$\% of the population values are above
-			\item For a standard normal distribution to find the 80th percentile, we we use the tables to find $z_{.80}$, that is the $z$-score that gives a probability closes to 0.80
+			\item The $p$\textsuperscript{th} percentile is the value at which $p$\% of the population values fall below and $(100-p)$\% of the population values are above \pause
+			\item For a standard normal distribution to find the 80th percentile, we we use the tables to find $z_{.80}$, that is the $z$-score that gives a probability closes to 0.80 \pause
 		\end{itemize}
 	\end{itemize}
 	\begin{center}
@@ -700,13 +684,13 @@
 
 \begin{frame}{Normal Random Variables}{Percentiles}
 	\begin{itemize}
-		\item If we have values that are from a normal random variable that isn't the standard normal, then we use the following formula to find percentiles: $y_p = \mu + z_p \sigma$
+		\item If we have values that are from a normal random variable that isn't the standard normal, then we use the following formula to find percentiles: $y_p = \mu + z_p \sigma$ \pause
 		\item[]
-		\item Example: What value is the 80th percentile Lahontan Cutthroat Trout weights? In a sample of 100 random trout we would expect 80\% of the fish to be less than this number and 20\% to be greater
+		\item Example: What value is the 80th percentile Lahontan Cutthroat Trout weights? In a sample of 100 random trout we would expect 80\% of the fish to be less than this number and 20\% to be greater \pause
 		\begin{itemize}
-			\item Recall that for this population $\mu = 4.03$, and $\sigma = 1.65$
-			\item First we find that $z_{.80} = 0.84$
-			\item So then:
+			\item Recall that for this population $\mu = 4.03$, and $\sigma = 1.65$ \pause
+			\item First we find that $z_{.80} = 0.84$ \pause
+			\item So then: \pause
 			\begin{align*}
 				y_p &= \mu + z_p \sigma \\
 				&= 4.03 + 0.84 \times 1.65 \\
@@ -716,5 +700,10 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{The end of Lecture \# 6}
+	\begin{center}
+		\includegraphics[width=.65 \linewidth]{normal}
+	\end{center}
+\end{frame}
 
 \end{document}

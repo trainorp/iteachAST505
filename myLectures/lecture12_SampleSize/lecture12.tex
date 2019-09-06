@@ -24,6 +24,7 @@
 \tableofcontents[hideallsubsections]
 \end{frame}
 
+\section{Sample size for estimating $\mu$ (CI width)}
 \section{Introduction}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
@@ -117,6 +118,216 @@
 \begin{center}
 	\includegraphics[width=.7\linewidth]{coverage1cc}
 \end{center}
+\end{frame}
+
+\begin{frame}{Changing $n$}
+\begin{itemize}
+		\item A greater sample size $n$ $\rightarrow$ smaller confidence intervals for a fixed $\alpha$ or confidence level
+	\item[]
+	\item Intuitive result: more data $=$ more certainty as to the location of a population parameter
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The width of a confidence interval}
+	\begin{itemize}
+		\item Much of the time we know what $\alpha$ we want (what type I error rate we can tolerate), but we need to know what $n$ should be to allow us to have a CI of a specific width
+		\item[]
+		\item Width of a CI can be identified:
+		\begin{align*}
+			\bar{y}\pm z_{1-\alpha/2} \sigma / \sqrt{n} = \bar{y} \pm E = (\bar{y}-E, \bar{y}+E)
+		\end{align*}
+		So width: $W = 2E$ where $E = z_{1-\alpha/2} \sigma  /\sqrt{n}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example: Municipal water testing}
+	\begin{center}
+		\includegraphics[width = 1\linewidth]{crescent}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Desired with of a confidence interval}
+	\begin{itemize}
+		\item Example: The city of Louisville, Kentucky needs to estimate the population mean $\mu$ of lead in tap water (measured in parts per billion). The city has a low tolerance for type I errors (population parameter in the CI), so will set $\alpha = .01$ and look for a 99\% CI. The city knows from past testing that the variance in lead measurements from tap water sources is 1 ppb. What sample size (of independent tap water measurements) would be required for the city to estimate the population mean lead level to have a CI with width 0.1 ppb?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The width of a confidence interval}
+\begin{itemize}
+	\item Above we found:
+	\begin{align*}
+	\bar{y}\pm z_{1-\alpha/2} \sigma \sqrt{n} = \bar{y} \pm E = (\bar{y}-E, \bar{y}+E)
+	\end{align*}
+	where $W = 2E$ and $E = z_{1-\alpha/2} \sigma \sqrt{n}$
+	\item[]
+	\item So to find $n$ we do some algebra:
+	\begin{gather*}
+		E = z_{1-\alpha/2} \sigma / \sqrt{n} \\
+		\sqrt{n} E = z_{1-\alpha/2} \sigma  \\
+		\sqrt{n} = \frac{z_{1-\alpha/2} \sigma}{E} \\
+		n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2 = \frac{(z_{1-\alpha/2})^2 \sigma^2}{E^2}
+	\end{gather*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Desired with of a confidence interval}
+		\begin{itemize}
+		\item Example: The city of Louisville, Kentucky needs to estimate the population mean $\mu$ of lead in tap water (measured in parts per billion). The city has a low tolerance for type I errors (population parameter in the CI), so will set $\alpha = .01$ and look for a 99\% CI. The city knows from past testing that the variance in lead measurements from tap water sources is 1 ppb. What sample size (of independent tap water measurements) would be required for the city to estimate the population mean lead level to have a CI with width 0.1 ppb?
+		\item[]
+		\item So since we want $W = 0.1$, $E = 0.01/2 = 0.05$
+		\item[]
+		\item We also know $\alpha = .01$, $\sigma^2 = 1$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Desired with of a confidence interval}
+\begin{itemize}
+	\item Given $E = 0.05$, $\alpha = .01$, $\sigma^2 = 1$:
+	\begin{align*}
+		n &= \frac{(z_{1-\alpha/2})^2 \sigma^2}{E^2}\\
+		n &=\frac{2.58^2 1^2}{0.05^2} \\
+		n &= 2662.56
+	\end{align*}
+	\item So the city should plan a sample of size $n = 2663$ to achieve that expected precision
+\end{itemize}
+\end{frame}
+
+\section{Power ($1-\beta$) of a test}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Continuing with the water example}
+	\begin{itemize}
+		\item Example \#2: The city of Louisville, Kentucky wants to test whether the population mean $\mu$ of lead in tap water (in PPB) is less than 5.
+		\begin{itemize}
+			\item $H_0: \mu_0 \geq 5$
+			\item $H_a: \mu_0 < 5$
+			\item[]
+		\end{itemize}
+		\item The city needs to be conservative for the safety of residents, so the water quality officer sets $\alpha = 0.01$. He knows that the variance in lead measurements from tap water sources is 1 ppb
+		\item[]
+		\item The water quality officer decides he will randomly select $n=10$ taps for testing the water for the presence of lead
+		\item[]
+		\item Measurements: \{4.42, 6.43, 2.45, 4.78, 2.97, 4.23, 5.73, 5.13, 4.85, 3.94\}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Water example \#2}
+	\begin{itemize}
+		\item So we have that $\bar{x} = 4.493$, $\sigma = 1$, $\alpha = .01$, and $n = 10$
+		\item[]
+		\item We have the rejection rule: Reject $H_0$ if $z^* \leq -2.33$ as  $z_{\alpha} = z_{.01}= -2.33$
+		\item[]
+		\item To calculate our test statistic:
+		\begin{align*}
+			z &= \frac{\bar{x}-\mu_0}{\sigma / \sqrt{n}} \\
+			&=\frac{4.493-5}{1 / \sqrt{10}} \\
+			&= -1.603
+		\end{align*}
+		\item So we fail to reject the null hypothesis
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Water example \#2}
+	\begin{itemize}
+		\item Now purely for the sake of argument let's assume the same sample mean had come from 100 measurements, that is $n = 100$
+		\item[]
+		\item So we have that $\bar{x} = 4.493$, $\sigma = 1$, $\alpha = .01$, and $n = 10$
+		\item[]
+		\item To calculate our test statistic:
+		\begin{align*}
+		z &= \frac{\bar{x}-\mu_0}{\sigma / \sqrt{n}} \\
+		&=\frac{4.493-5}{1 / \sqrt{100}} \\
+		&= -5.07
+		\end{align*}
+		\item So we would have rejected the null hypothesis with a $p$-value of 0.0000002
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Rejection \& Acceptance regions}{Types of errors}
+	\begin{itemize}
+		\item \textbf{\emph{Type I error:}} A Type I error is commited if we reject the null hypothesis when it is true. This is denoted $\alpha$
+		\item[]
+		\item \textbf{\emph{Type II error:}} A Type II error is commited if we accept the null hypothesis when it is false and the alternative hypothesis is true. This is denoted $\beta$
+	\end{itemize}
+	\begin{center}
+		\begin{tabular}{c|cc}
+			& \textbf{Null hypothesis} & \\
+			\textbf{Decision} & \textbf{True} & \textbf{False} \\ \hline
+			Reject $H_0$ & Type I error & Correct \\
+			& $\alpha$ & $1-\beta$ \\ \hline
+			Accept $H_0$ & Correct & Type II error \\
+			& $1-\alpha$ & $\beta$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Acceptance Regions}{Function of sample size}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{overlap0}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Acceptance Regions}{Function of sample size}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{overlap1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Acceptance Regions}{Function of sample size}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{overlap11}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Acceptance Regions}{Function of sample size}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{overlap2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Acceptance Regions}{Function of sample size}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{overlap3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Acceptance Regions}{Function of sample size}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{overlap4}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Acceptance Regions}{Function of difference between alternatives}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{overlap1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Acceptance Regions}{Function of difference between alternatives}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{overlap1b}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Rejection \& Acceptance regions}{Types of errors}
+	\begin{itemize}
+		\item \textbf{\emph{Type I error:}} A Type I error is commited if we reject the null hypothesis when it is true. This is denoted $\alpha$
+		\item[]
+		\item \textbf{\emph{Type II error:}} A Type II error is commited if we accept the null hypothesis when it is false and the alternative hypothesis is true. This is denoted $\beta$
+	\end{itemize}
+	\begin{center}
+		\begin{tabular}{c|cc}
+			& \textbf{Null hypothesis} & \\
+			\textbf{Decision} & \textbf{True} & \textbf{False} \\ \hline
+			Reject $H_0$ & Type I error & Correct \\
+			& $\alpha$ & $1-\beta$ \\ \hline
+			Accept $H_0$ & Correct & Type II error \\
+			& $1-\alpha$ & $\beta$ \\ \hline
+		\end{tabular}
+	\end{center}
 \end{frame}
 
 \end{document}

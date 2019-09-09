@@ -171,7 +171,15 @@ png(file = "overlap1.png", height = 4, width = 6, units = "in", res = 600)
 ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) +
   geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=4" & x > 3), aes(x = x, y = Density, color = NULL),
             fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE) +
-  theme_bw() +
+  theme_bw() + annotate("label", x = 4.25, y = .03, label = expression(beta)) +
+  labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 5)") + theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()
+
+png(file = "overlap11.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) +
+  geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=4" & x < 3), aes(x = x, y = Density, color = NULL),
+            fill = rgb(0, 150, 0, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE) +
+  theme_bw() + annotate("label", x = 2, y = .03, label = expression(1-beta)) +
   labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 5)") + theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
 
@@ -184,7 +192,7 @@ png(file = "overlap2.png", height = 4, width = 6, units = "in", res = 600)
 ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) + 
   geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=4" & x > 3.7), aes(x = x, y = Density, color = NULL),
             fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE)+
-  theme_bw() +
+  theme_bw() + annotate("label", x = 4.75, y = .03, label = expression(beta)) +
   labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 10)") + theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
 
@@ -197,7 +205,7 @@ png(file = "overlap3.png", height = 4, width = 6, units = "in", res = 600)
 ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) + 
   geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=4" & x > 4.15), aes(x = x, y = Density, color = NULL),
             fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE)+
-  theme_bw() +
+  theme_bw() + annotate("label", x = 4.8, y = .03, label = expression(beta)) +
   labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 25)") + theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
 
@@ -220,6 +228,6 @@ png(file = "overlap1b.png", height = 4, width = 6, units = "in", res = 600)
 ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) +
   geom_area(data = df5 %>% filter(Distribution == "Specific Alternative\nmu=2.5" & x > 3), aes(x = x, y = Density, color = NULL),
             fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE) +
-  theme_bw() +
+  theme_bw() + annotate("label", x = 3.75, y = .03, label = expression(beta)) +
   labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 5)") + theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()

@@ -31,8 +31,8 @@
 
 \begin{frame}{Simple Random Sample}
 	\begin{itemize}
-		\item \textbf{\emph{Simple Random Sample:}} A sample of $n$ measurements selected from a population is a simple random sample if every different sample of size $n$ from the population has equal probability of being selected
-		\item Book example: We make an inference about large cities in the US. Of 10 large cities we will randomly select ten and then conduct a survey
+		\item \textbf{\emph{Simple Random Sample:}} A sample of $n$ measurements selected from a population is a simple random sample if every different sample of size $n$ from the population has equal probability of being selected \pause 
+		\item Book example: We make an inference about large cities in the US. Of 10 large cities we will randomly select ten and then conduct a survey \pause 
 	\end{itemize}
 	\begin{center}
 		\includegraphics[width = .55 \linewidth]{srs}
@@ -41,7 +41,7 @@
 
 \begin{frame}{Simple Random Sample}
 	\begin{itemize}
-		\item To make a simple random sample, each one of the 45 possible combinations must have an equal probability of being selected, specifically a $1/45$ chance
+		\item To make a simple random sample, each one of the 45 possible combinations must have an equal probability of being selected, specifically a $1/45$ chance 
 	\end{itemize}
 	\begin{center}
 		\includegraphics[width = .65 \linewidth]{srs}
@@ -50,14 +50,14 @@
 
 \begin{frame}{Simple Random Sample}
 	\begin{itemize}
-		\item Often with simple random sampling, the probability of selecting a specific set of measurements is nearly zero (hence random) 
+		\item Often with simple random sampling, the probability of selecting a specific set of measurements is nearly zero (hence random)  \pause 
 		\item[]
-		\item There are 376,437,600 ways to choose 5 measurements out of 100. So the probability of choosing a specific collection of measurements is 0.00000000265
+		\item There are 376,437,600 ways to choose 5 measurements out of 100. So the probability of choosing a specific collection of measurements is 0.00000000265 \pause 
 		\item[]
-		\item We normally use computer algorithms to generate random numbers for sampling. Example: If I want a sample with $n=5$ with a population size of 100:
+		\item We normally use computer algorithms to generate random numbers for sampling. Example: If I want a sample with $n=5$ with a population size of 100: \pause 
 		\begin{enumerate}
-			\item Go to https://www.random.org/sequences/
-			\item Enter 1 as smallest integer, 100 as largest
+			\item Go to https://www.random.org/sequences/ \pause 
+			\item Enter 1 as smallest integer, 100 as largest \pause 
 			\item Use sequence of first 5 integers
 		\end{enumerate}
 	\end{itemize}
@@ -70,7 +70,7 @@
 
 \begin{frame}{Sampling Distributions}{Motivation}
 	\begin{itemize}
-		\item Suppose we knew the weight of every fish in the pond by the horseshoe. This group of fish would constitute a \textbf{population}
+		\item Suppose we knew the weight of every fish in the pond by the horseshoe. This group of fish would constitute a \textbf{population} \pause 
 		\item The weights of the fish are: \\
 		498.64 499.59 510.11 498.42 478.43 504.99 492.45 507.79 507.55 489.00 501.67 499.71 518.76 502.45 507.02 499.85
 		498.57 503.21 501.22 494.05 495.58 502.91 507.24 504.60 501.85 502.34 505.93 520.01 481.63 491.38 515.83 501.55
@@ -84,9 +84,9 @@
 
 \begin{frame}{Sampling Distributions}{Motivation}
 	\begin{itemize}
-		\item The population mean of the fish data is $\mu = 500.595$ and the population standard deviation is $\sigma = 10.02815$
+		\item The population mean of the fish data is $\mu = 500.595$ and the population standard deviation is $\sigma = 10.02815$ \pause 
 		\item[]
-		\item Here are 5 simple random samples (with sample mean at the bottom):
+		\item Here are 5 simple random samples (with sample mean at the bottom): \pause 
 	\end{itemize}
 	\begin{center}
 		\includegraphics[width = .8 \linewidth]{randomFish}
@@ -95,7 +95,7 @@
 
 \begin{frame}{Sampling Distributions}{Motivation}
 	\begin{itemize}
-		\item The population mean of the fish data is $\mu = 500.595$ and the population standard deviation is $\sigma = 10.02815$
+		\item The population mean of the fish data is $\mu = 500.595$ and the population standard deviation is $\sigma = 10.02815$ \pause 
 		\item And now a histogram of the sample means from 1,000 simple random samples:
 	\end{itemize}
 	\begin{center}
@@ -144,11 +144,11 @@
 			\end{center}
 		\end{column}
 		\begin{column}{.5 \textwidth}
-			The sampling distribution is related to the population distribution by:
+			The sampling distribution is related to the population distribution by: \pause 
 			\begin{itemize}
-				\item $\mu_{\bar{y}} = \mu$ 
+				\item $\mu_{\bar{y}} = \mu$ \pause 
 				\item[]
-				\item $\sigma_{\bar{y}} =\frac{\sigma}{\sqrt{n}} $
+				\item $\sigma_{\bar{y}} =\frac{\sigma}{\sqrt{n}} $\pause 
 				\item[]
 				\item $\sigma_{\bar{y}}$ is called the standard error of $\bar{y}$
 			\end{itemize}
@@ -162,11 +162,11 @@
 \end{frame}
 
 \begin{frame}{The Central Limit Theorem}
-	\textbf{\emph{The Central Limit Theorem:}} Let $\bar{y}$ denote the sample mean computed from a random sample of $n$ measurements from a population having mean $\mu$ and finite standard deviation $\sigma$. Let $\mu_{\bar{y}}$ and $\sigma_{\bar{y}}$ denote the mean and standard deviation of the sampling distribution of $\bar{y}$, respectively. Then:
+	\textbf{\emph{The Central Limit Theorem:}} Let $\bar{y}$ denote the sample mean computed from a random sample of $n$ measurements from a population having mean $\mu$ and finite standard deviation $\sigma$. Let $\mu_{\bar{y}}$ and $\sigma_{\bar{y}}$ denote the mean and standard deviation of the sampling distribution of $\bar{y}$, respectively. Then: \pause 
 	\begin{enumerate}
-		\item $\mu_{\bar{y}} = \mu$
-		\item $\sigma_{\bar{y}} = \sigma / \sqrt{n}$
-		\item If $n$ is sufficiently large, the distribution of $\bar{y}$, will be approximately normal
+		\item $\mu_{\bar{y}} = \mu$ \pause 
+		\item $\sigma_{\bar{y}} = \sigma / \sqrt{n}$ \pause 
+		\item If $n$ is sufficiently large, the distribution of $\bar{y}$, will be approximately normal \pause 
 		\item If the population distribution is normal, then $\bar{y}$ is normal for any sample size $n$ (as opposed to approximately normal if $n$ is large)
 	\end{enumerate}
 \end{frame}
@@ -211,6 +211,12 @@
 \begin{frame}{The Central Limit Theorem}{Example}
 	\begin{center}
 		\includegraphics[width = .9\linewidth]{smHist6}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The End of Lecture 7}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{DSC_0050_v1}
 	\end{center}
 \end{frame}
 

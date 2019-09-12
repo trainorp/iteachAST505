@@ -518,25 +518,31 @@ P(\text{+Drugs}|\text{+Test}) &= \frac{P(\text{+Test}|+\text{Drugs}) P(\text{+Dr
 \end{frame}
 
 \begin{frame}{Diagnostic tests}
-Some important terms about diagnostic tests... \pause
+	Some important terms about diagnostic tests... \pause
 	\begin{itemize}
 		\item \textbf{\emph{False positive:}} A false positive occurs when a diagnostic test gives a positive reading, but this conclusion is false \pause
-		\begin{itemize}
-			\item For test A, the False Positive Rate is: 0.133
-			\item For test B, the False Positive Rate is: 0.418 \pause
-		\end{itemize}
-		\item \textbf{\emph{False negative:}} A false positive occurs when a diagnostic test gives a negative reading, but this conclusion is false \pause
-		\begin{itemize}
-			\item For both test A and B, the False Negative Rate is: 0.025 \pause
-		\end{itemize}
+		\item[]
+		\item \textbf{\emph{False negative:}} A false positive occurs when a diagnostic test gives a negative reading, but this conclusion is false 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Diagnostic tests}
+Some important terms about diagnostic tests... 
+	\begin{itemize}
 		\item \textbf{\emph{Sensitivity:}} The sensitivity of a diagnostic test is the True Positive Rate \pause
 		\begin{itemize}
+			\item Sensitivity = $\frac{\text{True positive}}{\text{condition positive}}$
+			\item[]
 			\item For both test A and B, the sensitivity is: 0.975 \pause
 		\end{itemize}
 		\item \textbf{\emph{Specificity:}} The specificity of a diagnostic test is the True Negative Rate \pause
+		\item[]	
 		\begin{itemize}
-			\item For test A, the specificity is: 0.867
-			\item For test B, the specificity is: 0.582
+			\item Specificity = $\frac{\text{True negative}}{\text{condition negative}}$
+			\item[]
+			\item For test A, the specificity is: \textcolor{red}{.936}
+			\item[]
+			\item For test B, the specificity is: \textcolor{red}{.70}
 		\end{itemize}
 	\end{itemize}
 \end{frame}

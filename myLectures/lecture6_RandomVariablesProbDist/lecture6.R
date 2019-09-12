@@ -11,6 +11,7 @@ setwd(paste0(baseDir, "/iTeach/AST_505/myLectures/lecture6_RandomVariablesProbDi
 
 ############ Roll of two die ############
 df1 <- expand.grid(a = 1:7, b = 1:7)
+paste0("(", df1$a, ",", df1$b, ")")
 df1$Sum <- df1$a + df1$b
 df2 <- df1 %>% group_by(Sum) %>% summarize(ways = n())
 df2$relFreq <- df2$ways / sum(df2$ways)

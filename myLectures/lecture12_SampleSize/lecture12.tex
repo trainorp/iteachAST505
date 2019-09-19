@@ -202,8 +202,8 @@
 	\begin{itemize}
 		\item Example \#2: The city of Louisville, Kentucky wants to test whether the population mean $\mu$ of lead in tap water (in PPB) is less than 5.
 		\begin{itemize}
-			\item $H_0: \mu_0 \geq 5$
-			\item $H_a: \mu_0 < 5$
+			\item $H_0: \mu \geq 5$
+			\item $H_a: \mu < 5$
 			\item[]
 		\end{itemize}
 		\item The city needs to be conservative for the safety of residents, so the water quality officer sets $\alpha = 0.01$. He knows that the variance in lead measurements from tap water sources is 1 ppb
@@ -328,6 +328,62 @@
 			& $1-\alpha$ & $\beta$ \\ \hline
 		\end{tabular}
 	\end{center}
+\end{frame}
+
+\begin{frame}{Type II errors}
+	\begin{itemize}
+		\item If $\mu_0$, $\alpha$, and $n$ are fixed, we can calculate $\beta$ for various \emph{specific} alternatives
+		\begin{itemize}
+			\item For our example \#2 we wanted to test $H_0: \mu_0 \geq 5$ vs $H_a: \mu_0 < 5$, given $\alpha = 0.01$, $n = 10$, and $\sigma = 1$
+			\item[]
+			\item We can ask, ``what is $\beta$ if the true population mean, $\mu_a$ is 4.5?'' 
+			\item[]
+			\item That is, ``what is the probability of committing a Type II error if the true population mean, $\mu_a$ is 4.5?''
+			\item[]
+			\item That is, ``what is the probability of accepting $H_0$ as true, when $H_a$ is actually true?''
+			\item[]
+			\item In this example this would be conservatively failing to reject the hypothesis that the water is not safe (lead less than 5), when it actually is safe
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Calculating $\beta$}{Continuing with Example \#2}
+\begin{columns}
+	\begin{column}{.55 \textwidth}
+		\begin{center}
+			\includegraphics[width=1\linewidth]{overlapStandard}
+		\end{center}
+	\end{column}
+		\begin{column}{.5 \textwidth}
+		\begin{itemize}
+			\item We can determine our critical value $-z_{\alpha}= -2.326$, at which we will reject the null hypothesis
+			
+			\item[]
+			
+			\item Then we calculate the probability of observing a test statistic that would result in a Type II error, $\beta$, to the \emph{right} of this critical value as:
+			\begin{gather*}
+			\beta = P \left(\frac{\mu_a - \mu_0}{\sigma / \sqrt{n}} \geq -z_{\alpha} \right)
+			\end{gather*}
+		\end{itemize}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Calculating $\beta$}{Formula}
+	\begin{itemize}
+		\item There are a few more steps to solve for $\beta$, however we will just use the following formula:
+		\begin{gather*}
+			\beta = P\left(z \leq z_{\alpha} - \frac{|\mu_0 - \mu_a|}{\sigma / \sqrt{n}} \right)
+		\end{gather*}
+		\begin{itemize}
+			\item This formula can be used for any one-sided test ($H_a: \mu < \mu_0$ or $H_a: \mu > \mu_0$)
+			\item[]
+		\end{itemize}
+	\item Back to our example:
+	\begin{align*}
+	\beta = P\left(z \leq z_{0.01} - \frac{|5 - 4.5|}{1 / \sqrt{10}} \right) = P(z \leq 0.75) = 0.77
+	\end{align*}
+	\end{itemize}
 \end{frame}
 
 \end{document}

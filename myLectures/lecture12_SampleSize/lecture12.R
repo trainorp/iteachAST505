@@ -231,3 +231,17 @@ ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution))
   theme_bw() + annotate("label", x = 3.75, y = .03, label = expression(beta)) +
   labs(x = "Lead (ppb)") + ggtitle("Sampling distributions for the sample mean (n = 5)") + theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
+
+
+df5 <- data.frame(x = seq(-5, 5, .001), Distribution = "Null")
+df5$Density <- dnorm(df5$x, mean = 0, sd = 1 )
+df6 <- data.frame(x = df5$x + (4.5-5)/(1/sqrt(10)), Density = df5$Density, Distribution = "Specific\nAlternative")
+df5 <- rbind(df5, df6)
+png(file = "overlapStandard.png", height = 4, width = 6, units = "in", res = 600)
+ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution)) + geom_line(lwd = 1.25) +
+  geom_area(data = df5 %>% filter(Distribution == "Specific\nAlternative" & x > qnorm(.01)), aes(x = x, y = Density, color = NULL),
+            fill = rgb(0, 90, 100, 0, alpha = 70, maxColorValue = 255), show.legend = FALSE) +
+  geom_segment(aes(x = qnorm(.01), xend = qnorm(.01), y = 0, yend = dnorm(qnorm(.01))), lwd = 1.1, color = "black") +
+  theme_bw() + annotate("label", x = -.75, y = .03, label = expression(beta)) +
+  labs(x = "z") + ggtitle(expression(paste(beta, " from standard normal"))) + theme(plot.title = element_text(hjust = 0.5)) 
+dev.off()

@@ -12,7 +12,7 @@
 \title[Lecture 8]{Lecture 8: Inferences about the mean}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{September 16, 2019}
+\date{September 23, 2019}
 
 \begin{document}
 
@@ -260,8 +260,7 @@
 			\alpha = 0.05 \\
 			\alpha / 2 = 0.025 \\
 			z_{\alpha / 2} = z_{0.025} = 1.96 
-		\end{gather*}  \pause
-		
+		\end{gather*} \pause
 		So the lower endpoint is:  \pause
 		\begin{align*}
 			\bar{y} - z_{\alpha / 2} \times \sigma / \sqrt{n} &= 504.026 - (1.96)(10.028)/\sqrt{5} \\
@@ -336,14 +335,14 @@
 		
 		For the 90\% confidence interval: 
 		\begin{align*}
-			\bar{y} &\pm z_{1-\alpha / 2} \times \sigma / \sqrt{n} \\
+			\bar{y} &\pm z_{\alpha / 2} \times \sigma / \sqrt{n} \\
 			504.026 &\pm (1.645)(10.028)/\sqrt{5} \\
 			(496.649&, 511.403)
 		\end{align*}  \pause
 		
 		For the 99\% confidence interval: 
 		\begin{align*}
-		\bar{y} &\pm z_{1-\alpha / 2} \times \sigma / \sqrt{n} \\
+		\bar{y} &\pm z_{\alpha / 2} \times \sigma / \sqrt{n} \\
 		504.026 &\pm (2.576)(10.028)/\sqrt{5} \\
 		(492.474&, 515.578)
 		\end{align*}
@@ -704,7 +703,7 @@ Clearly, 2.828 is not less than -1.645; the test statistic is not in the rejecti
 			\item $H_A: \mu \neq 16.7$  \pause
 		\end{itemize}
 	\item[]
-	\item Rejection region: Reject $H_0$ if $|z| \geq z_{\alpha / 2} = z_{.95} = 1.645$
+	\item Rejection region: Reject $H_0$ if $|z| \geq z_{\alpha / 2} = z_{.05} = 1.645$
 	\end{itemize}
 \end{frame}
 

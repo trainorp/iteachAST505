@@ -12,7 +12,7 @@
 \title[Lecture 9]{Lecture 9: Inferences about the median}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{September 23, 2019}
+\date{September 25, 2019}
 
 \begin{document}
 
@@ -31,19 +31,19 @@
 
 \begin{frame}{Why the median?}
 	\begin{itemize}
-		\item You are conducting a study of the salaries of NMSU employees (faculty, staff, student employees). You select 6 individuals at random who have the following salaries: \$39,293, \$40,434, \$53,050, \$39,025, \$15,044, \$46,908
+		\item You are conducting a study of the salaries of NMSU employees (faculty, staff, student employees). You select 6 individuals at random who have the following salaries: \$39,293, \$40,434, \$53,050, \$39,025, \$15,044, \$46,908 \pause
 		\item[]
-		\item What is the best measure of centrality (or central tendency)?
+		\item What is the best measure of centrality (or central tendency)? \pause
 		\begin{itemize}
-			\item Sample mean: \$38,959
-			\item Sample median: \$39,863.5
+			\item Sample mean: \$38,959 \pause
+			\item Sample median: \$39,863.5 \pause
 			\item[]
 		\end{itemize}
-	\item You decide you want to collect one more measurement. You randomly select Doug Martin (football coach) who has a salary of \$419,640
+	\item You decide you want to collect one more measurement. You randomly select Doug Martin (football coach) who has a salary of \$419,640 \pause
 	\item[]
-			\item What is the best measure of centrality (or central tendency)?
+			\item What is the best measure of centrality (or central tendency)? \pause
 	\begin{itemize}
-		\item Sample mean: \$93,342
+		\item Sample mean: \$93,342 \pause
 		\item Sample median: \$40,434
 	\end{itemize}
 	\end{itemize}
@@ -51,9 +51,9 @@
 
 \begin{frame}{Why the median?}
 	\begin{itemize}
-		\item If we are using a measure of central tendency to get a sense of what the ``typical'' salary is at NMSU, the mean may be a very poor measure
+		\item If we are using a measure of central tendency to get a sense of what the ``typical'' salary is at NMSU, the mean may be a very poor measure \pause
 		\item[]
-		\item The inclusion of one outlier (Coach Martin) brings the sample mean up to \$93,342 although $6/7$ employees in the sample make less than \$47,000
+		\item The inclusion of one outlier (Coach Martin) brings the sample mean up to \$93,342 although $6/7$ employees in the sample make less than \$47,000 \pause
 		\item[]
 		\item When a random variable has a distribution that is either skewed or a random sample has outlier(s), the sample median is a better measure of ``typical'' than the sample mean 
 	\end{itemize}
@@ -61,15 +61,15 @@
 
 \begin{frame}{Computation}
 	\begin{itemize}
-		\item To find the sample mean we first order our measurements making a list $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$
+		\item To find the sample mean we first order our measurements making a list $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$ \pause
 		\begin{itemize}
-			\item In our salary example: $\{15044, 39025, 39293, 40434, 46908, 53050, 419640\}$
+			\item In our salary example: $\{15044, 39025, 39293, 40434, 46908, 53050, 419640\}$ \pause
 			\item[]
 		\end{itemize}
-		\item Then to find the sample median $\hat{M}$:
+		\item Then to find the sample median $\hat{M}$: \pause
 		\begin{itemize}
-			\item If $n$ is an odd number, then $\hat{M} = y_{(m)}$, where $m = (n+1)/2$
-			\item If $n$ is an even number, then $\hat{M} = (y_{(m)} + y_{(m+1)})/2$ where $m = n/2$
+			\item If $n$ is an odd number, then $\hat{M} = y_{(m)}$, where $m = (n+1)/2$ \pause
+			\item If $n$ is an even number, then $\hat{M} = (y_{(m)} + y_{(m+1)})/2$ where $m = n/2$ \pause
 			\item[]
 		\end{itemize}
 		\item In our example, $n = 7$, so we $m = (7+1)/2 = 4$, and $\hat{M} = y_{(4)} = 40434$
@@ -83,19 +83,19 @@
 
 \begin{frame}{Normal distributions versus not so Normal distributions}
 	\begin{itemize}
-		\item In the last lecture we dealt with samples that came from populations that follow a Normal distribution
+		\item In the last lecture we dealt with samples that came from populations that follow a Normal distribution \pause
 		\begin{itemize}
-			\item We used the sample mean as an estimate for the population mean
-			\item We developed confidence intervals for the population mean
-			\item We tested hypotheses about the population mean
+			\item We used the sample mean as an estimate for the population mean \pause
+			\item We developed confidence intervals for the population mean \pause
+			\item We tested hypotheses about the population mean \pause
 			\item[]
 		\end{itemize}
-		\item Those approaches are still valid if $n$ is very large
+		\item Those approaches are still valid if $n$ is very large \pause
 		\item[]
-		\item However, if our sample comes from a population that is highly skewed and not mound shaped: 
+		\item However, if our sample comes from a population that is highly skewed and not mound shaped:  \pause
 		\begin{itemize}
-			\item We should use the median as the measure of centrality
-			\item We will develop confidence intervals based on the median
+			\item We should use the median as the measure of centrality \pause
+			\item We will develop confidence intervals based on the median \pause
 			\item We will test hypotheses based on the location of the median
 		\end{itemize}
 	\end{itemize}
@@ -109,14 +109,14 @@
 
 \begin{frame}{Q-Q Plots}
 	\begin{itemize}
-		\item To determine if a distribution is not normal, generate a Q-Q plot
+		\item To determine if a distribution is not normal, generate a Q-Q plot \pause
 		\item[]
-		\item Preparation:
+		\item Preparation: \pause
 		\begin{enumerate}
-			\item Order the measurements in the dataset from smallest to largest: $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$
-			\item Compute the quantile for each measurement in the dataset: $Q((i-0.5) /n)$
+			\item Order the measurements in the dataset from smallest to largest: $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$ \pause
+			\item Compute the quantile for each measurement in the dataset: $Q((i-0.5) /n)$ \pause
 		\end{enumerate}
-	\item Example. Our salary dataset: $\{15044, 39025, 39293, 40434, 46908, 53050, 419640\}$
+	\item Example. Our salary dataset: $\{15044, 39025, 39293, 40434, 46908, 53050, 419640\}$ \pause
 	\begin{align*}
 		15044 &= Q((1-0.5)/7) = 0.071 \\
 		39025 &= Q((2-0.5)/7) = 0.214 \\
@@ -132,10 +132,10 @@
 	\begin{column}{.45 \textwidth}
 Process:
 			\begin{enumerate}
-				\item Order the measurements in the dataset from smallest to largest: $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$
-				\item Compute the quantile for each measurement in the dataset: $Q((i-0.5) /n)$
-				\item Find normal quantiles: $z_{(i-0.5)/n}$
-				\item Plot: $\{(z_{(0.5)/n}, y_{(1)}),(z_{(1.5)/n}, y_{(2)}),\hdots, (z_{(n-0.5)/n}, y_{(n)})\}$
+				\item Order the measurements in the dataset from smallest to largest: $\{y_{(1)}, y_{(2)}, \hdots, y_{(n)} \}$ \pause
+				\item Compute the quantile for each measurement in the dataset: $Q((i-0.5) /n)$ \pause
+				\item Find normal quantiles: $z_{(i-0.5)/n}$ \pause
+				\item Plot: $\{(z_{(0.5)/n}, y_{(1)}),(z_{(1.5)/n}, y_{(2)}),\hdots, (z_{(n-0.5)/n}, y_{(n)})\}$ \pause
 			\end{enumerate}
 	\end{column}
 	\begin{column}{0.5 \textwidth}
@@ -183,24 +183,24 @@ Process:
 
 \begin{frame}{Confidence intervals for the median}
 	\begin{itemize}
-		\item A confidence interval for $M$, the population median with level of confidence at least $100(1-\alpha)$\% is:
+		\item A confidence interval for $M$, the population median with level of confidence at least $100(1-\alpha)$\% is: \pause
 		\begin{gather*}
 		(M_L, M_U) = (y_{(L_{\alpha / 2})}, y_{(U_{\alpha/2})})
-		\end{gather*} 
+		\end{gather*} \pause
 		where:
 		\begin{gather*}
 			L_{\alpha / 2} = C_{\alpha(2), n} + 1 \\
 			U_{\alpha / 2} = n - C_{\alpha(2), n}
-		\end{gather*}
+		\end{gather*} \pause
 		The values $C_{\alpha(2),n}$ are from the Binomial distribution and are found in the Appendix of the textbook (Table 4).
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Confidence intervals for the median}{Example}
 	\begin{itemize}
-		\item The following is data on the amount of phosphorous (in ppm) in a sample of corn: \{64,  60, 71, 61, 54, 77, 81, 93, 93, 51, 76, 96, 77, 383, 95, 222, 168, 99\}. The Q-Q plot suggests that the data is not normally distributed. Let's compute the median phosphorous level and 90\% confidence interval.
+		\item {\tiny The following is data on the amount of phosphorous (in ppm) in a sample of corn: \{64,  60, 71, 61, 54, 77, 81, 93, 93, 51, 76, 96, 77, 383, 95, 222, 168, 99\}. The Q-Q plot suggests that the data is not normally distributed. Let's compute the median phosphorous level and 90\% confidence interval }
 	\end{itemize}
-\vspace{-10pt}
+\vspace{-5pt}
 \begin{center}
 	\includegraphics[width = .6\linewidth]{phosQQ}
 \end{center}
@@ -208,9 +208,9 @@ Process:
 
 \begin{frame}{Confidence intervals for the median}{Example}
 \begin{itemize}
-	\item First we order the data: \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}
+	\item First we order the data: \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\} \pause
 	\item[]
-	\item Since there are 18 observations:
+	\item Since there are 18 observations: \pause
 	\begin{align*}
 		\hat{M} &= (y_{(m)} + y_{(m+1)})/2 \quad \text{where } m = n/2 \\
 		&=(y_{(9)} + y_{(10)})/2 \\
@@ -228,7 +228,7 @@ Process:
 	and:
 	\begin{align*}
 		U_{\alpha /2} = n- C_{\alpha (2), n} = 18 - C_{0.10(2), 18} = 18-5 = 13
-	\end{align*}
+	\end{align*}\pause
 	Finally, we are looking for:
 	\begin{align*}
 		(M_L, M_U) = (y_{(L_{\alpha / 2})}, y_{(U_{\alpha/2})}) = (y_{(6)}, y_{(13)}) = (71, 95)
@@ -246,7 +246,7 @@ Process:
 		\item When the sample size, $n$ is large (for example $>50$), we use a different formula that uses a normal approximation to find $C_{\alpha(2),n}$:
 		\begin{gather*}
 		C_{\alpha(2),n} \approx \frac{n}{2} - z_{1-\alpha / 2} \sqrt{n/4}
-		\end{gather*}
+		\end{gather*} \pause
 		\item Example. Determine $C_{\alpha(2),n}$ for $n = 50$ and $\alpha = 0.05$
 		\begin{gather*}
 		C_{0.05(2),50} \approx \frac{50}{2} - z_{0.975} \sqrt{50/4} = 18.07 \approx 18
@@ -266,13 +266,13 @@ Process:
 
 \begin{frame}{The Sign Test}{Background}
 	\begin{itemize}
-		\item To test one-sided hypotheses, we use the \textbf{\emph{sign test}}
+		\item To test one-sided hypotheses, we use the \textbf{\emph{sign test}} \pause
 		\item[]
-		\item Given a null hypothesis value of $M_0$, we define $W_i = y_i - M_0$
+		\item Given a null hypothesis value of $M_0$, we define $W_i = y_i - M_0$ \pause
 		\item[]
-		\item The sign test statistic, $B$, is the number of $W_i$'s that are positive
+		\item The sign test statistic, $B$, is the number of $W_i$'s that are positive \pause
 		\item[]
-		\item If $M = M_0$, there is a 50\% chance that $y_i$ is greater than $M_0$, and 50\% chance that $y_i$ is less than $M_0$
+		\item If $M = M_0$, there is a 50\% chance that $y_i$ is greater than $M_0$, and 50\% chance that $y_i$ is less than $M_0$ \pause
 		\item[]
 		\item $W_i$ is then a binomial random variable, with $\pi = 0.5$
 	\end{itemize}
@@ -282,17 +282,17 @@ Process:
 \begin{itemize}
 \item Hypotheses:
 \begin{itemize}
-	\item Case 1. $H_0: M \leq M_0$ versus $H_a: M > M_0$ (right / upper-tailed test)
-	\item Case 2. $H_0: M \geq M_0$ versus $H_a: M < M_0$ (left / lower-tailed test)
-	\item Case 3. $H_0: M = M_0$ versus $H_a: M \neq M_0$ (two-tailed test)
+	\item Case 1. $H_0: M \leq M_0$ versus $H_a: M > M_0$ (right / upper-tailed test) \pause
+	\item Case 2. $H_0: M \geq M_0$ versus $H_a: M < M_0$ (left / lower-tailed test) \pause
+	\item Case 3. $H_0: M = M_0$ versus $H_a: M \neq M_0$ (two-tailed test) \pause
 	\item[]
 \end{itemize}
-\item Test statistic: $B = \# \text{ of positive } W_i$ where $W_i = y_i - M_0$
+\item Test statistic: $B = \# \text{ of positive } W_i$ where $W_i = y_i - M_0$ \pause
 \item[]
-\item Rejection region / rules: 
+\item Rejection region / rules: \pause
 \begin{itemize}
-	\item Case 1. Reject $H_0$ if $B \geq n - C_{\alpha(1), n}$
-	\item Case 2. Reject $H_0$ if $B \leq C_{\alpha(1), n}$
+	\item Case 1. Reject $H_0$ if $B \geq n - C_{\alpha(1), n}$ \pause
+	\item Case 2. Reject $H_0$ if $B \leq C_{\alpha(1), n}$ \pause
 	\item Case 3. Reject $H_0$ if $B \geq n - C_{\alpha(2), n}$ or $B \leq C_{\alpha(2), n}$
 \end{itemize}
 \end{itemize}
@@ -300,18 +300,18 @@ Process:
 
 \begin{frame}{The Sign Test}{Example}
 	\begin{itemize}
-		\item You hypothesize that the median level of phosphorous in a population of corn is greater than 75. Given the following data \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}, what is your conclusion (assume $\alpha = 0.10$)?
+		\item You hypothesize that the median level of phosphorous in a population of corn is greater than 75. Given the following data \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}, what is your conclusion (assume $\alpha = 0.10$)? \pause
 		\item[]
-		\item Hypotheses:
+		\item Hypotheses: \pause
 		\begin{itemize}
-			\item $H_0: M \leq 75$
-			\item $H_a: M > 75$
-			\item Reject $H_0$ if $B \geq n - C_{\alpha(1), n}$
+			\item $H_0: M \leq 75$ \pause
+			\item $H_a: M > 75$ \pause
+			\item Reject $H_0$ if $B \geq n - C_{\alpha(1), n}$ \pause
 			\item[]
 		\end{itemize}
-	\item Test statistic:
+	\item Test statistic: \pause
 	\begin{itemize}
-		\item $W$'s: \{-24, -21, -15, -14, -11,  -4, 1, 2, 2, 6, 18, 18, 20, 21, 24, 93, 147, 308 \}
+		\item $W$'s: \{-24, -21, -15, -14, -11,  -4, 1, 2, 2, 6, 18, 18, 20, 21, 24, 93, 147, 308 \} \pause
 		\item $B = 12$
 	\end{itemize}
 	\end{itemize}
@@ -321,9 +321,9 @@ Process:
 \begin{itemize}
 	\item You hypothesize that the median level of phosphorous in a population of corn is greater than 75. Given the following data \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}, what is your conclusion (assume $\alpha = 0.10$)?
 	\item[]
-	\item RR: Reject $H_0$ if $B \geq 18 - C_{0.10(1), 18} = 18 - 5 = 13$
+	\item RR: Reject $H_0$ if $B \geq 18 - C_{0.10(1), 18} = 18 - 5 = 13$ \pause
 	\item[]
-	\item Since $B = 12$, we fail to reject the null hypothesis
+	\item Since $B = 12$, we fail to reject the null hypothesis \pause
 	\item[]
 	\item This can happen. Although we have evidence that $M > 75$, since $\hat{M} = 79$, the evidence is not convincing enough for us to conclude definitively that $M > 75$
 \end{itemize}
@@ -331,20 +331,20 @@ Process:
 
 \begin{frame}{The Sign Test}{An Alternative Alternative}
 	\begin{itemize}
-		\item Assume instead that we had hypothesized that the median level of phosphorous in a population of corn is less than 100
+		\item Assume instead that we had hypothesized that the median level of phosphorous in a population of corn is less than 100 \pause
 		\item[]
-		\item Given the following data \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}, what is your conclusion (assume $\alpha = 0.10$)?
+		\item Given the following data \{51, 54, 60, 61, 64, 71, 76, 77, 77, 81, 93, 93, 95, 96, 99, 168 222, 383\}, what is your conclusion (assume $\alpha = 0.10$)? \pause
 		\item[]
-		\item Hypotheses:
+		\item Hypotheses: \pause
 		\begin{itemize}
-			\item $H_0: M \geq 100$
-			\item $H_a: M < 100$
-			\item Reject $H_0$ if $B \leq C_{\alpha(1), n}$
+			\item $H_0: M \geq 100$ \pause
+			\item $H_a: M < 100$ \pause
+			\item Reject $H_0$ if $B \leq C_{\alpha(1), n}$ \pause
 			\item[]
 		\end{itemize}
-	\item Test statistic:
+	\item Test statistic: \pause
 	\begin{itemize}
-		\item $W$'s: \{-49, -46, -40, -39, -36, -29, -24, -23, -23, -19, -7, -7, -5, -4, -1, 68, 122, 283\}
+		\item $W$'s: \{-49, -46, -40, -39, -36, -29, -24, -23, -23, -19, -7, -7, -5, -4, -1, 68, 122, 283\} \pause
 		\item $B = 3$
 	\end{itemize}
 	\end{itemize}
@@ -352,9 +352,9 @@ Process:
 
 \begin{frame}{The Sign Test}{An Alternative Alternative}
 \begin{itemize}
-	\item Assume instead that we had hypothesized that the median level of phosphorous in a population of corn is less than 100. What is your conclusion (assume $\alpha = 0.10$)?
+	\item Assume instead that we had hypothesized that the median level of phosphorous in a population of corn is less than 100. What is your conclusion (assume $\alpha = 0.10$)? \pause
 	\item[]
-	\item RR: Reject $H_0$ if $B \leq C_{0.10(1), 18} = 5 $
+	\item RR: Reject $H_0$ if $B \leq C_{0.10(1), 18} = 5 $ \pause
 	\item[]
 	\item Since $B = 3$, we reject the null hypothesis, we have evidence to conclude that the population median is less than 100
 \end{itemize}
@@ -367,30 +367,31 @@ Process:
 
 \begin{frame}{The Sign Test}{Normal Approximation}
 	\begin{itemize}
-		\item When the sample size is large, we use the normal approximation to the binomial
+		\item When the sample size is large, we use the normal approximation to the binomial \pause
 		\item[]
-		\item We use the following ``standardized'' test statistic:
+		\item We use the following ``standardized'' test statistic: \pause
 		\begin{gather*}
 		B^* = \frac{B-(n/2)}{\sqrt{n/4}}
 		\end{gather*}
 		
 		\item Rejection regions / rules: 
 		\begin{itemize}
-			\item Case 1. Reject $H_0: M \leq M_0$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$
-			\item Case 2. Reject $H_0: M \geq M_0$ if $B^* \leq z_{\alpha}$ with $p$-value $=P(z \leq B^*)$
-			\item Case 3. Reject $H_0: M = M_0$ if $|B^*| \geq z_{1-\alpha/2}$ with $p$-value $=2\times P(z \geq B^*)$
+			\item Case 1. Reject $H_0: M \leq M_0$ if $B^* \geq z_{\alpha}$ with $p$-value $=P(z \geq B^*)$ \pause
+			\item Case 2. Reject $H_0: M \geq M_0$ if $B^* \leq -z_{\alpha}$ with $p$-value $=P(z \leq B^*)$
+			\pause
+			\item Case 3. Reject $H_0: M = M_0$ if $|B^*| \geq z_{\alpha/2}$ with $p$-value $=2\times P(z \geq |B^*|)$
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Normal Approximation Sign Test}{Example}
 	\begin{itemize}
-		\item You know that the median tumor thickness (mm) for melanomas seen in a skin clinic is 1.94. You also know that the tumor thickness does not follow a normal distribution (it is skewed to the right). 
+		\item You know that the median tumor thickness (mm) for melanomas seen in a skin clinic is 1.94. You also know that the tumor thickness does not follow a normal distribution (it is skewed to the right) \pause
 		\item[]
 		\item You want to determine if larger tumors are associated with a greater risk of death. You review 57 cases for which patient's died from cancer and observed the following initial thicknesses:
 		\begin{center}
 			\includegraphics[width = 1 \linewidth]{melDied}
-		\end{center}
+		\end{center} \pause
 	\item[]
 		\item Are tumor thicknesses greater for cases in which the patient died? Test hypotheses at $\alpha = 0.05$.
 	\end{itemize}
@@ -398,18 +399,18 @@ Process:
 
 \begin{frame}{Normal Approximation Sign Test}{Example}
 	\begin{itemize}
-		\item Hypotheses:
+		\item Hypotheses: \pause
 		\begin{itemize}
-			\item $H_0: M \leq 1.94$
-			\item $H_a: M > 1.94$
+			\item $H_0: M \leq 1.94$ \pause
+			\item $H_a: M > 1.94$ \pause
 			\item[]
 		\end{itemize}
-		\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$
+		\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$ \pause
 		\item[]
-		\item We compute $W_i$ for each measurement:
+		\item We compute $W_i$ for each measurement: 
 		\begin{center}
 			\includegraphics[width = \linewidth]{melDied2}
-		\end{center}
+		\end{center} \pause
 		\item[]
 		\item So $B = 44$ and $B^* = \frac{B-(n/2)}{\sqrt{n/4}} = \frac{44-(57/2)}{\sqrt{57/4}} = 4.106$
 	\end{itemize}
@@ -417,19 +418,25 @@ Process:
 
 \begin{frame}{Normal Approximation Sign Test}{Example}
 \begin{itemize}
-	\item So we have $B^* = 4.106$ 
+	\item So we have $B^* = 4.106$ \pause
 	\item[]
-	\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$
+	\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$ \pause
 	\begin{itemize}
-		\item $z_{1-\alpha} = z_{1-.05} = z_{.95} = 1.645$
+		\item $z_{\alpha} = z_{.05} = 1.645$ \pause
 		\item[]
-		\item Since $B^* = 4.106 > 1.645$, we reject the null hypothesis
+		\item Since $B^* = 4.106 > 1.645$, we reject the null hypothesis \pause
 		\item[]
-		\item $p$-value $=P(z \geq B^*) =  0.00002$
+		\item $p$-value $=P(z \geq B^*) =  0.00002$ \pause
 		\item[]
 	\end{itemize}
-	\item Conclusion: We have evidence that median tumor size in patients who died is greater than 1.94 mm. The $p$-value is 0.00002. 
+	\item Conclusion: We have evidence that median tumor size in patients who died is greater than 1.94 mm. The $p$-value is 0.00002
 \end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecture \#9}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{DSC_2051_v1}
+	\end{center}
 \end{frame}
 
 \end{document}

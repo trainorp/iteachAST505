@@ -444,9 +444,9 @@
 	\begin{itemize}
 		\item Example problem 1: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33\}$. Calculate a 95\% confidence interval for $\mu$ using the given sample (we don't know the population $\sigma$)  \pause \\
 		\vspace{10 pt}
-		First we note that $\alpha = 0.05$, so $1-\alpha / 2 = 0.975$; and that $n - 1 = 4$  \pause So the $t$-value that we are looking for is:
+		First we note that $\alpha = 0.05$, so $1-\alpha / 2 = 0.025$; and that $n - 1 = 4$  \pause So the $t$-value that we are looking for is:
 		\begin{gather*}
-			t_{\alpha / 2, n - 1} = t_{0.975, 4} = 2.776
+			t_{\alpha / 2, n - 1} = t_{0.025, 4} = 2.776
 		\end{gather*}  \pause
 		From before we have that $\bar{y}=504.026$. Then we compute the sample standard deviation, $s = 6.124$. We are almost there:  \pause
 		\begin{align*}
@@ -1007,7 +1007,7 @@ Clearly, 2.828 is not less than -1.645; the test statistic is not in the rejecti
 	\item We formulate our rejection rule:   \pause
 	\begin{itemize}
 		\item Reject $H_0$ if $|t^*| \geq t_{\alpha / 2, n-1}$  \pause
-		\item Reject $H_0$ if $|t^*| \geq t_{0.975, 7} = 2.365$  \pause
+		\item Reject $H_0$ if $|t^*| \geq t_{0.025, 7} = 2.365$  \pause
 		\item[] 
 	\end{itemize}
 	\item We reject the null hypothesis as $|t^*| \geq t_{\alpha / 2, n-1}$ since $6.944 > 2.365$  \pause

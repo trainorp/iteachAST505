@@ -12,11 +12,148 @@
 \title[Lecture 13]{Lecture 13: Inferences about population variances}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
+\date{October}
 
 \begin{document}
 	
 \begin{frame}
 	\maketitle
 \end{frame}
+
+\begin{frame}{Introduction}
+	\begin{itemize}
+		\item There are many instances in which the variability in a population may be of interest
+		\item[]
+		\item Examples:
+		\begin{itemize}
+			\item Manufacturing: The amount of active and inactive ingredients in pharmaceuticals must have low-variability
+			\item[]
+			\item Finance: Given two different portfolios with equal long run expected returns, the one with less variability is desirable
+			\item[]
+			\item Medicine: Given two treatments with equal overall efficacy, the one with the least variability in treatment response might be preferred
+			\item[]
+			\item Analytical chemistry: We always want instruments that give us less variability in measuring anything \& everything!
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Point estimates and sampling distribution for $\sigma^2$}
+	\begin{itemize}
+		\item In order to estimate $\sigma^2$ for a population that has a normal distribution, we want a point estimate and confidence intervals
+		\item[]
+		\item We already know the point estimate that is the best estimate of $\sigma^2$:
+		\begin{gather*}
+			s^2=\frac{\sum_{i=1}^{n}(y_i-\bar{y})^2}{n-1}
+		\end{gather*}
+		\item Towards constructing confidence intervals for $\sigma^2$, we need to introduce a new sampling distribution: the $\chi^2$-distribution 
+		\item[]
+		\item This distribution is the distribution of the sum of the squares from normal random variables
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The  $\chi^2$-distribution}
+	\begin{center}
+		\includegraphics[width=.87 \linewidth]{chi}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The  $\chi^2$-distribution }
+	\begin{itemize}
+		\item Like the Student's $t$-distribution, the $\chi^2$-distribution has degrees of freedom $\text{df}=n-1$
+		\item[]
+		\item The df determine which of the many different $\chi^2$-distributions we are describing
+		\item[]
+		\item The distribution has values between $0$ and $\infty$
+		\item[]
+		\item The distribution has $\mu = \text{df}$, and $\sigma^2 = 2\text{df}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}
+	\begin{itemize}
+		\item Given a confidence coefficient of $1-\alpha$, a confidence interval for $\sigma^2$ is:
+		\begin{gather*}
+		\left(\frac{(n-1) s^2}{\chi_U^2}, \frac{(n-1)s^2}{\chi_L^2} \right)
+		\end{gather*}
+		\item Critical values:
+		\begin{itemize}
+			\item $\chi^2_U$ corresponds to $\alpha / 2$
+			\item $\chi^2_L$ corresponds to $1 - \alpha / 2$
+			\item[]
+		\end{itemize}
+	\item Example: Let's say we want a 90\% confidence interval for $\sigma^2$ and we have a sample size of $n = 7$. Then:
+	\begin{itemize}
+		\item  $\text{df} = n-1 = 6$
+		\item $\alpha = .10$, $\alpha / 2 = .05$, and $1-\alpha / 2 = .95$
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The  $\chi^2$-distribution}
+	For $\chi^2_L$:
+	\begin{center}
+		\includegraphics[width=.95 \linewidth]{chiTable}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The  $\chi^2$-distribution}
+	For $\chi^2_U$:
+	\begin{center}
+		\includegraphics[width=.95 \linewidth]{chiTable2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}{Example}
+	\begin{columns}
+		\begin{column}{.5 \textwidth}
+			 John Fenn's Nobel Prize winning single quadrupole
+			\includegraphics[width = 1\linewidth]{Fenn_ESI_Instrument}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item Assume you have an old mass spectrometer
+				\item[]
+				\item You want to measure the mass of protonated alpha-ketoglutarate ions (147.0288)
+				\item[]
+				\item You make 7 measurements: \{147.0192, 147.0259, 147.0314, 147.0173, 147.0308, 147.0291, 147.0297\}
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}{Example}
+	\begin{itemize}
+		\item You make 7 measurements: \{147.0192, 147.0259, 147.0314, 147.0173, 147.0308, 147.0291, 147.0297\}
+		\item[]
+		\item What is the point estimate and 90\% confidence interval for the population variance $\sigma^2$?
+		\begin{gather*}
+			s^2 = 3.283322 \times 10^{-5}
+		\end{gather*}
+		\begin{gather*}
+			\left(\frac{(n-1) s^2}{\chi_U^2}, \frac{(n-1)s^2}{\chi_L^2} \right)
+		\end{gather*}
+		
+		\begin{itemize}
+			\item $\chi^2_L = 1.635$ corresponds to $1 - \alpha / 2 =.95$ and $\text{df} = 6$
+			\item $\chi^2_U = 12.59$ corresponds to $\alpha / 2 = .05$ $\text{df} = 6$
+			\item[]
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}{Example}
+	\begin{itemize}
+		\item What is the point estimate and 90\% confidence interval for the population variance $\sigma^2$?
+		\begin{gather*}
+		s^2 = 3.283322 \times 10^{-5}
+		\end{gather*}
+		\begin{gather*}
+		\left(\frac{(n-1) s^2}{\chi_U^2}, \frac{(n-1)s^2}{\chi_L^2} \right) = \\
+		\left(\frac{(6) 3.283322 \times 10^{-5}}{12.59}, \frac{(6)3.283322 \times 10^{-5}}{1.635} \right) = \\
+		(1.564729  \times 10^{-5}, 12.04889  \times 10^{-5})
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
 
 \end{document}

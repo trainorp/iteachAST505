@@ -20,6 +20,16 @@
 	\maketitle
 \end{frame}
 
+\begin{frame}{Outline}
+	\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
 \begin{frame}{Introduction}
 	\begin{itemize}
 		\item There are many instances in which the variability in a population may be of interest
@@ -36,6 +46,13 @@
 		\end{itemize}
 	\end{itemize}
 \end{frame}
+
+\section{Inference regarding a single population variance}
+\subsection{Point estimation and Confidence intervals}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
 
 \begin{frame}{Point estimates and sampling distribution for $\sigma^2$}
 	\begin{itemize}
@@ -155,5 +172,425 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Confidence intervals for $\sigma^2$}{Example \# 2}
+	\begin{columns}
+		\begin{column}{.4 \textwidth}
+			\includegraphics[width=1.05 \linewidth]{../lecture12_SampleSize/crescent}
+		\end{column}
+		\begin{column}{.6 \textwidth}
+			\vspace{-5mm}
+				\begin{itemize}
+				\item The city of Louisville, Kentucky needs to estimate the mean $\mu$ of lead in tap water (measured in parts per billion). The city wants to determine the variability of the instrument they use to measure lead. To determine the variability, a scientist adds a fixed amount lead to 10 volumes of water so that the amount in each volume is 5 ppb. Using the instrument she record the following measurements from the 10 volumes: \{4.932, 4.980, 5.505, 4.921, 3.922, 5.249, 4.622, 5.389, 5.377, 4.450\}. Determine a point estimate and 95\% confidence interval for $\sigma^2$.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}{Example \# 2}
+	\begin{center}
+			\begin{tabular}{|c|c|c|}
+			\hline
+			$x$  &   $x-\bar{x}$ & $(x-\bar{x})^2$ \\ \hline \hline
+			4.932 & -0.0027& 0.0000 \\ \hline
+			4.980&  0.0453& 0.0021 \\ \hline
+			5.505&  0.5703& 0.3252 \\ \hline
+			4.921& -0.0137& 0.0002 \\ \hline
+			3.922& -1.0127& 1.0256 \\ \hline
+			5.249&  0.3143& 0.0988 \\ \hline
+			4.622& -0.3127& 0.0978 \\ \hline
+			5.389&  0.4543& 0.2064 \\ \hline
+			5.377&  0.4423& 0.1956 \\ \hline
+			4.450& -0.4847& 0.2349 \\ \hline
+		\end{tabular}
+	\end{center}
+	\begin{gather*}
+		s^2 = \frac{\sum_{i=1}^n (x-\bar{x})^2}{n-1} =\frac{2.1866}{9} =  0.2430
+	\end{gather*}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}
+	\begin{itemize}
+		\item Given a confidence coefficient of $1-\alpha$, a confidence interval for $\sigma^2$ is:
+		\begin{gather*}
+		\left(\frac{(n-1) s^2}{\chi_U^2}, \frac{(n-1)s^2}{\chi_L^2} \right)
+		\end{gather*}
+		\item Critical values:
+		\begin{itemize}
+			\item $\chi^2_U$ corresponds to $\alpha / 2$
+			\item $\chi^2_L$ corresponds to $1 - \alpha / 2$
+			\item[]
+		\end{itemize}
+		\item Wwant a 95\% confidence interval for $\sigma^2$ and we have a sample size of $n = 10$. So:
+		\begin{itemize}
+			\item  $\text{df} = n-1 = 9$
+			\item $\alpha = .05$, $\alpha / 2 = .025$, and $1-\alpha / 2 = .975$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}
+	$\chi^2_L$ corresponding to $1-\alpha / 2 = .975$
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{chiTable3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}
+	$\chi^2_U$ corresponding to $\alpha / 2 = .025$
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{chiTable4}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\sigma^2$}
+	\begin{itemize}
+		\item Our 95\% Confidence interval is then:
+		\begin{gather*}
+		\left(\frac{(n-1) s^2}{\chi_U^2}, \frac{(n-1)s^2}{\chi_L^2} \right) = \\
+		\left(\frac{9 (0.2430)}{19.02}, \frac{9 (0.2430)}{2.700} \right) = \\
+		( 0.1149, 0.8097)
+		\end{gather*}
+		\item So our point estimate of the variance in the measurements produced by this instrument is 0.2430 with a 95\% confidence interval of (0.1149, 0.8097)
+	\end{itemize}
+\end{frame}
+
+\subsection{Hypothesis tests}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Hypothesis testing example}
+	\begin{itemize}
+		\item The manufacturer of the instrument that the city of Louisville uses to measure the amount of lead in water claims that the variance in measurements that is attributable to the instrument is less than 0.10. The city's water scientist hypothesizes that it is greater than 0.10. Using the same measurements from the sample of 10 volumes of water as before, she will test her hypotheses at $\alpha = 0.05$. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Process}
+	\begin{itemize}
+		\item Hypotheses:
+		\begin{itemize}
+			\item \textbf{Case 1.} $H_0: \sigma^2 \leq \sigma_0^2$ vs. $H_a: \sigma^2 > \sigma_0^2$
+			\item \textbf{Case 2.} $H_0: \sigma^2 \geq \sigma_0^2$ vs. $H_a: \sigma^2 < \sigma_0^2$
+			\item \textbf{Case 3.} $H_0: \sigma^2 = \sigma_0^2$ vs. $H_a: \sigma^2 \neq \sigma_0^2$
+			\item[]
+		\end{itemize}
+		
+		\item Test statistic:
+		\begin{gather*}
+		\chi^2 = \frac{(n-1)s^2}{\sigma_0^2}
+		\end{gather*}
+		
+		\item Rejection rule:
+		\begin{itemize}
+			\item \textbf{Case 1.} Reject $H_0$ if $\chi^2 > \chi_U^2$, the upper-tail value for $\alpha$ and $\text{df} = n-1$
+			\item \textbf{Case 2.} Reject $H_0$ if $\chi^2 < \chi_L^2$, the lower-tail value for $1-\alpha$ and $\text{df} = n-1$
+			\item \textbf{Case 3.} Reject $H_0$ if $\chi^2 > \chi_U^2$ based on $\alpha/2$, or $\chi^2 < \chi_L^2$ based on $1-\alpha/2$ and $\text{df}=n-1$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Hypothesis testing example}
+	\begin{itemize}
+		\item The manufacturer of the instrument that the city of Louisville uses to measure the amount of lead in water claims that the variance in measurements that is attributable to the instrument is less than 0.10. The city's water scientist hypothesizes that it is greater than 0.10. Using the same measurements from the sample of 10 volumes of water as before, she will test her hypotheses at $\alpha = 0.05$
+		\item[]
+		\item Hypotheses: \textbf{Case 1.} $H_0: \sigma^2 \leq 0.10$ vs. $H_a: \sigma^2 > 0.10$
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+		\chi^2 = \frac{(n-1)s^2}{\sigma_0^2} = \frac{9 (0.2430)}{0.10} =  21.87
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Hypothesis testing example}
+	\begin{itemize}
+		\item Hypotheses: \textbf{Case 1.} $H_0: \sigma^2 \leq 0.10$ vs. $H_a: \sigma^2 > 0.10$
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+		\chi^2 = \frac{(n-1)s^2}{\sigma_0^2} = \frac{9 (0.2430)}{0.10} =  21.87
+		\end{gather*}
+		\item Rejection rule: \textbf{Case 1.} Reject $H_0$ if $\chi^2 > \chi_U^2$, the upper-tail value for $\alpha$ and $\text{df} = n-1$
+		\begin{itemize}
+			\item From Appendix table, $\chi^2_U = 16.92$ given $\alpha = .05$ and $\text{df} = 9$
+			\item[]
+			\item Since $\chi^2 > \chi^2_U$, we reject the null hypothesis
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Non-normal populations}
+	\begin{itemize}
+		\item Special note (on the Central Limit Theorem result)
+		\item[]
+		\item In the case of a non-normal population we could still say that the distribution of the sample mean would be approximately normal if $n$ is sufficiently large
+		\item[]
+		\item This doesn't apply to variances. The tests regarding population variances using the $\chi^2$-distribution do require the underlying population to be normal. The confidence intervals and tests will not be appropriate for distributions with more skew / lots of outliers
+	\end{itemize}
+\end{frame}
+
+\section{Comparing two population variances}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Introduction to comparing variances}
+	\begin{itemize}
+		\item There are many instances in which comparing variability between two populations / groups is a goal
+	\item[]
+	\item Examples:
+	\begin{itemize}
+		\item Finance: Given two different portfolios with equal long run expected returns, the one with less variability is desirable
+		\item[]
+		\item Medicine: Given two treatments with equal overall efficacy, the one with the least variability in treatment response might be preferred
+		\item[]
+		\item Analytical chemistry: We always want instruments that give us less variability in measuring anything \& everything! (requiring comparison)
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection{A statistical test for comparing two population variances}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The $F$-distribution}
+	\begin{itemize}
+		\item To compare variances between two populations that have normal distributions we can use the ratio of their variances as a test statistic
+		\item[]
+		\item The sampling distribution of this test statistic comes from a related type of ratio involving the sample variances $s_1^2$ and $s_2^2$; and population variances $\sigma_1^2$ and $\sigma_2^2$:
+		\begin{gather*}
+		\frac{s_1^2 / s_2^2}{\sigma_1^2 / \sigma_2^2}
+		\end{gather*}
+		under repeated sampling, this quantity will have an $F$-distribution
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The $F$-distribution}
+	\begin{itemize}
+		\item Properties of $F$-distributions:
+		\begin{enumerate}
+			\item The $F$-distribution can only take positive values
+			\item[]
+			\item The $F$-distribution is not symmetric
+			\item[]
+			\item There are an infinite number of different $F$-distributions that differ based on the df of $s_1^2$ and the df of $s_2^2$
+			\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The $F$-distribution}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{F}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Hypothesis testing process}
+		\begin{itemize}
+		\item Hypotheses:
+		\begin{itemize}
+			\item \textbf{Case 1.} $H_0: \sigma_1^2 \leq \sigma_2^2$ vs. $H_a: \sigma_1^2 > \sigma_2^2$
+			\item[]
+			\item \textbf{Case 2.} $H_0: \sigma_1^2 = \sigma_2^2$ vs. $H_a: \sigma_1^2 \neq \sigma_2^2$
+			\item[]
+		\end{itemize}
+		
+		\item Test statistic:
+		\begin{gather*}
+		F^* = s_1^2 /s_2^2
+		\end{gather*}
+		
+		\item Rejection rule. For a specified $\alpha$, $\text{df}_1 = n_1 - 1$, and $\text{df}_2 = n_2-1$:
+		\begin{itemize}
+			\item \textbf{Case 1.} Reject $H_0$ if $F^* \geq F_{\alpha, \text{df}_1,\text{df}_2}$
+			\item[]
+			\item \textbf{Case 2.} Reject $H_0$ if $F^* \leq F_{1-\alpha / 2, \text{df}_1,\text{df}_2}$ or if $F^* \geq F_{\alpha / 2, \text{df}_1,\text{df}_2} $
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+	\begin{itemize}
+		\item The City of Louisville, Kentucky now wants to see if a new instrument has better performance (lower variability) in measuring lead levels in water than their current instrument. Before, we estimated that the variance in lead measurements using that instrument was 0.2430 with a 95\% CI of (0.1149, 0.8097). The same scientist analyzes the same sample of 10 volumes of water with 5 ppb lead added using the new instrument and records the following: \{4.979, 5.484, 4.487, 5.069, 4.619, 4.933, 5.308, 5.158, 5.088, 4.860\}. Let's determine if there is evidence that the new instrument is better (lower variance); we will test at $\alpha = 0.10$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+	\begin{itemize}
+		\item Let's call the population and sample variance of the old instrument $\sigma_1^2$ and $s_1^2$
+		\begin{itemize}
+			\item Recall $s_1^2 = 0.24295$
+			\item[]
+		\end{itemize}
+		\item Let's call the population and sample variance of the new instrument $\sigma_2^2$ and $s_2^2$
+		\begin{itemize}
+			\item $s_2^2 = 0.08883$
+			\item[]
+		\end{itemize}
+
+		\item Hypotheses: $H_0: \sigma_1^2 \leq \sigma_2^2$ vs. $H_a: \sigma_1^2 > \sigma_2^2$
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+		F^* = s_1^2 /s_2^2 = 0.24295 /  0.08883 = 2.7350
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+	\begin{itemize}		
+		\item Hypotheses: $H_0: \sigma_1^2 \leq \sigma_2^2$ vs. $H_a: \sigma_1^2 > \sigma_2^2$
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+		F^* = s_1^2 /s_2^2 = 0.24295 /  0.08883 = 2.7350
+		\end{gather*}
+		\item Rejection rule: Reject $H_0$ if $F^* \geq F_{.10, 9, 9}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$F$-distribution tables}
+	\begin{center}
+		\includegraphics[width=\linewidth]{FTable}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Example}
+	\begin{itemize}
+		\item Hypotheses: $H_0: \sigma_1^2 \leq \sigma_2^2$ vs. $H_a: \sigma_1^2 > \sigma_2^2$
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+		F^* = s_1^2 /s_2^2 = 0.24295 /  0.08883 = 2.7350
+		\end{gather*}
+		\item Rejection rule: Reject $H_0$ if $F^* \geq F_{.10, 9, 9}$
+		\item[]
+		\item Since $2.735 > 2.44$ we have that $F^* \geq F_{.10, 9, 9}$ and we reject the null hypothesis. We have evidence that the new instrument has a lower variance than the old
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Lower percentiles of $F$-distribution}
+	\begin{itemize}
+		\item We used Appendix table 8 to find the percentile of $F$-distributions that give us specific \emph{right-tailed} probabilities
+		\item[]
+		\item To find percentile that correspond to \emph{left-tailed} probabilities, we need to use division:
+		\begin{gather*}
+			F_{1-\alpha, \text{df}_1, \text{df}_2} = \frac{1}{F_{\alpha, \text{df}_2, \text{df}_1}}
+		\end{gather*} 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{An important application}
+	\begin{itemize}
+		\item An extremely important application of tests regarding population variances is to determine the appropriate variant of $t$-tests for differences in population means (tests that assume equal variance that assume unequal variance)
+		\item[]
+		\item In Lecture 10 (Differences between population means) we had the following example: 
+		\begin{itemize}
+			\item There are 5 types of myocardial infarction (heart attack). You are interested in whether platelet counts (measured in thousands per $\mu$L) differ between two of the types (Type 1: thrombotic MI and Type 2: non-thrombotic MI). You observe the following data from 11 Type 1 MI's and 12 Type 2 MI's: $\bar{y}_{\text{Type 1}}=189.427$, $\bar{y}_{\text{Type 2}}=217.583$, $s_{\text{Type 1}} = 80.095$, and $s_{\text{Type 2}} = 64.945$. Test for a difference between the two types in platelet count at $\alpha = 0.10$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{An important application}
+	\begin{itemize}
+		\item An extremely important application of tests regarding population variances is to determine the appropriate variant of $t$-tests for differences in population means (tests that assume equal variance that assume unequal variance)
+		\item[]
+		\item In Lecture 10 (Differences between population means) we had the following example: 
+		\begin{itemize}
+			\item {\tiny There are 5 types of myocardial infarction (heart attack). You are interested in whether platelet counts (measured in thousands per $\mu$L) differ between two of the types (Type 1: thrombotic MI and Type 2: non-thrombotic MI). You observe the following data from 11 Type 1 MI's and 12 Type 2 MI's: $\bar{y}_{\text{Type 1}}=189.427$, $\bar{y}_{\text{Type 2}}=217.583$, $s_{\text{Type 1}} = 80.095$, and $s_{\text{Type 2}} = 64.945$. Test for a difference between the two types in platelet count at $\alpha = 0.10$}
+			\item[]
+		\end{itemize}
+	\item Now let's determine whether we should assume equal population variances or unequal population variances for our $t$-test given this example. Let's test at $\alpha = .05$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{An important application}{Example}
+	\begin{itemize}
+		\item Let's call the population ``Type 1'' as population 1 and ``Type 2'' as population 2
+		\item[]
+		\item \textbf{Case 2.} $H_0: \sigma_1^2 = \sigma_2^2$ vs. $H_a: \sigma_1^2 \neq \sigma_2^2$
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+		F^* = s_1^2 /s_2^2 =  80.095 / 64.945 = 1.233274
+		\end{gather*}
+		\item Rejection region: \textbf{Case 2.} Reject $H_0$ if $F^* \leq F_{1-\alpha / 2, \text{df}_1,\text{df}_2}$ or if $F^* \geq F_{\alpha / 2, \text{df}_1,\text{df}_2} $
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{An important application}{Example}
+	\begin{itemize}
+		\item Test statistic:
+		\begin{gather*}
+		F^* = s_1^2 /s_2^2 =  80.095 / 64.945 = 1.233274
+		\end{gather*}
+		\item Rejection region: \textbf{Case 2.} Reject $H_0$ if $F^* \leq F_{1-\alpha / 2, \text{df}_1,\text{df}_2}$ or if $F^* \geq F_{\alpha / 2, \text{df}_1,\text{df}_2} $
+		\item[]
+		\item Critical values:
+		\begin{align*}
+			F_{\alpha/2, \text{df}_1,\text{df}_2} &= F_{.025, 10, 11} = 3.53 \\
+			F_{1-\alpha/2, \text{df}_1,\text{df}_2} &= 1 / F_{.025, 11, 10} = 1/3.665 = 0.273
+		\end{align*}
+		\item We fail to reject the null hypothesis
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{An important application}{Example}
+	\begin{itemize}
+		\item Considerations regarding this example
+		\begin{itemize}
+			\item Failing to reject the null hypothesis does not allow us to conclude that the null hypothesis is true (or rather give us the likelihood that it is true)
+			\item[]
+			\item We may be committing a Type II error, equivalently the statistical test may be underpowered
+			\item[]
+			\item The power of the unequal variance t-test is close to that of the equal variance test even when the population variances are equal, so it is okay to use this if there isn't convincing evidence that the variances are not equal
+			\item[]
+			\item If there is evidence of unequal variances we should use the unequal variance t-test
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection{Point estimates and confidence intervals for comparing two population variances}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Confidence intervals for the ratio of variances}
+	\begin{itemize}
+		\item For determining a $(1-\alpha)*100 \%$ confidence interval for the ratio of population variances we use the following: 
+		\begin{gather*}
+			\left(\frac{s_1^2}{s_2^2} F_L, \frac{s_1^2}{s_2^2} F_U \right)
+		\end{gather*}
+					
+		where $F_U = F_{\alpha / 2, \text{df}_2, \text{df}_1}$ and $F_L = F_{1-\alpha / 2, \text{df}_2, \text{df}_1} = 1 / F_{\alpha / 2, \text{df}_1, \text{df}_2}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The two instruments example}
+	\begin{itemize}
+			\item The City of Louisville, Kentucky now wants to see if a new instrument has better performance (lower variability) in measuring lead levels in water than their current instrument. Before, we estimated that the variance in lead measurements using that instrument was 0.2430 with a 95\% CI of (0.1149, 0.8097). The same scientist analyzes the same sample of 10 volumes of water with 5 ppb lead added using the new instrument and records the following: \{4.979, 5.484, 4.487, 5.069, 4.619, 4.933, 5.308, 5.158, 5.088, 4.860\}. Let's determine a 90\% confidence interval for the ratio of population variances
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The two instruments example}
+	\begin{itemize}
+		\item $F_U = F_{\alpha / 2, \text{df}_2, \text{df}_1}=F_{.05, 9, 9}= 3.179$
+		\item $F_L = F_{1-\alpha / 2, \text{df}_2, \text{df}_1} = 1 / F_{\alpha / 2, \text{df}_1, \text{df}_2} = 1 / F_{.05, 9, 9} = 0.3145$
+		\item[]
+		\item A 90\% confidence interval is:
+		\begin{gather*}
+		\left(\frac{s_1^2}{s_2^2} F_L, \frac{s_1^2}{s_2^2} F_U \right)=\\
+		 \left(\frac{0.24295}{0.08883} (0.3145), \frac{0.24295}{0.08883} (3.179)\right) =\\
+		 \left(2.7351(0.3145), 2.7351 (3.179)\right) = \\
+		 (0.8602, 8.6949)
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecture \# 13}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{DSC_0104_v1}
+	\end{center}
+\end{frame}
 
 \end{document}

@@ -26,22 +26,148 @@
 
 \section{Introduction}
 
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{Trees1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{Trees2}
+	\end{center}
+\end{frame}
+
 \begin{frame}{Introduction}
 	\begin{itemize}
-		\item Within-group (sample) variation: Variability of individual measurements that are all from one group (sample). 
+		\item \textbf{Within-group (sample) variation:} Variability of individual measurements that are all from one group (sample). 
 		\begin{itemize}
 			\item Not all of the measurements from one group will be equal to the mean in that group
 			\item This type of variation may be related to the independent variable
 		\end{itemize}
-		
-		\item Between-group (sample) variation: Variability between separate groups of interest. 
+		\item[]
+		\item \textbf{Between-group (sample) variation:} Variability between separate groups of interest. 
 		\begin{itemize}
 			\item Not all of the means for each group will be identical
 			\item This type of variation may be related to the independent variable
 		\end{itemize}
-		
+		\item[]
 		\item When the between-group variation is large relative to the within-group variation we have evidence that population means are different 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{Trees1b}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{Trees2b}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{Trees3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{itemize}
+		\item \textbf{Analysis of Variance:} ``All differences in sample means are judged statistically
+		significant (or not) by comparing them to the variation within samples''
+		\item[]
+		\item ``Analysis of Variance'' (ANOVA) is not about comparing population variances between multiple groups
+		\item[]
+		\item In general if we have $p$ groups, we want to test the hypotheses:
+		\begin{itemize}
+			\item $H_0: \mu_1 = \mu_2 = \hdots = \mu_p$
+			\item $H_a: $ At least one of the means, say $\mu_j$ ($j$ denotes a specific group), is not equal to the rest 
+			\item[]
+		\end{itemize}
+		\item We cannot use pairwise $t$-tests for more than 2 groups because the true Type I error rates will be much greater than specified
+	\end{itemize}
+\end{frame}
+
+\section{The ANOVA framework}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Assumptions if $H_0$ were true}
+	\begin{itemize}
+		\item To develop a test of $H_a$ vs $H_0$, we need to determine a test statistic and determine the distribution of the test statistic if the null hypothesis were true. For this we will assume:
+		\begin{enumerate}
+			\item Each of the $p$ groups (populations) has a normal distribution
+			\item[]
+			\item The variances of the $p$ groups (populations) are equal
+			\item[]
+			\item The measurements for each group $j$ is an independent random samples from their respective populations
+			\item[]
+		\end{enumerate}
+	\item Now we can measure variability using two measures:
+	\begin{itemize}
+		\item $s_W^2$: Within-group variance 
+		\item[]
+		\item $s_B^2$: Between-group variance 
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Assumptions if $H_0$ were true}
+	\begin{itemize}
+		\item $s_W^2$: Within-group variance 
+		\begin{itemize}
+			\item If the null hypothesis were true, then each group would have the same population variance about the same population mean
+			\item[]
+			\item So then we could estimate this population variance using each sample (from each different group) as:
+			\begin{gather*}
+				s_W^2 = \frac{\sum_{j=1}^p (n_j -1) s_j^2}{\sum_{j=1}^p (n_j - 1)}
+			\end{gather*}
+			\item Notice that we have seen this before in $t$-tests that assumed equal variances. In this case $p=2$, and:
+			\begin{gather*}
+			s_W^2 = \frac{\sum_{j=1}^p (n_j -1) s_j^2}{\sum_{j=1}^p (n_j - 1)} = \frac{(n_1-1) s_1^2 + (n_2 -1) s_2^2}{n_1 + n_2 -2}
+			\end{gather*}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Assumptions if $H_0$ were true}
+	\begin{itemize}
+		\item $s_B^2$: Between-group variance 
+		\begin{itemize}
+			\item If $H_0$ were true, than the sample mean  $\bar{y}_j$ of each of the independent samples from the $p$ groups would be an estimate of the same population mean because $\mu_1 = \mu_2 = \hdots = \mu_p$
+			\item[]
+			\item We could then compute the sample variance of this set of $p$ sample means: $\{\bar{y}_1, \bar{y}_2, \hdots \bar{y}_p\}$:
+			\begin{gather*}
+				\frac{\sum_{j=1}^p (\bar{y}_j - \bar{y}.)^2}{p-1}
+			\end{gather*}
+			where $\bar{y}. = \frac{\sum_{j=1}^p \bar{y}_j}{p}$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Assumptions if $H_0$ were true}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{Trees1b}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Assumptions if $H_0$ were true}
+	\begin{itemize}
+		\item Now a test statistic!
 		
+		\item If the null hypothesis is true, then $s_B^2$ and $s_W^2$ both estimate $\sigma^2$ and should both be close to eachother, so:
+		\begin{gather}
+		F = s_B^2 / s_W^2
+		\end{gather}
 	\end{itemize}
 \end{frame}
 

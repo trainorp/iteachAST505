@@ -12,7 +12,7 @@
 \title[Lecture 10]{Lecture 10: Inferences about differences in means and paired samples}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{September 25, 2019}
+\date{October 2, 2019}
 
 \begin{document}
 
@@ -26,22 +26,22 @@
 
 \begin{frame}{Introduction}
 	\begin{itemize}
-		\item In the last two lectures we discussed:
+		\item In the last two lectures we discussed: \pause
 		\begin{itemize}
-			\item Estimating the population mean (or median) for one population
-			\item Testing hypotheses regarding the value of the population mean (or median) for one population
+			\item Estimating the population mean (or median) for one population \pause
+			\item Testing hypotheses regarding the value of the population mean (or median) for one population \pause
 		\end{itemize}
 	\item[]
-	\item Now we want to discuss comparing means between two groups!
+	\item Now we want to discuss comparing means between two groups! \pause
 	\item[]
-	\item Examples:
+	\item Examples: \pause
 	\begin{itemize}
-		\item Are cancer cells less viable after treatment with a new drug? 
+		\item Are cancer cells less viable after treatment with a new drug?  \pause
 			\begin{itemize}
 				\item Group A: cells not treated with the drug
-				\item Group B: cells treated with the drug
+				\item Group B: cells treated with the drug \pause
 			\end{itemize}
-		\item Are stress levels lower in Marines who participate in guided meditation (this was actually studied)?
+		\item Are stress levels lower in Marines who participate in guided meditation? (this was actually studied) \pause
 			\begin{itemize}
 				\item Group A: Marines who were required to participate in meditation
 				\item Group B: Marines who were not required to participate in meditation
@@ -52,13 +52,13 @@
 
 \begin{frame}{Independence of samples / Independence of measurements within samples}
 	\begin{itemize}
-		\item In this lecture we will talk a lot about ``independent samples'' versus ``dependent samples''. What is the difference?	
+		\item In this lecture we will talk a lot about ``independent samples'' versus ``dependent samples''. What is the difference?	\pause
 		\item[]
-		\item Dependent sample examples:
+		\item Dependent sample examples: \pause
 		\begin{itemize}
-			\item Testing the effect of a drug / therapeutic / treatment / intervention using the same experimental subjects by sampling before and after intervention
-			\item Sampling with a geographic / spatial component
-			\item Sampling with a temporal component 
+			\item Testing the effect of a drug / therapeutic / treatment / intervention using the same experimental subjects by sampling before and after intervention \pause
+			\item Sampling with a geographic / spatial component \pause
+			\item Sampling with a temporal component \pause
 			\item[]
 		\end{itemize}
 		\item Statistical procedures (hypothesis tests, interval estimation) that require the independence of measurements in a sample or between samples break down if they aren't truly independent
@@ -73,13 +73,13 @@
 
 \begin{frame}{Both populations are normally distributed and $\sigma_1 = \sigma_2$}
 	\begin{itemize}
-		\item The first case we will discuss is for when we have measurements from two groups (populations), the measurements are normally distributed, and the variance (or standard deviation) is the same in both groups
+		\item The first case we will discuss is for when we have measurements from two groups (populations), the measurements are normally distributed, and the variance (or standard deviation) is the same in both groups \pause
 		\item[]
-		\item The point estimate for the difference in means: $\bar{y}_1 - \bar{y}_2$
+		\item The point estimate for the difference in means: $\bar{y}_1 - \bar{y}_2$ \pause
 		\item[]
-		\item Confidence interval for a given $\alpha$:
+		\item Confidence interval for a given $\alpha$: \pause
 		\begin{gather*}
-			(\bar{y}_1 - \bar{y}_2) \pm t_{1-\alpha /2} \times s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \quad \text{where:} \\
+			(\bar{y}_1 - \bar{y}_2) \pm t_{\alpha /2} \times s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}} \quad \text{where:} \\
 			s_p = \sqrt{\frac{(n_1 -1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 -2}} \quad \text{and} \quad \text{df} = n_1 + n_2 -2
 		\end{gather*}
 	\end{itemize}
@@ -89,9 +89,9 @@
 \begin{columns}
 	\begin{column}{.5 \textwidth}
 		\begin{itemize}
-			\item You have genetically modified a strain of rice to express a different variant in a gene of interest 
+			\item You have genetically modified a strain of rice to express a different variant in a gene of interest \pause
 			\item[]
-			\item You want to estimate the difference in root dry mass with a 90\% confidence interval
+			\item You want to estimate the difference in root dry mass with a 90\% confidence interval \pause
 			\item[]
 			\item You measure the root dry mass of ten wild type plants and 10 with the new variant
 		\end{itemize}
@@ -106,18 +106,18 @@
 
 \begin{frame}{Both populations are normally distributed and $\sigma_1 = \sigma_2$}{Example}
 \begin{itemize}
-	\item The point estimate for the difference in means: $\bar{y}_1-\bar{y}_2 = 12.609-9.798 = 2.811$
+	\item The point estimate for the difference in means: $\bar{y}_1-\bar{y}_2 = 12.609-9.798 = 2.811$ \pause
 	\item[]
-	\item We need to estimate the standard deviation of the difference:
+	\item We need to estimate the standard deviation of the difference: \pause
 	\begin{align*}
 	s_p = \sqrt{\frac{(n_1 -1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 -2}} = \sqrt{\frac{(9)2.959^2 + (9)2.599^2}{18}} = 2.785
 	\end{align*}
 	\item The 90\% confidence interval is then: 
 	\begin{align*}
-	(\bar{y}_1 - \bar{y}_2) \pm t_{1-\alpha /2, n_1 + n_2 - 2} \times s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}\\
-		2.811 \pm t_{0.95, 18} 2.785 \sqrt{\frac{1}{10} + \frac{1}{10}} = (0.651, 4.971)
+	(\bar{y}_1 - \bar{y}_2) \pm t_{\alpha /2, n_1 + n_2 - 2} \times s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}\\
+		2.811 \pm t_{0.05, 18} 2.785 \sqrt{\frac{1}{10} + \frac{1}{10}} = (0.651, 4.971)
 	\end{align*}
-\end{itemize}127.400 - 109.750 - 0
+\end{itemize}
 \end{frame}
 
 \subsection{Hypothesis testing given equal population variances}
@@ -127,18 +127,18 @@
 
 \begin{frame}{Tests of $\mu_1 - \mu_2$ assuming equal variances and normal dist.}
 \begin{itemize}
-	\item If we have two population distributions that are normal with equal variances, and the samples from each are independent, then we can test for a difference in population means: $\mu_1 - \mu_2$. 
+	\item If we have two population distributions that are normal with equal variances, and the samples from each are independent, then we can test for a difference in population means: $\mu_1 - \mu_2$ \pause
 	
 	\begin{itemize}
-		\item For these tests we specify a null difference value, $D_0$
+		\item For these tests we specify a null difference value, $D_0$ \pause
 		\item $D_0 = 0$ means our null hypothesis is no difference between the two groups (populations)
 		\item[]
 	\end{itemize}
-	\item Hypotheses:
+	\item Hypotheses: \pause
 	\begin{itemize}
-		\item Case 1. $H_0: \mu_1 - \mu_2 \leq D_0$ vs. $H_a: \mu_1 - \mu_2 > D_0$
-		\item Case 2. $H_0: \mu_1 - \mu_2 \geq D_0$ vs. $H_a: \mu_1 - \mu_2 < D_0$
-		\item Case 3. $H_0: \mu_1 - \mu_2 = D_0$ vs. $H_a: \mu_1 - \mu_2 \neq D_0$
+		\item Case 1. $H_0: \mu_1 - \mu_2 \leq D_0$ vs. $H_a: \mu_1 - \mu_2 > D_0$ \pause
+		\item Case 2. $H_0: \mu_1 - \mu_2 \geq D_0$ vs. $H_a: \mu_1 - \mu_2 < D_0$ \pause
+		\item Case 3. $H_0: \mu_1 - \mu_2 = D_0$ vs. $H_a: \mu_1 - \mu_2 \neq D_0$ \pause
 		\item[]
 	\end{itemize}
 	\item Test statistic:
@@ -163,18 +163,18 @@
 	t^* = \frac{(\bar{y}_1-\bar{y}_2) - D_0}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}
 	\end{align*}
 	
-	\item Rejection region / rule:
+	\item Rejection region / rule: \pause
 	\begin{itemize}
-		\item Case 1. Reject $H_0$ if $t^* \geq t_{1-\alpha, \text{df} = n_1 + n_2 -2}$ with level of significance, $p\text{-value}=P(t \geq t^*)$
-		\item Case 2. Reject $H_0$ if $t^* \leq t_{\alpha, \text{df} = n_1 + n_2 -2}$ with $p\text{-value}=P(t \leq t^*)$
-		\item Case 3. Reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, \text{df} = n_1 + n_2 -2}$ with $p\text{-value}=2 \times P(t \geq |t^*|)$
+		\item Case 1. Reject $H_0$ if $t^* \geq t_{\alpha, \text{df} = n_1 + n_2 -2}$ with level of significance, $p\text{-value}=P(t \geq t^*)$ \pause
+		\item Case 2. Reject $H_0$ if $t^* \leq -t_{\alpha, \text{df} = n_1 + n_2 -2}$ with $p\text{-value}=P(t \leq t^*)$ \pause
+		\item Case 3. Reject $H_0$ if $|t^*| \geq t_{\alpha / 2, \text{df} = n_1 + n_2 -2}$ with $p\text{-value}=2 \times P(t \geq |t^*|)$
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Tests of $\mu_1 - \mu_2$ assuming equal variances and normal dist.}{Example}
 \begin{itemize}
-	\item The following data comes from: Immer, F.R., Hayes, H.D. \& LeRoy Powers. (1934) ``Statistical determination of barley varietal adaptation''. \emph{Journal of the American Society for Agronomy, 26}.
+	\item The following data comes from: Immer, F.R., Hayes, H.D. \& LeRoy Powers. (1934) ``Statistical determination of barley varietal adaptation''. \emph{Journal of the American Society for Agronomy, 26}. \pause
 	\item[]
 	\item You want to test whether the ``trebi'' variety of barley has a higher yield than the ``velvet'' variety. You observe the following data from 1931 yields with $n=6$ per variety: $\bar{y}_{\text{trebi}} = 127.400$, $\bar{y}_{\text{velvet}} = 103.467$, $s_{\text{trebi}} = 36.671$, $s_{\text{velvet}} = 32.647$. Conduct statisitcal tests at $\alpha = 0.025$ (suppose that for some reason if you falsely reject the null hypothesis it will be extra bad)
 \end{itemize}
@@ -182,9 +182,9 @@
 
 \begin{frame}{Tests of $\mu_1 - \mu_2$ assuming equal variances and normal dist.}{Example}
 \begin{itemize}
-	\item We want to test $H_0: \mu_{\text{trebi}} - \mu_{\text{velvet}} \geq 0$ versus $H_a: \mu_{\text{trebi}} - \mu_{\text{velvet}} < 0$. Our rejection rule is Reject $H_0$ if $t \geq t_{1-\alpha, \text{df} = n_1 + n_2 -2}$
+	\item We want to test $H_0: \mu_{\text{trebi}} - \mu_{\text{velvet}} \leq 0$ versus $H_a: \mu_{\text{trebi}} - \mu_{\text{velvet}} > 0$. Our rejection rule is Reject $H_0$ if $t \geq t_{\alpha, \text{df} = n_1 + n_2 -2}$ \pause
 	\item[]
-	\item To compute our test statistic we will need an estimate of the variance of the difference
+	\item To compute our test statistic we will need an estimate of the variance of the difference \pause
 	\begin{align*}
 		s_p &= \sqrt{\frac{(n_1 -1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 -2}} \\
 		&= \sqrt{\frac{(5)(36.671^2) + (5)(32.647^2)}{10}} \\
@@ -195,28 +195,28 @@
 
 \begin{frame}{Tests of $\mu_1 - \mu_2$ assuming equal variances and normal dist.}{Example}
 \begin{itemize}
-	\item We want to test $H_0: \mu_{\text{trebi}} - \mu_{\text{velvet}} \geq 0$ versus $H_a: \mu_{\text{trebi}} - \mu_{\text{velvet}} < 0$. Our rejection rule is Reject $H_0$ if $t^* \geq t_{1-\alpha, \text{df} = n_1 + n_2 -2}$
+	\item We want to test $H_0: \mu_{\text{trebi}} - \mu_{\text{velvet}} \leq 0$ versus $H_a: \mu_{\text{trebi}} - \mu_{\text{velvet}} > 0$. Our rejection rule is Reject $H_0$ if $t^* \geq t_{\alpha, \text{df} = n_1 + n_2 -2}$
 	\item[]
 	\item Our test statistic is:
 	\begin{align*}
 	t^* &= \frac{(\bar{y}_1-\bar{y}_2) - D_0}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{(127.400 - 103.467 - 0)}{34.717 \sqrt{\frac{1}{6}+\frac{1}{6}}} = 1.194
-	\end{align*}
-	\item Our critical value is $t_{0.975,10} = 2.228$, so we fail to reject the null hypothesis. Although $\bar{y}_{\text{trebi}} - \bar{y}_{\text{velvet}} = 23.933$ we do not have strong enough evidence to conclude that ``trebi'' yields are higher than ``velvet'' at $\alpha = 0.025$
+	\end{align*}\pause
+	\item Our critical value is $t_{0.025,10} = 2.228$, so we fail to reject the null hypothesis. Although $\bar{y}_{\text{trebi}} - \bar{y}_{\text{velvet}} = 23.933$ we do not have strong enough evidence to conclude that ``trebi'' yields are higher than ``velvet'' at $\alpha = 0.025$
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Tests of $\mu_1 - \mu_2$ assuming equal variances and normal dist.}{Example}
 \begin{itemize}
-	\item What is the level of significance for the previous example
+	\item What is the level of significance for the previous example? \pause
 	\begin{align*}
 		p\text{-value}=P(t_{\text{df} = 10} \geq t^*) = P(t_{\text{df} = 10} \geq 1.194) = 0.13
 	\end{align*}
 	\item[]
-	\item Question: What Type I error (rejecting the null hypothesis when it is in fact true) probability would we have had to accept (prior to testing) in order to reject the null hypothesis?
+	\item Question: What Type I error (rejecting the null hypothesis when it is in fact true) probability would we have had to accept (prior to testing) in order to reject the null hypothesis? \pause
 	\begin{itemize}
 		\item $\alpha > 0.13$
 		\item[]
-	\end{itemize}
+	\end{itemize} \pause
 	\item Would $\alpha = 0.14$ be an acceptable Type I error probability to you?
 \end{itemize}
 \end{frame}
@@ -228,9 +228,9 @@
 
 \begin{frame}{Unequal population variances}
 	\begin{itemize}
-		\item When we have normally distributed data from two groups (populations) but these have different variances and we want to construct confidence intervals for $\mu_1 -\mu_2$ we need to adjust:
+		\item When we have normally distributed data from two groups (populations) but these have different variances and we want to construct confidence intervals for $\mu_1 -\mu_2$ we need to adjust: \pause
 		\begin{itemize}
-			\item The degrees of freedom (which specifies our $t$-distribution)
+			\item The degrees of freedom (which specifies our $t$-distribution) \pause
 			\item[]
 			\item The formula for estimating the standard deviation of the difference between population means
 
@@ -240,17 +240,17 @@
 
 \begin{frame}{CI for $\mu_1-\mu_2$ given unequal variances}
 	\begin{itemize}
-		\item We first calculate $c$:
+		\item We first calculate $c$: 
 		\begin{align*}
 		c = \frac{s_1^2 / n_1}{s_1^2 / n_1 + s_2^2/n_2}
-		\end{align*}
+		\end{align*}\pause
 		Then we have an updated formula (known as the \textbf{\emph{Welch-Satterthwaite approximation}}) for the degrees of freedom:
 		\begin{align*}
 		df = \frac{(n_1 -1)(n_2-1)}{(1-c)^2(n_1-1)+c^2(n_2-1)}
-		\end{align*}
+		\end{align*}\pause
 		\item Formula:
 		\begin{align*}
-			(\bar{y}_1-\bar{y}_2) \pm t_{1-\alpha / 2, df} \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}
+			(\bar{y}_1-\bar{y}_2) \pm t_{\alpha / 2, df} \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}
 		\end{align*}
 	\end{itemize}
 \end{frame}
@@ -262,34 +262,34 @@
 
 \begin{frame}{Tests of $\mu_1 - \mu_2$ assuming $\neq$ variances and normal dist.}
 \begin{itemize}
-\item Hypotheses:
+\item Hypotheses: \pause
 \begin{itemize}
-	\item Case 1. $H_0: \mu_1 - \mu_2 \leq D_0$ vs. $H_a: \mu_1 - \mu_2 > D_0$
-	\item Case 2. $H_0: \mu_1 - \mu_2 \geq D_0$ vs. $H_a: \mu_1 - \mu_2 < D_0$
-	\item Case 3. $H_0: \mu_1 - \mu_2 = D_0$ vs. $H_a: \mu_1 - \mu_2 \neq D_0$
+	\item Case 1. $H_0: \mu_1 - \mu_2 \leq D_0$ vs. $H_a: \mu_1 - \mu_2 > D_0$ \pause
+	\item Case 2. $H_0: \mu_1 - \mu_2 \geq D_0$ vs. $H_a: \mu_1 - \mu_2 < D_0$ \pause
+	\item Case 3. $H_0: \mu_1 - \mu_2 = D_0$ vs. $H_a: \mu_1 - \mu_2 \neq D_0$ \pause
 	\item[]
 \end{itemize}
 \item Test statistic:
 \begin{align*}
 t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}}
-\end{align*}
-\item Rejection region / rule:
+\end{align*} \pause
+\item Rejection region / rule: \pause
 \begin{itemize}
-	\item Case 1. Reject $H_0$ if $t^* \geq t_{1-\alpha, \text{df}}$ with level of significance, $p\text{-value}=P(t \geq t^*)$
-	\item Case 2. Reject $H_0$ if $t^* \leq t_{\alpha, \text{df} }$ with $p\text{-value}=P(t \leq t^*)$
-	\item Case 3. Reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, \text{df}}$ with $p\text{-value}=2 \times P(t \geq |t^*|)$
+	\item Case 1. Reject $H_0$ if $t^* \geq t_{\alpha, \text{df}}$ with level of significance, $p\text{-value}=P(t \geq t^*)$ \pause
+	\item Case 2. Reject $H_0$ if $t^* \leq -t_{\alpha, \text{df} }$ with $p\text{-value}=P(t \leq t^*)$ \pause
+	\item Case 3. Reject $H_0$ if $|t^*| \geq t_{\alpha / 2, \text{df}}$ with $p\text{-value}=2 \times P(t \geq |t^*|)$
 \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Unequal variances example}{Part 1}
 	\begin{itemize}
-		\item There are 5 types of myocardial infarction (heart attack). You are interested in whether platelet counts (measured in thousands per $\mu$L) differ between two of the types (Type 1: thrombotic MI and Type 2: non-thrombotic MI). You observe the following data from 11 Type 1 MI's and 12 Type 2 MI's: $\bar{y}_{\text{Type 1}}=189.427$, $\bar{y}_{\text{Type 2}}=217.583$, $s_{\text{Type 1}} = 80.095$, and $s_{\text{Type 2}} = 64.945$. Test for a difference between the two types in platelet count at $\alpha = 0.10$
+		\item There are 5 types of myocardial infarction (heart attack). You are interested in whether platelet counts (measured in thousands per $\mu$L) differ between two of the types (Type 1: thrombotic MI and Type 2: non-thrombotic MI). You observe the following data from 11 Type 1 MI's and 12 Type 2 MI's: $\bar{y}_{\text{Type 1}}=189.427$, $\bar{y}_{\text{Type 2}}=217.583$, $s_{\text{Type 1}} = 80.095$, and $s_{\text{Type 2}} = 64.945$. Test for a difference between the two types in platelet count at $\alpha = 0.10$ \pause
 		\item[]
 		\item Setup:
 		\begin{itemize}
-			\item We will test $H_0: \mu_{\text{Type 1}} - \mu_{\text{Type 2}} =0$ versus $H_0: \mu_{\text{Type 1}} - \mu_{\text{Type 2}} \neq 0$
-			\item We will reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, \text{df}}$
+			\item We will test $H_0: \mu_{\text{Type 1}} - \mu_{\text{Type 2}} =0$ versus $H_0: \mu_{\text{Type 1}} - \mu_{\text{Type 2}} \neq 0$ \pause
+			\item We will reject $H_0$ if $|t^*| \geq t_{\alpha / 2, \text{df}}$
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -299,8 +299,8 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 		\item The test statistic is: 
 		\begin{align*}
 		t^* &= \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}} = \frac{(189.427-217.583)}{\sqrt{\frac{80.095^2}{11}+\frac{64.945^2}{12}}} = -0.921
-		\end{align*}
-		\item We need to calculate the degrees of freedom using the Welch-Satterthwaite approximation:
+		\end{align*}\pause
+		\item We need to calculate the degrees of freedom using the Welch-Satterthwaite approximation: \pause
 		\begin{gather*}
 			c = \frac{80.095^2 / 11}{80.095^2 / 11 + 64.945^2/12} = 0.624\\
 			df = \frac{(n_1 -1)(n_2-1)}{(1-c)^2(n_1-1)+c^2(n_2-1)} = \frac{10*11}{(1-0.624)^2(10) + 0.624^2 (11)} \\
@@ -315,9 +315,9 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 	\begin{align*}
 	t^* &= \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}} = \frac{(189.427-217.583)}{\sqrt{\frac{80.095^2}{11}+\frac{64.945^2}{12}}} = -0.921
 	\end{align*}
-	\item Our critical value is then $t_{1-\alpha/2, df} = t_{0.95, 19} = 1.729$
+	\item Our critical value is then \pause $t_{\alpha/2, df} = t_{0.05, 19} = 1.729$ \pause
 	\item[]
-	\item Since $|-0.921| = 0.921 < 1.729$ we have that $|t^*| < t_{1-\alpha / 2, \text{df}}$ and we fail to reject the null hypothesis 
+	\item Since $|-0.921| = 0.921 < 1.729$ we have that $|t^*| < t_{\alpha / 2, \text{df}}$ and we fail to reject the null hypothesis \pause
 	\item[]
 	\item To compute the $p$-value, $2 \times P(t_{\text{df} = 19} \geq |t^*|) = 2\times P(t_{\text{df} = 19} \geq 0.921) = 0.369$
 \end{itemize}
@@ -326,10 +326,10 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 \begin{frame}{Unequal variances example}{Part 2}
 \begin{itemize}
 	\item You are interested in whether platelet counts (measured in thousands per $\mu$L) differ between Type 1 and Type 2 MI. You observe the following data from 11 Type 1 MI's and 12 Type 2 MI's: $\bar{y}_{\text{Type 1}}=189.427$, $\bar{y}_{\text{Type 2}}=217.583$, $s_{\text{Type 1}} = 80.095$, and $s_{\text{Type 2}} = 64.945$. Determine a point estimate and 95\% confidence interval for the difference in platelet count means between the types
-	\item The point estimate for the difference in means is -28.156 and for the CI:
+	\item The point estimate for the difference in means is -28.156 and for the CI:\pause
 	\begin{align*}
-	(\bar{y}_1-\bar{y}_2) &\pm t_{1-\alpha / 2, df} \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} \\
-	(189.427-217.583) &\pm t_{0.975,19} \sqrt{\frac{80.095^2}{11}+\frac{64.945^2}{12}} \\
+	(\bar{y}_1-\bar{y}_2) &\pm t_{\alpha / 2, df} \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} \\
+	(189.427-217.583) &\pm t_{0.025,19} \sqrt{\frac{80.095^2}{11}+\frac{64.945^2}{12}} \\
 	& (-92.145, 35.764)
 	\end{align*}
 \end{itemize}
@@ -342,15 +342,15 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 
 \begin{frame}{Paired samples}
 \begin{itemize}
-	\item All of the methods presented earlier in the lecture assume that there is no dependence between the two samples from different populations
+	\item All of the methods presented earlier in the lecture assume that there is no dependence between the two samples from different populations \pause
 	\item[]
-	\item Many research questions we ask do not meet this assumption
+	\item Many research questions we ask do not meet this assumption \pause
 	\item[]
 	\item Example: 
 	\begin{itemize}
-		\item HIV targets CD4\textsuperscript{+} T cells. You need to test the effecteness of a new drug in reducing viral load and increasing CD4\textsuperscript{+} T cell count. You recruit patients and administer the drug, measuring initial CD4\textsuperscript{+} T cell count and after a year of treatment
-		\item You now have samples from two populations (baseline and after treatment)
-		\item The same experimental unit (a person) is included in each creating ``paired samples''
+		\item HIV targets CD4\textsuperscript{+} T cells. You need to test the effecteness of a new drug in reducing viral load and increasing CD4\textsuperscript{+} T cell count. You recruit patients and administer the drug, measuring initial CD4\textsuperscript{+} T cell count and after a year of treatment \pause
+		\item You now have samples from two populations (baseline and after treatment) \pause
+		\item The same experimental unit (a person) is included in each creating ``paired samples'' \pause
 		\item The CD4\textsuperscript{+} T cell count in a person at baseline will be related to the count after treatment (\emph{dependence})
 	\end{itemize}
 \end{itemize}
@@ -400,12 +400,12 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 		\end{column}
 	\begin{column}{.5 \textwidth}
 		\begin{itemize}
-			\item Means: $\bar{y}_{\text{baseline}} = 3.14$ and $\bar{y}_{\text{after}} = 3.98$
-			\item Means: $s_{\text{baseline}} = 1.03$ and $s_{\text{after}} = 1.08$
+			\item Sample means: $\bar{y}_{\text{baseline}} = 3.14$ and $\bar{y}_{\text{after}} = 3.98$ \pause
+			\item Sample standard deviations: $s_{\text{baseline}} = 1.03$ and $s_{\text{after}} = 1.08$ \pause
 			\item[]
-			\item Independent samples t-test for difference in means assuming equal variances:
+			\item Independent samples t-test for difference in means assuming equal variances: \pause
 			\begin{itemize}
-				\item 95\% CI: $(-0.15,  1.83)$
+				\item 95\% CI: $(-0.15,  1.83)$ \pause
 				\item $p$-value $=0.09$
 			\end{itemize}
 		\end{itemize}
@@ -436,9 +436,9 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 		\end{column}
 		\begin{column}{.6 \textwidth}
 			\begin{itemize}
-				\item Some evidence of a difference...however...
+				\item Weak evidence of a difference...however... \pause
 				\item[]
-				\item We can ask a different question: What is the probability that out of 10 human subjects every single ``after treatment'' measurement is higher than ``baseline''?
+				\item We can ask a different question: What is the probability that out of 10 human subjects every single ``after treatment'' measurement is higher than ``baseline''? \pause
 				\item[]
 				\item This is a binomial probability statement. The probability of seeing 10 successes out of 10 trials given $\pi = 0.50$ is: 0.000976
 			\end{itemize}
@@ -450,9 +450,9 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 	\begin{itemize}
 		\item We have two different conclusions:
 		\begin{itemize}
-			\item The independent samples t-test tells us that the observed difference between baseline and after treatment measurements is not very inconsistent with the null hypothesis that the drug doesn't have an effect
+			\item The independent samples t-test tells us that the observed difference between baseline and after treatment measurements is not very inconsistent with the null hypothesis that the drug doesn't have an effect \pause
 			\item[]
-			\item The Binomial probability statement tells us that it would be nearly impossible to see 10 out of 10 ``after treatment'' measurements being higher than the ``baseline'' measurements if the drug doesn't have an effect
+			\item The Binomial probability statement tells us that it would be nearly impossible to see 10 out of 10 ``after treatment'' measurements being higher than the ``baseline'' measurements if the drug doesn't have an effect \pause
 			\item[] 
 			\item \textbf{The problem:} The independent samples t-test overstates the standard error of $\bar{y}_1 - \bar{y}_2$
 		\end{itemize}
@@ -481,11 +481,11 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 	\end{column}
 	\begin{column}{.5 \textwidth}
 			\begin{itemize}
-			\item For each of $n$ pairs of measurements we can compute the difference and call it a new variable: $d_i = y_{1,i}-y_{2,i}$
+			\item For each of $n$ pairs of measurements we can compute the difference and call it a new variable: $d_i = y_{1,i}-y_{2,i}$ \pause
 			\item[]
-			\item Once we have each $d_i$ we can compute $\bar{d}$ and $s_d$
+			\item Once we have each $d_i$ we can compute $\bar{d}$ and $s_d$ \pause
 			\begin{itemize}
-				\item $\bar{d} = 0.839$
+				\item $\bar{d} = 0.839$ \pause
 				\item $s_d = 0.495$
 			\end{itemize}
 		\end{itemize}
@@ -496,22 +496,22 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 
 \begin{frame}{Hypothesis Tests}
 \begin{itemize}
-	\item Hypotheses:
+	\item Hypotheses: \pause
 	\begin{itemize}
-		\item Case 1. $H_0: \mu_D \leq D_0$ vs. $H_a: \mu_D > D_0$
-		\item Case 2. $H_0: \mu_D \geq D_0$ vs. $H_a: \mu_D < D_0$
-		\item Case 3. $H_0: \mu_D = D_0$ vs. $H_a: \mu_D \neq D_0$
+		\item Case 1. $H_0: \mu_D \leq D_0$ vs. $H_a: \mu_D > D_0$ \pause
+		\item Case 2. $H_0: \mu_D \geq D_0$ vs. $H_a: \mu_D < D_0$ \pause
+		\item Case 3. $H_0: \mu_D = D_0$ vs. $H_a: \mu_D \neq D_0$ \pause
 		\item[]
 	\end{itemize}
 	\item Test statistic:
 	\begin{align*}
 	t^* = \frac{\bar{d}-D_0}{s_d / \sqrt{n}}
-	\end{align*}
+	\end{align*}\pause
 	\item Rejection region / rule:
 	\begin{itemize}
-		\item Case 1. Reject $H_0$ if $t^* \geq t_{1-\alpha, \text{df}}$ with level of significance, $p\text{-value}=P(t \geq t^*)$
-		\item Case 2. Reject $H_0$ if $t^* \leq t_{\alpha, \text{df} }$ with $p\text{-value}=P(t \leq t^*)$
-		\item Case 3. Reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, \text{df}}$ with $p\text{-value}=2 \times P(t \geq |t^*|)$
+		\item Case 1. Reject $H_0$ if $t^* \geq t_{\alpha, \text{df}}$ with level of significance, $p\text{-value}=P(t \geq t^*)$ \pause
+		\item Case 2. Reject $H_0$ if $t^* \leq -t_{\alpha, \text{df} }$ with $p\text{-value}=P(t \leq t^*)$ \pause
+		\item Case 3. Reject $H_0$ if $|t^*| \geq t_{\alpha / 2, \text{df}}$ with $p\text{-value}=2 \times P(t \geq |t^*|)$ \pause
 	\end{itemize}
 \item[]
 \item $\text{df}= n-1$, given $n$ pairs
@@ -520,9 +520,9 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 
 \begin{frame}{Confidence Intervals}
 	\begin{itemize}
-		\item A $100(1-\alpha)\%$ confidence interval for $\mu_d = \mu_1 - \mu_2$ is:
+		\item A $100(1-\alpha)\%$ confidence interval for $\mu_d = \mu_1 - \mu_2$ is: \pause
 		\begin{gather*}
-		\bar{d} \pm t_{1-\alpha / 2, \text{df}}\frac{s_d}{\sqrt{n}}
+		\bar{d} \pm t_{\alpha / 2, \text{df}}\frac{s_d}{\sqrt{n}}
 		\end{gather*}
 		where $\text{df}= n-1$, given $n$ pairs
 	\end{itemize}
@@ -551,13 +551,13 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 	\begin{column}{.6 \textwidth}
 		\vspace{-5pt}
 		\begin{itemize}
-			\item Let's test $H_0: \mu_D = 0$ vs. $H_a: \mu_D \neq 0$ at $\alpha = 0.05$
+			\item Let's test $H_0: \mu_D = 0$ vs. $H_a: \mu_D \neq 0$ at $\alpha = 0.05$ \pause
 			\begin{align*}
 			t^* = \frac{\bar{d}-D_0}{s_d / \sqrt{n}} = \frac{0.839}{0.495 / \sqrt{10}} = 5.36
-			\end{align*}
-			\item Our critical value is $t_{1-\alpha / 2, n-1} = t_{0.975, 9} = 2.26$
+			\end{align*} \pause
+			\item Our critical value is $t_{\alpha / 2, n-1} = t_{0.025, 9} = 2.26$ \pause
 			\item[]
-			\item Since $|5.36| > 2.26$, we have that $|t^*| \geq t_{1-\alpha / 2, \text{df}}$ and we reject the null hypothesis with
+			\item Since $|5.36| > 2.26$, we have that $|t^*| \geq t_{\alpha / 2, \text{df}}$ and we reject the null hypothesis with
 			\begin{align*}
 				p\text{-value}&=2 \times P(t \geq |t^*|)\\ 
 				&= 2 \times P(t\geq 5.36) \\
@@ -590,9 +590,9 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 	\end{column}
 	\begin{column}{.6 \textwidth}
 		\begin{itemize}
-			\item The independent sample's t-test and the paired samples t-test both give the same estimate of the difference, that is $\bar{y}_1-\bar{y}_2 = \bar{d}$
+			\item The independent sample's t-test and the paired samples t-test both give the same estimate of the difference, that is $\bar{y}_1-\bar{y}_2 = \bar{d}$ \pause
 			\item[]
-			\item However, when there is a dependence between pairs, rather than two independent samples: $s_{\bar{d}} < s_{\bar{y}_1 - \bar{y}_2}$ 
+			\item However, when there is a dependence between pairs, rather than two independent samples: $s_{\bar{d}} < s_{\bar{y}_1 - \bar{y}_2}$ \pause
 		\end{itemize}
 	\end{column}
 \end{columns}
@@ -600,19 +600,27 @@ t^* = \frac{(\bar{y}_1-\bar{y}_2)-D_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}
 
 \begin{frame}{Dependence}
 	\begin{itemize}
-		\item Many statistical tests and procedures require independence between observations. However there are \emph{tons} of study designs and experimental designs in which dependent observations are generated
+		\item Many statistical tests and procedures require independence between observations. However there are \emph{tons} of study designs and experimental designs in which dependent observations are generated \pause
 		\item[]
-		\item Examples:
+		\item Examples: \pause
 		\begin{itemize}
-			\item You take multiple measurements from the same object at one time (plant, person, animal, stream)
+			\item You take multiple measurements from the same object at one time (plant, person, animal, stream) \pause
 			\item[]
-			\item You take multiple measurements across time (temporal dependence)
+			\item You take multiple measurements across time (temporal dependence) \pause
 			\item[]
-			\item You take measurements across a geography (spatial dependence)
+			\item You take measurements across a geography (spatial dependence) \pause
 			\item[]
 		\end{itemize}
 	\item We need to ensure that we use tests and procedures that account for dependence
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecture \# 10}
+	\begin{center}
+		\includegraphics[width=.55\linewidth]{67340549_354434568822680_4417725760013433659_n} \\
+		
+		{\tiny Pine Mountain, KY courtesy from travelky}
+	\end{center}
 \end{frame}
 
 \end{document}

@@ -33,47 +33,51 @@ df1$Tree <- factor(df1$Tree)
 
 lm1 <- lm(dbh ~ Tree, data = df1)
 
-png(filename = "Trees1.png", height = 4, width = 6, units = "in", res = 300)
+#png(filename = "Trees1.png", height = 4, width = 6, units = "in", res = 300)
 p1 <- ggplot(df1 %>% filter(Tree %in% c("Shortleaf Pine", "Sand Pine", "Eastern White Pine")), 
        aes(y = dbh, color = Tree, x = Tree)) +
   stat_summary(geom = "point", fun.y = "mean", col = "black", fill = "black", size = 4, shape = 23) +
   geom_jitter(size = 1.5, width = .05) + theme_bw() + labs(y = "Diameter at Breast Height (Inches)") + ylim(6, 20) +
   scale_color_manual(values = RColorBrewer::brewer.pal(7, "Set1")[1:3])
 show(p1)
-dev.off()
+#dev.off()
 
-png(filename = "Trees2.png", height = 4, width = 6, units = "in", res = 300)
+#png(filename = "Trees2.png", height = 4, width = 6, units = "in", res = 300)
 p2 <- ggplot(df1 %>% filter(Tree %in% c("Scarlet Oak", "Southern Red Oak", "White Oak")), 
        aes(y = dbh, color = Tree, x = Tree)) +
   stat_summary(geom = "point", fun.y = "mean", col = "black", fill = "black", size = 4, shape = 23) +
   geom_jitter(size = 1.5, width = .05) + theme_bw() + labs(y = "Diameter at Breast Height (Inches)") + ylim(6, 20) +
   scale_color_manual(values = RColorBrewer::brewer.pal(7, "Set1")[c(4,5, 7)])
 show(p2)
-dev.off()
+#dev.off()
 
 df1 %>% filter(Tree %in% c("Shortleaf Pine", "Sand Pine", "Eastern White Pine")) %>% summarise(mean(dbh)) %>% as.data.frame()
 df1 %>% filter(Tree %in% c("Scarlet Oak", "Southern Red Oak", "White Oak")) %>% summarise(mean(dbh)) %>% as.data.frame()
 
-png(filename = "Trees1b.png", height = 4, width = 6, units = "in", res = 300)
+#png(filename = "Trees1b.png", height = 4, width = 6, units = "in", res = 300)
 p1b <- p1 + geom_hline(yintercept = 12.81748, lwd = 1, lty = 2) + ggtitle("Greater Between-Group variability")
 show(p1b)
-dev.off()
+#dev.off()
 
-png(filename = "Trees2b.png", height = 4, width = 6, units = "in", res = 300)
+#png(filename = "Trees2b.png", height = 4, width = 6, units = "in", res = 300)
 p2b <- p2 + geom_hline(yintercept = 14.52869, lwd = 1, lty = 2) + ggtitle("Lesser Between-Group variability")
 show(p2b)
-dev.off()
+#dev.off()
 
-png(filename = "Trees3.png", height = 4*1.2, width = 10*1.2, units = "in", res = 300)
+#png(filename = "Trees3.png", height = 4*1.2, width = 10*1.2, units = "in", res = 300)
 gridExtra::grid.arrange(p1b, p2b, nrow = 1) 
-dev.off()
+#dev.off()
 
 df3 <- df1 
-set.seed(8)
-df3$dbh <- rnorm(60, 14.1, 2)
+set.seed(888)
+df3$dbh <- rnorm(60, 14.1, 8)
 df3 %>% group_by(Tree) %>% summarize(vars = var(dbh)) %>% summarize(mean(vars))
 
-df3 %>% group_by(Tree) %>% summarize(means = mean(dbh)) %>% summarize(var(means)) 
+df3 %>% group_by(Tree) %>% summarize(means = mean(dbh)) %>% summarize(10 * var(means)) 
 
 anova1 <- aov(dbh ~ Tree, data = df3)
 summary(anova1)
+
+########### Back to the unequal case ###########
+df1b <- df1 %>% filter(Tree %in% c("Shortleaf Pine", "Sand Pine", "Eastern White Pine"))
+df1c <- df1b %>% arrange(Tree)

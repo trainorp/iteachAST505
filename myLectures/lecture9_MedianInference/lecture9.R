@@ -9,6 +9,26 @@ library(ggrepel)
 
 setwd(paste0(baseDir, "/iTeach/AST_505/myLectures/lecture9_MedianInference"))
 
+############ Homework problem Glioblastoma ############
+set.seed(12345)
+x <- round(rexp(15, 1), 2) * 12
+x[4] <- .25
+boxplot(x)
+wilcox.test(x, alternative = "two.sided", conf.int = TRUE, conf.level = .9)
+wilcox.test(x, alternative = "less", mu = 12, conf.int = TRUE)
+
+t.test(x, alternative = "two.sided", mu = 5, conf.int = TRUE, conf.level = .9)
+t.test(x, alternative = "greater", mu = 5, conf.int = TRUE)
+
+############ Homework problem t-test diff ############
+set.seed(54321)
+x <- round(rnorm(20, 55, 10))
+set.seed(5432)
+y <- round(rnorm(20, 70, 50))
+
+t.test(x, y, conf.level = .9)
+t.test(x, y)
+
 ############ Why the median ############
 trueMed <- 40924
 

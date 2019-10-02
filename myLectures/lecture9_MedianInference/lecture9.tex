@@ -12,7 +12,7 @@
 \title[Lecture 9]{Lecture 9: Inferences about the median}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{September 25, 2019}
+\date{September 30, 2019}
 
 \begin{document}
 
@@ -245,11 +245,11 @@ Process:
 	\begin{itemize}
 		\item When the sample size, $n$ is large (for example $>50$), we use a different formula that uses a normal approximation to find $C_{\alpha(2),n}$:
 		\begin{gather*}
-		C_{\alpha(2),n} \approx \frac{n}{2} - z_{1-\alpha / 2} \sqrt{n/4}
+		C_{\alpha(2),n} \approx \frac{n}{2} - z_{\alpha / 2} \sqrt{n/4}
 		\end{gather*} \pause
 		\item Example. Determine $C_{\alpha(2),n}$ for $n = 50$ and $\alpha = 0.05$
 		\begin{gather*}
-		C_{0.05(2),50} \approx \frac{50}{2} - z_{0.975} \sqrt{50/4} = 18.07 \approx 18
+		C_{0.05(2),50} \approx \frac{50}{2} - z_{0.025} \sqrt{50/4} = 18.07 \approx 18
 		\end{gather*}
 	\end{itemize}
 \end{frame}
@@ -405,7 +405,7 @@ Process:
 			\item $H_a: M > 1.94$ \pause
 			\item[]
 		\end{itemize}
-		\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$ \pause
+		\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{\alpha}$ with $p$-value $=P(z \geq B^*)$ \pause
 		\item[]
 		\item We compute $W_i$ for each measurement: 
 		\begin{center}
@@ -420,7 +420,7 @@ Process:
 \begin{itemize}
 	\item So we have $B^* = 4.106$ \pause
 	\item[]
-	\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{1-\alpha}$ with $p$-value $=P(z \geq B^*)$ \pause
+	\item Rejection region / rule: Reject $H_0: M \leq 1.94$ if $B^* \geq z_{\alpha}$ with $p$-value $=P(z \geq B^*)$ \pause
 	\begin{itemize}
 		\item $z_{\alpha} = z_{.05} = 1.645$ \pause
 		\item[]

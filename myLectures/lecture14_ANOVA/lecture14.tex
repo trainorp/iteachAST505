@@ -101,7 +101,7 @@
 	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
-\begin{frame}{Assumptions if $H_0$ were true}
+\begin{frame}{If $H_0$ were true}
 	\begin{itemize}
 		\item To develop a test of $H_a$ vs $H_0$, we need to determine a test statistic and determine the distribution of the test statistic if the null hypothesis were true. For this we will assume:
 		\begin{enumerate}
@@ -121,7 +121,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Assumptions if $H_0$ were true}
+\begin{frame}{If $H_0$ were true}
 	\begin{itemize}
 		\item $s_W^2$: Within-group variance 
 		\begin{itemize}
@@ -139,7 +139,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Assumptions if $H_0$ were true}
+\begin{frame}{If $H_0$ were true}
 	\begin{itemize}
 		\item $s_B^2$: Between-group variance 
 		\begin{itemize}
@@ -150,24 +150,74 @@
 				\frac{\sum_{j=1}^p (\bar{y}_j - \bar{y}.)^2}{p-1}
 			\end{gather*}
 			where $\bar{y}. = \frac{\sum_{j=1}^p \bar{y}_j}{p}$
+			\item[]
+			\item If $n_j$ is equal for each group, then the above quantity is an estimate of $\sigma^2 / n$. So $n_j$ times that quantity estimates $\sigma^2$
 		\end{itemize}
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Assumptions if $H_0$ were true}
+\begin{frame}{If $H_0$ were true}
+	\begin{itemize}
+		\item Now a test statistic!
+		\item[]
+		\item If the null hypothesis is true, then $s_B^2$ and $s_W^2$ both estimate $\sigma^2$ and should both be close to eachother, so:
+		\begin{gather*}
+		F^* = s_B^2 / s_W^2
+		\end{gather*}
+		Should be close to 1 and has an $F$ distribution
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{If $H_0$ was not true}
+	\begin{itemize}
+		\item If $H_0$ were not true then we would expect that $s^2_B$ will be greater than $s_W^2$. That is, the between group variability will be greater than the within group variability 
+		\item[]
+		\item So this would put our test statistic $F^*$ in the right tail of the $F$ distribution under the null
+		\item[]
+		\item We will call this testing Analysis of Variance (or ANOVA or AOV)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Break for data}
 	\begin{center}
-		\includegraphics[width=.9\linewidth]{Trees1b}
+		\includegraphics[width=.9\linewidth]{Trees1}
 	\end{center}
 \end{frame}
 
-\begin{frame}{Assumptions if $H_0$ were true}
+\begin{frame}{Break for data}
 	\begin{itemize}
-		\item Now a test statistic!
-		
-		\item If the null hypothesis is true, then $s_B^2$ and $s_W^2$ both estimate $\sigma^2$ and should both be close to eachother, so:
-		\begin{gather}
-		F = s_B^2 / s_W^2
-		\end{gather}
+		\item Before we introduce some notation and the process for doing an ANOVA $F$-test let's introduce some data
+	\end{itemize}
+\begin{center}
+	\includegraphics{treeData2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Break for data}
+	\begin{center}
+		\includegraphics[width=.45 \linewidth]{treeData}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Completely randomized designs}
+	\begin{itemize}
+		\item We will now talk about completely randomized designs. In a completely randomized design we have multiple populations whose means we want to compare, and we have a random sample of observations from each
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Notation}
+	\begin{itemize}
+		\item $k$: The number of groups (populations)
+		\item[]
+		\item $y_{j,i}:$ The $i$th sample observation from the group (population) $j$. For example, $y_{3,2}$ in our data would be the dbh of Shortleaf Pine \#2
+		\item[]
+		\item $n_j$: The number of observations from group (population) $j$. For our data $n_j=10$ for all groups $j$
+		\item[]
+		\item $N$: The total sample size. That is $N = \sum_{j=1}^{k} n_j$. For our data $N = 30$
+		\item[]
+		\item $\bar{y}_{j.}$: The mean of the $n_j$ observations from group (population) $j$. That is $\bar{y}_{j.} = \frac{\sum_{i = 1}^{n_j} y_{j,i}}  {n_j}$
+		\item[]
+		\item $\bar{y}$: The mean of all of the observations $\sum_{j=1}^k\sum_{i = 1}^{n_j} y_{j,i} / n_j$
 	\end{itemize}
 \end{frame}
 

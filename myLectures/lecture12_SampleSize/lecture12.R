@@ -304,4 +304,10 @@ ggplot(df1 %>% filter(n == 50), aes(x = mua, y = power, group = alpha, color = a
   scale_color_brewer(palette = "Set2") + ggtitle(expression(paste("Fixed ", n == 50, " various ", alpha))) +
   theme(plot.title = element_text(hjust = 0.5))
 dev.off()
-       
+
+100^2 * ((qnorm(.10, lower.tail = FALSE) + qnorm(.10, lower.tail = FALSE))^2) / (20^2)
+powerFun(.10*2, 867, 887, 100, 165)
+round(pnorm(qnorm(.10, lower.tail = FALSE) - 20 / (100 / sqrt(165))), 4)
+1-round(pnorm(qnorm(.10, lower.tail = FALSE) - 20 / (100 / sqrt(165))), 4)
+
+100^2 * ((qnorm(.05, lower.tail = FALSE) + qnorm(.10, lower.tail = FALSE))^2) / (20^2)

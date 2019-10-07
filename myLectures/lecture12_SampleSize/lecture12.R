@@ -245,3 +245,63 @@ ggplot(df5, aes(x = x, y = Density, group = Distribution, color = Distribution))
   theme_bw() + annotate("label", x = -.75, y = .03, label = expression(beta)) +
   labs(x = "z") + ggtitle(expression(paste(beta, " from standard normal"))) + theme(plot.title = element_text(hjust = 0.5)) 
 dev.off()
+
+########### Beta curve ###########
+bFun <- function(alpha, mu0, mua, sigma, n){
+  return(pnorm(qnorm(alpha, lower.tail = FALSE) - (abs(mu0-mua)/(sigma / sqrt(n)))))
+}
+
+df1 <- data.frame(ua = seq(3, 5, .25))
+df1$beta <- bFun(.01, 5, df1$ua, 1, 10)
+df1$beta <- round(df1$beta, 3)
+df1
+df1$Power <- 1 - df1$beta
+df1
+
+png(file = "beta1.png", height = 4, width = 6, units = "in", res = 300)
+ggplot(df1, aes(x = ua, y = beta)) + geom_point(size = 2) + theme_bw() + labs(x = expression(mu[a]), y = expression(beta))
+dev.off()
+
+df1 <- data.frame(ua = seq(3, 5, .01))
+df1$beta <- bFun(.01, 5, df1$ua, 1, 10)
+
+png(file = "beta2.png", height = 4, width = 6, units = "in", res = 300)
+ggplot(df1, aes(x = ua, y = beta)) + geom_line(size = 1.25, color = "darkblue") + theme_bw() + labs(x = expression(mu[a]), y = expression(beta))
+dev.off()
+
+png(file = "beta3.png", height = 4, width = 6, units = "in", res = 300)
+ggplot(df1, aes(x = ua, y = 1-beta)) + geom_line(size = 1.25, color = "darkred") + theme_bw() + 
+  labs(x = expression(mu[a]), y = expression(1-beta))
+dev.off()
+
+########### Glasgow power ###########
+20 / (100/sqrt(100))
+qnorm(.95) - 20 / (100/sqrt(100))
+pnorm(qnorm(.95) - 20 / (100/sqrt(100)))
+pnorm(qnorm(.95) - 20 / (100/sqrt(1000)))
+
+powerFun <- function(alpha, mu0, mua, sigma, n){
+  return(1-pnorm(qnorm(alpha/2, lower.tail = FALSE) - (abs(mu0-mua)/(sigma / sqrt(n)))))
+}
+
+df1 <- expand.grid(alpha = c(0.01, 0.05, 0.10), n = c(25, 50, 100, 150, 200), sigma = 100, mu0 = 867, 
+                   mua = seq(867-50, 867+50, .01))
+df1$power <- NA
+for(i in 1:nrow(df1)){
+  df1$power[i] <- powerFun(df1$alpha[i], df1$mu0[i], df1$mua[i], df1$sigma[i], df1$n[i])
+}
+
+png(filename = "Power1.png", height = 4, width = 6, units = "in", res = 300)
+ggplot(df1 %>% filter(alpha == 0.05), aes(x = mua, y = power, group = n, color = as.factor(n))) + geom_line(lwd = 1) + 
+  theme_bw() + labs(x = expression(mu[a]), y = expression(1-beta), color = "Sample Size") + 
+  scale_color_brewer(palette = "Set1") + ggtitle(expression(paste("Fixed ", alpha == 0.05, " various sample sizes"))) +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+
+png(filename = "Power2.png", height = 4, width = 6, units = "in", res = 300)
+ggplot(df1 %>% filter(n == 50), aes(x = mua, y = power, group = alpha, color = as.factor(alpha))) + geom_line(lwd = 1) + 
+  theme_bw() + labs(x = expression(mu[a]), y = expression(1-beta), color = expression(alpha)) + 
+  scale_color_brewer(palette = "Set2") + ggtitle(expression(paste("Fixed ", n == 50, " various ", alpha))) +
+  theme(plot.title = element_text(hjust = 0.5))
+dev.off()
+       

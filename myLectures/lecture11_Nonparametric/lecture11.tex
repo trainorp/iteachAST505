@@ -12,7 +12,7 @@
 \title[Lecture 11]{Lecture 11: Nonparametric inference}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{September 30, 2019}
+\date{October 7, 2019}
 
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
 
@@ -31,16 +31,24 @@
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
+\begin{frame}{Nonparametric tests}
+	\begin{itemize}
+		\item One of the assumptions of t-tests (for comparing population means) is that the data be normally distributed. If the sample size is very large, this assumption is less important \pause
+		\item[]
+		\begin{itemize}
+			\item Even if the sample size is large so that a t-test is appropriate for comparing population means, the mean may not be the best measure of central tendency \pause
+			\item[]
+		\end{itemize}
+		\item If our data distribution is far from normal, we want to use ``nonparametric tests'' rather than t-tests 
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Wilcoxon Rank-Sum Tests}
 	\begin{itemize}
-		\item One of the assumptions of t-tests is that the data be normally distributed. If the sample size is very large, this assumption is less important
-		\item[]
-		\item However, if our data distribution is far from normal, we want to use ``nonparametric tests'' rather than t-tests
-		\item[]
-		\item \textbf{\emph{Wilcoxon rank-sum test:}} The Wilcoxon rank-sum test is a nonparametric test that assumes the following:
+		\item \textbf{\emph{Wilcoxon rank-sum test:}} The Wilcoxon rank-sum test is a nonparametric test that assumes the following:  \pause
 		
 		\begin{enumerate}
-			\item We have two independent random samples with sample sizes $n_1$ and $n_2$: $\{x_1, x_2, \hdots, x_{n_1}\}$ and $\{y_1, y_2, \hdots, y_{n_2}\}$
+			\item We have two independent random samples with sample sizes $n_1$ and $n_2$: $\{x_1, x_2, \hdots, x_{n_1}\}$ and $\{y_1, y_2, \hdots, y_{n_2}\}$ \pause
 			\item[]
 			\item The population distributions of the $x$'s and $y$'s are identical but one may be shifted to the left or right of the other
 		\end{enumerate}
@@ -64,9 +72,9 @@
 
 \begin{frame}{Location shift}
 	\begin{itemize}
-		\item Notation for location shift: $y \myeq x + \Delta$
+		\item Notation for location shift: $y \myeq x + \Delta$ \pause
 		\item[]
-		\item If $\Delta > 0$, then the $y$'s are typically larger and the distribution of $y$'s is to the right of $x$'s
+		\item If $\Delta > 0$, then the $y$'s are typically larger and the distribution of $y$'s is to the right of $x$'s \pause
 		\item[]
 		\item If $\Delta > 0$, then the $y$'s are typically smaller and the distribution of $y$'s is to the left of $x$'s
 	\end{itemize}
@@ -74,18 +82,18 @@
 
 \begin{frame}{Wilcoxon Rank-Sum test}
 	\begin{itemize}
-		\item The Wilcoxon rank-sum test is based on ``ranks'' rather than measurement values
+		\item The Wilcoxon rank-sum test is based on ``ranks'' rather than measurement values \pause
 		\begin{itemize}
-			\item The smallest value in the combined sample has rank 1
+			\item The smallest value in the combined sample has rank 1 \pause
 			\item[]
 			\item The largest value in the combinded sample has rank $N = n_1 + n_2$
 			\item[]
 		\end{itemize}
 	\item Process for determining Rank-Sum:
 		\begin{enumerate}
-		\item List the data values in the combined data set from smallest to largest
-		\item In the next column assign numbers $1$ to $n$ to the data values by their order
-		\item If there are ties in the combined data set, the ranks for the observations in the tie are taken to be the average of those ranks
+		\item List the data values in the combined data set from smallest to largest \pause
+		\item In the next column assign numbers $1$ to $N$ to the data values by their order \pause
+		\item If there are ties in the combined data set, the ranks for the observations in the tie are taken to be the average of those ranks \pause
 		\item Let $T$ denote the sum of ranks for the observation from the $y$'s
 	\end{enumerate}
 	\end{itemize}
@@ -123,8 +131,8 @@
 
 \begin{frame}{Example Data}
 \begin{itemize}
-	\item Assume Stage 4 tumors are the $y$'s and Stage 3 tumors are the $x$'s
-	\item Then we want to know if: $y \myeq x + \Delta$, where $\Delta < 0$
+	\item Assume Stage 4 tumors are the $y$'s and Stage 3 tumors are the $x$'s \pause
+	\item Then we want to know if: $y \myeq x + \Delta$, where $\Delta < 0$ \pause
 \end{itemize}
 \begin{center}
 	\begin{tabular}{|c|c|}
@@ -220,15 +228,15 @@
 
 \begin{frame}{Sampling distribution of the rank-sum}
 	\begin{itemize}
-		\item If the null hypothesis is true, that is the population distributions are identical between two groups, then:
+		\item If the null hypothesis is true, that is the population distributions are identical between two groups, then: \pause
 		\begin{itemize}
-			\item The individual ranks are a random sample from $N$ integers: $\{1, 2, \hdots, N\}$
-			\item The sum of ranks, $T$, is a random variable that only depends on the sample sizes $n_1$ and $n_2$
-			\item The sum of ranks, $T$, is a random variable that does not depend on the population distributions
-			\item And we have mathematical formulas for the mean and variance of the distribution for the sum of ranks:
+			\item The individual ranks are a random sample from $N$ integers: $\{1, 2, \hdots, N\}$ \pause
+			\item The sum of ranks, $T$, is a random variable that only depends on the sample sizes $n_1$ and $n_2$ \pause
+			\item The sum of ranks, $T$, is a random variable that does not depend on the population distributions \pause
+			\item And we have mathematical formulas for the mean and variance of the distribution for the sum of ranks: \pause
 			\begin{gather*}
 			\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} \quad \quad \text{and} \quad \quad \sigma_T^{2} = \frac{n_1 n_2}{12}(n_1 +n_2 +1)
-			\end{gather*}
+			\end{gather*}\pause
 		\end{itemize}
 	\item Since $\mu_T$ is the expected value of $T$ when the null hypothesis is true (same population distribution), values of $T$ far from $\mu_T$ would be evidence they are not the same distribution
 	\end{itemize}
@@ -254,9 +262,9 @@
 	\end{tabular}}
 \end{center}
 \begin{itemize}
-	\item Sum: $T = 1 + 2 + 3 + 5 + 6 + 8 = 25$
+	\item Sum: $T = 1 + 2 + 3 + 5 + 6 + 8 = 25$ \pause
 	\item[]
-	\item $\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} = 6(6+6+1)/2 = 39$
+	\item $\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} = 6(6+6+1)/2 = 39$ \pause
 	\item[]
 	\item Is $T$ sufficiently different from $\mu_T$ to believe that the population distributions are different?
 \end{itemize}
@@ -271,19 +279,19 @@
 
 \begin{frame}{Wilcoxon Rank-Sum Test}{Process}
 	\begin{itemize}
-		\item Null Hypothesis. $H_0$: The population distributions are identical $\Delta = 0$
+		\item Null Hypothesis. $H_0$: The population distributions are identical $\Delta = 0$ \pause
 		\item[]
-		\item Alternative hypotheses (choose one). $H_a$:
+		\item Alternative hypotheses (choose one). Recall $y \myeq x + \Delta$. $H_a$:\pause
 			\begin{enumerate}
-				\item Population 1 is shifted to the right of popluation 2 ($\Delta >0$)
-				\item Population 1 is shifted to the left of population 2 ($\Delta < 0$)
-				\item Population 1 and 2 are shifted from each other ($\Delta \neq 0$)
+				\item Population 1 is shifted to the right of population 2 ($\Delta >0$)\pause
+				\item Population 1 is shifted to the left of population 2 ($\Delta < 0$)\pause
+				\item Population 1 and 2 are shifted from each other ($\Delta \neq 0$)\pause
 				\item[]
 			\end{enumerate}
 		\item Rejection regions / rejection rules:
 		\begin{enumerate}
-			\item Reject $H_0$ if $T > T_U$ (one-tailed)
-			\item Reject $H_0$ if $T < T_L$ (one-tailed)
+			\item Reject $H_0$ if $T > T_U$ (one-tailed) \pause
+			\item Reject $H_0$ if $T < T_L$ (one-tailed) \pause
 			\item Reject $H_0$ if $T > T_U$ or $T < T_L$ (two-tailed)
 		\end{enumerate}
 		\end{itemize}
@@ -315,11 +323,11 @@
 	\end{tabular}}
 \end{center}
 \begin{itemize}
-	\item $H_0$: The population distributions are identical $\Delta = 0$
-	\item $H_a$: Population 1 (Stage 4 tumors) is shifted to the left of population 2 (Stage 3 tumors) ($\Delta < 0$)
-	\item RR: reject $H_0$ if $T < T_L$ (one-tailed)
+	\item $H_0$: The population distributions are identical $\Delta = 0$ \pause
+	\item $H_a$: Population 1 (Stage 4 tumors) is shifted to the left of population 2 (Stage 3 tumors) ($\Delta < 0$) \pause
+	\item RR: reject $H_0$ if $T < T_L$ (one-tailed) \pause
 	\begin{itemize}
-		\item From the table $T_L = 26$
+		\item From the table $T_L = 26$ \pause
 		\item We reject the null hypothesis
 	\end{itemize}
 \end{itemize}
@@ -332,15 +340,15 @@
 
 \begin{frame}{Point estimate for $\Delta$}
 	\begin{itemize}
-		\item Now we want to find an estimate and confidence interval for the population $\Delta$ using our sample
+		\item Now we want to find an estimate and confidence interval for the population $\Delta$ using our sample \pause
 		\item[]
 		\item Process:
 		\begin{itemize}
-			\item Compute $M = n_1 \times n_2$ possible differences: $x_i - y_j$ for $i = 1, 2, \hdots, n_1$ and $j = 1, 2, \hdots, n_2$
+			\item Compute $M = n_1 \times n_2$ possible differences: $x_i - y_j$ for $i = 1, 2, \hdots, n_1$ and $j = 1, 2, \hdots, n_2$ \pause
 			\item[]
-			\item We then order the set of differences: $D_{(1)} \leq D_{(2)} \leq \hdots \leq D_{(M)}$
+			\item We then order the set of differences: $D_{(1)} \leq D_{(2)} \leq \hdots \leq D_{(M)}$ \pause
 			\item[]
-			\item We then compute our estimate for $\Delta$ as the median of this set of $M$ differences
+			\item We then compute our estimate for $\Delta$ as the median of this set of $M$ differences \pause
 			\item[]
 			\item Confidence intervals will also be based on this set of ordered differences
  		\end{itemize}
@@ -371,12 +379,12 @@
 
 \begin{frame}{Point estimate for $\Delta$}{Set of Differences}
 	\begin{itemize}
-		\item Set of ordered differences: 
+		\item Set of ordered differences: \pause
 		\begin{gather*}
 			\{-106.4,  -96.5,  -96.4,  -84.4,  -82.9,  -80.6,  -73.0,  -72.9,  -66.4,\\ -60.9,  -57.1,  -47.1,  -42.9, -41.6,  -37.2,  -37.1,  -34.1, 
 			-31.7, \\ -31.6,  -25.1,  -24.2,  -24.1,  -21.3,  -20.3,  -19.6,  -15.8,  -12.1, \\ -10.4   -10.3,   -8.3,   -7.1,   -1.6,    1.7,    5.5, 5.9,   19.7\}
-		\end{gather*}
-		\item Point estimate formula: $\hat{\Delta} = D_{((M+1)/2)}$ if $M$ is an odd number or $\hat{\Delta} = \frac{1}{2} (D_{(M/2)} + D_{(M/2+1)})$ if $M$ is an even number
+		\end{gather*} \pause
+		\item Point estimate formula: $\hat{\Delta} = D_{((M+1)/2)}$ if $M$ is an odd number or $\hat{\Delta} = \frac{1}{2} (D_{(M/2)} + D_{(M/2+1)})$ if $M$ is an even number \pause
 		\item[]
 		\item Point estimate: $\hat{\Delta} = \frac{1}{2} (D_{18} + D_{(19)}) = .5(-31.7 - 31.6) = -31.65$
 		\begin{itemize}
@@ -387,15 +395,15 @@
 
 \begin{frame}{Confidence intervals for $\Delta$}{Process}
 \begin{itemize}
-	\item To construct $100(1-\alpha) \%$ confidence intervals we will use:
+	\item To construct $100(1-\alpha) \%$ confidence intervals we will use: \pause
 	\begin{itemize}
-		\item $\Delta_L = D_{(C_{\alpha / 2})}$
-		\item $\Delta_U = D_{(M + 1 - C_{\alpha / 2})}$
-		\item where:
+		\item $\Delta_L = D_{(C_{\alpha / 2})}$ \pause
+		\item $\Delta_U = D_{(M + 1 - C_{\alpha / 2})}$ \pause
+		where:
 		\begin{gather*}
 		C_{\alpha / 2} = \frac{n_1 (2n_2 + n_1 + 1)}{2} + 1 - T_U
 		\end{gather*}
-				\item If $C_{\alpha / 2}$ is not an integer we round to the nearest integer
+				\item If $C_{\alpha / 2}$ is not an integer we round to the nearest integer \pause
 	\end{itemize}
 	\item To construct a 95\% confidence interval ($\alpha = 0.05$) for $\Delta$, use $T_U$ corresponding to a $\alpha /2 = .025$ one-tailed test
 \end{itemize}
@@ -406,16 +414,16 @@
 
 \begin{frame}{Confidence intervals for $\Delta$}{Example}
 	\begin{itemize}
-		\item First we find $C_{\alpha/2}$:
+		\item First we find $C_{\alpha/2}$: \pause
 		\begin{align*}
 		C_{0.025} &= \frac{n_1 (2n_2 + n_1 + 1)}{2} + 1 - T_U \\
 		&= \frac{6 (2(6) + 6 + 1)}{2} + 1 - 52 \\
 		&= 6
 		\end{align*}
-		\item Then we have:
+		\item Then we have: \pause
 		\begin{itemize}
-			\item $\Delta_L = D_{(C_{\alpha / 2})} = D_{(6)} = -80.6$
-			\item $\Delta_U = D_{(M + 1 - C_{\alpha / 2})} = D_{(36 +1 - 6)} =D_{(31)} = -7.1$
+			\item $\Delta_L = D_{(C_{\alpha / 2})} = D_{(6)} = -80.6$ \pause
+			\item $\Delta_U = D_{(M + 1 - C_{\alpha / 2})} = D_{(36 +1 - 6)} =D_{(31)} = -7.1$ \pause
 			\item[]
 		\end{itemize}
 	\item So a 95\% confidence interval for $\Delta$ is: $(-80.6, -7.1)$
@@ -430,27 +438,27 @@
 
 \begin{frame}{Normal approximation}
 	\begin{itemize}
-		\item If both $n_1$ and $n_2$ are large (say $>10$ each), then the sampling distribution of $T$ is approximately normal
+		\item If both $n_1$ and $n_2$ are large (book says $>10$ each), then the sampling distribution of $T$ is approximately normal \pause
 		\item[]
-		\item So we can compute a $z$ statistic:
+		\item So we can compute a $z$ statistic: \pause
 		\begin{gather*}
-		z = \frac{T- \mu_T}{\sigma_T}
+		z = \frac{T- \mu_T}{\sigma_T} 
 		\end{gather*}
 		where:
 		\begin{gather*}
 		\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} \quad \quad \text{and} \quad \quad \sigma_T^{2} = \frac{n_1 n_2}{12}(n_1 +n_2 +1)
-		\end{gather*}
+		\end{gather*} \pause
 		and we can use a normal approximation for hypothesis tests and confidence intervals
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Normal approximation}{Presence of ties}
 \begin{itemize}
-	\item However, if ties are present in our data (and we have averaged ranks), we need to adjust our formula for the variance of $T$:
+	\item However, if ties are present in our data (and we have averaged ranks), we need to adjust our formula for the variance of $T$: \pause
 	\begin{gather*}
 	\sigma_T^{2} = \frac{n_1 n_2}{12}(n_1 +n_2 +1)
 	\end{gather*}
-	becomes:
+	becomes: \pause
 	\begin{gather*}
 	\sigma_T^{2} = \frac{n_1 n_2}{12}\left[(n_1 +n_2 +1)- \frac{\sum_{j=1}^k t_j (t_j^2-1)}{(n_1+n_2)(n_1+n_2-1)}\right]
 	\end{gather*}
@@ -460,8 +468,8 @@
 
 \begin{frame}{Example Data}
 	\begin{itemize}
-		\item Phycocyanin, a pigment in cyanobacteria measured by fluorometry
-		\item The USGS measures this to study water quality and the presence of harmful blooms 
+		\item Phycocyanin, a pigment in cyanobacteria measured by fluorometry \pause
+		\item The USGS measures this to study water quality and the presence of harmful blooms  \pause
 		\item Rough River Lake, KY:
 		\begin{center}
 			\includegraphics[width = .7\linewidth]{RoughRiver} \\
@@ -490,41 +498,53 @@
 
 \begin{frame}{Normal approximation}{Process}
 \begin{itemize}
-	\item Null Hypothesis. $H_0$: The population distributions are identical $\Delta = 0$
+	\item Null Hypothesis. $H_0$: The population distributions are identical $\Delta = 0$ \pause
 	\item[]
-	\item Alternative hypotheses (choose one). $H_a$:
+	\item Alternative hypotheses (choose one). $H_a$: \pause
 	\begin{enumerate}
-		\item Population 1 is shifted to the right of popluation 2 ($\Delta >0$)
-		\item Population 1 is shifted to the left of population 2 ($\Delta < 0$)
-		\item Population 1 and 2 are shifted from each other ($\Delta \neq 0$)
+		\item Population 1 is shifted to the right of population 2 ($\Delta >0$) 
+		\item Population 1 is shifted to the left of population 2 ($\Delta < 0$) 
+		\item Population 1 and 2 are shifted from each other ($\Delta \neq 0$)  \pause
 		\item[]
 	\end{enumerate}
-	\item Test statistic: $z^* =\frac{T- \mu_T}{\sigma_T}$ where $T$ is the sum of ranks in sample 1
+	\item Test statistic: $z^* =\frac{T- \mu_T}{\sigma_T}$ where $T$ is the sum of ranks in sample 1 \pause
 	\item[]
-	\item Rejection regions / rejection rules:
+	\item Rejection regions / rejection rules: \pause
 	\begin{enumerate}
-		\item Reject $H_0$ if $z^* > z_{1-\alpha}$ with level of significance: $p\text{-value}=P(z \geq z^*)$
-		\item Reject $H_0$ if $z^* < z_{\alpha}$ with $p\text{-value}=P(z \leq z^*)$
-		\item Reject $H_0$ if $|z^*| \geq z_{1-\alpha/2}$ with $p\text{-value}=2 \times P(z \geq |z^*|)$
+		\item Reject $H_0$ if $z^* \geq z_{\alpha}$ with level of significance: $p\text{-value}=P(z \geq z^*)$
+		\item Reject $H_0$ if $z^* \leq -z_{\alpha}$ with $p\text{-value}=P(z \leq z^*)$
+		\item Reject $H_0$ if $|z^*| \geq z_{\alpha/2}$ with $p\text{-value}=2 \times P(z \geq |z^*|)$
 	\end{enumerate}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Example Data}
+\begin{frame}{Example Problem}
 \begin{itemize}
-	\item Research question: Does the level of phycocyanin differ between June and August?
+	\item Research question: Does the level of phycocyanin differ between June and August? \pause
 	\item[]
-	\item Null hypothesis. $H_0$: The two populations (June and August) are identical ($\Delta = 0$)
+	\item Null hypothesis. $H_0$: The two populations (June and August) are identical ($\Delta = 0$) \pause
 	\item[]
-	\item Alternative hypothesis. $H_a$: Population 1 (June) and Population 2 (August) are shifted from each other ($\Delta \neq 0$)
+	\item Alternative hypothesis. $H_a$: Population 1 (June) and Population 2 (August) are shifted from each other ($\Delta \neq 0$) \pause
 	\item[]
 	\item Let's test the alternative hypothesis against the null at $\alpha = 0.05$
 \end{itemize}
 \end{frame}
 
+\begin{frame}{June Data}
+	\begin{center}
+		\includegraphics[width=.475\linewidth]{data1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{August Data}
+	\begin{center}
+		\includegraphics[width=.475\linewidth]{data2}
+	\end{center}
+\end{frame}
+
 \begin{frame}{Normal approximation}{Example}
 	\begin{itemize}
-		\item From the phycocyanin data we have that $T = 8287$ and the following are ties:
+		\item From the phycocyanin data we have that $T = 8287$ and the following are ties: 
 		\begin{center}
 			\begin{tabular}{|c|c|c|}
 					\hline
@@ -536,7 +556,7 @@
 				 354.5 &  June & 139.5\\ \hline
 				 354.5& August & 139.5\\ \hline
 			\end{tabular}
-		\end{center}
+		\end{center} \pause
 	\item Now to calculate our test statistic we need to find $\mu_T$ and $\sigma_T^2$:
 	\begin{align*}
 		\mu_T = \frac{n_1 (n_1 + n_2 + 1)}{2} = \frac{100(100+100+1)}{2} = 10050
@@ -546,10 +566,11 @@
 
 \begin{frame}{Normal approximation}{Sampling distribution variance calculation example}
 \begin{itemize}
-	\item Formula: 	\begin{gather*}
+	\item Formula: 	
+	\begin{gather*}
 	\sigma_T^{2} = \frac{n_1 n_2}{12}(n_1 +n_2 +1)- \frac{\sum_{j=1}^k t_j (t_j^2-1)}{(n_1+n_2)(n_1+n_2-1)}
 	\end{gather*}
-	where $k$ is the number of tied groups and $t_j$ is the number of tied observation in each $j$th group
+	where $k$ is the number of tied groups and $t_j$ is the number of tied observation in each $j$th group \pause
 	\item[]
 	\item We have three groups of ties with 2 observations in each group so:
 	\begin{gather*}
@@ -567,20 +588,20 @@
 	&= \frac{(100)(100)}{12}\left[(100 + 100 +1)- \frac{18}{(100+100)(100+100-1)}\right] \\
 	&= 167500 - 0.3768844 \\
 	&= 167499.6
-	\end{align*}
+	\end{align*} \pause
 	\item Also $\sigma_T = \sqrt{\sigma_T^2} = 409.267$
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Normal approximation}{Example}
 	\begin{itemize}
-		\item Recap: we have $T = 8287$, $\mu_T = 10050$ and $\sigma_T = 409.267$
+		\item Recap: we have $T = 8287$, $\mu_T = 10050$ and $\sigma_T = 409.267$ \pause
 		\item[]
 		\item So our test statistic is:
 		\begin{align*}
 			z^* =\frac{T- \mu_T}{\sigma_T} = \frac{8287-10050}{409.267} = -4.31
-		\end{align*}
-		\item Since $z_{1-\alpha/2} = z_{0.975} = 1.96$ and $|-4.31| = 4.31 > 1.96$ we reject the null hypothesis
+		\end{align*} \pause
+		\item Since $z_{\alpha/2} = z_{0.025} = 1.96$ and $|-4.31| = 4.31 > 1.96$ we reject the null hypothesis \pause
 		\item[]
 		\item The level of significance of this test is $p\text{-value}=2 \times P(z \geq |z^*|) = 2 \times P(z \geq 4.31) = 0.00001633$
 	\end{itemize}
@@ -595,28 +616,28 @@
 	\begin{itemize}
 		\item For large $n_1$ and $n_2$ we can approximate $C_{\alpha / 2}$ as:
 		\begin{gather*}
-		C_{\alpha / 2} = \frac{n_1 n_2}{2} - z_{1-\alpha / 2} \sqrt{\frac{n_1 n_2(n_1+n_2+1)}{12}}
-		\end{gather*}
+		C_{\alpha / 2} = \frac{n_1 n_2}{2} - z_{\alpha / 2} \sqrt{\frac{n_1 n_2(n_1+n_2+1)}{12}}
+		\end{gather*} \pause
 		\item To construct $100(1-\alpha) \%$ confidence intervals we will use:
 		\begin{itemize}
 			\item $\Delta_L = D_{(C_{\alpha / 2})}$
 			\item $\Delta_U = D_{(M + 1 - C_{\alpha / 2})}$
 			\item[]
-		\end{itemize}
+		\end{itemize} \pause
 	\item Back to our phycocyanin data, let's calculate a 90\% confidence interval for $\Delta$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Confidence intervals for $\Delta$}{Normal approximation example}
 \begin{itemize}
-	\item For large $n_1$ and $n_2$ we can approximate $C_{\alpha / 2}$ as:
+	\item For large $n_1$ and $n_2$ we can approximate $C_{\alpha / 2}$ as: \pause
 	\begin{align*}
-	C_{0.10 / 2} &= \frac{n_1 n_2}{2} - z_{0.95} \sqrt{\frac{n_1 n_2(n_1+n_2+1)}{12}} \\
+	C_{0.10 / 2} &= \frac{n_1 n_2}{2} - z_{0.05} \sqrt{\frac{n_1 n_2(n_1+n_2+1)}{12}} \\
 	&=\frac{100*100}{2} - 1.65 \sqrt{\frac{100*100(100+100+1)}{12}} \\
 	&= 4326.815 \\
-	&\approx 4327
+	&\approx 4327 \pause
 	\end{align*}
-	\item $(\Delta_L, \Delta_U) = \left(D_{(C_{\alpha / 2})}, D_{(M + 1 - C_{\alpha / 2})} \right) = \left(D_{(4327)}, D_{(5674)}\right) = (-110.2, -51.4)$
+	\item $(\Delta_L, \Delta_U) = \left(D_{(C_{\alpha / 2})}, D_{(M + 1 - C_{\alpha / 2})} \right) = \left(D_{(4327)}, D_{(5674)}\right) = (-110.2, -51.4)$ \pause
 	\item The point estimate will be the medians of the ordered set of differences: $-80.6$
 \end{itemize}
 \end{frame}
@@ -628,13 +649,13 @@
 
 \begin{frame}{Wilcoxon Signed-Rank Test}
 	\begin{itemize}
-		\item When the population distributions underlying some paired data are non-normal we use a Wilcoxon Signed-Rank test rather than the paired samples t-test
+		\item When the population distributions underlying some paired data are non-normal we use a Wilcoxon Signed-Rank test rather than the paired samples t-test \pause
 		\item[]
-		\item Assumptions: 
+		\item Assumptions: \pause
 		\begin{itemize}
-			\item We assume that the population distributions of differences (between pairs) is symmetric about some unknown median $M$
+			\item We assume that the population distributions of differences (between pairs) is symmetric about some unknown median $M$ \pause
 			\item[]
-			\item We want to know if the distribution of differences is shifted left or right from some specific value $D_0$ (in most cases $D_0 = 0$)
+			\item We want to know if the distribution of differences is shifted left or right from some specific value $D_0$ (in most cases $D_0 = 0$) \pause
 			\item[]
 		\end{itemize}
 	\end{itemize}
@@ -642,7 +663,7 @@
 
 \begin{frame}{Example data}
 \begin{itemize}
-			\item Example: An exercise scientist wants to know if a new swimming program improves athletes' time in swimming a 200M freestyle. The distribution of 200M freestyle times is non-normal. He has 10 swimmers take a baseline test and a follow-up test after 4 weeks of training
+			\item Example: An exercise scientist wants to know if a new swimming program improves athletes' time in swimming a 200M freestyle. The distribution of times is non-normal. He has 10 swimmers take a baseline test and a follow-up test after 4 weeks of training
 \end{itemize}
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|}
@@ -677,19 +698,19 @@
 
 \begin{frame}{Deriving a test statistic}
 \begin{enumerate}
-	\item Calculate the differences in the $n$ pairs of observations
+	\item Calculate the differences in the $n$ pairs of observations \pause
 	\item[]
-	\item Subtract $D_0$ from all of the differences
+	\item Subtract $D_0$ from all of the differences \pause
 	\item[]
-	\item Remove all zero values. Let $n$ be the number of non-zero values
+	\item Remove all zero values. Let $n$ be the number of non-zero values \pause
 	\item[]
-	\item List the absolute values of the differences in increasing orders and assign them the ranks $1, 2, \hdots, n$ (or the average of ranks in case of ties)
+	\item List the absolute values of the differences in increasing orders and assign them the ranks $1, 2, \hdots, n$ (or the average of ranks in case of ties) \pause
 	\item[]
-	\item A few intermediate calculations
+	\item A few intermediate calculations: \pause
 	\begin{itemize}
-		\item $n =$ the number of pairs of observations with a nonzero difference
-		\item $T_+ = $  the sum of the positive ranks. If none then $T_+=0$
-		\item $T_- = $ the sum of the negative ranks. If none then $T_- = 0$
+		\item $n =$ the number of pairs of observations with a nonzero difference \pause
+		\item $T_+ = $  the sum of the positive ranks. If none then $T_+=0$ \pause
+		\item $T_- = $ the sum of the negative ranks. If none then $T_- = 0$ \pause
 		\item $T = $ the smaller of $T_+ = $ and $T_-$ 
 	\end{itemize}
 \end{enumerate}
@@ -811,10 +832,10 @@
 
 \begin{frame}{Towards a test statistic}{Step 5}
 \begin{itemize}
-	\item $n = 10$ the number of pairs of observations with a nonzero difference
-	\item $T_+ = 5$  the sum of the positive ranks
-	\item $T_- = 50$ the sum of the negative ranks
-	\item $T^* = 5$ the smaller of $T_+ = $ and $T_-$ 
+	\item $n = 10$ the number of pairs of observations with a nonzero difference \pause
+	\item $T_+ = 5$  the sum of the positive ranks \pause
+	\item $T_- = 50$ the sum of the negative ranks \pause
+	\item $T^* = 5$ the smaller of $T_+ = $ and $T_-$  \pause
 \end{itemize}
 {\tiny
 \begin{center}
@@ -837,11 +858,11 @@
 
 \begin{frame}{The sampling distribution}
 	\begin{itemize}
-		\item The sampling distribution for the test statistic $T$ has the following parameters:
+		\item The sampling distribution for the test statistic $T$ has the following parameters: \pause
 		\begin{gather*}
 			\mu_{T} = \frac{n (n+1)}{4} \quad \quad \text{and} \quad \quad \sigma_{T}^2 = \frac{n(n+1)(2n+1)}{24}
-		\end{gather*}
-		\item As with the Wilcoxon Rank-Sum test statistic, when there are ties we adjust the variance:
+		\end{gather*} \pause
+		\item As with the Wilcoxon Rank-Sum test statistic, when there are ties we adjust the variance: \pause
 		\begin{gather*}
 			\sigma_{T}^2 = \frac{n(n+1)(2n+1)-1/2 \sum_j t_j (t_j-1)(t_j+1)}{24}
 		\end{gather*}
@@ -849,20 +870,20 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{The Wilcoxon Signed-Rank test}
+\begin{frame}{The Wilcoxon Signed-Rank test (small samples $n\leq 50$)}
 		\begin{itemize}
-		\item Null Hypothesis. $H_0$: $M=D_0$ where $M$ is the median of population differences
+		\item Null Hypothesis. $H_0$: $M=D_0$ where $M$ is the median of population differences \pause
 		\item[]
-		\item Alternative hypotheses (choose one). $H_a$:
+		\item Alternative hypotheses (choose one). $H_a$: \pause
 		\begin{enumerate}
 			\item $M > D_0$
 			\item $M < D_0$
 			\item $M \neq D_0$
 			\item[]
-		\end{enumerate}
-		\item Test statistic: $T^*$ is the smaller of $T_-$ and $T_+$
+		\end{enumerate} \pause
+		\item Test statistic: $T^*$ is the smaller of $T_-$ and $T_+$ \pause
 		\item[]
-		\item Rejection regions / rejection rules:
+		\item Rejection regions / rejection rules: \pause
 		\begin{enumerate}
 			\item Reject $H_0$ if $T^* \leq T$ for one-sided critical value (Appendix 6)
 			\item Reject $H_0$ if $T^* \leq T$ for one-sided critical value (Appendix 6)
@@ -871,7 +892,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{The Wilcoxon Signed-Rank test}{Critical values}
+\begin{frame}{The Wilcoxon Signed-Rank test (small samples $n\leq 50$)}{Critical values}
 	\begin{center}
 		\includegraphics[width=.8 \linewidth]{critical}
 	\end{center}
@@ -879,7 +900,7 @@
 
 \begin{frame}{Swim Program example}
 	\begin{itemize}
-		\item Assume the exercise scientist wants to test whether the program improves times (smaller times = negative differences) at $\alpha = .05$
+		\item Assume the exercise scientist wants to test whether the program improves times (smaller times = negative differences) at $\alpha = .05$ \pause
 		{\tiny
 			\begin{center}
 				\begin{tabular}{|c|c|c|}
@@ -896,12 +917,25 @@
 					-6.7  & 6.7  &    9\\ \hline
 					-7.4  &7.4  &   10\\ \hline
 				\end{tabular}
-		\end{center}}
-	\item Hypothesis test: $H_0: M = 0$ versus  $H_a: M < 0$ (one-sided test)
+		\end{center}} \pause
+	\item Hypothesis test: $H_0: M = 0$ versus  $H_a: M < 0$ (one-sided test) \pause
 	\item[]
-	\item From before: $n = 10$, $T^* = 5$
+	\item From before: $n = 10$, $T^* = 5$ \pause
 	\item[] 
 	\item From the appendix table our critical value is $T = 8$, so since $T^* < T$ we reject the null hypothesis (we have evidence the program improves times!)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Wilcoxon Signed-Rank test (large samples $n > 50$)}
+	\begin{itemize}
+		\item When $n >50$ a Normal approximation is appropriate \pause
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+			z = \frac{T-\frac{n(n+1)}{4}}{\sqrt{\frac{n(n+1)(2n+1)}{24}}}
+		\end{gather*}
+		\item[]
+		\item Rejection rule: For cases 1 and 2, reject $H_0$ if $z<-z_{\alpha}$; For case 3, reject $H_0$ if $z < -z_{\alpha/2}$
 	\end{itemize}
 \end{frame}
 

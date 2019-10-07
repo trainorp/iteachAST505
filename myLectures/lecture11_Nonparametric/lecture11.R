@@ -76,6 +76,8 @@ x2 <- round(exp(rnorm(n = 100, mean = log(300), sd = 1/2)), 1)
 df4 <- data.frame(value = c(x1, x2), month = c(rep("June", 100), rep("August", 100)))
 df4$month <- factor(df4$month, levels = c("June", "August"))
 
+write.csv(df4, file = "df4.csv", row.names = FALSE)
+
 png(file = "RoughHist.png", height = 5, width = 6.5, units = "in", res = 600)
 ggplot(df4, aes(x = value, y = ..density..)) + geom_histogram(color = "black", fill = "grey70") + 
   facet_wrap(~month, nrow = 2) + theme_bw() + labs(x = expression(paste(mu, "g per liter")), y = "Density")

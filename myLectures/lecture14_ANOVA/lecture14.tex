@@ -217,7 +217,56 @@
 		\item[]
 		\item $\bar{y}_{j.}$: The mean of the $n_j$ observations from group (population) $j$. That is $\bar{y}_{j.} = \frac{\sum_{i = 1}^{n_j} y_{j,i}}  {n_j}$
 		\item[]
-		\item $\bar{y}$: The mean of all of the observations $\sum_{j=1}^k\sum_{i = 1}^{n_j} y_{j,i} / n_j$
+		\item $\bar{y}_{..}$: The mean of all of the observations $\sum_{j=1}^k\sum_{i = 1}^{n_j} y_{j,i} / n_j$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sum of squares}{Total sum of squares (TSS)}
+	\begin{itemize}
+		\item We are now going to introduce how $s^2_B$, $s^2_W$, and the ANOVA $F$ test statistic are computed in practice 
+		\item[]
+		\item \textbf{Total sum of squares (TSS).} The total sum of squares is the variability of the sample measurements about the overall mean (of all measurements):
+		\begin{gather*}
+			\text{TSS} = \sum_{j=1}^{k} \sum_{i = 1}^{n_j}\left(y_{j,i} - \bar{y}_{..}\right)
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sum of squares}{Partitioning TSS}
+	\begin{itemize}
+		\item We can partition the TSS as follows:
+		\begin{gather*}
+			\sum_{j=1}^{k} \sum_{i = 1}^{n_j}\left(y_{j,i} - \bar{y}_{..}\right) = \sum_{j=1}^{k}\sum_{i = 1}^{n_j} (y_{j,i}-\bar{y}_{j.})^2 + \sum_{j=1}^k n_j (\bar{y}_{j.} - \bar{y}_{..})^2
+		\end{gather*}
+		\item[]
+		\item This is:
+		\begin{gather*}
+			\text{TSS} =\sum_{j=1}^{k} \sum_{i = 1}^{n_j}\left(y_{j,i} - \bar{y}_{..}\right) = \text{SSW} + \text{SSB}
+		\end{gather*}
+		if $\text{SSW} = \sum_{j=1}^{k}\sum_{i = 1}^{n_j} (y_{j,i}-\bar{y}_{j.})^2$ and $\text{SSB}= \sum_{j=1}^k n_j (\bar{y}_{j.} - \bar{y}_{..})^2$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sum of Squares}{Within-sample sum of squares}
+	\begin{itemize}
+		\item \textbf{Within-sample sum of squares (SSW).} A measure of within-sample variability:
+		\begin{gather*}
+			\text{SSW} = \sum_{j=1}^{k}\sum_{i = 1}^{n_j} (y_{j,i}-\bar{y}_{j.})^2 = (n_1-1)s_1^2 + (n_2-1)s_2^2 + \hdots + (n_k-1)s_k^2
+		\end{gather*}
+		\item \textbf{Sum of squares between samples (SSB).} A measure of variability between (or among) the sample means:
+		\begin{align*}
+			\text{SSB} =\sum_{j=1}^k n_j (\bar{y}_{j.} - \bar{y}_{..})^2 = n_1 (\bar{y}_{1.}-\bar{y}_{..})^2 + &n_2 (\bar{y}_{2.}-\bar{y}_{..})^2 + \hdots + \\ &n_k (\bar{y}_{k.}-\bar{y}_{..})^2
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Mean squares}
+	\begin{itemize}
+		\item The quantities $s^2_B$ and $s^2_W$ are (historically) referred to as mean squares (as in mean square between samples and mean square within samples, respectively):
+		\begin{gather*}
+			s^2_B = \frac{\text{SSB}}{k-1} \quad \quad s^2_W = \frac{\text{SSW}}{N-k}
+		\end{gather*}
+		where $k-1$ is the degrees of freedom of $s^2_B$ and $N-k$ is the degrees of freedom of $s^2_W$
 	\end{itemize}
 \end{frame}
 

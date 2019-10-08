@@ -311,3 +311,10 @@ round(pnorm(qnorm(.10, lower.tail = FALSE) - 20 / (100 / sqrt(165))), 4)
 1-round(pnorm(qnorm(.10, lower.tail = FALSE) - 20 / (100 / sqrt(165))), 4)
 
 100^2 * ((qnorm(.05, lower.tail = FALSE) + qnorm(.10, lower.tail = FALSE))^2) / (20^2)
+
+# Sample size for mu1 - mu2:
+# CI: 
+(2 * (qnorm(0.05, lower.tail = FALSE))**2 *3^2) / 0.25**2
+
+# Test:
+2 * 3^2 * (qnorm(0.025, lower.tail = FALSE) + qnorm(0.10, lower.tail = FALSE))^2 / .5^2

@@ -12,7 +12,7 @@
 \title[Lecture 12]{Lecture 12: Power \& Sample Size}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{October 2, 2019}
+\date{October 9, 2019}
 
 \begin{document}
 
@@ -650,9 +650,81 @@
 \end{center}
 \end{frame}
 
-\section{Sample size for tests regarding the population median $M$}
+\section{Sample size for estimating $\mu_1 - \mu_2$}
 \begin{frame}{Outline}
 	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Sample size for estimating $\mu_1 - \mu_2$}
+	\begin{itemize}
+		\item We have already discussed how to determine the sample size $n$, so that a confidence interval for $\mu$ has a specific width (given a fixed confidence coefficient, and population $\sigma$)
+		\item[]
+		\item If we assume that the variance and sample sizes are equal between groups ($n=n_1=n_2$), then we can use the following formula for estimating $\mu_1 - \mu_2$ given we want width $W = 2E$
+		\begin{gather*}
+			n = \frac{2 z_{\alpha / 2}^2 \sigma^2}{E^2}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sample size for estimating $\mu_1 - \mu_2$}{Example}
+	\begin{itemize}
+		\item Example: Assume the New Mexico Department of Health wants to estimate the difference in childhood BMI between Do\~{n}a Ana county and Luna County. The health officials plan on estimating a 90\% confidence interval and would like the width to be 0.5 units. They believe the population standard deviation is 3 units. What sample size do they need?
+		\item[]
+		\item We want width $W = 0.5$ and $W = 2E$ implies $E = 0.25$. So:
+		\begin{gather*}
+		n = \frac{2 z_{\alpha / 2}^2 \sigma^2}{E^2} = \frac{2 (z_{0.05})^2 3^2}{0.25^2} = 779.2 \approx 780
+		\end{gather*}
+		per group or 1560 total
+	\end{itemize}
+\end{frame}
+
+\section{Sample size for tests regarding $\mu_1 - \mu_2$}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Sample size for tests regarding $\mu_1 - \mu_2$}
+	\begin{itemize}
+		\item For hypothesis tests regarding $\mu_1 - \mu_2$, for $\beta(\mu_1 - \mu_2) \leq \beta$ and $|\mu_1 - \mu_2|\geq \Delta$, for a one-sided test:
+		\begin{gather*}
+			n = 2 \sigma^2 \frac{(z_{\alpha} + z_{\beta})^2}{\Delta^2}
+		\end{gather*}
+		\item For a two-sided test:
+		\begin{gather*}
+		n = 2 \sigma^2 \frac{(z_{\alpha/2} + z_{\beta})^2}{\Delta^2}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sample size for tests regarding $\mu_1 - \mu_2$}{Example}
+	\begin{itemize}
+		\item Example: Assume the New Mexico Department of Health wants to determine if there is a difference in childhood BMI between Do\~{n}a Ana county and Luna County. The health officials plan on testing with $\alpha = 0.05$. They believe the population standard deviation is 3 units. What sample size do they need to detect a difference of 0.5 units with 90\% power?
+		\begin{itemize}
+			\item $\beta(0.5) \leq 0.10$
+			\item[]
+		\end{itemize}
+		\item For a two-sided test:
+		\begin{gather*}
+		n = 2 \sigma^2 \frac{(z_{\alpha/2} + z_{\beta})^2}{\Delta^2} = 2 (3)^2 \frac{(z_{0.025} + z_{0.10})^2}{0.5^2} = 756.5 \approx 757
+		\end{gather*}
+		per group or 1514 total
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{And beyond!}
+	\begin{itemize}
+		\item We don't cover a lot of other procedures for determining power or sample size requirement in this class (e.g. for Non-parametric tests and estimating population medians)
+		\item[] 
+		\item There are a lot of software to do this like the \emph{pwr} package in \emph{R}, or with SAS 
+		\item[]
+		\item Often the best approach is simulation (especially if you have preliminary data)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecture \#12}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{bridge}
+	\end{center}
 \end{frame}
 
 \end{document}

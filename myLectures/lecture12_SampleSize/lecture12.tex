@@ -34,11 +34,11 @@
 \begin{itemize}
 	\item Back to confidence intervals for $\mu$, with $\sigma$ known:
 	\begin{gather*}
-		\bar{y}\pm z_{1-\alpha/2} \sigma \sqrt{n}
-	\end{gather*}
-	\item The idea was to fix $\alpha$ our probability of making a Type I error or equivalently to fix a level of confidence $100(1-\alpha)\%$
+		\bar{y}\pm z_{\alpha/2} \sigma \sqrt{n}
+	\end{gather*}  \pause
+	\item The idea was to fix $\alpha$ our probability of making a Type I error or equivalently to fix a level of confidence $100(1-\alpha)\%$ \pause
 	\item[]
-	\item For example, if we want a 95\% confidence interval for $\mu$ we have $\alpha = 0.05$
+	\item For example, if we want a 95\% confidence interval for $\mu$ we have $\alpha = 0.05$  \pause
 	\item[]
 	\item We expect that \emph{on average} a 95\% CI will contain $\mu$,  95\% of the time
 \end{itemize}
@@ -67,8 +67,8 @@
 	\item Back to confidence intervals for $\mu$, with $\sigma$ known:
 	\begin{gather*}
 	\bar{y}\pm z_{\alpha/2} \sigma \sqrt{n}
-	\end{gather*}
-	\item There are two values that we exercise control over: $\alpha$ and $n$
+	\end{gather*}  \pause
+	\item There are two values that we exercise control over: $\alpha$ and $n$  \pause
 	\item[]
 	\item $\bar{y}$ is computed from the data and $\sigma$ is known (or is estimated from the data). We cannot control these
 \end{itemize}
@@ -88,15 +88,15 @@
 
 \begin{frame}{Changing $\alpha$}
 \begin{itemize}
-	\item You may notice that the smaller the interval the less likely the population parameter is to be in the interval 
+	\item You may notice that the smaller the interval the less likely the population parameter is to be in the interval  \pause
 	\begin{itemize}
-		\item Small $\alpha$ $\rightarrow$ wide interval ($\mu$ is more likely to be in the CI)
-		\item Large $\alpha$ $\rightarrow$ narrow interval ($\mu$ is less likely to be in the CI)
+		\item Small $\alpha$ $\rightarrow$ wide interval ($\mu$ is more likely to be in the CI)  \pause
+		\item Large $\alpha$ $\rightarrow$ narrow interval ($\mu$ is less likely to be in the CI)  \pause
 	\end{itemize}
 	\item[]
-	\item The level of $\alpha$ is ultimately \emph{your} choice
+	\item The level of $\alpha$ is ultimately \emph{your} choice  \pause
 	\item[]
-	\item Some conventions exist. ($\alpha = .05$) is pervasive
+	\item Some conventions exist. ($\alpha = .05$) is pervasive  \pause
 	\item[]
 	\item Ultimately you decide the level of risk ($\alpha$) you can tolerate for committing a Type 1 error (having a population parameter $\mu$ not being in the CI)
 \end{itemize}
@@ -122,7 +122,7 @@
 
 \begin{frame}{Changing $n$}
 \begin{itemize}
-		\item A greater sample size $n$ $\rightarrow$ smaller confidence intervals for a fixed $\alpha$ or confidence level
+		\item A greater sample size $n$ $\rightarrow$ smaller confidence intervals for a fixed $\alpha$ or confidence level  \pause
 	\item[]
 	\item Intuitive result: more data $=$ more certainty as to the location of a population parameter
 \end{itemize}
@@ -130,12 +130,12 @@
 
 \begin{frame}{The width of a confidence interval}
 	\begin{itemize}
-		\item Much of the time we know what $\alpha$ we want (what type I error rate we can tolerate), but we need to know what $n$ should be to allow us to have a CI of a specific width
+		\item Much of the time we know what $\alpha$ we want (what type I error rate we can tolerate), but we need to know what $n$ should be to allow us to have a CI of a specific width  \pause
 		\item[]
 		\item Width of a CI can be identified:
 		\begin{align*}
 			\bar{y}\pm z_{\alpha/2} \sigma / \sqrt{n} = \bar{y} \pm E = (\bar{y}-E, \bar{y}+E)
-		\end{align*}
+		\end{align*}  \pause
 		So width: $W = 2E$ where $E = z_{\alpha/2} \sigma  /\sqrt{n}$
 	\end{itemize}
 \end{frame}
@@ -158,11 +158,11 @@
 	\begin{align*}
 	\bar{y}\pm z_{\alpha/2} \sigma \sqrt{n} = \bar{y} \pm E = (\bar{y}-E, \bar{y}+E)
 	\end{align*}
-	where $W = 2E$ and $E = z_{\alpha/2} \sigma \sqrt{n}$
+	where $W = 2E$ and $E = z_{\alpha/2} \sigma \sqrt{n}$  \pause
 	\item[]
 	\item So to find $n$ we do some algebra:
 	\begin{gather*}
-		E = z_{\alpha/2} \sigma / \sqrt{n} \\
+		E = z_{\alpha/2} \sigma / \sqrt{n} \\ 
 		\sqrt{n} E = z_{\alpha/2} \sigma  \\
 		\sqrt{n} = \frac{z_{\alpha/2} \sigma}{E} \\
 		n = \left(\frac{z_{\alpha/2} \sigma}{E}\right)^2 = \frac{(z_{\alpha/2})^2 \sigma^2}{E^2}
@@ -172,9 +172,9 @@
 
 \begin{frame}{Desired with of a confidence interval}
 		\begin{itemize}
-		\item Example: The city of Louisville, Kentucky needs to estimate the population mean $\mu$ of lead in tap water (measured in parts per billion). The city has a low tolerance for type I errors (population parameter in the CI), so will set $\alpha = .01$ and look for a 99\% CI. The city knows from past testing that the variance in lead measurements from tap water sources is 1 ppb. What sample size (of independent tap water measurements) would be required for the city to estimate the population mean lead level to have a CI with width 0.1 ppb?
+		\item Example: The city of Louisville, Kentucky needs to estimate the population mean $\mu$ of lead in tap water (measured in parts per billion). The city has a low tolerance for type I errors (population parameter in the CI), so will set $\alpha = .01$ and look for a 99\% CI. The city knows from past testing that the variance in lead measurements from tap water sources is 1 ppb. What sample size (of independent tap water measurements) would be required for the city to estimate the population mean lead level to have a CI with width 0.1 ppb? \pause
 		\item[]
-		\item So since we want $W = 0.1$, $E = 0.01/2 = 0.05$
+		\item So since we want $W = 0.1$, $E = 0.01/2 = 0.05$ \pause
 		\item[]
 		\item We also know $\alpha = .01$, $\sigma^2 = 1$
 	\end{itemize}
@@ -182,12 +182,12 @@
 
 \begin{frame}{Desired with of a confidence interval}
 \begin{itemize}
-	\item Given $E = 0.05$, $\alpha = .01$, $\sigma^2 = 1$:
+	\item Given $E = 0.05$, $\alpha = .01$, $\sigma^2 = 1$: \pause
 	\begin{align*}
 		n &= \frac{(z_{\alpha/2})^2 \sigma^2}{E^2}\\
 		n &=\frac{2.58^2 1^2}{0.05^2} \\
 		n &= 2662.56
-	\end{align*}
+	\end{align*} \pause
 	\item So the city should plan a sample of size $n = 2663$ to achieve that expected precision
 \end{itemize}
 \end{frame}
@@ -200,15 +200,15 @@
 
 \begin{frame}{Continuing with the water example}
 	\begin{itemize}
-		\item Example \#2: The city of Louisville, Kentucky wants to test whether the population mean $\mu$ of lead in tap water (in PPB) is less than 5.
+		\item Example \#2: The city of Louisville, Kentucky wants to test whether the population mean $\mu$ of lead in tap water (in PPB) is less than 5. \pause
 		\begin{itemize}
 			\item $H_0: \mu \geq 5$
 			\item $H_a: \mu < 5$
 			\item[]
-		\end{itemize}
-		\item The city needs to be conservative for the safety of residents, so the water quality officer sets $\alpha = 0.01$. He knows that the variance in lead measurements from tap water sources is 1 ppb
+		\end{itemize} \pause
+		\item The city needs to be conservative for the safety of residents, so the water quality officer sets $\alpha = 0.01$. He knows that the variance in lead measurements from tap water sources is 1 ppb \pause
 		\item[]
-		\item The water quality officer decides he will randomly select $n=10$ taps for testing the water for the presence of lead
+		\item The water quality officer decides he will randomly select $n=10$ taps for testing the water for the presence of lead \pause
 		\item[]
 		\item Measurements: \{4.42, 6.43, 2.45, 4.78, 2.97, 4.23, 5.73, 5.13, 4.85, 3.94\}
 	\end{itemize}
@@ -216,41 +216,41 @@
 
 \begin{frame}{Water example \#2}
 	\begin{itemize}
-		\item So we have that $\bar{x} = 4.493$, $\sigma = 1$, $\alpha = .01$, and $n = 10$
+		\item So we have that $\bar{x} = 4.493$, $\sigma = 1$, $\alpha = .01$, and $n = 10$ \pause
 		\item[]
-		\item We have the rejection rule: Reject $H_0$ if $z^* \leq -2.33$ as  $-z_{\alpha} = -z_{.01}= -2.33$
+		\item We have the rejection rule: Reject $H_0$ if $z^* \leq -2.33$ as  $-z_{\alpha} = -z_{.01}= -2.33$ \pause
 		\item[]
 		\item To calculate our test statistic:
 		\begin{align*}
 			z &= \frac{\bar{x}-\mu_0}{\sigma / \sqrt{n}} \\
 			&=\frac{4.493-5}{1 / \sqrt{10}} \\
 			&= -1.603
-		\end{align*}
+		\end{align*} \pause
 		\item So we fail to reject the null hypothesis
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Water example \#2}
 	\begin{itemize}
-		\item Now purely for the sake of argument let's assume the same sample mean had come from 100 measurements, that is $n = 100$
+		\item Now purely for the sake of argument let's assume the same sample mean had come from 100 measurements, that is $n = 100$ \pause
 		\item[]
-		\item So we have that $\bar{x} = 4.493$, $\sigma = 1$, $\alpha = .01$, and $n = 10$
+		\item So we have that $\bar{x} = 4.493$, $\sigma = 1$, $\alpha = .01$, and $n = 10$ \pause
 		\item[]
-		\item To calculate our test statistic:
+		\item To calculate our test statistic: \pause
 		\begin{align*}
 		z &= \frac{\bar{x}-\mu_0}{\sigma / \sqrt{n}} \\
 		&=\frac{4.493-5}{1 / \sqrt{100}} \\
 		&= -5.07
-		\end{align*}
+		\end{align*} \pause
 		\item So we would have rejected the null hypothesis with a $p$-value of 0.0000002
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Rejection \& Acceptance regions}{Types of errors}
 	\begin{itemize}
-		\item \textbf{\emph{Type I error:}} A Type I error is commited if we reject the null hypothesis when it is true. This is denoted $\alpha$
+		\item \textbf{\emph{Type I error:}} A Type I error is commited if we reject the null hypothesis when it is true. This is denoted $\alpha$ \pause
 		\item[]
-		\item \textbf{\emph{Type II error:}} A Type II error is commited if we accept the null hypothesis when it is false and the alternative hypothesis is true. This is denoted $\beta$
+		\item \textbf{\emph{Type II error:}} A Type II error is commited if we accept the null hypothesis when it is false and the alternative hypothesis is true. This is denoted $\beta$ \pause
 	\end{itemize}
 	\begin{center}
 		\begin{tabular}{c|cc}
@@ -332,15 +332,15 @@
 
 \begin{frame}{Type II errors}
 	\begin{itemize}
-		\item If $\mu_0$, $\alpha$, and $n$ are fixed, we can calculate $\beta$ for various \emph{specific} alternatives
+		\item If $\mu_0$, $\alpha$, and $n$ are fixed, we can calculate $\beta$ for various \emph{specific} alternatives \pause
 		\begin{itemize}
-			\item For our example \#2 we wanted to test $H_0: \mu \geq 5$ vs $H_a: \mu < 5$, given $\alpha = 0.01$, $n = 10$, and $\sigma = 1$
+			\item For our example \#2 we wanted to test $H_0: \mu \geq 5$ vs $H_a: \mu < 5$, given $\alpha = 0.01$, $n = 10$, and $\sigma = 1$ \pause
 			\item[]
-			\item We can ask, ``what is $\beta$ if the true population mean, $\mu_a$ is 4.5?'' 
+			\item We can ask, ``what is $\beta$ if the true population mean, $\mu_a$ is 4.5?'' \pause
 			\item[]
-			\item That is, ``what is the probability of committing a Type II error if the true population mean, $\mu_a$ is 4.5?''
+			\item That is, ``what is the probability of committing a Type II error if the true population mean, $\mu_a$ is 4.5?'' \pause
 			\item[]
-			\item That is, ``what is the probability of accepting $H_0$ as true, when $H_a$ is actually true?''
+			\item That is, ``what is the probability of accepting $H_0$ as true, when $H_a$ is actually true?'' \pause
 			\item[]
 			\item In this example this would be conservatively failing to reject the hypothesis that the water is not safe (lead less than 5), when it actually is safe
 		\end{itemize}
@@ -356,11 +356,11 @@
 	\end{column}
 		\begin{column}{.5 \textwidth}
 		\begin{itemize}
-			\item We can determine our critical value $-z_{\alpha}= -2.326$, at which we will reject the null hypothesis
+			\item We can determine our critical value $-z_{\alpha}= -2.326$, at which we will reject the null hypothesis \pause
 			
 			\item[]
 			
-			\item Then we calculate the probability of observing a test statistic that would result in a Type II error, $\beta$, to the \emph{right} of this critical value as:
+			\item Then we calculate the probability of observing a test statistic that would result in a Type II error, $\beta$, to the \emph{right} of this critical value as: \pause
 			\begin{gather*}
 			\beta = P \left(\frac{\mu_a - \mu_0}{\sigma / \sqrt{n}} \geq -z_{\alpha} \right)
 			\end{gather*}
@@ -374,12 +374,12 @@
 		\item There are a few more steps to solve for $\beta$, however we will just use the following formula:
 		\begin{gather*}
 			\beta(\mu_a) = P\left(z \leq z_{\alpha} - \frac{|\mu_0 - \mu_a|}{\sigma / \sqrt{n}} \right)
-		\end{gather*}
+		\end{gather*} \pause
 		\begin{itemize}
-			\item This formula can be used for any one-sided test ($H_a: \mu < \mu_0$ or $H_a: \mu > \mu_0$)
+			\item This formula can be used for any one-sided test ($H_a: \mu < \mu_0$ or $H_a: \mu > \mu_0$) \pause
 			\item[]
 		\end{itemize}
-	\item Back to our example:
+	\item Back to our example: \pause
 	\begin{align*}
 	\beta(4.5) = P\left(z \leq z_{0.01} - \frac{|5 - 4.5|}{1 / \sqrt{10}} \right) = P(z \leq 0.745) = 0.772
 	\end{align*}
@@ -433,11 +433,11 @@
 
 \begin{frame}{Calculating Power}
 	\begin{itemize}
-		\item The power of a test is often of great interest (when planning prior to data collection)
+		\item The power of a test is often of great interest (when planning prior to data collection) \pause
 		\item[]
-		\item The power of a test is $1-\beta$, or the probability of rejecting $H_0$ when it is false and $H_a$ is true
+		\item The power of a test is $1-\beta$, or the probability of rejecting $H_0$ when it is false and $H_a$ is true \pause
 		\item[]
-		\item If prior to conducting an experiment (or conducting an observational study), you determine that you don't have sufficient power given your $H_0$ and $H_a$, then doing the experiment or conducting the observational study is likely a waste
+		\item If prior to conducting an experiment (or conducting an observational study), you determine that you don't have sufficient power given your $H_0$ and $H_a$, then doing the experiment or conducting the observational study is likely a waste \pause
 		\item[]
 		\item Once we have $\beta$, the power is easy to compute: $1-\beta$
 	\end{itemize}
@@ -488,15 +488,15 @@
 
 \begin{frame}{Two-tailed power example}
 	\begin{itemize}
-		\item Example \#3: An energy utility in Glasgow, Kentucky wants to determine if their customer power consumption is different from the national average of 867 kWh per month. If the standard deviation of power consumption is 100 kWh per month, what power would the utility have to detect a difference of 20 kWh from the national average if they sampled $n=100$ customer records and tested with $\alpha = 0.10$?
+		\item Example \#3: An energy utility in Glasgow, Kentucky wants to determine if their customer power consumption is different from the national average of 867 kWh per month. If the standard deviation of power consumption is 100 kWh per month, what power would the utility have to detect a difference of 20 kWh from the national average if they sampled $n=100$ customer records and tested with $\alpha = 0.10$? \pause
 		\begin{itemize}
-			\item $H_0: \mu = 867$
-			\item $H_a: \mu \neq 867$
+			\item $H_0: \mu = 867$ \pause
+			\item $H_a: \mu \neq 867$ \pause
 		\begin{align*}
 			\beta(\mu_a) &\approx P\left(z \leq z_{\alpha/2} - \frac{|\mu_0 - \mu_a|}{\sigma / \sqrt{n}} \right)\\
 			\beta(867 \pm 20) &\approx P\left(z \leq z_{.05} - \frac{20}{100 / \sqrt{100}} \right) \\
 			\beta(867 \pm 20) &\approx 0.361
-		\end{align*}
+		\end{align*} \pause
 		So:
 		\begin{align*}
 			1-\beta \approx 1-0.361 =0.639
@@ -525,11 +525,11 @@
 
 \begin{frame}{Sample size for tests regarding $\mu$}
 	\begin{itemize}
-		\item Suppose we want to test $H_0: \mu \leq \mu_0$ vs $H_a: \mu > \mu_0$. Suppose we have fixed $\alpha$ (the probability of making a Type I error) and $\beta$ (the probability of making a Type II error)
+		\item Suppose we want to test $H_0: \mu \leq \mu_0$ vs $H_a: \mu > \mu_0$. Suppose we have fixed $\alpha$ (the probability of making a Type I error) and $\beta$ (the probability of making a Type II error) \pause
 		\item[]
-		\item We can then choose a $\mu_a$ that is on the boundary of where we want to have appropriate power to reject $H_0$
+		\item We can then choose a $\mu_a$ that is on the boundary of where we want to have appropriate power to reject $H_0$ \pause
 		\begin{itemize}
-			\item We consider $\mu_a$ at the boundary because $\beta(\mu_{a'}) < \beta(\mu_a)$ for all $\mu_{a'} > \mu_a$
+			\item We consider $\mu_a$ at the boundary because $\beta(\mu_{a'}) < \beta(\mu_a)$ for all $\mu_{a'} > \mu_a$ \pause
 			\item[]
 		\end{itemize}
 	\item Then:
@@ -542,13 +542,13 @@
 
 \begin{frame}{Sample size for tests regarding $\mu$}{Example}
 	\begin{itemize}
-		\item Example \#4: An energy utility in Glasgow, Kentucky wants to determine if their customer power consumption is greater than the national average of 867 kWh per month. If the standard deviation of power consumption is 100 kWh per month, what sample size would be required to detect an alternative value that is 20 kWh greater than the national average if $\alpha = 0.10$ and we want 90\% power to reject $H_0$ given that alternative?
+		\item Example \#4: An energy utility in Glasgow, Kentucky wants to determine if their customer power consumption is greater than the national average of 867 kWh per month. If the standard deviation of power consumption is 100 kWh per month, what sample size would be required to detect an alternative value that is 20 kWh greater than the national average if $\alpha = 0.10$ and we want 90\% power to reject $H_0$ given that alternative? \pause
 		\item[]
-		\item What we know:
+		\item What we know: \pause
 		\begin{itemize}
-			\item We want to test $H_0: \mu \leq 867$ vs $H_a: \mu > 867$
-			\item $\mu_0 = 867$ and $\mu_a = 867+20=887$
-			\item $\sigma = 100$, $\alpha = 0.10$, $1-\beta = 0.90$, and $\beta = 0.10$
+			\item We want to test $H_0: \mu \leq 867$ vs $H_a: \mu > 867$ \pause
+			\item $\mu_0 = 867$ and $\mu_a = 867+20=887$ \pause
+			\item $\sigma = 100$, $\alpha = 0.10$, $1-\beta = 0.90$, and $\beta = 0.10$ \pause
 			\item $\Delta = \mu_a - \mu_0 = 887-867 = 20$
 		\end{itemize}
 	\end{itemize}
@@ -564,7 +564,7 @@
 			\item $\Delta = 20$
 			\item[]
 		\end{itemize}
-		\item Then to find $n$:
+		\item Then to find $n$: \pause
 		\begin{align*}
 			n &= \sigma^2\frac{(z_{\alpha} + z_{\beta})^2}{\Delta^2} \\
 			n &= 100^2\frac{(z_{.10} + z_{.10})^2}{20^2} \\
@@ -580,7 +580,7 @@
 		n &= \sigma^2\frac{(z_{\alpha} + z_{\beta})^2}{\Delta^2} \\
 		n &= 100^2\frac{(z_{.10} + z_{.10})^2}{20^2} \\
 		n &= 164.237 \approx 165
-		\end{align*}
+		\end{align*} \pause
 		\item We can double check this by:
 		\begin{align*}
 			\beta(\mu_a) &= P\left(z \leq z_{\alpha} - \frac{|\mu_0 - \mu_a|}{\sigma / \sqrt{n}} \right) \\
@@ -594,12 +594,12 @@
 
 \begin{frame}{Sample size for tests regarding $\mu$}{Other alternatives}
 	\begin{itemize}
-		\item The textbook defines $\Delta$ differently based on the cases: $\Delta = \mu_a - \mu_0$ for right-tailed test, $\Delta = \mu_0 - \mu_a$ for left-tailed, and $\Delta = |\mu_a - \mu_0|$ for a two-tailed test
+		\item The textbook defines $\Delta$ differently based on the cases: $\Delta = \mu_a - \mu_0$ for right-tailed test, $\Delta = \mu_0 - \mu_a$ for left-tailed, and $\Delta = |\mu_a - \mu_0|$ for a two-tailed test \pause
 		\begin{itemize}
-			\item Ignore this. Because $\Delta$ is squared in the sample size formula, each will give you the same answer. The critical thing is to see $\Delta$ is the difference between $\mu_0$ and $\mu_a$
+			\item Ignore this. Because $\Delta$ is squared in the sample size formula, each will give you the same answer. The critical thing is to see $\Delta$ is the difference between $\mu_0$ and $\mu_a$ \pause
 			\item[]
 		\end{itemize}
-	\item For the two sided test $z_{\alpha}$ becomes $z_{\alpha/2}$ in the same formula:
+	\item For the two sided test $z_{\alpha}$ becomes $z_{\alpha/2}$ in the same formula: \pause
 	\begin{gather*}
 		n = \sigma^2\frac{(z_{\alpha/2} + z_{\beta})^2}{\Delta^2}
 	\end{gather*}
@@ -608,13 +608,13 @@
 
 \begin{frame}{Sample size for tests regarding $\mu$}{Example}
 	\begin{itemize}
-		\item Example \#5: An energy utility in Glasgow, Kentucky wants to determine if their customer power consumption \emph{differs} from the national average of 867 kWh per month. If the standard deviation of power consumption is 100 kWh per month, what sample size would be required to detect an alternative value that is 20 kWh \emph{different} than the national average if $\alpha = 0.10$ and we want 90\% power to reject $H_0$ given that alternative?
+		\item Example \#5: An energy utility in Glasgow, Kentucky wants to determine if their customer power consumption \emph{differs} from the national average of 867 kWh per month. If the standard deviation of power consumption is 100 kWh per month, what sample size would be required to detect an alternative value that is 20 kWh \emph{different} than the national average if $\alpha = 0.10$ and we want 90\% power to reject $H_0$ given that alternative? \pause
 		\item[]
-		\item What we know:
+		\item What we know: \pause
 		\begin{itemize}
-			\item We want to test $H_0: \mu = 867$ vs $H_a: \mu \neq 867$
-			\item $\mu_0 = 867$
-			\item $\sigma = 100$, $\alpha = 0.10$, $1-\beta = 0.90$, and $\beta = 0.10$
+			\item We want to test $H_0: \mu = 867$ vs $H_a: \mu \neq 867$ \pause
+			\item $\mu_0 = 867$ \pause
+			\item $\sigma = 100$, $\alpha = 0.10$, $1-\beta = 0.90$, and $\beta = 0.10$ \pause
 			\item $\Delta = |\mu_a - \mu_0| = 20$
 		\end{itemize}
 	\end{itemize}
@@ -629,8 +629,8 @@
 			\item $\sigma = 100$, $\alpha = 0.10$, $1-\beta = 0.90$, and $\beta = 0.10$
 			\item $\Delta = |\mu_a - \mu_0| = 20$
 			\item[]
-		\end{itemize}
-		\item So to calculate $n$:
+		\end{itemize} \pause
+		\item So to calculate $n$: \pause
 		\begin{align*}
 			n &= \sigma^2\frac{(z_{\alpha/2} + z_{\beta})^2}{\Delta^2} \\
 			n &= 100^2\frac{(z_{0.05} + z_{.10})^2}{20} \\
@@ -641,7 +641,7 @@
 
 \begin{frame}{Skewed / heavy-tailed distributions}
 	\begin{itemize}
-		\item We use the procedures in this section (past slides) for determining power and sample size for making inferences about $\mu$ for a normal population
+		\item We use the procedures in this section (past slides) for determining power and sample size for making inferences about $\mu$ for a normal population \pause
 		\item[]
 		\item When there is heavy-tailedness or skew present the actual power will be much lower than what we would calculate using these methods
 	\end{itemize}
@@ -657,9 +657,9 @@
 
 \begin{frame}{Sample size for estimating $\mu_1 - \mu_2$}
 	\begin{itemize}
-		\item We have already discussed how to determine the sample size $n$, so that a confidence interval for $\mu$ has a specific width (given a fixed confidence coefficient, and population $\sigma$)
+		\item We have already discussed how to determine the sample size $n$, so that a confidence interval for $\mu$ has a specific width (given a fixed confidence coefficient, and population $\sigma$) \pause
 		\item[]
-		\item If we assume that the variance and sample sizes are equal between groups ($n=n_1=n_2$), then we can use the following formula for estimating $\mu_1 - \mu_2$ given we want width $W = 2E$
+		\item If we assume that the variance and sample sizes are equal between groups ($n=n_1=n_2$), then we can use the following formula for estimating $\mu_1 - \mu_2$ given we want width $W = 2E$ 
 		\begin{gather*}
 			n = \frac{2 z_{\alpha / 2}^2 \sigma^2}{E^2}
 		\end{gather*}
@@ -668,9 +668,9 @@
 
 \begin{frame}{Sample size for estimating $\mu_1 - \mu_2$}{Example}
 	\begin{itemize}
-		\item Example: Assume the New Mexico Department of Health wants to estimate the difference in childhood BMI between Do\~{n}a Ana county and Luna County. The health officials plan on estimating a 90\% confidence interval and would like the width to be 0.5 units. They believe the population standard deviation is 3 units. What sample size do they need?
+		\item Example: Assume the New Mexico Department of Health wants to estimate the difference in childhood BMI between Do\~{n}a Ana county and Luna County. The health officials plan on estimating a 90\% confidence interval and would like the width to be 0.5 units. They believe the population standard deviation is 3 units. What sample size do they need? \pause 
 		\item[]
-		\item We want width $W = 0.5$ and $W = 2E$ implies $E = 0.25$. So:
+		\item We want width $W = 0.5$ and $W = 2E$ implies $E = 0.25$. So: \pause
 		\begin{gather*}
 		n = \frac{2 z_{\alpha / 2}^2 \sigma^2}{E^2} = \frac{2 (z_{0.05})^2 3^2}{0.25^2} = 779.2 \approx 780
 		\end{gather*}
@@ -685,11 +685,11 @@
 
 \begin{frame}{Sample size for tests regarding $\mu_1 - \mu_2$}
 	\begin{itemize}
-		\item For hypothesis tests regarding $\mu_1 - \mu_2$, for $\beta(\mu_1 - \mu_2) \leq \beta$ and $|\mu_1 - \mu_2|\geq \Delta$, for a one-sided test:
+		\item For hypothesis tests regarding $\mu_1 - \mu_2$, for $\beta(\mu_1 - \mu_2) \leq \beta$ and $|\mu_1 - \mu_2|\geq \Delta$, for a one-sided test: \pause
 		\begin{gather*}
 			n = 2 \sigma^2 \frac{(z_{\alpha} + z_{\beta})^2}{\Delta^2}
-		\end{gather*}
-		\item For a two-sided test:
+		\end{gather*} \pause
+		\item For a two-sided test: \pause
 		\begin{gather*}
 		n = 2 \sigma^2 \frac{(z_{\alpha/2} + z_{\beta})^2}{\Delta^2}
 		\end{gather*}
@@ -698,12 +698,12 @@
 
 \begin{frame}{Sample size for tests regarding $\mu_1 - \mu_2$}{Example}
 	\begin{itemize}
-		\item Example: Assume the New Mexico Department of Health wants to determine if there is a difference in childhood BMI between Do\~{n}a Ana county and Luna County. The health officials plan on testing with $\alpha = 0.05$. They believe the population standard deviation is 3 units. What sample size do they need to detect a difference of 0.5 units with 90\% power?
+		\item Example: Assume the New Mexico Department of Health wants to determine if there is a difference in childhood BMI between Do\~{n}a Ana county and Luna County. The health officials plan on testing with $\alpha = 0.05$. They believe the population standard deviation is 3 units. What sample size do they need to detect a difference of 0.5 units with 90\% power? \pause
 		\begin{itemize}
 			\item $\beta(0.5) \leq 0.10$
 			\item[]
-		\end{itemize}
-		\item For a two-sided test:
+		\end{itemize} \pause
+		\item For a two-sided test: \pause
 		\begin{gather*}
 		n = 2 \sigma^2 \frac{(z_{\alpha/2} + z_{\beta})^2}{\Delta^2} = 2 (3)^2 \frac{(z_{0.025} + z_{0.10})^2}{0.5^2} = 756.5 \approx 757
 		\end{gather*}
@@ -713,11 +713,11 @@
 
 \begin{frame}{And beyond!}
 	\begin{itemize}
-		\item We don't cover a lot of other procedures for determining power or sample size requirement in this class (e.g. for Non-parametric tests and estimating population medians)
+		\item We don't cover a lot of other procedures for determining power or sample size requirement in this class (e.g. for Non-parametric tests and estimating population medians) \pause
 		\item[] 
-		\item There are a lot of software to do this like the \emph{pwr} package in \emph{R}, or with SAS 
+		\item There are a lot of software to do this like the \emph{pwr} package in \emph{R}, or with SAS \pause
 		\item[]
-		\item Often the best approach is simulation (especially if you have preliminary data)
+		\item Often the best approach is simulation (especially if you have preliminary data) 
 	\end{itemize}
 \end{frame}
 

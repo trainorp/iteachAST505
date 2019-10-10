@@ -5,7 +5,6 @@ os <- Sys.info()["sysname"]
 baseDir <- ifelse(os == "Windows", "C:/Users/ptrainor/gdrive", "~/gdrive")
 
 library(tidyverse)
-library(ggrepel)
 
 setwd(paste0(baseDir, "/iTeach/AST_505/myLectures/lecture13_Variances"))
 
@@ -83,8 +82,18 @@ round(0.24295 / 0.08883, 4)
 round(var(x) / var(y), 4)
 pf(round(0.2430 / 0.0888, 4), df = 9, df2 = 9, lower.tail = FALSE)
 
+var.test(x = x, y = y, alternative = "greater", conf.level = .9)
 var.test(x = x, y = y, alternative = "greater", conf.level = .95)
 var.test(x = x, y = y, conf.level = .90)
 var.test(x = x, y = y, conf.level = .80)
 
 
+########### MI Var power analyses ###########
+fPower <- function(alpha = .05, sigma1, sigma2, n1, n2){
+  a <- sigma1 ^ 2 / sigma2 ^ 2 * qf(1 - alpha / 2, n1 - 1, n2 - 1)
+  b <- sigma1 ^ 2 / sigma2 ^ 2 * qf(alpha / 2, n1 - 1, n2 - 1)
+  
+  return(1 - pf(a, n1 - 1, n2 - 1) + pf(b, n1 - 1, n2 - 1))
+}
+
+fPower(.05, 80.095, 64.945, 10, 11)

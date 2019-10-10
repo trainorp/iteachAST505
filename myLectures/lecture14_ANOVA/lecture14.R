@@ -79,5 +79,30 @@ anova1 <- aov(dbh ~ Tree, data = df3)
 summary(anova1)
 
 ########### Back to the unequal case ###########
+df1$dbh <- round(df1$dbh, 2)
 df1b <- df1 %>% filter(Tree %in% c("Shortleaf Pine", "Sand Pine", "Eastern White Pine"))
 df1c <- df1b %>% arrange(Tree)
+
+df1b %>% group_by(Tree) %>% summarize(mean(dbh)) %>% as.data.frame()
+df1b  %>% summarize(round(mean(dbh),3) )%>% as.data.frame()
+10*(15.165 - 12.818)^2 + 10*(9.523-12.818)^2 + 10*(13.765-12.818)^2
+172.622/2
+
+df1b %>% group_by(Tree) %>% summarize(round(sd(dbh),3)) %>% as.data.frame()
+9*(1.730)^2 + 9*(1.971)^2 + 9*(1.560)^2
+
+83.802 / 27
+
+86.311 / 3.103
+
+paste(paste0(df1b$dbh, " - ", 12.818), collapse = ")^2 + (")
+
+sum((df1b$dbh - 12.818)^2)
+
+172.622 + 83.802
+
+qf(.05, 2, 27, lower.tail = FALSE)
+
+anova2 <- aov(dbh ~ Tree, data = df1b)
+summary(anova2)
+

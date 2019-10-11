@@ -34,7 +34,7 @@
 \begin{itemize}
 	\item Back to confidence intervals for $\mu$, with $\sigma$ known:
 	\begin{gather*}
-		\bar{y}\pm z_{\alpha/2} \sigma \sqrt{n}
+		\bar{y}\pm z_{\alpha/2} \sigma / \sqrt{n}
 	\end{gather*}  \pause
 	\item The idea was to fix $\alpha$ our probability of making a Type I error or equivalently to fix a level of confidence $100(1-\alpha)\%$ \pause
 	\item[]
@@ -66,7 +66,7 @@
 \begin{itemize}
 	\item Back to confidence intervals for $\mu$, with $\sigma$ known:
 	\begin{gather*}
-	\bar{y}\pm z_{\alpha/2} \sigma \sqrt{n}
+	\bar{y}\pm z_{\alpha/2} \sigma / \sqrt{n}
 	\end{gather*}  \pause
 	\item There are two values that we exercise control over: $\alpha$ and $n$  \pause
 	\item[]
@@ -156,9 +156,9 @@
 \begin{itemize}
 	\item Above we found:
 	\begin{align*}
-	\bar{y}\pm z_{\alpha/2} \sigma \sqrt{n} = \bar{y} \pm E = (\bar{y}-E, \bar{y}+E)
+	\bar{y}\pm z_{\alpha/2} \sigma / \sqrt{n} = \bar{y} \pm E = (\bar{y}-E, \bar{y}+E)
 	\end{align*}
-	where $W = 2E$ and $E = z_{\alpha/2} \sigma \sqrt{n}$  \pause
+	where $W = 2E$ and $E = z_{\alpha/2} \sigma / \sqrt{n}$  \pause
 	\item[]
 	\item So to find $n$ we do some algebra:
 	\begin{gather*}
@@ -174,7 +174,7 @@
 		\begin{itemize}
 		\item Example: The city of Louisville, Kentucky needs to estimate the population mean $\mu$ of lead in tap water (measured in parts per billion). The city has a low tolerance for type I errors (population parameter in the CI), so will set $\alpha = .01$ and look for a 99\% CI. The city knows from past testing that the variance in lead measurements from tap water sources is 1 ppb. What sample size (of independent tap water measurements) would be required for the city to estimate the population mean lead level to have a CI with width 0.1 ppb? \pause
 		\item[]
-		\item So since we want $W = 0.1$, $E = 0.01/2 = 0.05$ \pause
+		\item So since we want $W = 0.1$, $E = 0.1/2 = 0.05$ \pause
 		\item[]
 		\item We also know $\alpha = .01$, $\sigma^2 = 1$
 	\end{itemize}

@@ -106,3 +106,16 @@ qf(.05, 2, 27, lower.tail = FALSE)
 anova2 <- aov(dbh ~ Tree, data = df1b)
 summary(anova2)
 
+########### Post-hoc tests ###########
+t.test(df1$dbh[df1$Tree =="Shortleaf Pine"], df1$dbh[df1$Tree == "Eastern White Pine"], var.equal = TRUE)
+c(13.765-15.165 - qt(.975, 27) * sqrt(83.79 / 27 * (1/10 + 1/10)),
+  13.765-15.165 + qt(.975, 27) * sqrt(83.79 / 27 * (1/10 + 1/10)))
+DescTools::PostHocTest(anova2, method = "lsd")
+DescTools::PostHocTest(anova2, method = "bonf")
+
+pairwise.t.test(df1b$dbh, df1b$Tree, data = df1b, p.adjust.method = "none")
+pairwise.t.test(df1b$dbh, df1b$Tree, data = df1b, p.adjust.method = "bonf")
+
+########### HPV data  ###########
+df1 <- data.frame(group = c("Group 1", "Group 2", "Group 3", "Malignant"), mean = c(-0.321, -0.863, -3.05, -2.907))
+df1 <- df1 %>% slice(rep(1:n(), each = 10))

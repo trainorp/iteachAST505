@@ -296,7 +296,9 @@
 	\end{itemize}
 \end{frame}
 
-\section{Example \# 1}
+\section{$F$-test Examples}
+\subsection{Difference in mean dbh in pine trees}
+
 \begin{frame}{Outline}
 	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
@@ -469,8 +471,135 @@
 	\vspace{2mm}
 	\item Now for our hypothesis testing
 	\item[]
-	\item RR: Reject $H_0$ if $F^* > F_{\alpha, k-1, N-k} = F_{0.05, 2, 27} =3.354 $. 
+	\item RR: Reject $H_0$ if $F^* > F_{\alpha, k-1, N-k} = F_{0.05, 2, 27} =3.354 $
+	\item[]
+	\item Conclusion: Since $27.815 > 3.354$ we reject the null hypothesis. There is evidence at least one of the population means is different than the others. 
 	\end{itemize}
+\end{frame}
+
+\subsection{HPV Viral oncogenes}
+
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\section{Multiple comparisons}
+
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Post-hoc tests}
+	\begin{itemize}
+		\item If you have rejected your null hypothesis in the ANOVA, then you have evidence that not all the population means are the same. But which ones are different?
+		\item[]
+		\item Unplanned testing of differences between means \emph{after} determining that our ANOVA $F$-test is significant is called \textbf{post-hoc testing}
+		\item[]
+		\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons
+		\begin{itemize}
+			\item So if you had three populations you would examine: $\mu_1-\mu_2$, $\mu_2-\mu_3$, and $\mu_1-\mu_3$ by independent samples $t$-tests
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Post-hoc tests}
+	\begin{itemize}
+		\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons
+		\begin{itemize}
+			\item So if you had three populations you would examine: $\mu_1-\mu_2$, $\mu_2-\mu_3$, and $\mu_1-\mu_3$ by independent samples $t$-tests
+			\item[]
+		\end{itemize}
+		\item This would be naive / bad for two reasons:
+		\begin{enumerate}
+			\item You have estimated the population variances when you calculated $s^2_W$ using 3 groups (re-estimating it with just two groups would be worse)
+			\item[]
+			\item Your probability of making a Type I error when you do the set of tests at a fixed $\alpha$ will not be $\alpha$ (it will be larger)
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Multiple Testing}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{sig0}
+\end{center}
+\end{frame}
+
+\begin{frame}{Multiple Testing}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{sig1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Multiple Testing}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{sig2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Multiple Testing}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{sig2}
+\end{center}
+\end{frame}
+
+\begin{frame}{Multiple Testing}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{sig3}
+\end{center}
+\end{frame}
+
+\begin{frame}{Multiple Testing}
+\begin{itemize}
+	\item The last slides were excerpts from \emph{xkcd}: https://xkcd.com/882/
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Post-hoc tests}
+\begin{itemize}
+	\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons
+	\begin{itemize}
+		\item So if you had three populations you would examine: $\mu_1-\mu_2$, $\mu_2-\mu_3$, and $\mu_1-\mu_3$ by independent samples $t$-tests
+		\item[]
+	\end{itemize}
+	\item This would be naive / bad for two reasons:
+	\begin{enumerate}
+		\item You have estimated the population variances when you calculated $s^2_W$ using 3 groups (re-estimating it with just two groups would be worse)
+		\item[]
+		\item Your probability of making a Type I error when you do the set of tests at a fixed $\alpha$ will not be $\alpha$ (it will be larger)
+	\end{enumerate}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
+	\begin{itemize}
+		\item The solution to our problem \#1 (we already estimated the population variances) is to use $s^2_W$ when making post-hoc comparisons
+		\item[]
+		\item Test statistic with $N-k$ degrees of freedom:
+		\begin{gather*}
+			t = \frac{\bar{y}_1 - \bar{y}_2}{\sqrt{s^2_W\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} = \frac{\bar{y}_1 - \bar{y}_2}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
+		\end{gather*}
+		\item Formula for $100(1-\alpha)\%$ confidence intervals:
+		\begin{gather*}
+			\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
+		\end{gather*}
+		\item This is called Fisher's least significant difference (LSD) method
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Post-hoc tests}
+\begin{itemize}
+	\item Fisher's LSD method is superior to doing pairwise independent samples $t$-tests since it has a better estimate of the variances
+	\item[]
+	\item But it does not solve problem \#2
+	\item[]
+	\item If you conduct $m$ hypothesis tests each with a fixed $\alpha$, the probability of making at least one Type I error is: 
+	\begin{gather*}
+		1-(1-\alpha)^m
+	\end{gather*}
+	So for 1 test: 0.05, 2 tests: 0.098, 3 tests: 0.143, 10 tests: 0.401, and for 50 tests: 0.923
+\end{itemize}
 \end{frame}
 
 \end{document}

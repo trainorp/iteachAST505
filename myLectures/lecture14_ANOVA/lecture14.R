@@ -5,7 +5,6 @@ os <- Sys.info()["sysname"]
 baseDir <- ifelse(os == "Windows", "C:/Users/ptrainor/gdrive", "~/gdrive")
 
 library(tidyverse)
-library(ggrepel)
 
 setwd(paste0(baseDir, "/iTeach/AST_505/myLectures/lecture14_ANOVA"))
 
@@ -117,5 +116,47 @@ pairwise.t.test(df1b$dbh, df1b$Tree, data = df1b, p.adjust.method = "none")
 pairwise.t.test(df1b$dbh, df1b$Tree, data = df1b, p.adjust.method = "bonf")
 
 ########### HPV data  ###########
-df1 <- data.frame(group = c("Group 1", "Group 2", "Group 3", "Malignant"), mean = c(-0.321, -0.863, -3.05, -2.907))
+df1 <- data.frame(group = c("Group 1", "Group 2", "Group 3", "Malignant"), E2E6 = NA)
 df1 <- df1 %>% slice(rep(1:n(), each = 10))
+set.seed(101)
+df1$E2E6[df1$group == "Group 1"] <- rnorm(10, mean = 0.321, sd = 1)
+set.seed(106)
+df1$E2E6[df1$group == "Group 2"] <- rnorm(10, mean = 0.863, sd = 1)
+set.seed(103)
+df1$E2E6[df1$group == "Group 3"] <- rnorm(10, mean = 3.05, sd = 1)
+set.seed(105)
+df1$E2E6[df1$group == "Malignant"] <- rnorm(10, mean = 2.907, sd = 1)
+
+png(file = "e2e6.png", height = 4, width = 6, units = "in", res = 300)
+ggplot(df1, aes(x = group, y = E2E6, fill = group)) + geom_boxplot() + theme_bw()
+dev.off()
+
+lm3 <- lm(E2E6 ~ group, df1)
+anova3 <- aov(E2E6 ~ group, df1)
+summary(anova3)
+pf(19.79, 3, 36, lower.tail = FALSE)
+pairwise.t.test(df1$E2E6, df1$group, p.adjust.method = 'none')
+
+df1Sum <- df1 %>% group_by(group) %>% summarize(means = mean(E2E6)) %>% as.data.frame() %>% 
+  spread(key = "group", value = "means")
+df1Sum$`Group 1` - df1Sum$`Group 2`
+df1Sum$`Group 1` - df1Sum$`Group 3`
+df1Sum$`Group 1` - df1Sum$Malignant
+df1Sum$`Group 2` - df1Sum$`Group 3`
+df1Sum$`Group 2` - df1Sum$Malignant
+df1Sum$`Group 3` - df1Sum$Malignant
+
+c(df1Sum$`Group 1` - df1Sum$`Group 2` - qt(.975, 36) * sqrt(0.662 * (1/5)),
+  df1Sum$`Group 1` - df1Sum$`Group 2` + qt(.975, 36) * sqrt(0.662 * (1/5)))
+(df1Sum$`Group 1` - df1Sum$`Group 2`) / sqrt(0.662 * (1/5))
+(df1Sum$`Group 1` - df1Sum$`Group 2`) / sqrt(0.659 * (1/10 + 1/10))
+qt(.975, 36)
+pt((df1Sum$`Group 1` - df1Sum$`Group 2`) / sqrt(0.659 * (1/10 + 1/10)), 36) * 2
+
+
+
+DescTools::PostHocTest(anova3, method = "lsd")
+DescTools::PostHocTest(anova3, method = "bonf")
+
+c(df1Sum$`Group 1` - df1Sum$`Group 2` - qt(1-.05/12, 36) * sqrt(0.662 * (1/5)),
+  df1Sum$`Group 1` - df1Sum$`Group 2` + qt(1-.05/12, 36) * sqrt(0.662 * (1/5)))

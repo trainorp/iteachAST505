@@ -477,8 +477,6 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{HPV Viral oncogenes}
-
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
@@ -570,7 +568,11 @@
 \end{itemize}
 \end{frame}
 
+\subsection{Fisher's least significant difference (LSD) method}
 
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
 
 \begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
 	\begin{itemize}
@@ -588,18 +590,183 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Fisher's least significant difference (LSD) method}{Example}
+	\begin{itemize}
+		\item Example \#2: A variable called ``E2E6'' measures the degree to which the HPV virus has integrated itself into the host genome. You want to know if the amount of ``E2E6'' differs between four populations of oral lesions: Group 1, Group 2, Group 3, and Malignant. If there is a difference between the populations, you want to know which groups differ from one another.
+	\end{itemize}
+\end{frame}      
+
+\begin{frame}{Fisher's least significant difference (LSD) method}{Example}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{e2e6}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Fisher's least significant difference (LSD) method}{Example}
+	\begin{itemize}
+		\item Example \#2: A variable called ``E2E6'' measures the degree to which the HPV virus has integrated itself into the host genome. You want to know if the amount of ``E2E6'' differs between four populations of oral lesions: Group 1, Group 2, Group 3, and Malignant. If there is a difference between the populations, you want to know which groups differ from one another.
+		\begin{itemize}
+			\item $H_0: \mu_{\text{Group 1}} = \mu_{\text{Group 2}} = \mu_{\text{Group 3}} = \mu_{\text{Malignant}}$
+			\item[]
+			\item $H_a:$ At least one of the population means differs from the rest
+		\end{itemize}
+	\end{itemize}
+\end{frame}  
+
+\begin{frame}{Fisher's least significant difference (LSD) method}{Example}
+	\begin{itemize}
+		\item Example \#2: A variable called ``E2E6'' measures the degree to which the HPV virus has integrated itself into the host genome. You want to know if the amount of ``E2E6'' differs between four populations of oral lesions: Group 1, Group 2, Group 3, and Malignant. If there is a difference between the populations, you want to know which groups differ from one another.
+		\vspace{5mm}
+		\begin{center}
+			{\scriptsize
+				\begin{tabular}{lp{1.2cm}cp{2.5cm}c}
+					\hline 
+					\textbf{Source of Variation} & \textbf{Sum of Squares} & \textbf{df} & \textbf{Mean Square} & $F$-\textbf{Test} \\ \hline 
+					Between samples & 39.14 & 3 & 13.046 & $F^*=19.79$ \\
+					Within samples & 23.73 & 36 &  0.659 & \\
+					Total & 62.87 & 39 & & \\ \hline
+			\end{tabular}}
+		\end{center}
+		\vspace{5mm}
+	\item Then with $\text{df}_1 = 3$ and $\text{df}_2=36$, the p-value is $P(F \geq 19.79) = 0.0000000948$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
+	\begin{itemize}
+		\item We have observed that at least one mean is different from the others
+		\item The means of each group:
+		\begin{center}
+			\begin{tabular}{|c|c|c|c|}
+				\hline 
+				  Group 1 & Group 2 & Group 3 & Malignant \\ \hline \hline
+				 0.566 & 1.141 & 2.699 &  2.872 \\ \hline
+			\end{tabular}
+		\end{center}
+	\vspace{2mm}
+		\item Now we will look at pairwise comparisons using the LSD method, starting with $\mu_{\text{Group 1}}-\mu_{\text{Group 2}}$
+		\begin{itemize}
+			\item Test $H_0: \mu_{\text{Group 1}}-\mu_{\text{Group 2}} =0$ vs $H_a: \mu_{\text{Group 1}}-\mu_{\text{Group 2}}\neq 0$
+			\item Rejection rule: Reject $H_0$ if $|t^*| > t_{\alpha/2, N-k} = 2.028$
+					\item Test statistic:
+			\begin{gather*}
+			t^* = \frac{\bar{y}_1 - \bar{y}_2}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} = 
+			\frac{-0.575}{\sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)}} = -1.583
+			\end{gather*}
+			\item Conclusion: We fail to reject $H_0$. The p-value is $P(t < -1.583) = 0.122$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
+	\begin{itemize}
+		\item To determine a 95\% confidence interval for $\mu_{\text{Group 1}}-\mu_{\text{Group 2}}$:
+		\begin{gather*}
+		\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} \\
+		-0.575 \pm 2.028\sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)} \\
+		(-1.312,  0.163)
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
+	\begin{itemize}
+		\item All of the pairwise comparisons:
+		\vspace{4mm}
+		\begin{center}
+			\begin{tabular}{|l|c|c|}
+				\hline
+				\textbf{Comparison} & \textbf{Difference} & $p$-value \\   \hline \hline    
+				Group 1-Group 2  &  -0.575 &    0.12233    \\ \hline
+				Group 1-Group 3 &   -2.133  & 0.00000102 \\ \hline
+				Group 1-Malignant & -2.306 & 0.00000024 \\ \hline
+				Group 2-Group 3  &  -1.559 &    0.00013 \\ \hline
+				Group 2-Malignant  & -1.731 & 0.00003044 \\ \hline
+				Group 3-Malignant & -0.173 &   0.63734 \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Post-hoc tests}
 \begin{itemize}
 	\item Fisher's LSD method is superior to doing pairwise independent samples $t$-tests since it has a better estimate of the variances
 	\item[]
 	\item But it does not solve problem \#2
 	\item[]
-	\item If you conduct $m$ hypothesis tests each with a fixed $\alpha$, the probability of making at least one Type I error is: 
+	\item If you conduct $m$ independent hypothesis tests each with a fixed $\alpha$, the probability of making at least one Type I error over these tests, $\alpha_E$ is: 
 	\begin{gather*}
-		1-(1-\alpha)^m
+		\alpha_E = 1-(1-\alpha)^m
 	\end{gather*}
-	So for 1 test: 0.05, 2 tests: 0.098, 3 tests: 0.143, 10 tests: 0.401, and for 50 tests: 0.923
+	So for 1 test: 0.05, 2 tests: 0.098, 3 tests: 0.143, 10 tests: 0.401, and for 50 tests: 0.923*
+	
+	\vspace{1mm}
+	{\tiny *Pairwise tests using Fisher's LSD are not independent so we only have the upper bound $\alpha_E\leq 1-(1-\alpha)^m$}
 \end{itemize}
 \end{frame}
+
+\subsection{Bonferroni procedure}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The Bonferroni procedure}
+	\begin{itemize}
+		\item The experimentwise Type I error rate, $\alpha_E$ is the probability of falsely rejecting at least one null hypothesis in a set of comparisons
+		\item[]
+		\item If we start with an individual test type I error probability $\alpha_i$, then since $\alpha_E\leq 1-(1-\alpha)^m$, we have that $\alpha_E\leq m \alpha_i$
+		\item[]
+		\item So, we can set $\alpha_i = \alpha / m$ and then $\alpha_E \leq m \alpha / m = \alpha$ 
+		\item[]
+		\item Example: If we want compare four population means (all pairwise combinations), we would have 6 tests. If we wanted to maintain the experimentwise Type I error rate at 0.05, we would have:
+		\begin{gather*}
+			\alpha_i = \alpha / m = .05 / 6 = 0.0083
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Bonferroni procedure}{p-value adjustment }
+	\begin{itemize}
+		\item The procedure for conducting $m$ statistical tests:
+		\begin{itemize}
+			\item Conduct each test at $\alpha_i = \alpha / m$, or...
+			\item Multiply each calculated $p$-value by $m$ and compare to the desired $\alpha$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Bonferroni procedure}{p-value adjustment }
+	\begin{itemize}
+		\item Example: You conduct two statistical tests. You would like to preserve the experimental Type I error rate at 0.05. You use the formula $\alpha_i = \alpha / m = 0.05 / 2 = 0.025$ to determine that you must use an $\alpha_i$ in each of the individual tests. You observe the following $p$-values: 0.0245 for the first test, and 0.026 for the second. You reject the null hypothesis for the first test, and fail to reject the null hypothesis for the second. 
+		\item[]
+		\item Equivalent example:  You conduct two statistical tests. You would like to preserve the experimental Type I error rate at 0.05.  You observe the following $p$-values: 0.0245 for the first test, and 0.026 for the second. You multiply each one by 2 (the number of tests) and compare to the original $\alpha = 0.05$. After multiplication your adjusted $p$-values are 0.49 and 0.052.  You reject the null hypothesis for the first test, and fail to reject the null hypothesis for the second.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Bonferroni procedure}{p-value adjustment example}
+	\begin{itemize}
+		\item All of the pairwise comparisons:
+		\vspace{4mm}
+		\begin{center}
+			\begin{tabular}{|l|c|p{2cm}|p{2cm}|}
+				\hline
+				\textbf{Comparison} & \textbf{Difference} & Unadjusted $p$-value & Adjusted $p$-value \\   \hline \hline    
+				Group 1-Group 2  &  -0.575 &    0.12233 &  0.73400  \\ \hline
+				Group 1-Group 3 &   -2.133  & 0.00000102 & 0.0000061 \\ \hline
+				Group 1-Malignant & -2.306 & 0.00000024 & 0.0000014 \\ \hline
+				Group 2-Group 3  &  -1.559 &    0.00013 & 0.00076 \\ \hline
+				Group 2-Malignant  & -1.731 & 0.00003044 & 0.00018\\ \hline
+				Group 3-Malignant & -0.173 &   0.63734 & 1.00000 \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\subsection{Tukey’s procedure}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
 
 \end{document}

@@ -763,6 +763,19 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{The Bonferroni procedure}{Confidence intervals}
+	\begin{itemize}
+		\item Unadjusted formula for $100(1-\alpha)\%$ confidence intervals:
+		\begin{gather*}
+		\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
+		\end{gather*}
+		\item Formula for $100(1-\alpha)\%$ confidence intervals with Bonferroni adjustment:
+		\begin{gather*}
+		\bar{y}_1 - \bar{y}_2 \pm t_{(\alpha / 2) / m, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
 \subsection{Tukey’s procedure}
 \begin{frame}{Outline}
 	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]

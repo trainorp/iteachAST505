@@ -160,3 +160,9 @@ DescTools::PostHocTest(anova3, method = "bonf")
 
 c(df1Sum$`Group 1` - df1Sum$`Group 2` - qt(1-.05/12, 36) * sqrt(0.662 * (1/5)),
   df1Sum$`Group 1` - df1Sum$`Group 2` + qt(1-.05/12, 36) * sqrt(0.662 * (1/5)))
+
+df1 <- data.frame(year = c(1990, 1995, 2000, 2005, 2010, 2014, 2015, 2016, 2017, 2018), 
+           housingUnits = c(106.28, 112.66, 119.63, 123.93, 130.6, 133.27, 134.7, 135.58, 136.57, 138.45),
+           population = c(250.1319, 266.5571, 282.1624, 295.5166, 309.3384, 318.6225, 321.0398, 323.4059, 325.7192, 327.1674))
+df1$ratio <- df1$housingUnits / df1$population
+plot(df1$year, df1$ratio)

@@ -1,0 +1,436 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
+
+\title[Lecture 16]{Lecture 16: Inference}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{October}
+
+\begin{document}
+	
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+	\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Categorical data}
+	\begin{itemize}
+		\item All of our inferential procedures up to this point have involved quantitative data (either continous or discrete that we treated as continous)
+		\item[]
+		\item \textbf{Catgorical data:} Observations are from random variables that involve either names (categories) or ranks
+		\begin{itemize}
+			\item We may want to know the number \& proportion of undergraduates who engage in binge drinking \{Yes, No\}
+			\item[]
+			\item We may want to know the number of residents and proportion of residents who have each level of eduation in a city \{Primary school, High school, Some college / Associates degree, Bachelor's degree, Graduate degree\}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Categorical data}
+	\begin{itemize}
+		\item All of our inferential procedures up to this point have involved quantitative data (either continous or discrete that we treated as continous)
+		\item[]
+		\item \textbf{Catgorical data:} Observations are from random variables that involve either names (categories) or ranks
+		\begin{itemize}
+			\item We may want to know whether more residents of a city drive cars to work or use public transportation 
+			\item[]
+			\item We may want to compare whether e-cigarette users are more likely to have lung fibrosis than non-users \{(E-cig yes, Fibrosis yes), (E-cig no, Fibrosis yes), (E-cig no, Fibrosis yes), (E-cig no, Fibrosis no)\}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Inference about a population proportion $\pi$}
+\subsection{Point estimates \& Confidence intervals}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Binomial random variables}
+	\begin{itemize}
+		\item Earlier in the course we discussed binomial experiments which involved \{yes, no\} or binary responses
+		\item[]
+		\item The binomial distribution:
+		\begin{gather*}
+		P(y) = \frac{n!}{y! (n - y)!} \pi^y (1-\pi)^{n-y}
+		\end{gather*}
+		where:
+		\begin{itemize}
+			\item $\pi$ is the probability of success
+			\item $1-\pi$ is the probability of failure
+			\item $y$ the number of successes in the $n$ identical trials
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial random variables}{Population parameter of interest}
+	\begin{itemize}
+		\item Example: we may want to know the proportion of undergraduates who engage in binge drinking \{Yes, No\}
+		\item[]
+		\item We have a categorical random variable, undergraduate binge drinking status, with two levels: \{Yes, No\} 
+		\item[]
+		\item In the population, the proportion of undergraduates who engage in binge drinking is $\pi$
+		\item[]
+		\item For a bionmial RV, an estimate of the population parameter $\pi$ is: $\hat{\pi} = \frac{y}{n}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\pi$}
+	\begin{itemize}
+		\item We will dicuss two methods for determining confidence intervals for the population parameter $\pi$
+		\begin{itemize}
+			\item Wald confidence intervals
+			\item Wilson–Agresti–Coull (WAC) confidence interval
+			\item[]
+		\end{itemize}
+		
+		\item Wald confidence intervals are based on using normal approximations and standard error terms
+		\begin{itemize}
+			\item Recall: for a confidence interval for a population mean with known variance we had $\bar{y} \pm z_{\alpha / 2} \sigma / \sqrt{n}$. In this case $\sigma / \sqrt{n}$ is the standard error
+			\item For $\hat{\pi}$, for a binomial RV, the standard error is $\text{SE}(\hat{\pi}) = \sqrt{\frac{\pi(1-\pi)}{n}}$
+			\item Wald confidence intervals can be found for many parameters from many distributions
+			\item[]
+		\end{itemize}
+	
+		\item Wilson–Agresti–Coull (WAC) confidence intervals are based on modifying Wald confidence intervals to improve on the normal approximation
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Wald confidence intervals for $\pi$}
+	\begin{itemize}
+		\item The formula for a Wald confidence interval for $\pi$ with confidence coefficient $1-\alpha$:
+		\begin{gather*}
+		\hat{\pi} \pm z_{\alpha/2} \text{SE}(\hat{\pi})
+		\end{gather*}
+		where $\hat{\pi} = \frac{y}{n}$ and $\text{SE}(\hat{\pi}) = \sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Wald confidence intervals for $\pi$}{Example}
+	\begin{itemize}
+		\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval)
+		\item[]
+		\item First we determine the point estimate for $\pi$: 
+		\begin{gather*}
+			\hat{\pi} = \frac{y}{n} = \frac{8}{24} = 0.3333
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Wald confidence intervals for $\pi$}{Example}
+	\begin{itemize} {\tiny
+		\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) }
+		\item Now we will compute $\text{SE}(\hat{\pi})$:
+		\begin{gather*}
+		\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}} = \sqrt{\frac{0.333(0.6666)}{24}} = 0.0962
+		\end{gather*}
+		\item The 90\% Wald CI is then:
+		\begin{gather*}
+		\hat{\pi} \pm z_{\alpha/2} \text{SE}(\hat{\pi}) = 0.3333 \pm 1.645 ( 0.0962) \\
+		(0.1751, 0.4915)
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Requirements for Wald CI's for $\pi$}
+	\begin{itemize}
+		\item To use the Wald confidence interval procedure, the following should be true: $n \pi > 5$ or $n(1-\pi) > 5$
+		\begin{itemize}
+			\item For our last example $n \pi = 8 > 5$ and $n(1-\pi) = 16$
+			\item[]
+			\item If these conditions are not satisfied the normal approximation to the Binomial distribution will be poor
+			\item[]
+		\end{itemize}
+		\item The WAC confidence interval will perform better in the case that these conditions are not satisfied and 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{WAC confidence intervals for $\pi$}
+	\begin{itemize}
+		\item The formula for a WAC confidence interval for $\pi$ with confidence coefficient $1-\alpha$:
+		\begin{gather*}
+		\tilde{\pi} \pm z_{\alpha/2} \text{SE}(\tilde{\pi})
+		\end{gather*}
+		where:
+		\begin{itemize}
+			\item $\tilde{y} = y + 0.5 z_{\alpha/2}^2$, $\tilde{n} = n + z_{\alpha/2}^2$, and $\tilde{\pi}=\frac{\tilde{y}}{\tilde{n}}$
+			\item[]
+			\item $\tilde{\pi} = \frac{\tilde{y}}{\tilde{n}}$ and $\text{SE}(\tilde{\pi}) = \sqrt{\frac{\tilde{\pi}(1-\tilde{\pi})}{\tilde{n}}}$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{WAC confidence intervals for $\pi$}{Example}
+	\begin{itemize} {\tiny
+			\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) }
+		\item[]
+		\item First we need to determine $\tilde{y}$, $\tilde{n}$, and $\tilde{\pi}$: 
+		\begin{itemize}
+			\item $\tilde{y} = y + 0.5 z_{\alpha/2}^2 = 0.5 = 8 + 0.5(2.706) = 9.353$
+			\item $\tilde{n} = n + z_{\alpha/2}^2 = 24 + 2.706 = 26.706$
+			\item $\tilde{\pi}=\frac{\tilde{y}}{\tilde{n}} = \frac{9.353}{26.706} = 0.350$
+			\item[]
+		\end{itemize}
+		\item Then $\text{SE}(\tilde{\pi}) = \sqrt{\frac{\tilde{\pi}(1-\tilde{\pi})}{\tilde{n}}} = \sqrt{\frac{0.350(0.650)}{26.706}} = 0.0923$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{WAC confidence intervals for $\pi$}{Example}
+	\begin{itemize} {\tiny
+			\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) }
+		\item[]
+		\item The 90\% WAC confidence interval is then: 
+		\begin{align*}
+			\tilde{\pi} &\pm z_{\alpha/2} \text{SE}(\tilde{\pi}) =\\
+			  0.350 &\pm 1.645(0.0923) \\
+			  (0.1982&, 0.5018)
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation of $\pi$ when $y = 0$ or $y = 1$}
+	\begin{itemize}
+		\item When $\pi$ is very close to 0 or 1 (and when $n$ is small), the point estimate of $\pi$, $\hat{\pi}$, may be close (or equal to 0 or 1), which is not realistic
+		\item[]
+		\item In these cases we use an adjusted point estimate of $\pi$:
+		\begin{itemize}
+			\item $\hat{\pi}_{\text{adj}}= \frac{3/8}{n + 3/4}$ when $y = 0$
+			\item $\hat{\pi}_{\text{adj}}= \frac{n + 3/8}{n + 3/4}$ when $y = n$
+			\item[]
+		\end{itemize}
+		
+		\item And we use the following for $100(1-\alpha)$ confidence intervals:
+		\begin{itemize}
+			\item $\left[0, 1 - (\alpha / 2)^{1/n}\right]$ when $y = 0$
+			\item $\left[(\alpha / 2)^{1/n}, 1\right]$ when $y = n$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation of $\pi$ when $y = 0$ or $y = 1$}{Example}
+	\begin{itemize}
+		\item Early in the season, a batter has had 0 hits out of 4 at bats, that is $y = 0$, and $n = 4$. The unadjusted point estimate of $\pi$ would then be $\hat{\pi} = 0$, meaning our best estimate of the long run batting average is 0 (the batter never gets a hit during the season)
+		\item[]
+		\item In these cases we should use an adjusted point estimate of $\pi$:
+		\begin{itemize}
+			\item $\hat{\pi}_{\text{adj}}= \frac{3/8}{n + 3/4} = \frac{3/8}{4 + 3/4} = 0.0789$ since $y = 0$
+			\item[]
+		\end{itemize}
+		
+		\item And we could use the following for a 95\% confidence interval:
+		\begin{itemize}
+			\item $\left[0, 1 - (\alpha / 2)^{1/n}\right] = \left[0, 1 - (0.05 / 2)^{1/4}\right] = [0, 0.602]$ 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection{Hypothesis tests}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Motivating example}
+	\begin{itemize}
+		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal approximation method}
+	\begin{itemize}
+		\item Hypotheses: 
+		\begin{itemize}
+			\item \textbf{Case 1.} $H_0: \pi \leq \pi_0$ versus $\pi > \pi_0$
+			\item \textbf{Case 2.} $H_0: \pi \geq \pi_0$ versus $\pi < \pi_0$
+			\item \textbf{Case 3.} $H_0: \pi = \pi_0$ versus $\pi \neq \pi_0$
+			\item[]
+		\end{itemize}
+		
+		\item Test statistic:
+		\begin{gather*}
+		z^* = \frac{\hat{\pi}-\pi_0}{\text{SE}(\hat{\pi})}
+		\end{gather*}
+		
+		\item Rejection regions / rules: 
+		\begin{itemize}
+			\item \textbf{Case 1.} Reject $H_0$ if $z^* > z_{\alpha}$ with p-value $P(Z > z^*)$
+			\item \textbf{Case 2.} Reject $H_0$ if $z^* < -z_{\alpha}$ with p-value $P(Z < z^*)$
+			\item \textbf{Case 3.} Reject $H_0$ if $|z^*| > z_{\alpha / 2}$ with p-value $2\times P(Z > |z^*|)$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal approximation method}{Example}
+	\begin{itemize}
+		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Conduct the test with $\alpha = 0.05$
+		\item[]
+		\item Hypotheses. $H_0: \pi \geq 0.5$ versus $H_a: \pi < 0.5$
+		\item[]
+		\item Rejection rule: Reject $H_0$ if $z^* < -z_{\alpha} =  -z_{0.05} = - 1.645$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Normal approximation method}{Example}
+	\begin{itemize}
+		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Conduct the test with $\alpha = 0.05$
+		\item[]
+		\item Test statistic: From earlier we have that: $\hat{\pi} = \frac{y}{n} = \frac{8}{24} = 0.3333$ and $		\text{SE}(\hat{\pi})=\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}} = \sqrt{\frac{0.333(0.6666)}{24}} = 0.0962$
+			\begin{gather*}
+				z^* = \frac{\hat{\pi}-\pi_0}{\text{SE}(\hat{\pi})} = \frac{0.3333-0.5000}{0.0962} =-1.733
+			\end{gather*}
+		\item Conclusion: We reject $H_0$. There is evidence the proportion is less than half. The level of significance is $P(Z < z^*) = 0.0416$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial test method}
+	\begin{itemize}
+		\item When $n$ is small and / or if the following isn't satisfied: $n \pi > 5$ and $n(1-\pi) > 5$, we can conduct statistical tests using the binomial distribution directly 
+		\item[]
+		\item To do this, we will first fix $\alpha$, we can then determine $p$-values for the specific hypotheses from the binomial probability distribution function, and reject $H_0$ if $p\text{-value} \leq \alpha$
+		\item[]
+		\item P-values (by hand or using R):
+		\begin{itemize}
+			\item \textbf{Case 1.} $P(Y \geq y) = pbinom(y - 1, n, \pi_0, \text{lower.tail} = \text{FALSE})$
+			\item \textbf{Case 2.} $P(Y \leq y) = pbinom(y, n, \pi_0, \text{lower.tail} = \text{TRUE})$
+			\item \textbf{Case 3(a).} If $\hat{\pi}\geq \pi_0$, then $2\times P(Y \geq y) = 2 \times pbinom(y - 1, n, \pi_0, \text{lower.tail} = \text{FALSE})$
+			\item \textbf{Case 3(b).} If $\hat{\pi}< \pi_0$, then $2 \times P(Y \leq y) = 2 \times pbinom(y, n, \pi_0, \text{lower.tail} = \text{TRUE})$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Binomial test method}{Example}
+	\begin{itemize}
+		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Conduct the test with $\alpha = 0.05$
+		\item[]
+		\item We have $y = 8$ out of $n = 24$ and we are testing $H_0: \pi \geq \pi_0$ versus $\pi < \pi_0$. So our p-value is:
+		\begin{gather*}
+			P(Y \leq y) = P(Y \leq 8) = \\
+			 P(Y = 0) + P(Y = 1) + \hdots + P(Y = 8) =0.0758
+		\end{gather*}
+		\item Since $0.0758 = p\text{-value} > \alpha = 0.05$, we fail to reject $H_0$
+	\end{itemize}
+\end{frame}
+
+\section{Inferences about $\pi_1 - \pi_2$}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Inferences about $\pi_1 - \pi_2$}{Examples of research questions}
+	\begin{itemize}
+		\item Does the proportion of students who graduate in 4 years differ between students who study natural sciences versus students who study liberal arts?
+		\item[]
+		\item Is the prevalence of colon cancer different in African Americans / black Americans than in Caucasian / white Americans?
+		\item[]
+		\item Are Millennials employees more likely to work remotely than Generation X employees?
+	\end{itemize}
+\end{frame}
+
+\subsection{Point estimates \& Confidence intervals}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Point estimates of $\pi_1 - \pi_2$}
+	\begin{itemize}
+		\item To answer questions such as those on the previous slide, we want to determine if there is a difference in two population proportions using independent samples from each population
+		\begin{itemize}
+			\item We want to estimate and possibly make tests regarding $\pi_1 - \pi_2$
+		\end{itemize}
+		\item[]
+		\item It is usefull to present such samples using a table:
+		\begin{center}
+			\begin{tabular}{lcc}
+				\hline
+				& Population 1 & Population 2 \\ \hline
+				Sample size & $n_1$ & $n_2$ \\
+				Successes & $y_1$ & $y_2$ \\
+				Sample proportion & $\hat{\pi}_1 = \frac{y_1}{n_1}$ & $\hat{\pi}_2 = \frac{y_2}{n_2}$ \\ \hline
+			\end{tabular}
+		\end{center}
+	\item[]
+	\item The best estimate of the difference between population proportions $\pi_1 - \pi_2$ is $\hat{\pi}_1 - \hat{\pi}_2$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\pi_1 - \pi_2$}
+	\begin{itemize}
+		\item The standard error of $\pi_1 - \pi_2$ is:
+		\begin{gather*}
+		\text{SE}(\pi_1 - \pi_2) = \sqrt{\frac{\pi_1 (1-\pi_1)}{n_1}+\frac{\pi_2 (1-\pi_2)}{n_2}}
+		\end{gather*}
+		\item[]
+		\item A Wald $100(1-\alpha)\%$ confidence interval is then:
+		\begin{gather*}
+		\hat{\pi}_1 - \hat{\pi}_2 \pm z_{\alpha/2}\text{SE}(\hat{\pi}_1-\hat{\pi}_2)
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\pi_1 - \pi_2$}{Example}
+	\begin{itemize}
+		\item A quality engineer at an appliance manufacturer wants to determine if the proportion of machines that fail during the three year warranty period differs between two brands (UltraClean and SooooClean machines). The engineer wants to have a point estimate and 95\% confidence interval for comparing the population proportions using the following sample from warranty claims:
+		\vspace{3mm}
+		\begin{center}
+			\begin{tabular}{lcc}
+				\hline
+				& UltraClean & SooooClean \\ \hline
+				Sample size & $1207$ & $2409$ \\
+				Successes & $278$ & $722$ \\
+				Sample proportion & 0.230 & 0.300 \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Confidence intervals for $\pi_1 - \pi_2$}{Example}
+	{\tiny
+		\begin{center}
+			\begin{tabular}{lcc}
+				\hline
+				& UltraClean & SooooClean \\ \hline
+				Sample size & $1207$ & $2409$ \\
+				Successes & $278$ & $722$ \\
+				Sample proportion & 0.230 & 0.300 \\ \hline
+			\end{tabular}
+\end{center}}
+	\begin{itemize}
+		\item We need to determine $\text{SE}(\hat{\pi}_1-\hat{\pi}_2)$: 
+		\begin{align*}
+		\text{SE}(\hat{\pi}_1-\hat{\pi}_2) &= \sqrt{\frac{\pi_1 (1-\pi_1)}{n_1}+\frac{\pi_2 (1-\pi_2)}{n_2}}  \\ &=\sqrt{\frac{0.230 (0.770)}{1207}+\frac{0.300 (0.700)}{2409}} = 0.0153
+		\end{align*}
+		\item A 95\% Wald CI is then:
+		\begin{align*}
+			\hat{\pi}_1 - \hat{\pi}_2 \pm z_{\alpha/2}\text{SE}(\hat{\pi}_1-\hat{\pi}_2) &= -0.07 \pm 1.96 (0.0153) =\\& (-0.100, -0.040)
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\subsection{Hypothesis tests}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+
+\end{document}

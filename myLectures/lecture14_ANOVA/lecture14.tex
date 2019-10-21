@@ -664,7 +664,7 @@
 		\begin{gather*}
 		\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} \\
 		-0.575 \pm 2.028\sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)} \\
-		(-1.312,  0.163)
+		(-1.311,  0.162)
 		\end{gather*}
 	\end{itemize}
 \end{frame}
@@ -730,8 +730,9 @@
 	\begin{itemize}
 		\item The procedure for conducting $m$ statistical tests:
 		\begin{itemize}
-			\item Conduct each test at $\alpha_i = \alpha / m$, or...
-			\item Multiply each calculated $p$-value by $m$ and compare to the desired $\alpha$
+			\item Conduct each test at $\alpha_i = \alpha / m$ using the ``raw'' p-values 
+			\item[]
+			\item Multiply each calculated $p$-value by $m$ (adjusted p-values) and compare to the desired $\alpha$
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -776,9 +777,33 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{Tukey’s procedure}
-\begin{frame}{Outline}
-	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\begin{frame}{The Bonferroni procedure}{Confidence interval example}
+	\begin{itemize}
+		\item The 95\% confidence interval (Fisher's LSD):
+			\begin{gather*}
+			\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} \\
+			-0.575 \pm 2.028\sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)} \\
+			(-1.311,  0.162)
+			\end{gather*}
+		\item And the CI with the Bonferroni adjustment:
+		\begin{gather*}
+		\bar{y}_1 - \bar{y}_2 \pm t_{(\alpha / 2) / m, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} \\
+		-0.575 \pm 2.792 \sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)} \\
+		(-1.588, 0.439)
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Other procedures}
+	\begin{itemize}
+		\item There are many other procedures for determining adjusted p-values for maintaining the experimentwise Type I error probability at a fixed level (Holm, Hochberg, Hommel) and / or for determining simultaneous confidence intervals that achieve a specified level of confidence (Tukey's method, Sheffe's method, Dunnett's procedure)
+		\item[]
+		\item Some of these are in the textbook, but are more the subject of AST 506 than this course
+		\item[]
+		\item If you do many (hundreds or thousands) of independent hypothesis tests preserving the ``False Discovery Rate'' may be more important than preserving the experimentwise Type I error probability
+		\item[]
+		\item The ``False Discovery Rate'' is loosely defined as the number of Type I errors committed over a set of hypothesis tests
+	\end{itemize}
 \end{frame}
 
 

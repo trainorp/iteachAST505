@@ -12,7 +12,7 @@
 \title[Lecture 14]{Lecture 14: Analysis of Variance}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{October}
+\date{October 21, 2019}
 
 \begin{document}
 	
@@ -44,16 +44,16 @@
 
 \begin{frame}{Introduction}
 	\begin{itemize}
-		\item \textbf{Within-group (sample) variation:} Variability of individual measurements that are all from one group (sample). 
+		\item \textbf{Within-group (sample) variation:} Variability of individual measurements that are all from one group (sample) \pause
 		\begin{itemize}
-			\item Not all of the measurements from one group will be equal to the mean in that group
-			\item This type of variation may be related to the independent variable
+			\item Not all of the measurements from one group will be equal to the mean in that group \pause
+			\item This type of variation may be related to the independent variable \pause
 		\end{itemize}
 		\item[]
-		\item \textbf{Between-group (sample) variation:} Variability between separate groups of interest. 
+		\item \textbf{Between-group (sample) variation:} Variability between separate groups of interest \pause
 		\begin{itemize}
-			\item Not all of the means for each group will be identical
-			\item This type of variation may be related to the independent variable
+			\item Not all of the means for each group will be identical \pause
+			\item This type of variation may be related to the independent variable \pause
 		\end{itemize}
 		\item[]
 		\item When the between-group variation is large relative to the within-group variation we have evidence that population means are different 
@@ -81,14 +81,14 @@
 \begin{frame}{Introduction}
 	\begin{itemize}
 		\item \textbf{Analysis of Variance:} ``All differences in sample means are judged statistically
-		significant (or not) by comparing them to the variation within samples''
+		significant (or not) by comparing them to the variation within samples'' \pause
 		\item[]
-		\item ``Analysis of Variance'' (ANOVA) is not about comparing population variances between multiple groups
+		\item ``Analysis of Variance'' (ANOVA) is not about comparing population variances between multiple groups \pause
 		\item[]
-		\item In general if we have $p$ groups, we want to test the hypotheses:
+		\item In general if we have $p$ groups, we want to test the hypotheses: \pause
 		\begin{itemize}
-			\item $H_0: \mu_1 = \mu_2 = \hdots = \mu_p$
-			\item $H_a: $ At least one of the means, say $\mu_j$ ($j$ denotes a specific group), is not equal to the rest 
+			\item $H_0: \mu_1 = \mu_2 = \hdots = \mu_p$ \pause
+			\item $H_a: $ At least one of the means, say $\mu_j$ ($j$ denotes a specific group), is not equal to the rest \pause
 			\item[]
 		\end{itemize}
 		\item We cannot use pairwise $t$-tests for more than 2 groups because the true Type I error rates will be much greater than specified
@@ -103,18 +103,18 @@
 
 \begin{frame}{If $H_0$ were true}
 	\begin{itemize}
-		\item To develop a test of $H_a$ vs $H_0$, we need to determine a test statistic and determine the distribution of the test statistic if the null hypothesis were true. For this we will assume:
+		\item To develop a test of $H_a$ vs $H_0$, we need to determine a test statistic and determine the distribution of the test statistic if the null hypothesis were true. For this we will assume: \pause
 		\begin{enumerate}
-			\item Each of the $p$ groups (populations) has a normal distribution
+			\item Each of the $p$ groups (populations) has a normal distribution \pause
 			\item[]
-			\item The variances of the $p$ groups (populations) are equal
+			\item The variances of the $p$ groups (populations) are equal \pause
 			\item[]
-			\item The measurements for each group $j$ is an independent random samples from their respective populations
+			\item The measurements for each group $j$ is an independent random samples from their respective populations \pause
 			\item[]
 		\end{enumerate}
-	\item Now we can measure variability using two measures:
+	\item Now we can measure variability using two measures: \pause
 	\begin{itemize}
-		\item $s_W^2$: Within-group variance 
+		\item $s_W^2$: Within-group variance \pause
 		\item[]
 		\item $s_B^2$: Between-group variance 
 	\end{itemize}
@@ -123,15 +123,15 @@
 
 \begin{frame}{If $H_0$ were true}
 	\begin{itemize}
-		\item $s_W^2$: Within-group variance 
+		\item $s_W^2$: Within-group variance \pause
 		\begin{itemize}
-			\item If the null hypothesis were true, then each group would have the same population variance about the same population mean
+			\item If the null hypothesis were true, then each group would have the same population variance about the same population mean \pause
 			\item[]
-			\item So then we could estimate this population variance using each sample (from each different group) as:
+			\item So then we could estimate this population variance using each sample (from each different group) as: \pause
 			\begin{gather*}
 				s_W^2 = \frac{\sum_{j=1}^p (n_j -1) s_j^2}{\sum_{j=1}^p (n_j - 1)}
-			\end{gather*}
-			\item Notice that we have seen this before in $t$-tests that assumed equal variances. In this case $p=2$, and:
+			\end{gather*}\pause
+			\item Notice that we have seen this before in $t$-tests that assumed equal variances. In this case $p=2$, and: \pause
 			\begin{gather*}
 			s_W^2 = \frac{\sum_{j=1}^p (n_j -1) s_j^2}{\sum_{j=1}^p (n_j - 1)} = \frac{(n_1-1) s_1^2 + (n_2 -1) s_2^2}{n_1 + n_2 -2}
 			\end{gather*}
@@ -141,15 +141,15 @@
 
 \begin{frame}{If $H_0$ were true}
 	\begin{itemize}
-		\item $s_B^2$: Between-group variance 
+		\item $s_B^2$: Between-group variance \pause
 		\begin{itemize}
-			\item If $H_0$ were true, than the sample mean  $\bar{y}_j$ of each of the independent samples from the $p$ groups would be an estimate of the same population mean because $\mu_1 = \mu_2 = \hdots = \mu_p$
+			\item If $H_0$ were true, than the sample mean  $\bar{y}_j$ of each of the independent samples from the $p$ groups would be an estimate of the same population mean because $\mu_1 = \mu_2 = \hdots = \mu_p$ \pause
 			\item[]
-			\item We could then compute the sample variance of this set of $p$ sample means: $\{\bar{y}_1, \bar{y}_2, \hdots \bar{y}_p\}$:
+			\item We could then compute the sample variance of this set of $p$ sample means: $\{\bar{y}_1, \bar{y}_2, \hdots \bar{y}_p\}$: \pause
 			\begin{gather*}
 				\frac{\sum_{j=1}^p (\bar{y}_j - \bar{y}.)^2}{p-1}
-			\end{gather*}
-			where $\bar{y}. = \frac{\sum_{j=1}^p \bar{y}_j}{p}$
+			\end{gather*} 
+			where $\bar{y}. = \frac{\sum_{j=1}^p \bar{y}_j}{p}$ \pause
 			\item[]
 			\item If $n_j$ is equal for each group, then the above quantity is an estimate of $\sigma^2 / n$. So $n_j$ times that quantity estimates $\sigma^2$
 		\end{itemize}
@@ -158,9 +158,9 @@
 
 \begin{frame}{If $H_0$ were true}
 	\begin{itemize}
-		\item Now a test statistic!
+		\item Now a test statistic! \pause
 		\item[]
-		\item If the null hypothesis is true, then $s_B^2$ and $s_W^2$ both estimate $\sigma^2$ and should both be close to eachother, so:
+		\item If the null hypothesis is true, then $s_B^2$ and $s_W^2$ both estimate $\sigma^2$ and should both be close to eachother, so:  \pause
 		\begin{gather*}
 		F^* = s_B^2 / s_W^2
 		\end{gather*}
@@ -170,9 +170,9 @@
 
 \begin{frame}{If $H_0$ was not true}
 	\begin{itemize}
-		\item If $H_0$ were not true then we would expect that $s^2_B$ will be greater than $s_W^2$. That is, the between group variability will be greater than the within group variability 
+		\item If $H_0$ were not true then we would expect that $s^2_B$ will be greater than $s_W^2$. That is, the between group variability will be greater than the within group variability \pause
 		\item[]
-		\item So this would put our test statistic $F^*$ in the right tail of the $F$ distribution under the null
+		\item So this would put our test statistic $F^*$ in the right tail of the $F$ distribution under the null \pause
 		\item[]
 		\item We will call this testing Analysis of Variance (or ANOVA or AOV)
 	\end{itemize}
@@ -186,7 +186,7 @@
 
 \begin{frame}{Break for data}
 	\begin{itemize}
-		\item Before we introduce some notation and the process for doing an ANOVA $F$-test let's introduce some data
+		\item Before we introduce some notation and the process for doing an ANOVA $F$-test let's introduce some data \pause
 	\end{itemize}
 \begin{center}
 	\includegraphics{treeData2}
@@ -207,15 +207,15 @@
 
 \begin{frame}{Notation}
 	\begin{itemize}
-		\item $k$: The number of groups (populations)
+		\item $k$: The number of groups (populations) \pause
 		\item[]
-		\item $y_{j,i}:$ The $i$th sample observation from the group (population) $j$. For example, $y_{3,2}$ in our data would be the dbh of Shortleaf Pine \#2
+		\item $y_{j,i}:$ The $i$th sample observation from the group (population) $j$. For example, $y_{3,2}$ in our data would be the dbh of Shortleaf Pine \#2 \pause
 		\item[]
-		\item $n_j$: The number of observations from group (population) $j$. For our data $n_j=10$ for all groups $j$
+		\item $n_j$: The number of observations from group (population) $j$. For our data $n_j=10$ for all groups $j$ \pause
 		\item[]
-		\item $N$: The total sample size. That is $N = \sum_{j=1}^{k} n_j$. For our data $N = 30$
+		\item $N$: The total sample size. That is $N = \sum_{j=1}^{k} n_j$. For our data $N = 30$ \pause
 		\item[]
-		\item $\bar{y}_{j.}$: The mean of the $n_j$ observations from group (population) $j$. That is $\bar{y}_{j.} = \frac{\sum_{i = 1}^{n_j} y_{j,i}}  {n_j}$
+		\item $\bar{y}_{j.}$: The mean of the $n_j$ observations from group (population) $j$. That is $\bar{y}_{j.} = \frac{\sum_{i = 1}^{n_j} y_{j,i}}  {n_j}$ \pause
 		\item[]
 		\item $\bar{y}_{..}$: The mean of all of the observations $\sum_{j=1}^k\sum_{i = 1}^{n_j} y_{j,i} / n_j$
 	\end{itemize}
@@ -223,9 +223,9 @@
 
 \begin{frame}{Sum of squares}{Total sum of squares (TSS)}
 	\begin{itemize}
-		\item We are now going to introduce how $s^2_B$, $s^2_W$, and the ANOVA $F$ test statistic are computed in practice 
+		\item We are now going to introduce how $s^2_B$, $s^2_W$, and the ANOVA $F$ test statistic are computed in practice \pause
 		\item[]
-		\item \textbf{Total sum of squares (TSS).} The total sum of squares is the variability of the sample measurements about the overall mean (of all measurements):
+		\item \textbf{Total sum of squares (TSS).} The total sum of squares is the variability of the sample measurements about the overall mean (of all measurements): \pause
 		\begin{gather*}
 			\text{TSS} = \sum_{j=1}^{k} \sum_{i = 1}^{n_j}\left(y_{j,i} - \bar{y}_{..}\right)^2
 		\end{gather*}
@@ -234,26 +234,26 @@
 
 \begin{frame}{Sum of squares}{Partitioning TSS}
 	\begin{itemize}
-		\item We can partition the TSS as follows:
+		\item We can partition the TSS as follows: \pause
 		\begin{gather*}
 			\sum_{j=1}^{k} \sum_{i = 1}^{n_j}\left(y_{j,i} - \bar{y}_{..}\right)^2 = \sum_{j=1}^{k}\sum_{i = 1}^{n_j} (y_{j,i}-\bar{y}_{j.})^2 + \sum_{j=1}^k n_j (\bar{y}_{j.} - \bar{y}_{..})^2
-		\end{gather*}
+		\end{gather*} \pause
 		\item[]
 		\item This is:
 		\begin{gather*}
 			\text{TSS} =\sum_{j=1}^{k} \sum_{i = 1}^{n_j}\left(y_{j,i} - \bar{y}_{..}\right)^2 = \text{SSW} + \text{SSB}
-		\end{gather*}
+		\end{gather*} 
 		if $\text{SSW} = \sum_{j=1}^{k}\sum_{i = 1}^{n_j} (y_{j,i}-\bar{y}_{j.})^2$ and $\text{SSB}= \sum_{j=1}^k n_j (\bar{y}_{j.} - \bar{y}_{..})^2$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Sum of Squares}{Within-sample sum of squares}
 	\begin{itemize}
-		\item \textbf{Within-sample sum of squares (SSW).} A measure of within-sample variability:
+		\item \textbf{Within-sample sum of squares (SSW).} A measure of within-sample variability: \pause
 		\begin{gather*}
 			\text{SSW} = \sum_{j=1}^{k}\sum_{i = 1}^{n_j} (y_{j,i}-\bar{y}_{j.})^2 = (n_1-1)s_1^2 + (n_2-1)s_2^2 + \hdots + (n_k-1)s_k^2
-		\end{gather*}
-		\item \textbf{Sum of squares between samples (SSB).} A measure of variability between (or among) the sample means:
+		\end{gather*} \pause
+		\item \textbf{Sum of squares between samples (SSB).} A measure of variability between (or among) the sample means: \pause
 		\begin{align*}
 			\text{SSB} =\sum_{j=1}^k n_j (\bar{y}_{j.} - \bar{y}_{..})^2 = n_1 (\bar{y}_{1.}-\bar{y}_{..})^2 + &n_2 (\bar{y}_{2.}-\bar{y}_{..})^2 + \hdots + \\ &n_k (\bar{y}_{k.}-\bar{y}_{..})^2
 		\end{align*}
@@ -262,7 +262,7 @@
 
 \begin{frame}{Mean squares}
 	\begin{itemize}
-		\item The quantities $s^2_B$ and $s^2_W$ are (historically) referred to as mean squares (as in mean square between samples and mean square within samples, respectively):
+		\item The quantities $s^2_B$ and $s^2_W$ are (historically) referred to as mean squares (as in mean square between samples and mean square within samples, respectively): \pause
 		\begin{gather*}
 			s^2_B = \frac{\text{SSB}}{k-1} \quad \quad s^2_W = \frac{\text{SSW}}{N-k}
 		\end{gather*}
@@ -272,16 +272,16 @@
 
 \begin{frame}{Process for An Analysis of Variance (ANOVA)}
 	\begin{itemize}
-		\item The process:
+		\item The process: \pause
 		\begin{enumerate}
-			\item Compute the partitioning of TSS into SSB and SSW
-			\item Determine the number of degrees of freedom for each
-			\item Compute the mean squares $s_B^2$ and $s_W^2$ by dividing SSB and SSW by their sum of squares
-			\item Determine the test statistic: $F^* = s_B^2 / s_W^2$
-			\item We will reject the null hypothesis (that all means are equal) if: $F^* > F_{\alpha, k-1, N-k}$
+			\item Compute the partitioning of TSS into SSB and SSW \pause
+			\item Determine the number of degrees of freedom for each \pause
+			\item Compute the mean squares $s_B^2$ and $s_W^2$ by dividing SSB and SSW by their sum of squares \pause
+			\item Determine the test statistic: $F^* = s_B^2 / s_W^2$ \pause
+			\item We will reject the null hypothesis (that all means are equal) if: $F^* > F_{\alpha, k-1, N-k}$ \pause
 			\item[]
 		\end{enumerate}
-	\item The ANOVA table will help us organize these steps:
+	\item The ANOVA table will help us organize these steps: \pause
 	\vspace{2mm}
 	\begin{center}
 		{\scriptsize
@@ -311,15 +311,15 @@
 
 \begin{frame}{Example \#1}{Research Question}
 	\begin{itemize}
-		\item \textbf{Example \# 1:} Determine if there is evidence that at least one of the populations of pine trees has different dbh than the others ($\alpha = .05$)
+		\item \textbf{Example \# 1:} Determine if there is evidence that at least one of the populations of pine trees has different dbh than the others ($\alpha = .05$) \pause
 		\item[]
 		\item Formally:
 		\begin{itemize}
 			\item $H_0: \mu_1 = \mu_2 = \mu_3$
 			\item $H_a:$ At least one of the population means differs from the rest
 			\item[]
-		\end{itemize}
-		\item Rejection rule: We will reject $H_0$ if $F^* > F_{\alpha, k-1, N-k}$
+		\end{itemize} \pause
+		\item Rejection rule: We will reject $H_0$ if $F^* > F_{\alpha, k-1, N-k}$ \pause
 			\vspace{2mm}
 		\begin{center}
 			{\scriptsize
@@ -336,7 +336,7 @@
 
 \begin{frame}{Example \#1}{SSB}
 	\begin{itemize}
-		\item To compute SSB we need to know the overall ``grand'' mean and the mean in each group:
+		\item To compute SSB we need to know the overall ``grand'' mean and the mean in each group: \pause
 		\begin{center}
 			\begin{tabular}{|c|c|c|c|}
 				\hline
@@ -347,9 +347,9 @@
 				3 &  Shortleaf Pine        &  10 &   13.765\\ \hline \hline
 				\textbf{Overall} & & 30 & 12.818 \\ \hline
 			\end{tabular}
-		\end{center}
+		\end{center}\pause
 				\vspace{2mm}
-		\item So SSB is:
+		\item So SSB is: \pause
 		\begin{gather*}
 		\sum_{j=1}^3 n_j (\bar{y}_{j.} - \bar{y}_{..})^2 = n_1 (\bar{y}_{1.}-\bar{y}_{..})^2 + n_2 (\bar{y}_{2.}-\bar{y}_{..})^2 + n_3 (\bar{y}_{3.}-\bar{y}_{..})^2 =  \\
 		 10(15.165 - 12.818)^2 + 10(9.523-12.818)^2 + 10(13.765-12.818)^2 =\\
@@ -360,7 +360,7 @@
 
 \begin{frame}{Example \#1}{SSB}
 	\begin{itemize}
-		\item Starting with our stock table:
+		\item Starting with our stock table: \pause
 		\vspace{2mm}
 		\begin{center}
 			{\scriptsize
@@ -371,9 +371,9 @@
 					Within samples & SSW & $N - k$ &  $s_W^2 = \text{SSW} / (N-k)$ & \\
 					Total & TSS & $N-1$ & & \\ \hline
 			\end{tabular}}
-		\end{center}
+		\end{center} \pause
 		\vspace{5mm}
-		\item We can now fill in part of the first row of the table:
+		\item We can now fill in part of the first row of the table: \pause
 			\vspace{2mm}
 		\begin{center}
 			{\scriptsize
@@ -390,7 +390,7 @@
 
 \begin{frame}{Example \#1}{SSW}
 	\begin{itemize}
-	\item To compute SSW we need to know sample variance in each group:
+	\item To compute SSW we need to know sample variance in each group: \pause
 		\begin{center}
 			\begin{tabular}{|c|c|c|c|}
 				\hline
@@ -400,9 +400,9 @@
 				2 &  Sand Pine              & 10 &   1.971\\ \hline 
 				3 &  Shortleaf Pine        &  10 &   1.560\\ \hline 
 			\end{tabular}
-		\end{center}
+		\end{center}\pause
 				\vspace{2mm}
-	\item So SSW is:
+	\item So SSW is:\pause
 	\begin{gather*}
 		\sum_{j=1}^{3}\sum_{i = 1}^{n_j} (y_{j,i}-\bar{y}_{j.})^2 = (n_1-1)s_1^2 + (n_2-1)s_2^2 + (n_3-1)s_3^2 =\\ 
 		9(1.730)^2 + 9(1.971)^2 + 9(1.560)^2 = \\
@@ -413,7 +413,7 @@
 
 \begin{frame}{Example \#1}{SSB}
 	\begin{itemize}
-		\item Starting with last table:
+		\item Starting with last table: \pause
 		\vspace{2mm}
 		\begin{center}
 			{\scriptsize
@@ -424,9 +424,9 @@
 					Within samples & SSW & $N - k$ &  $s_W^2 = \text{SSW} / (N-k)$ & \\
 					Total & TSS & $N-1$ & & \\ \hline
 			\end{tabular}}
-		\end{center}
+		\end{center}\pause
 		\vspace{5mm}
-		\item We can now fill in the next row of the table and determine $F^*$:
+		\item We can now fill in the next row of the table and determine $F^*$: \pause
 		\vspace{2mm}
 		\begin{center}
 			{\scriptsize
@@ -443,9 +443,9 @@
 
 \begin{frame}{Example \#1}{TSS}
 	\begin{itemize}
-		\item We already have enough to conduct our hypothesis test, but for completeness we will fill in TSS
+		\item We already have enough to conduct our hypothesis test, but for completeness we will fill in TSS \pause
 		\item[]
-		\item TSS is the squared deviation of every observation from the overall or ``grand'' mean:
+		\item TSS is the squared deviation of every observation from the overall or ``grand'' mean: \pause
 		\begin{gather*}
 		\text{TSS} = \sum_{j=1}^{k} \sum_{i = 1}^{n_j}\left(y_{j,i} - \bar{y}_{..}\right)^2 = \sum_{j=1}^{k} \sum_{i = 1}^{n_j}\left(y_{j,i} - 12.818\right)^2 = \\
 		(12.25 - 12.818)^2 + (7.31 - 12.818)^2 + (13.38 - 12.818)^2 + \\(13.87 - 12.818)^2 + \hdots + (8.82 - 12.818)^2 + (17.83 - 12.818)^2 =\\
@@ -456,7 +456,7 @@
 
 \begin{frame}{Example \#1}{SSB}
 	\begin{itemize}
-		\item Our table is then complete:
+		\item Our table is then complete: \pause
 		\vspace{2mm}
 		\begin{center}
 			{\scriptsize
@@ -467,11 +467,11 @@
 					Within samples & 83.802 & 27 &  3.103 & \\
 					Total & 256.424 & 29 & & \\ \hline
 			\end{tabular}}
-		\end{center}
+		\end{center}\pause
 	\vspace{2mm}
-	\item Now for our hypothesis testing
+	\item Now for our hypothesis testing \pause
 	\item[]
-	\item RR: Reject $H_0$ if $F^* > F_{\alpha, k-1, N-k} = F_{0.05, 2, 27} =3.354 $
+	\item RR: Reject $H_0$ if $F^* > F_{\alpha, k-1, N-k} = F_{0.05, 2, 27} =3.354 $\pause
 	\item[]
 	\item Conclusion: Since $27.815 > 3.354$ we reject the null hypothesis. There is evidence at least one of the population means is different than the others. 
 	\end{itemize}
@@ -489,11 +489,11 @@
 
 \begin{frame}{Post-hoc tests}
 	\begin{itemize}
-		\item If you have rejected your null hypothesis in the ANOVA, then you have evidence that not all the population means are the same. But which ones are different?
+		\item If you have rejected your null hypothesis in the ANOVA, then you have evidence that not all the population means are the same. But which ones are different? \pause
 		\item[]
-		\item Unplanned testing of differences between means \emph{after} determining that our ANOVA $F$-test is significant is called \textbf{post-hoc testing}
+		\item Unplanned testing of differences between means \emph{after} determining that our ANOVA $F$-test is significant is called \textbf{post-hoc testing} \pause
 		\item[]
-		\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons
+		\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons \pause
 		\begin{itemize}
 			\item So if you had three populations you would examine: $\mu_1-\mu_2$, $\mu_2-\mu_3$, and $\mu_1-\mu_3$ by independent samples $t$-tests
 		\end{itemize}
@@ -502,14 +502,14 @@
 
 \begin{frame}{Post-hoc tests}
 	\begin{itemize}
-		\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons
+		\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons \pause
 		\begin{itemize}
-			\item So if you had three populations you would examine: $\mu_1-\mu_2$, $\mu_2-\mu_3$, and $\mu_1-\mu_3$ by independent samples $t$-tests
+			\item So if you had three populations you would examine: $\mu_1-\mu_2$, $\mu_2-\mu_3$, and $\mu_1-\mu_3$ by independent samples $t$-tests \pause
 			\item[]
 		\end{itemize}
-		\item This would be naive / bad for two reasons:
+		\item This would be naive / bad for two reasons: \pause
 		\begin{enumerate}
-			\item You have estimated the population variances when you calculated $s^2_W$ using 3 groups (re-estimating it with just two groups would be worse)
+			\item You have estimated the population variances when you calculated $s^2_W$ using 3 groups (re-estimating it with just two groups would be worse) \pause
 			\item[]
 			\item Your probability of making a Type I error when you do the set of tests at a fixed $\alpha$ will not be $\alpha$ (it will be larger)
 		\end{enumerate}
@@ -554,14 +554,14 @@
 
 \begin{frame}{Post-hoc tests}
 \begin{itemize}
-	\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons
+	\item Naive approach: Do pairwise independent samples $t$-tests for all of the possible comparisons \pause
 	\begin{itemize}
-		\item So if you had three populations you would examine: $\mu_1-\mu_2$, $\mu_2-\mu_3$, and $\mu_1-\mu_3$ by independent samples $t$-tests
+		\item So if you had three populations you would examine: $\mu_1-\mu_2$, $\mu_2-\mu_3$, and $\mu_1-\mu_3$ by independent samples $t$-tests \pause
 		\item[]
 	\end{itemize}
-	\item This would be naive / bad for two reasons:
+	\item This would be naive / bad for two reasons: \pause
 	\begin{enumerate}
-		\item You have estimated the population variances when you calculated $s^2_W$ using 3 groups (re-estimating it with just two groups would be worse)
+		\item You have estimated the population variances when you calculated $s^2_W$ using 3 groups (re-estimating it with just two groups would be worse) \pause
 		\item[]
 		\item Your probability of making a Type I error when you do the set of tests at a fixed $\alpha$ will not be $\alpha$ (it will be larger)
 	\end{enumerate}
@@ -576,16 +576,16 @@
 
 \begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
 	\begin{itemize}
-		\item The solution to our problem \#1 (we already estimated the population variances) is to use $s^2_W$ when making post-hoc comparisons
+		\item The solution to our problem \#1 (we already estimated the population variances) is to use $s^2_W$ when making post-hoc comparisons \pause
 		\item[]
-		\item Test statistic with $N-k$ degrees of freedom:
+		\item Test statistic with $N-k$ degrees of freedom:\pause
 		\begin{gather*}
 			t = \frac{\bar{y}_1 - \bar{y}_2}{\sqrt{s^2_W\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} = \frac{\bar{y}_1 - \bar{y}_2}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
-		\end{gather*}
-		\item Formula for $100(1-\alpha)\%$ confidence intervals:
+		\end{gather*} \pause
+		\item Formula for $100(1-\alpha)\%$ confidence intervals:\pause
 		\begin{gather*}
 			\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
-		\end{gather*}
+		\end{gather*}\pause
 		\item This is called Fisher's least significant difference (LSD) method
 	\end{itemize}
 \end{frame}
@@ -606,9 +606,9 @@
 	\begin{itemize}
 		\item Example \#2: A variable called ``E2E6'' measures the degree to which the HPV virus has integrated itself into the host genome. You want to know if the amount of ``E2E6'' differs between four populations of oral lesions: Group 1, Group 2, Group 3, and Malignant. If there is a difference between the populations, you want to know which groups differ from one another.
 		\begin{itemize}
-			\item $H_0: \mu_{\text{Group 1}} = \mu_{\text{Group 2}} = \mu_{\text{Group 3}} = \mu_{\text{Malignant}}$
+			\item $H_0: \mu_{\text{Group 1}} = \mu_{\text{Group 2}} = \mu_{\text{Group 3}} = \mu_{\text{Malignant}}$ \pause
 			\item[]
-			\item $H_a:$ At least one of the population means differs from the rest
+			\item $H_a:$ At least one of the population means differs from the rest \pause
 		\end{itemize}
 	\end{itemize}
 \end{frame}  
@@ -626,7 +626,7 @@
 					Within samples & 23.73 & 36 &  0.659 & \\
 					Total & 62.87 & 39 & & \\ \hline
 			\end{tabular}}
-		\end{center}
+		\end{center} \pause
 		\vspace{5mm}
 	\item Then with $\text{df}_1 = 3$ and $\text{df}_2=36$, the p-value is $P(F \geq 19.79) = 0.0000000948$
 	\end{itemize}
@@ -634,25 +634,25 @@
 
 \begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
 	\begin{itemize}
-		\item We have observed that at least one mean is different from the others
-		\item The means of each group:
+		\item We have observed that at least one mean is different from the others \pause
+		\item The means of each group: \pause
 		\begin{center}
 			\begin{tabular}{|c|c|c|c|}
 				\hline 
 				  Group 1 & Group 2 & Group 3 & Malignant \\ \hline \hline
 				 0.566 & 1.141 & 2.699 &  2.872 \\ \hline
 			\end{tabular}
-		\end{center}
+		\end{center} \pause
 	\vspace{2mm}
-		\item Now we will look at pairwise comparisons using the LSD method, starting with $\mu_{\text{Group 1}}-\mu_{\text{Group 2}}$
+		\item Now we will look at pairwise comparisons using the LSD method, starting with $\mu_{\text{Group 1}}-\mu_{\text{Group 2}}$ \pause
 		\begin{itemize}
-			\item Test $H_0: \mu_{\text{Group 1}}-\mu_{\text{Group 2}} =0$ vs $H_a: \mu_{\text{Group 1}}-\mu_{\text{Group 2}}\neq 0$
-			\item Rejection rule: Reject $H_0$ if $|t^*| > t_{\alpha/2, N-k} = 2.028$
-					\item Test statistic:
+			\item Test $H_0: \mu_{\text{Group 1}}-\mu_{\text{Group 2}} =0$ vs $H_a: \mu_{\text{Group 1}}-\mu_{\text{Group 2}}\neq 0$ \pause
+			\item Rejection rule: Reject $H_0$ if $|t^*| > t_{\alpha/2, N-k} = 2.028$ \pause
+			\item Test statistic: \pause
 			\begin{gather*}
 			t^* = \frac{\bar{y}_1 - \bar{y}_2}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} = 
 			\frac{-0.575}{\sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)}} = -1.583
-			\end{gather*}
+			\end{gather*}\pause
 			\item Conclusion: We fail to reject $H_0$. The p-value is $P(t < -1.583) = 0.122$
 		\end{itemize}
 	\end{itemize}
@@ -660,7 +660,7 @@
 
 \begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
 	\begin{itemize}
-		\item To determine a 95\% confidence interval for $\mu_{\text{Group 1}}-\mu_{\text{Group 2}}$:
+		\item To determine a 95\% confidence interval for $\mu_{\text{Group 1}}-\mu_{\text{Group 2}}$: \pause
 		\begin{gather*}
 		\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} \\
 		-0.575 \pm 2.028\sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)} \\
@@ -671,7 +671,7 @@
 
 \begin{frame}{Post-hoc tests}{Fisher's least significant difference (LSD) method}
 	\begin{itemize}
-		\item All of the pairwise comparisons:
+		\item All of the pairwise comparisons: \pause
 		\vspace{4mm}
 		\begin{center}
 			\begin{tabular}{|l|c|c|}
@@ -690,15 +690,15 @@
 
 \begin{frame}{Post-hoc tests}
 \begin{itemize}
-	\item Fisher's LSD method is superior to doing pairwise independent samples $t$-tests since it has a better estimate of the variances
+	\item Fisher's LSD method is superior to doing pairwise independent samples $t$-tests since it has a better estimate of the variances \pause
 	\item[]
-	\item But it does not solve problem \#2
+	\item But it does not solve problem \#2 \pause
 	\item[]
-	\item If you conduct $m$ independent hypothesis tests each with a fixed $\alpha$, the probability of making at least one Type I error over these tests, $\alpha_E$ is: 
+	\item If you conduct $m$ independent hypothesis tests each with a fixed $\alpha$, the probability of making at least one Type I error over these tests, $\alpha_E$ is: \pause
 	\begin{gather*}
 		\alpha_E = 1-(1-\alpha)^m
-	\end{gather*}
-	So for 1 test: 0.05, 2 tests: 0.098, 3 tests: 0.143, 10 tests: 0.401, and for 50 tests: 0.923*
+	\end{gather*} \pause
+	So for 1 test: 0.05, 2 tests: 0.098, 3 tests: 0.143, 10 tests: 0.401, and for 50 tests: 0.923* \pause
 	
 	\vspace{1mm}
 	{\tiny *Pairwise tests using Fisher's LSD are not independent so we only have the upper bound $\alpha_E\leq 1-(1-\alpha)^m$}
@@ -713,13 +713,13 @@
 
 \begin{frame}{The Bonferroni procedure}
 	\begin{itemize}
-		\item The experimentwise Type I error rate, $\alpha_E$ is the probability of falsely rejecting at least one null hypothesis in a set of comparisons
+		\item The experimentwise Type I error rate, $\alpha_E$ is the probability of falsely rejecting at least one null hypothesis in a set of comparisons \pause
 		\item[]
-		\item If we start with an individual test type I error probability $\alpha_i$, then since $\alpha_E\leq 1-(1-\alpha)^m$, we have that $\alpha_E\leq m \alpha_i$
+		\item If we start with an individual test type I error probability $\alpha_i$, then since $\alpha_E\leq 1-(1-\alpha)^m$, we have that $\alpha_E\leq m \alpha_i$ \pause
 		\item[]
-		\item So, we can set $\alpha_i = \alpha / m$ and then $\alpha_E \leq m \alpha / m = \alpha$ 
+		\item So, we can set $\alpha_i = \alpha / m$ and then $\alpha_E \leq m \alpha / m = \alpha$ \pause
 		\item[]
-		\item Example: If we want compare four population means (all pairwise combinations), we would have 6 tests. If we wanted to maintain the experimentwise Type I error rate at 0.05, we would have:
+		\item Example: If we want compare four population means (all pairwise combinations), we would have 6 tests. If we wanted to maintain the experimentwise Type I error rate at 0.05, we would have: \pause
 		\begin{gather*}
 			\alpha_i = \alpha / m = .05 / 6 = 0.0083
 		\end{gather*}
@@ -728,9 +728,9 @@
 
 \begin{frame}{The Bonferroni procedure}{p-value adjustment }
 	\begin{itemize}
-		\item The procedure for conducting $m$ statistical tests:
+		\item The procedure for conducting $m$ statistical tests: \pause
 		\begin{itemize}
-			\item Conduct each test at $\alpha_i = \alpha / m$ using the ``raw'' p-values 
+			\item Conduct each test at $\alpha_i = \alpha / m$ using the ``raw'' p-values \pause
 			\item[]
 			\item Multiply each calculated $p$-value by $m$ (adjusted p-values) and compare to the desired $\alpha$
 		\end{itemize}
@@ -739,7 +739,7 @@
 
 \begin{frame}{The Bonferroni procedure}{p-value adjustment }
 	\begin{itemize}
-		\item Example: You conduct two statistical tests. You would like to preserve the experimental Type I error rate at 0.05. You use the formula $\alpha_i = \alpha / m = 0.05 / 2 = 0.025$ to determine that you must use an $\alpha_i$ in each of the individual tests. You observe the following $p$-values: 0.0245 for the first test, and 0.026 for the second. You reject the null hypothesis for the first test, and fail to reject the null hypothesis for the second. 
+		\item Example: You conduct two statistical tests. You would like to preserve the experimental Type I error rate at 0.05. You use the formula $\alpha_i = \alpha / m = 0.05 / 2 = 0.025$ to determine that you must use an $\alpha_i$ in each of the individual tests. You observe the following $p$-values: 0.0245 for the first test, and 0.026 for the second. You reject the null hypothesis for the first test, and fail to reject the null hypothesis for the second. \pause
 		\item[]
 		\item Equivalent example:  You conduct two statistical tests. You would like to preserve the experimental Type I error rate at 0.05.  You observe the following $p$-values: 0.0245 for the first test, and 0.026 for the second. You multiply each one by 2 (the number of tests) and compare to the original $\alpha = 0.05$. After multiplication your adjusted $p$-values are 0.49 and 0.052.  You reject the null hypothesis for the first test, and fail to reject the null hypothesis for the second.
 	\end{itemize}
@@ -747,7 +747,7 @@
 
 \begin{frame}{The Bonferroni procedure}{p-value adjustment example}
 	\begin{itemize}
-		\item All of the pairwise comparisons:
+		\item All of the pairwise comparisons: \pause
 		\vspace{4mm}
 		\begin{center}
 			\begin{tabular}{|l|c|p{2cm}|p{2cm}|}
@@ -766,11 +766,11 @@
 
 \begin{frame}{The Bonferroni procedure}{Confidence intervals}
 	\begin{itemize}
-		\item Unadjusted formula for $100(1-\alpha)\%$ confidence intervals:
+		\item Unadjusted formula for $100(1-\alpha)\%$ confidence intervals: \pause
 		\begin{gather*}
 		\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
-		\end{gather*}
-		\item Formula for $100(1-\alpha)\%$ confidence intervals with Bonferroni adjustment:
+		\end{gather*} \pause
+		\item Formula for $100(1-\alpha)\%$ confidence intervals with Bonferroni adjustment: \pause
 		\begin{gather*}
 		\bar{y}_1 - \bar{y}_2 \pm t_{(\alpha / 2) / m, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}
 		\end{gather*}
@@ -779,13 +779,13 @@
 
 \begin{frame}{The Bonferroni procedure}{Confidence interval example}
 	\begin{itemize}
-		\item The 95\% confidence interval (Fisher's LSD):
+		\item The 95\% confidence interval (Fisher's LSD): \pause
 			\begin{gather*}
 			\bar{y}_1 - \bar{y}_2 \pm t_{\alpha / 2, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} \\
 			-0.575 \pm 2.028\sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)} \\
 			(-1.311,  0.162)
-			\end{gather*}
-		\item And the CI with the Bonferroni adjustment:
+			\end{gather*}\pause
+		\item And the CI with the Bonferroni adjustment: \pause
 		\begin{gather*}
 		\bar{y}_1 - \bar{y}_2 \pm t_{(\alpha / 2) / m, N - k}{\sqrt{\frac{\text{SSW}}{N-k} \left(\frac{1}{n_1}+\frac{1}{n_2}\right)}} \\
 		-0.575 \pm 2.792 \sqrt{0.659 \left(\frac{1}{10}+\frac{1}{10}\right)} \\
@@ -796,14 +796,20 @@
 
 \begin{frame}{Other procedures}
 	\begin{itemize}
-		\item There are many other procedures for determining adjusted p-values for maintaining the experimentwise Type I error probability at a fixed level (Holm, Hochberg, Hommel) and / or for determining simultaneous confidence intervals that achieve a specified level of confidence (Tukey's method, Sheffe's method, Dunnett's procedure)
+		\item There are many other procedures for determining adjusted p-values for maintaining the experimentwise Type I error probability at a fixed level (Holm, Hochberg, Hommel) and / or for determining simultaneous confidence intervals that achieve a specified level of confidence (Tukey's method, Sheffe's method, Dunnett's procedure) \pause
 		\item[]
-		\item Some of these are in the textbook, but are more the subject of AST 506 than this course
+		\item Some of these are in the textbook, but are more the subject of AST 506 than this course \pause
 		\item[]
-		\item If you do many (hundreds or thousands) of independent hypothesis tests preserving the ``False Discovery Rate'' may be more important than preserving the experimentwise Type I error probability
+		\item If you do many (hundreds or thousands) of independent hypothesis tests preserving the ``False Discovery Rate'' may be more important than preserving the experimentwise Type I error probability \pause
 		\item[]
 		\item The ``False Discovery Rate'' is loosely defined as the number of Type I errors committed over a set of hypothesis tests
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecture \#14}
+	\begin{center}
+			\includegraphics[width=.8\linewidth]{DSC_0072_v1}
+	\end{center}
 \end{frame}
 
 

@@ -146,8 +146,8 @@ df1Sum$`Group 2` - df1Sum$`Group 3`
 df1Sum$`Group 2` - df1Sum$Malignant
 df1Sum$`Group 3` - df1Sum$Malignant
 
-c(df1Sum$`Group 1` - df1Sum$`Group 2` - qt(.975, 36) * sqrt(0.659 * (1/5)),
-  df1Sum$`Group 1` - df1Sum$`Group 2` + qt(.975, 36) * sqrt(0.659 * (1/5)))
+c(df1Sum$`Group 1` - df1Sum$`Group 2` - qt(.975, 36) * sqrt(0.6592197* (1/5)),
+  df1Sum$`Group 1` - df1Sum$`Group 2` + qt(.975, 36) * sqrt(0.6592197 * (1/5)))
 (df1Sum$`Group 1` - df1Sum$`Group 2`) / sqrt(0.659 * (1/5))
 (df1Sum$`Group 1` - df1Sum$`Group 2`) / sqrt(0.659 * (1/10 + 1/10))
 qt(.975, 36)

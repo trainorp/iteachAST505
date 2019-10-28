@@ -274,7 +274,7 @@
 		\begin{enumerate}
 			\item Compute the partitioning of TSS into SSB and SSW \pause
 			\item Determine the number of degrees of freedom for each \pause
-			\item Compute the mean squares $s_B^2$ and $s_W^2$ by dividing SSB and SSW by their sum of squares \pause
+			\item Compute the mean squares $s_B^2$ and $s_W^2$ by dividing SSB and SSW by their degrees of freedom \pause
 			\item Determine the test statistic: $F^* = s_B^2 / s_W^2$ \pause
 			\item We will reject the null hypothesis (that all means are equal) if: $F^* > F_{\alpha, k-1, N-k}$ \pause
 			\item[]
@@ -388,11 +388,11 @@
 
 \begin{frame}{Example \#1}{SSW}
 	\begin{itemize}
-	\item To compute SSW we need to know sample variance in each group: \pause
+	\item To compute SSW we need to know sample variance (or standard deviation) in each group: \pause
 		\begin{center}
 			\begin{tabular}{|c|c|c|c|}
 				\hline
-				\textbf{Population \#} & \textbf{Population} & $n$ & \textbf{Sample Variance} \\
+				\textbf{Population \#} & \textbf{Population} & $n$ & \textbf{$s$} \\
 				\hline \hline
 				1  & Eastern White Pine    &   10 &  1.730 \\ \hline 
 				2 &  Sand Pine              & 10 &   1.971\\ \hline 

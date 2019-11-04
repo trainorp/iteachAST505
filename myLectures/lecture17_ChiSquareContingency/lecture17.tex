@@ -1,0 +1,529 @@
+\documentclass[xcolor=dvipsnames]{beamer} 
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
+
+\title[Lecture 17]{Lecture 17: Inference regarding several proportions}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{November}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{The multinomial distribution}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{The multinomial experiment}
+	\begin{itemize}
+		\item Earlier in the course we discussed binomial experiments that yielded binary responses (two outcomes)
+		\item[]
+		\item Now we will discuss the case where we have experiments with 3 or more possible outcomes
+		\item[]
+		\item Example: You conduct a poll where you ask respondents if they prefer Candidate A, Candidate B, Candidate C, or do not have a preference (4 possible outcomes)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The multinomial experiment}{Criteria for a multinomial experiment}
+	\begin{itemize}
+		\item Criteria:
+		\begin{enumerate}
+			\item The experiment consists of $n$ identical trials
+			\item[]
+			\item Each trial results in one of $p$ outcomes
+			\item[]
+			\item The probability that a single trial will result in an outcome $j$ is $\pi_j$ (for $j=1, 2, \hdots, p$), which remains constant from trial to trial. $\sum_{j=1}^p \pi_j = 1$
+			\item[]
+			\item The trials are independent
+			\item[]
+			\item We are interested in $n_j$, the number of trials that results in outcome $j$. $\sum_{j=1}^p n_j = n$
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The multinomial distribution}
+	\begin{itemize}
+		\item \textbf{The multinomial distribution}: The probability distribution for the number of observations for each of the $p$ outcomes is the multinomial distribution
+		\item[]
+		\item The probability distribution function for the multinomial distribution function is:
+		\begin{gather*}
+			P(n_1, n_2, \hdots, n_p) = \frac{n!}{n_1!n_2!\hdots n_p!}\pi_1^{n_1}\pi_2^{n_2}\hdots \pi_p^{n_p}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The multinomial distribution}{Example}
+	\begin{itemize}
+		\item A ballot initiative proposes increasing the sales tax by .5\% to fund a new library. If the percentage of residents who supports the tax is 37.5\%, with 34.5\% opposed, and 28.0\% undecided; what is the probability that in a random sample of 10 residents, 4 support the tax, 4 are opposed, and 2 are undecided?
+		\item[]
+		\item Given the multinomial probability distribution function:
+		\begin{gather*}
+			P(n_1, n_2, \hdots, n_p) = \frac{n!}{n_1!n_2!\hdots n_p!}\pi_1^{n_1}\pi_2^{n_2}\hdots \pi_p^{n_p} \\
+			P(4, 4, 2) = \frac{10!}{4!4!2!}(0.375)^{4}(0.345)^{4}(0.280)^{2} = 0.0692
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The multinomial distribution}{Expected number of outcomes}
+	\begin{itemize}
+		\item When we make inferences regarding multiple proportions, we will need to compute the expected number of outcomes from a multinomial distribution
+		\item[]
+		\item \textbf{Expected number of outcomes:} To determine the expected number of outcomes from $n$ trials, we determine $E_j = n\times \pi_j$ for each outcome $j$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The multinomial distribution}{Example expected number of outcomes}
+	\begin{itemize}
+		\item A ballot initiative proposes increasing the sales tax by .5\% to fund a new library. If the percentage of residents who supports the tax is 37.5\%, with 34.5\% opposed, and 28.0\% undecided; what is the expected number of residents with each response from a sample of 200 voters?
+		\begin{itemize}
+			\item Support: $200 \times 0.375 = 75$
+			\item[]
+			\item Oppose: $200 \times 0.345 = 69$
+			\item[]
+			\item Undecided: $200 \times 0.280 = 56$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Chi-Square Goodness-of-Fit Test}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Chi-Square Goodness-of-Fit Test}
+	\begin{itemize}
+		\item We often want to determine how likely a collection of outcomes is given specified multinomial probabilities
+		\item[]
+		\item More specifically, if we specify a multinomial probabilities, we may want to determine the agreement between the counts of each outcome we observe versus what we would expect
+		\item[]
+		\item The quantity:
+		\begin{gather*}
+			X^2 = \sum_{j=1}^p \frac{(n_j-E_j)^2}{E_j}
+		\end{gather*}
+		measures this agreement (or disagreement) and has a chi-squared distribution with $p-1$ degrees of freedom if the $E_j$'s are fairly large
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-Square Goodness-of-Fit Test}{Process}
+	\begin{itemize}
+		\item Hypotheses:
+		\begin{itemize}
+			\item $H_0: \pi_j = \pi_{j0}$ for all outcome categories $j = 1, 2, \hdots, p$. The $\pi_{j0}$ are the specified probabilities
+			\item $H_a: \pi_j \neq \pi_{j0}$ for at least one of the outcome categories
+			\item[]
+		\end{itemize}
+	\item Test statistic: 
+	\begin{gather*}
+		X^2 = \sum_{j=1}^p \frac{(n_j-E_j)^2}{E_j}
+	\end{gather*}
+	where $n_j$ is the observed number in outcome category $j$, and $E_j=n \times \pi_{j0}$ is the expected number under $H_0$
+	\item[]
+	\item Rejection rule: Reject $H_0$ if $X^2 > \chi_{\alpha,\text{df}=p-1}^2$, with level of significance $P(\chi^2 > X)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-Square Goodness-of-Fit Test}{Example}
+	\begin{itemize}
+		\item A large sample poll was conducted in the ``East end'' neighborhoods of the city of Louisville, KY. The poll found that 57.3\% of the residents approve of the current mayor, 33.2\% do not approve of the current mayor, and 9.5\% have no opinion regarding the current mayor. You want to evaluate whether these results also generalize well to different parts of the city. You conduct a similar poll with 100 respondents each in the ``Germantown'' neighborhood and in the ``South End'' and observe the following:
+		\vspace{2mm}
+		\begin{center}
+			\begin{tabular}{ccc}
+				\hline
+				Response & Germantown & South End \\ \hline \hline
+				Approve & 55 & 42\\
+				Disapprove & 33 & 49 \\
+				No opinion & 12 & 9 \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-Square Goodness-of-Fit Test}{Example}
+	\begin{itemize}
+		\item Hypotheses:
+		\begin{itemize}
+			\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$
+			\item $H_a: \pi_j \neq \pi_{j0}$ for at least one of the outcome categories
+			\item[]
+		\end{itemize}
+	\item Germantown Goodness-of-Fit test:
+	\vspace{1mm}
+	\begin{center}
+		\begin{tabular}{ccc}
+			\hline
+			Response & Observed & Expected \\ \hline \hline
+			Approve & 55 & $100 \times 0.573 = 57.3$\\
+			Disapprove & 33 & $100 \times 0.332 = 33.2$ \\
+			No opinion & 12 & $100 \times 0.095 = 9.5$ \\ \hline
+		\end{tabular}
+	\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-Square Goodness-of-Fit Test}{Example}
+\begin{itemize}
+	\item Hypotheses:
+	\begin{itemize}
+		\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$
+		\item $H_a: \pi_j \neq \pi_{j0}$ for at least one of the outcome categories
+		\item[]
+	\end{itemize}
+	\item Germantown Goodness-of-Fit test:
+	{\scriptsize
+	\begin{center}
+		\begin{tabular}{cccc}
+			\hline
+			Response & Observed & Expected & $\frac{(n_j-E_j)^2}{E_j}$ \\ \hline \hline
+			Approve & 55 & $100 \times 0.573 = 57.3$ & $\frac{(55-57.3)^2}{57.3} = 0.09232$\\
+			Disapprove & 33 & $100 \times 0.332 = 33.2$ & $\frac{(33-33.2)^2}{33.2} = 0.00120$\\
+			No opinion & 12 & $100 \times 0.095 = 9.5$ & $\frac{(12-9.5)^2}{9.5}=0.65789$\\ \hline
+		\end{tabular}
+	\end{center}}
+	\vspace{1mm}
+	\item Test statistic: 
+	\begin{gather*}
+	X^2 = \sum_{j=1}^p \frac{(n_j-E_j)^2}{E_j} = 0.09232 + 0.00120 + 0.65789 = 0.75141
+	\end{gather*}
+	\item p-value: $P(\chi^2 > 0.75141) = 0.6868$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-Square Goodness-of-Fit Test}{Example}
+\begin{itemize}
+	\item Hypotheses:
+	\begin{itemize}
+		\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$
+		\item $H_a: \pi_j \neq \pi_{j0}$ for at least one of the outcome categories
+		\item[]
+	\end{itemize}
+	\item ``South End'' Goodness-of-Fit test:
+	{\scriptsize
+		\begin{center}
+			\begin{tabular}{cccc}
+				\hline
+				Response & Observed & Expected & $\frac{(n_j-E_j)^2}{E_j}$ \\ \hline \hline
+				Approve & 42 & $100 \times 0.573 = 57.3$ & $\frac{(42-57.3)^2}{57.3} = 4.0853$\\
+				Disapprove & 49 & $100 \times 0.332 = 33.2$ & $\frac{(49-33.2)^2}{33.2} = 7.5193$\\
+				No opinion & 9 & $100 \times 0.095 = 9.5$ & $\frac{(9-9.5)^2}{9.5}=0.02632$\\ \hline
+			\end{tabular}
+	\end{center}}
+	\vspace{1mm}
+	\item Test statistic: 
+	\begin{gather*}
+	X^2 = \sum_{j=1}^p \frac{(n_j-E_j)^2}{E_j} = 4.0853 + 7.5193 + 0.02632 = 11.63092
+	\end{gather*}
+	\item p-value: $P(\chi^2 > 11.63092) = 0.00298$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-Square Goodness-of-Fit Test}{Note}
+	\begin{itemize}
+		\item The Chi-square distribution is the sampling distribution in approximation only
+		\item[]
+		\item It isn't always a great approximation. We should not use this test if $E_j <1$ for any $j$, or if more than 20\% of the $E_j$'s are less than 5
+		\item[]
+		\item If that assumption is not met there are exact tests. We don't discuss, but can be done in software
+	\end{itemize}
+\end{frame}
+
+\section{$\chi^2$ test of independence}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Contingency tables}
+	\begin{itemize}
+		\item \textbf{Contingency tables:} When we have two categorical variables and a sample from some population, we organize the data into $r\times c$ tables called contingency tables
+		\begin{itemize}
+			\item $r$ is the number of rows
+			\item $c$ is the number of columns
+		\end{itemize}
+		\item[]
+		\item Example*: Visitation pasterns of 132 long-term schizophrenic patients in mental hospitals in London
+		\begin{center}
+			\begin{tabular}{|l|ccc|c|}
+				\hline
+				& \multicolumn{3}{c|}{Length of Stay (LOS)} & \\
+				Visitation & 2-9 & 10-19 & 20+ & All LOS \\ \hline
+				Regular & 43 & 16 & 3 & 62\\ 
+				$<1/\text{month}$ & 6 & 11 & 10 & 27 \\
+				Never & 9 & 18 & 16 & 43\\ \hline
+				Total & 58 & 45 & 29 & 132\\ \hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+{\tiny *J.K. Wing (1962): Institutionalism in mental hospitals. British Journal of Social Clinical Psychology}
+\end{frame}
+
+\begin{frame}{Independence / Dependence}
+	\begin{itemize}
+		\item Given two categorical variables, we often want to determine if they are independent versus dependent
+		\item[]
+		\item We will develop a $\chi^2$ test that determines whether the ``amount'' of dependence that we measure between two categorical random variables is greater than what we would expect due to chance alone 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dependence \& Proportion tables}
+\begin{itemize}
+	\item Recall: $r$ is the number of rows and $c$ is the number of columns
+	\item[]
+	\item Population proportions:
+	\begin{itemize}
+		\item The population proportion in row $i$ and column $j$ is denoted $\pi_{ij}$
+		\item The total proportion for row $i$ is $\pi_{i.}$
+		\item The total proportion for column $j$ is $\pi_{.j}$
+		\item If the row and column probabilities are independent then: $\pi_{ij}=\pi_{i.}\pi_{.j}$
+		\item[]
+	\end{itemize}
+	\item A fictitious example of two independent variables:
+	\begin{center}
+		\begin{tabular}{|l|ccc|c|}
+			\hline
+			& \multicolumn{3}{c|}{Duration of College degree} & \\
+			Major & $<4$ years & 4 years & $>4$ years & Total \\ \hline
+			Physical science & 80 & 140 & 180 & 400 \\ 
+			Life science & 120 & 210 & 270 & 600 \\
+			Liberal arts & 140 & 245 & 315 & 700\\ 
+			Other & 60 & 105 & 135 & 300 \\ \hline
+			Total & 400 & 700 & 900 & 2000\\ \hline
+		\end{tabular}
+	\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dependence \& Proportion tables}
+\begin{itemize}
+	\item Recall: $r$ is the number of rows and $c$ is the number of columns
+		\item[]
+	\item Population proportions:
+	\begin{itemize}
+		\item The population proportion in row $i$ and column $j$ is denoted $\pi_{ij}$
+		\item The total proportion for row $i$ is $\pi_{i.}$
+		\item The total proportion for column $j$ is $\pi_{.j}$
+		\item If the row and column probabilities are independent then: $\pi_{ij}=\pi_{i.}\pi_{.j}$
+		\item[]
+	\end{itemize}
+	\item A fictitious example of two independent variables:
+	\begin{center}
+		\begin{tabular}{|l|ccc|c|}
+			\hline
+			& \multicolumn{3}{c|}{Duration of College degree} & \\
+			Major & $<4$ years & 4 years & $>4$ years & Total \\ \hline
+			Physical science & 0.04 & 0.07 & 0.09 & 0.20 \\ 
+			Life science & 0.06 & 0.105 & 0.135 & 0.30 \\
+			Liberal arts & 0.07 & 0.1225 & 0.1575 & 0.35\\ 
+			Other & 0.03 & 0.0525 & 0.0675 & 0.15 \\ \hline
+			Total & 0.20 & 0.35 & 0.45 & \\ \hline
+		\end{tabular}
+	\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dependence \& Proportion tables}
+\begin{itemize}
+	\item Recall: $r$ is the number of rows and $c$ is the number of columns
+	\item[]
+	\item Population proportions:
+	\begin{itemize}
+		\item The population proportion in row $i$ and column $j$ is denoted $\pi_{ij}$
+		\item The total proportion for row $i$ is $\pi_{i.}$
+		\item The total proportion for column $j$ is $\pi_{.j}$
+		\item If the row and column probabilities are independent then: $\pi_{ij}=\pi_{i.}\pi_{.j}$
+		\item[]
+	\end{itemize}
+	\item \textbf{Estimated expected value:} Under the hypothesis of independence, the estimated expected value is:
+	\begin{gather*}
+		\hat{E}_{ij} =n\frac{(n_{i.})}{n} \frac{(n_{.j})}{n} = n \hat{\pi}_{ij}
+	\end{gather*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of independence}{Process}
+	\begin{itemize}
+		\item Hypotheses:
+		\begin{itemize}
+			\item $H_0:$ The row and column variables are independent
+			\item $H_a:$ The row and column variables are dependent (associated)
+			\item[]
+		\end{itemize}
+	\item Test statistic:
+	\begin{gather*}
+		X^2 = \sum_{i,j} \frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}
+	\end{gather*}
+	\item[]
+	\item Rejection rule: Reject $H_0$ if $X^2 > \chi^2_{\alpha,\text{df}=(r-1)(c-1)}$ with level of significance, p-value: $P(\chi^2 > X^2)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of independence}{Example}
+	\begin{itemize}
+		\item Back to the length of stay and visitation data for schizophrenic patients in mental hospitals in London
+		\begin{itemize}
+			\item Let's determine if there is evidence that length of stay and the pattern of visitation are dependent ($H_a$), at $\alpha = .05$
+			\item[]
+			\item RR: Reject $H_0$ if $X^2 > \chi^2_{\alpha,\text{df}=(r-1)(c-1)}=\chi^2_{0.05,4}= 9.488$
+			\item[]
+		\end{itemize}
+		\item Proportion table:
+		\begin{center}
+			\begin{tabular}{|l|ccc|c|}
+				\hline
+				& \multicolumn{3}{c|}{Length of Stay (LOS)} & \\
+				Visitation & 2-9 & 10-19 & 20+ & All LOS \\ \hline
+				Regular & 0.326 & 0.121 & 0.023 & 0.470\\ 
+				$<1/\text{month}$ & 0.045 & 0.083 & 0.076 & 0.205 \\
+				Never & 0.068 & 0.136 & 0.121 & 0.326\\ \hline
+				Total & 0.439 & 0.341 & 0.220 & 1.00\\ \hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of independence}{Example}
+	\begin{itemize}
+		\item Proportion table:
+		\vspace{1mm}
+		{\scriptsize
+		\begin{center}
+			\begin{tabular}{|l|ccc|c|}
+				\hline
+				& \multicolumn{3}{c|}{Length of Stay (LOS)} & \\
+				Visitation & 2-9 & 10-19 & 20+ & All LOS \\ \hline
+				Regular & 0.326 & 0.121 & 0.023 & 0.470\\ 
+				$<1/\text{month}$ & 0.045 & 0.083 & 0.076 & 0.205 \\
+				Never & 0.068 & 0.136 & 0.121 & 0.326\\ \hline
+				Total & 0.439 & 0.341 & 0.220 & 1.00\\ \hline
+			\end{tabular}
+		\end{center}}
+	\vspace{1mm}
+	\item Expected value of the proportions under the null hypothesis:
+	\vspace{1mm}
+		{\scriptsize
+			\begin{center}
+				\begin{tabular}{|l|ccc|c|}
+					\hline
+					& \multicolumn{3}{c|}{Length of Stay (LOS)} & \\
+					Visitation & 2-9 & 10-19 & 20+ & All LOS \\ \hline
+					Regular           &0.2064 &0.1601 &0.1032 & 0.470\\
+					$<1/\text{month}$ &0.0899 &0.0697 &0.0449 & 0.205\\
+					Never             &0.1432 &0.1111 &0.0716 & 0.326\\ \hline
+					Total & 0.439 & 0.341 & 0.220 & 1.00\\ \hline
+				\end{tabular}
+		\end{center}}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of independence}{Example}
+\begin{itemize}
+	\item Expected value of the proportions under the null hypothesis:
+	\vspace{1mm}
+	{\scriptsize
+		\begin{center}
+		\begin{tabular}{|l|ccc|c|}
+			\hline
+			& \multicolumn{3}{c|}{Length of Stay (LOS)} & \\
+			Visitation & 2-9 & 10-19 & 20+ & All LOS \\ \hline
+			Regular           &0.2064 &0.1601 &0.1032 & 0.470\\
+			$<1/\text{month}$ &0.0899 &0.0697 &0.0449 & 0.205\\
+			Never             &0.1432 &0.1111 &0.0716 & 0.326\\ \hline
+			Total & 0.439 & 0.341 & 0.220 &1.00 \\ \hline
+		\end{tabular}
+	\end{center}}
+	\vspace{1mm}
+	\item Estimated expected values, $\hat{E}_{ij}$:
+	\vspace{1mm}
+	{\scriptsize
+		\begin{center}
+			\begin{tabular}{|l|ccc|c|}
+				\hline
+				& \multicolumn{3}{c|}{Length of Stay (LOS)} & \\
+				Visitation & 2-9 & 10-19 & 20+ & All LOS \\ \hline
+				Regular           &27.2448 &21.1332& 13.6224& 62.0004  \\
+				$<1/\text{month}$ &11.8668 & 9.2004& 5.9268& 26.9940 \\
+				Never             &18.9024 &14.6652&  9.4512& 43.0188\\ \hline
+				Total & 58.0140 & 44.9988 & 29.004 & 132.0132\\ \hline
+			\end{tabular}
+	\end{center}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of independence}{Example}
+\begin{itemize}
+	\item Table of values, $\frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}$:
+	\vspace{1mm}
+	{\scriptsize
+		\begin{center}
+			\begin{tabular}{|l|ccc|c|}
+				\hline
+				& \multicolumn{3}{c|}{Length of Stay (LOS)} & \\
+				Visitation & 2-9 & 10-19 & 20+ & All LOS \\ \hline
+				Regular           &9.1110 &1.2468 &8.2831 & 18.6409\\
+				$<1/\text{month}$ &2.9005 &0.3520 &2.7993 & 6.0518\\
+				Never             &5.1876 &0.7583 &4.5377 & 10.4836\\ \hline
+				Total & 17.1991 & 2.3571 &15.6201& 35.1763 \\ \hline
+			\end{tabular}
+	\end{center}}
+	\vspace{2mm}
+	\item Conclusion: Since $35.1763 > 9.488$, we reject $H_0$. We have evidence that there is dependency between visitation patterns and the length of stay for these patients. The p-value is $P(\chi^2 > 35.1763) =0.0000004$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Important note on the $\chi^2$ test of independence}
+	\begin{itemize}
+		\item As with any hypothesis test, the level of significance (and equivalently whether the null hypothesis is rejected), is a function of both the strength of an association / effect size and the sample size
+		\item[]
+		\item For a fixed strength of an association, the larger the sample size, the smaller the p-value
+		\item[]
+		\item Consequently, p-values should not be used to determine the strength of an association; only the likelihood the observed result was due to random chance
+	\end{itemize}
+\end{frame}
+
+\section{$\chi^2$ test of homogeneity}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of homogeneity}{Example}
+\begin{itemize}
+	\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is there an association between Apolipoprotein C-I (ApoCI) genotype and Alzheimer's disease? 
+	\begin{itemize}
+		\item This was studied by Shi, J., et al. (2003). doi: 10.1034/j.1600-0404.2003.00193.x
+		\item The authors recruited a cohort of 257 patients with Alzheimer's disease and 242 age-matched controls
+		\item[]
+	\end{itemize}
+	\item Hypotheses: 
+	\begin{itemize}
+		\item $H_0:$ The genotype and Alzheimer's status are independent 
+		\item $H_a:$ The genotype and Alzheimer's status are dependent (associated)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{The strength of an association}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\section{Odds ratios}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\end{document}

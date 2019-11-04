@@ -11,7 +11,7 @@
 
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
 
-\title[Lecture 16]{Lecture 16: Inference}
+\title[Lecture 16]{Lecture 16: Inference regarding proportions}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
 \date{October}
@@ -99,7 +99,7 @@
 		\item We will dicuss two methods for determining confidence intervals for the population parameter $\pi$
 		\begin{itemize}
 			\item Wald confidence intervals
-			\item Wilson–Agresti–Coull (WAC) confidence interval
+			\item Wilson-Agresti-Coull (WAC) confidence interval
 			\item[]
 		\end{itemize}
 		
@@ -111,7 +111,7 @@
 			\item[]
 		\end{itemize}
 	
-		\item Wilson–Agresti–Coull (WAC) confidence intervals are based on modifying Wald confidence intervals to improve on the normal approximation
+		\item Wilson-Agresti-Coull (WAC) confidence intervals are based on modifying Wald confidence intervals to improve on the normal approximation
 	\end{itemize}
 \end{frame}
 
@@ -417,7 +417,7 @@
 	\begin{itemize}
 		\item We need to determine $\text{SE}(\hat{\pi}_1-\hat{\pi}_2)$: 
 		\begin{align*}
-		\text{SE}(\hat{\pi}_1-\hat{\pi}_2) &= \sqrt{\frac{\pi_1 (1-\pi_1)}{n_1}+\frac{\pi_2 (1-\pi_2)}{n_2}}  \\ &=\sqrt{\frac{0.230 (0.770)}{1207}+\frac{0.300 (0.700)}{2409}} = 0.0153
+		\text{SE}(\hat{\pi}_1-\hat{\pi}_2) &= \sqrt{\frac{\hat{\pi}_1 (1-\hat{\pi}_1)}{n_1}+\frac{\hat{\pi}_2 (1-\hat{\pi}_2)}{n_2}} \\ &=\sqrt{\frac{0.230 (0.770)}{1207}+\frac{0.300 (0.700)}{2409}} = 0.0153
 		\end{align*}
 		\item A 95\% Wald CI is then:
 		\begin{align*}
@@ -426,11 +426,192 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{Hypothesis tests}
+\subsection{Hypothesis tests (Normal approximation)}
 
 \begin{frame}{Outline}
 	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
+\begin{frame}{Tests regarding $\pi_1 - \pi_2$}{Example Problem}
+	\begin{itemize}
+		\item A quality engineer at an appliance manufacturer wants to determine if the proportion of machines that fail during the three year warranty period differs between two brands (UltraClean and SooooClean machines). The engineer wants to test for a difference in the population proportions ($\alpha = 0.05$) using the following sample from warranty claims:
+		\vspace{3mm}
+		\begin{center}
+			\begin{tabular}{lcc}
+				\hline
+				& UltraClean & SooooClean \\ \hline
+				Sample size & $1207$ & $2409$ \\
+				Successes & $278$ & $722$ \\
+				Sample proportion & 0.230 & 0.300 \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Tests regarding $\pi_1 - \pi_2$}{Process}
+	\begin{itemize}
+ \item Assumptions: $n_1 \hat{\pi}_1 \geq 5$, $n_2 \hat{\pi}_2 \geq 5$, $n_1 (1-\hat{\pi}_1) \geq 5$ and $n_2 (1-\hat{\pi}_2) \geq 5$
+		\item[]
+		\item Hypotheses:
+		\begin{itemize}
+			\item \textbf{Case 1.} $H_0: \pi_1-\pi_2 \leq 0$ versus $H_0: \pi_1-\pi_2 > 0$
+			\item \textbf{Case 2.} $H_0: \pi_1-\pi_2 \geq 0$ versus $H_0: \pi_1-\pi_2 < 0$
+			\item \textbf{Case 3.} $H_0: \pi_1-\pi_2 = 0$ versus $H_0: \pi_1-\pi_2 \neq 0$
+			\item[]
+		\end{itemize}
+		
+		\item Test statistic:
+		\begin{gather*}
+		z^*=\frac{(\hat{\pi}_1 - \hat{\pi}_2)}{\sqrt{\frac{\hat{\pi}_1 (1-\hat{\pi}_1)}{n_1}+\frac{\hat{\pi}_2 (1-\hat{\pi}_2)}{n_2}}}
+		\end{gather*}
+		\item Rejection rule / Rejection region: 
+		\begin{itemize}
+			\item \textbf{Case 1.} Reject $H_0$ if $z > z_{\alpha}$
+			\item \textbf{Case 2.} Reject $H_0$ if $z < -z_{\alpha}$
+			\item \textbf{Case 3.} Reject $H_0$ if $|z| > z_{\alpha / 2}$
+			\item[]
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Tests regarding $\pi_1 - \pi_2$}{Example}
+	\begin{itemize}
+		\item Hypotheses: $H_0: \pi_1-\pi_2 = 0$ versus $H_0: \pi_1-\pi_2 \neq 0$
+		\item[]
+		\item Rejection rule: Reject $H_0$ if $z < -1.96$
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+			z^*=\frac{(\hat{\pi}_1 - \hat{\pi}_2)}{\sqrt{\frac{\hat{\pi}_1 (1-\hat{\pi}_1)}{n_1}+\frac{\hat{\pi}_2 (1-\hat{\pi}_2)}{n_2}}} = \frac{0.230 - 0.300}{\sqrt{\frac{0.230 (0.770)}{1207}+\frac{0.300 (0.700)}{2409}}} =  \\
+			\frac{-0.07}{0.0153} = -4.575
+		\end{gather*}
+		\item Conclusion: Reject $H_0$. There is evidence that washing machine brands have different failure proportions. p-value: $2\times P(Z \geq |z^*|) =0.000005$ 
+	\end{itemize}
+\end{frame}
+
+\subsection{Hypothesis tests (Fisher's exact test)}
+
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Fisher's exact test}
+	\begin{itemize}
+		\item If any of the following do not hold: $n_1 \hat{\pi}_1 \geq 5$, $n_2 \hat{\pi}_2 \geq 5$, $n_1 (1-\hat{\pi}_1) \geq 5$ and $n_2 (1-\hat{\pi}_2) \geq 5$, then using a normal approximation is not a good idea
+		\item[]
+		\item Instead we will want to use the Fisher Exact Test
+		\item[]
+		\item The idea:
+		\begin{itemize}
+			\item A $2\times 2$ table:
+			\begin{center}
+				\begin{tabular}{c|cc|c}
+					\hline
+					\textbf{Population} & \textbf{Success} & \textbf{Failure} & \textbf{Total} \\ \hline \hline
+					1 & $x$ &$n_1 -x$ & $n_1$\\
+					2 & $y$ &$n_2-y$ & $n_2$ \\ \hline \hline
+					Total & $m$ & $n-m$ & $n$ \\ \hline
+				\end{tabular}
+			\vspace{5mm}
+			\end{center}
+			\item If we know the column and row totals we can calculate the probability of any specific table
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher's exact test}
+	\begin{itemize}
+		\item Given a $2\times 2$ table:
+		\begin{center}
+			\begin{tabular}{c|cc|c}
+				\hline
+				\textbf{Population} & \textbf{Success} & \textbf{Failure} & \textbf{Total} \\ \hline \hline
+				1 & $x$ &$n_1 -x$ & $n_1$\\
+				2 & $y$ &$n_2-y$ & $n_2$ \\ \hline \hline
+				Total & $m$ & $n-m$ & $n$ \\ \hline
+			\end{tabular}
+			\vspace{5mm}
+		\end{center}
+		\item Then: 
+		\begin{gather*}
+			P(x = k) = \frac{\binom{n_1}{k} \binom{n_2}{m-k}}{\binom{n}{m}}
+		\end{gather*}
+		where $\binom{n_1}{k} = \frac{n_1!}{k!(n_1-k)!}$
+	\end{itemize} 
+\end{frame}
+
+\begin{frame}{Fisher's exact test}{Process}
+	\begin{itemize}
+		\item Hypotheses: $H_0: \pi_1 \leq \pi_2$ versus $H_a: \pi_1 > \pi_2$
+		\item[]
+		\item Rejection rule: For a specified $\alpha$, we will reject $H_0$ if $p-\text{value} \leq \alpha$
+		\begin{itemize}
+			\item $p-\text{value}$ is the probability of seeing a table at least as consistent with $H_a$ as the table we have observed, given the observed column and row totals
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher's exact test}{Example}
+	\begin{itemize}
+		\item 26 million Americans have an oral HPV infection (NHANES study). A small proportion of those are HPV 16, which is associated with multiple cancer types
+		\item[]
+		\item Assume you want to determine whether HPV associated oral lesions are more likely to be cancerous given they are HPV 16 than other types of HPV (test with $\alpha = 0.10$)
+		\item[]
+		\item Hypotheses:
+		\begin{itemize}
+			\item $H_0:$ The proportion of lesions that are cancerous is lesser in HPV 16 cases than in non-HPV 16 cases. $H_0: \pi_1 \leq \pi_2$
+			\item[]
+			\item $H_a:$ The proportion of lesions that are cancerous is higher in HPV 16 cases than non-HPV 16 cases. $H_a: \pi_1 > \pi_2$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher's exact test}{Example}
+	\begin{itemize}
+		\item Observed data:
+		\begin{center}
+			\begin{tabular}{l|cc|c}
+				\hline
+				\textbf{Population} & \textbf{Cancerous} & \textbf{Not Cancerous} & \textbf{Total} \\ \hline \hline
+				HPV 16 & $5$ &$20$ & $25$\\
+				non-HPV 16 & $1$ &$27$ & $28$ \\
+				Total & $6$ & $47$ & $53$ \\ \hline
+			\end{tabular}
+		\end{center}
+	\vspace{5mm}
+	\item First we note that $\hat{\pi}_1 = 5/25 = 0.20$, and $\hat{\pi}_2 = 1/28 = 0.0357$ 
+	\item[]
+	\item We can see that we need to use Fisher's exact test as $n_2 \hat{\pi}_2 =1 <5$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher's exact test}{Example}
+	\begin{itemize}
+		\item Hypotheses: $H_0: \pi_1 \leq \pi_2$ versus $H_a: \pi_1 > \pi_2$
+		\item[]
+		\item Rejection rule: For a specified $\alpha$, we will reject $H_0$ if $p-\text{value} \leq 0.10$
+		\begin{itemize}
+			\item $p-\text{value}$ is the probability of seeing a table at least as consistent with $H_a$ as the table we have observed, given the observed column and row totals
+			\item[]
+		\end{itemize}
+	\item For our problem this would be: $P(x \geq 5) = P(x = 5)+P(x = 6)+\hdots + P(x = 25)$
+	\item[]
+	\item Or equivalently:
+	$1-P(x < 5) = 1-(P(0) + P(1) + P(2) + P(3) + P(4))$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher's exact test}{Example}
+	\begin{itemize}
+		\item To calculate the p-value:
+		\begin{align*}
+			P(x \geq 5) &= 1-P(x < 5) \\
+			&=1-(P(0) + P(1) + P(2) + P(3) + P(4)) \\ 
+			&=1-(0.0164 + 0.1070 + 0.2676 + 0.3282 + 0.2083)  \\
+			&=0.0725
+		\end{align*}
+		\item Conclusion: We reject $H_0$ as the p-value is less than $\alpha$. There is evidence that the proportion of lesions that are cancerous is higher in HPV 16 cases than non-HPV 16 cases
+	\end{itemize}
+\end{frame}
 
 \end{document}

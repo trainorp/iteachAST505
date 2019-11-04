@@ -69,3 +69,20 @@ props[1] - props[2]
 prop.test(c(278, 722), c(1207,2409), correct = FALSE)
 
 round(c(props[1] - props[2] - 1.96 * 0.0153, props[1] - props[2] + 1.96 * 0.0153), 3)
+
+# Test statistic;
+(props[1] - props[2]) / 0.0153
+round(2 * pnorm((props[1] - props[2]) / 0.0153), 5)
+
+p1 <- ys / ns
+q1 <- 1- p1
+
+(p1[1] - p1[2]) / sqrt(p1[1]*q1[1] / ns[1] + p1[1]*q1[1] / ns[2])
+
+prop.test(c(94, 113), c(125, 175), correct = FALSE)
+sqrt(3.8509)
+
+########### Fisher's exact test ###########
+x1 <- matrix(c(20, 5, 27, 1), byrow = TRUE, ncol = 2)
+fisher.test(x1, alternative = "less")
+

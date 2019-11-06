@@ -50,6 +50,9 @@ colSums(nTable)
 
 #### Hospital data:
 hosp <- vcd::Hospital
+round(prop.table(hosp), 3)
+round(prop.table(hosp, margin = 1), 3)
+round(prop.table(hosp, margin = 2), 3)
 
 # Margins:
 rowSums(hosp)
@@ -77,9 +80,20 @@ pchisq(sum(xs), df = 4, lower.tail = FALSE)
 chisq.test(hosp, correct = FALSE)
 
 #### ApoCI genotype:
-m1 <- matrix(c(9, 50, 52, 5, 87, 150), nrow = 3)
+m1 <- matrix(c(14, 99, 144, 5, 87, 150), nrow = 3)
 t1 <- as.table(m1)
 dimnames(t1)[[1]] <- c("AA", "AB", "BB")
 dimnames(t1)[[2]] <- c("AD", "No AD")
 t1
+rowSums(t1)
+colSums(t1)
+
+round((t(t(rowSums(t1))) %*% t(colSums(t1))) / 499, 4)
+rowSums(round((t(t(rowSums(t1))) %*% t(colSums(t1))) / 499, 4))
+colSums(round((t(t(rowSums(t1))) %*% t(colSums(t1))) / 499, 4))
+
+chiParts <- (m1 - round((t(t(rowSums(t1))) %*% t(colSums(t1))) / 499, 4)) ^ 2 / round((t(t(rowSums(t1))) %*% t(colSums(t1))) / 499, 4)
+sum(chiParts)
+pchisq(4.7131, 2, lower.tail = FALSE)
+chisq.test(t1, simulate.p.value = FALSE)
 chisq.test(t1, simulate.p.value = TRUE, B = 10000)

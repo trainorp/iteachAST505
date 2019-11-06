@@ -14,7 +14,7 @@
 \title[Lecture 16]{Lecture 16: Inference regarding proportions}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{October}
+\date{November 6, 2019}
 
 \begin{document}
 	
@@ -34,11 +34,11 @@
 
 \begin{frame}{Categorical data}
 	\begin{itemize}
-		\item All of our inferential procedures up to this point have involved quantitative data (either continous or discrete that we treated as continous)
+		\item All of our inferential procedures up to this point have involved quantitative data (either continous or discrete that we treated as continous) \pause
 		\item[]
-		\item \textbf{Catgorical data:} Observations are from random variables that involve either names (categories) or ranks
+		\item \textbf{Catgorical data:} Observations are from random variables that involve either names (categories) or ranks \pause
 		\begin{itemize}
-			\item We may want to know the number \& proportion of undergraduates who engage in binge drinking \{Yes, No\}
+			\item We may want to know the number \& proportion of undergraduates who engage in binge drinking \{Yes, No\} \pause
 			\item[]
 			\item We may want to know the number of residents and proportion of residents who have each level of eduation in a city \{Primary school, High school, Some college / Associates degree, Bachelor's degree, Graduate degree\}
 		\end{itemize}
@@ -51,7 +51,7 @@
 		\item[]
 		\item \textbf{Catgorical data:} Observations are from random variables that involve either names (categories) or ranks
 		\begin{itemize}
-			\item We may want to know whether more residents of a city drive cars to work or use public transportation 
+			\item We may want to know whether more residents of a city drive cars to work or use public transportation \pause
 			\item[]
 			\item We may want to compare whether e-cigarette users are more likely to have lung fibrosis than non-users \{(E-cig yes, Fibrosis yes), (E-cig no, Fibrosis yes), (E-cig no, Fibrosis yes), (E-cig no, Fibrosis no)\}
 		\end{itemize}
@@ -67,16 +67,16 @@
 
 \begin{frame}{Binomial random variables}
 	\begin{itemize}
-		\item Earlier in the course we discussed binomial experiments which involved \{yes, no\} or binary responses
+		\item Earlier in the course we discussed binomial experiments which involved \{yes, no\} or binary responses \pause
 		\item[]
 		\item The binomial distribution:
 		\begin{gather*}
 		P(y) = \frac{n!}{y! (n - y)!} \pi^y (1-\pi)^{n-y}
-		\end{gather*}
+		\end{gather*} \pause
 		where:
 		\begin{itemize}
-			\item $\pi$ is the probability of success
-			\item $1-\pi$ is the probability of failure
+			\item $\pi$ is the probability of success \pause
+			\item $1-\pi$ is the probability of failure \pause
 			\item $y$ the number of successes in the $n$ identical trials
 		\end{itemize}
 	\end{itemize}
@@ -84,11 +84,11 @@
 
 \begin{frame}{Binomial random variables}{Population parameter of interest}
 	\begin{itemize}
-		\item Example: we may want to know the proportion of undergraduates who engage in binge drinking \{Yes, No\}
+		\item Example: we may want to know the proportion of undergraduates who engage in binge drinking \{Yes, No\} \pause
 		\item[]
-		\item We have a categorical random variable, undergraduate binge drinking status, with two levels: \{Yes, No\} 
+		\item We have a categorical random variable, undergraduate binge drinking status, with two levels: \{Yes, No\} \pause
 		\item[]
-		\item In the population, the proportion of undergraduates who engage in binge drinking is $\pi$
+		\item In the population, the proportion of undergraduates who engage in binge drinking is $\pi$ \pause
 		\item[]
 		\item For a bionmial RV, an estimate of the population parameter $\pi$ is: $\hat{\pi} = \frac{y}{n}$
 	\end{itemize}
@@ -96,40 +96,40 @@
 
 \begin{frame}{Confidence intervals for $\pi$}
 	\begin{itemize}
-		\item We will dicuss two methods for determining confidence intervals for the population parameter $\pi$
+		\item We will dicuss two methods for determining confidence intervals for the population parameter $\pi$ \pause
 		\begin{itemize}
-			\item Wald confidence intervals
-			\item Wilson-Agresti-Coull (WAC) confidence interval
+			\item Wald confidence intervals \pause
+			\item Wilson-Agresti-Coull (WAC) confidence interval \pause
 			\item[]
 		\end{itemize}
 		
-		\item Wald confidence intervals are based on using normal approximations and standard error terms
+		\item Wald confidence intervals are based on using normal approximations and standard error terms \pause
 		\begin{itemize}
 			\item Recall: for a confidence interval for a population mean with known variance we had $\bar{y} \pm z_{\alpha / 2} \sigma / \sqrt{n}$. In this case $\sigma / \sqrt{n}$ is the standard error
-			\item For $\hat{\pi}$, for a binomial RV, the standard error is $\text{SE}(\hat{\pi}) = \sqrt{\frac{\pi(1-\pi)}{n}}$
+			\item For $\hat{\pi}$, for a binomial RV, the standard error is $\text{SE}(\hat{\pi}) = \sqrt{\frac{\pi(1-\pi)}{n}}$ \pause
 			\item Wald confidence intervals can be found for many parameters from many distributions
 			\item[]
 		\end{itemize}
 	
-		\item Wilson-Agresti-Coull (WAC) confidence intervals are based on modifying Wald confidence intervals to improve on the normal approximation
+		\item Wilson-Agresti-Coull (WAC) confidence intervals are based on modifying Wald confidence intervals to improve on the normal approximation \pause
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Wald confidence intervals for $\pi$}
 	\begin{itemize}
-		\item The formula for a Wald confidence interval for $\pi$ with confidence coefficient $1-\alpha$:
+		\item The formula for a Wald confidence interval for $\pi$ with confidence coefficient $1-\alpha$: \pause
 		\begin{gather*}
 		\hat{\pi} \pm z_{\alpha/2} \text{SE}(\hat{\pi})
-		\end{gather*}
+		\end{gather*} \pause
 		where $\hat{\pi} = \frac{y}{n}$ and $\text{SE}(\hat{\pi}) = \sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Wald confidence intervals for $\pi$}{Example}
 	\begin{itemize}
-		\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval)
+		\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval)  \pause
 		\item[]
-		\item First we determine the point estimate for $\pi$: 
+		\item First we determine the point estimate for $\pi$:  \pause
 		\begin{gather*}
 			\hat{\pi} = \frac{y}{n} = \frac{8}{24} = 0.3333
 		\end{gather*}
@@ -138,12 +138,12 @@
 
 \begin{frame}{Wald confidence intervals for $\pi$}{Example}
 	\begin{itemize} {\tiny
-		\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) }
-		\item Now we will compute $\text{SE}(\hat{\pi})$:
+		\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) }  \pause
+		\item Now we will compute $\text{SE}(\hat{\pi})$:  \pause
 		\begin{gather*}
 		\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}} = \sqrt{\frac{0.333(0.6666)}{24}} = 0.0962
-		\end{gather*}
-		\item The 90\% Wald CI is then:
+		\end{gather*} \pause
+		\item The 90\% Wald CI is then:  \pause
 		\begin{gather*}
 		\hat{\pi} \pm z_{\alpha/2} \text{SE}(\hat{\pi}) = 0.3333 \pm 1.645 ( 0.0962) \\
 		(0.1751, 0.4915)
@@ -153,11 +153,11 @@
 
 \begin{frame}{Requirements for Wald CI's for $\pi$}
 	\begin{itemize}
-		\item To use the Wald confidence interval procedure, the following should be true: $n \pi > 5$ or $n(1-\pi) > 5$
+		\item To use the Wald confidence interval procedure, the following should be true: $n \pi > 5$ or $n(1-\pi) > 5$  \pause
 		\begin{itemize}
-			\item For our last example $n \pi = 8 > 5$ and $n(1-\pi) = 16$
+			\item For our last example $n \pi = 8 > 5$ and $n(1-\pi) = 16$  \pause
 			\item[]
-			\item If these conditions are not satisfied the normal approximation to the Binomial distribution will be poor
+			\item If these conditions are not satisfied the normal approximation to the Binomial distribution will be poor  \pause
 			\item[]
 		\end{itemize}
 		\item The WAC confidence interval will perform better in the case that these conditions are not satisfied and 
@@ -166,13 +166,13 @@
 
 \begin{frame}{WAC confidence intervals for $\pi$}
 	\begin{itemize}
-		\item The formula for a WAC confidence interval for $\pi$ with confidence coefficient $1-\alpha$:
+		\item The formula for a WAC confidence interval for $\pi$ with confidence coefficient $1-\alpha$:  \pause
 		\begin{gather*}
 		\tilde{\pi} \pm z_{\alpha/2} \text{SE}(\tilde{\pi})
-		\end{gather*}
+		\end{gather*}  \pause
 		where:
 		\begin{itemize}
-			\item $\tilde{y} = y + 0.5 z_{\alpha/2}^2$, $\tilde{n} = n + z_{\alpha/2}^2$, and $\tilde{\pi}=\frac{\tilde{y}}{\tilde{n}}$
+			\item $\tilde{y} = y + 0.5 z_{\alpha/2}^2$, $\tilde{n} = n + z_{\alpha/2}^2$, and $\tilde{\pi}=\frac{\tilde{y}}{\tilde{n}}$  
 			\item[]
 			\item $\tilde{\pi} = \frac{\tilde{y}}{\tilde{n}}$ and $\text{SE}(\tilde{\pi}) = \sqrt{\frac{\tilde{\pi}(1-\tilde{\pi})}{\tilde{n}}}$
 		\end{itemize}
@@ -181,13 +181,13 @@
 
 \begin{frame}{WAC confidence intervals for $\pi$}{Example}
 	\begin{itemize} {\tiny
-			\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) }
+			\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) }  \pause
 		\item[]
-		\item First we need to determine $\tilde{y}$, $\tilde{n}$, and $\tilde{\pi}$: 
+		\item First we need to determine $\tilde{y}$, $\tilde{n}$, and $\tilde{\pi}$:  \pause
 		\begin{itemize}
-			\item $\tilde{y} = y + 0.5 z_{\alpha/2}^2 = 0.5 = 8 + 0.5(2.706) = 9.353$
-			\item $\tilde{n} = n + z_{\alpha/2}^2 = 24 + 2.706 = 26.706$
-			\item $\tilde{\pi}=\frac{\tilde{y}}{\tilde{n}} = \frac{9.353}{26.706} = 0.350$
+			\item $\tilde{y} = y + 0.5 z_{\alpha/2}^2 = 0.5 = 8 + 0.5(2.706) = 9.353$ \pause
+			\item $\tilde{n} = n + z_{\alpha/2}^2 = 24 + 2.706 = 26.706$ \pause
+			\item $\tilde{\pi}=\frac{\tilde{y}}{\tilde{n}} = \frac{9.353}{26.706} = 0.350$ \pause
 			\item[]
 		\end{itemize}
 		\item Then $\text{SE}(\tilde{\pi}) = \sqrt{\frac{\tilde{\pi}(1-\tilde{\pi})}{\tilde{n}}} = \sqrt{\frac{0.350(0.650)}{26.706}} = 0.0923$
@@ -196,9 +196,9 @@
 
 \begin{frame}{WAC confidence intervals for $\pi$}{Example}
 	\begin{itemize} {\tiny
-			\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) }
+			\item The goal of many phase 1 clinical trials of are to determine if a new drug has negative side effects in humans. A pharmaceutical company develops a new drug for migraines and wants to estimate the proportion of all humans who will experience nausea after taking the medication. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Estimate the population proportion of humans who will experience nausea when taking the medication (point estimate and 90\% confidence interval) } 
 		\item[]
-		\item The 90\% WAC confidence interval is then: 
+		\item The 90\% WAC confidence interval is then:  \pause
 		\begin{align*}
 			\tilde{\pi} &\pm z_{\alpha/2} \text{SE}(\tilde{\pi}) =\\
 			  0.350 &\pm 1.645(0.0923) \\
@@ -209,18 +209,18 @@
 
 \begin{frame}{Estimation of $\pi$ when $y = 0$ or $y = 1$}
 	\begin{itemize}
-		\item When $\pi$ is very close to 0 or 1 (and when $n$ is small), the point estimate of $\pi$, $\hat{\pi}$, may be close (or equal to 0 or 1), which is not realistic
+		\item When $\pi$ is very close to 0 or 1 (and when $n$ is small), the point estimate of $\pi$, $\hat{\pi}$, may be close (or equal to 0 or 1), which is not realistic  \pause
 		\item[]
-		\item In these cases we use an adjusted point estimate of $\pi$:
+		\item In these cases we use an adjusted point estimate of $\pi$:  \pause
 		\begin{itemize}
-			\item $\hat{\pi}_{\text{adj}}= \frac{3/8}{n + 3/4}$ when $y = 0$
+			\item $\hat{\pi}_{\text{adj}}= \frac{3/8}{n + 3/4}$ when $y = 0$  \pause
 			\item $\hat{\pi}_{\text{adj}}= \frac{n + 3/8}{n + 3/4}$ when $y = n$
 			\item[]
 		\end{itemize}
 		
-		\item And we use the following for $100(1-\alpha)$ confidence intervals:
+		\item And we use the following for $100(1-\alpha)$ confidence intervals:  \pause
 		\begin{itemize}
-			\item $\left[0, 1 - (\alpha / 2)^{1/n}\right]$ when $y = 0$
+			\item $\left[0, 1 - (\alpha / 2)^{1/n}\right]$ when $y = 0$  \pause
 			\item $\left[(\alpha / 2)^{1/n}, 1\right]$ when $y = n$
 		\end{itemize}
 	\end{itemize}
@@ -228,15 +228,15 @@
 
 \begin{frame}{Estimation of $\pi$ when $y = 0$ or $y = 1$}{Example}
 	\begin{itemize}
-		\item Early in the season, a batter has had 0 hits out of 4 at bats, that is $y = 0$, and $n = 4$. The unadjusted point estimate of $\pi$ would then be $\hat{\pi} = 0$, meaning our best estimate of the long run batting average is 0 (the batter never gets a hit during the season)
+		\item Early in the season, a batter has had 0 hits out of 4 at bats, that is $y = 0$, and $n = 4$. The unadjusted point estimate of $\pi$ would then be $\hat{\pi} = 0$, meaning our best estimate of the long run batting average is 0 (the batter never gets a hit during the season)  \pause
 		\item[]
-		\item In these cases we should use an adjusted point estimate of $\pi$:
+		\item In these cases we should use an adjusted point estimate of $\pi$:  \pause
 		\begin{itemize}
-			\item $\hat{\pi}_{\text{adj}}= \frac{3/8}{n + 3/4} = \frac{3/8}{4 + 3/4} = 0.0789$ since $y = 0$
+			\item $\hat{\pi}_{\text{adj}}= \frac{3/8}{n + 3/4} = \frac{3/8}{4 + 3/4} = 0.0789$ since $y = 0$  \pause
 			\item[]
 		\end{itemize}
 		
-		\item And we could use the following for a 95\% confidence interval:
+		\item And we could use the following for a 95\% confidence interval:  \pause
 		\begin{itemize}
 			\item $\left[0, 1 - (\alpha / 2)^{1/n}\right] = \left[0, 1 - (0.05 / 2)^{1/4}\right] = [0, 0.602]$ 
 		\end{itemize}
@@ -257,23 +257,23 @@
 
 \begin{frame}{Normal approximation method}
 	\begin{itemize}
-		\item Hypotheses: 
+		\item Hypotheses:  \pause
 		\begin{itemize}
-			\item \textbf{Case 1.} $H_0: \pi \leq \pi_0$ versus $\pi > \pi_0$
-			\item \textbf{Case 2.} $H_0: \pi \geq \pi_0$ versus $\pi < \pi_0$
-			\item \textbf{Case 3.} $H_0: \pi = \pi_0$ versus $\pi \neq \pi_0$
+			\item \textbf{Case 1.} $H_0: \pi \leq \pi_0$ versus $\pi > \pi_0$  \pause
+			\item \textbf{Case 2.} $H_0: \pi \geq \pi_0$ versus $\pi < \pi_0$  \pause
+			\item \textbf{Case 3.} $H_0: \pi = \pi_0$ versus $\pi \neq \pi_0$  \pause
 			\item[]
 		\end{itemize}
 		
-		\item Test statistic:
+		\item Test statistic:  \pause
 		\begin{gather*}
 		z^* = \frac{\hat{\pi}-\pi_0}{\text{SE}(\hat{\pi})}
-		\end{gather*}
+		\end{gather*}  \pause
 		
-		\item Rejection regions / rules: 
+		\item Rejection regions / rules:  \pause
 		\begin{itemize}
-			\item \textbf{Case 1.} Reject $H_0$ if $z^* > z_{\alpha}$ with p-value $P(Z > z^*)$
-			\item \textbf{Case 2.} Reject $H_0$ if $z^* < -z_{\alpha}$ with p-value $P(Z < z^*)$
+			\item \textbf{Case 1.} Reject $H_0$ if $z^* > z_{\alpha}$ with p-value $P(Z > z^*)$ \pause
+			\item \textbf{Case 2.} Reject $H_0$ if $z^* < -z_{\alpha}$ with p-value $P(Z < z^*)$ \pause
 			\item \textbf{Case 3.} Reject $H_0$ if $|z^*| > z_{\alpha / 2}$ with p-value $2\times P(Z > |z^*|)$
 		\end{itemize}
 	\end{itemize}
@@ -281,9 +281,9 @@
 
 \begin{frame}{Normal approximation method}{Example}
 	\begin{itemize}
-		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Conduct the test with $\alpha = 0.05$
+		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Conduct the test with $\alpha = 0.05$  \pause
 		\item[]
-		\item Hypotheses. $H_0: \pi \geq 0.5$ versus $H_a: \pi < 0.5$
+		\item Hypotheses. $H_0: \pi \geq 0.5$ versus $H_a: \pi < 0.5$  \pause
 		\item[]
 		\item Rejection rule: Reject $H_0$ if $z^* < -z_{\alpha} =  -z_{0.05} = - 1.645$
 	\end{itemize}
@@ -293,25 +293,25 @@
 	\begin{itemize}
 		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Conduct the test with $\alpha = 0.05$
 		\item[]
-		\item Test statistic: From earlier we have that: $\hat{\pi} = \frac{y}{n} = \frac{8}{24} = 0.3333$ and $		\text{SE}(\hat{\pi})=\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}} = \sqrt{\frac{0.333(0.6666)}{24}} = 0.0962$
+		\item Test statistic: From earlier we have that: $\hat{\pi} = \frac{y}{n} = \frac{8}{24} = 0.3333$ and $		\text{SE}(\hat{\pi})=\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}} = \sqrt{\frac{0.333(0.6666)}{24}} = 0.0962$  \pause
 			\begin{gather*}
 				z^* = \frac{\hat{\pi}-\pi_0}{\text{SE}(\hat{\pi})} = \frac{0.3333-0.5000}{0.0962} =-1.733
-			\end{gather*}
+			\end{gather*} \pause
 		\item Conclusion: We reject $H_0$. There is evidence the proportion is less than half. The level of significance is $P(Z < z^*) = 0.0416$
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Binomial test method}
 	\begin{itemize}
-		\item When $n$ is small and / or if the following isn't satisfied: $n \pi > 5$ and $n(1-\pi) > 5$, we can conduct statistical tests using the binomial distribution directly 
+		\item When $n$ is small and / or if the following isn't satisfied: $n \pi > 5$ and $n(1-\pi) > 5$, we can conduct statistical tests using the binomial distribution directly  \pause
 		\item[]
-		\item To do this, we will first fix $\alpha$, we can then determine $p$-values for the specific hypotheses from the binomial probability distribution function, and reject $H_0$ if $p\text{-value} \leq \alpha$
+		\item To do this, we will first fix $\alpha$, we can then determine $p$-values for the specific hypotheses from the binomial probability distribution function, and reject $H_0$ if $p\text{-value} \leq \alpha$  \pause
 		\item[]
 		\item P-values (by hand or using R):
 		\begin{itemize}
-			\item \textbf{Case 1.} $P(Y \geq y) = pbinom(y - 1, n, \pi_0, \text{lower.tail} = \text{FALSE})$
-			\item \textbf{Case 2.} $P(Y \leq y) = pbinom(y, n, \pi_0, \text{lower.tail} = \text{TRUE})$
-			\item \textbf{Case 3(a).} If $\hat{\pi}\geq \pi_0$, then $2\times P(Y \geq y) = 2 \times pbinom(y - 1, n, \pi_0, \text{lower.tail} = \text{FALSE})$
+			\item \textbf{Case 1.} $P(Y \geq y) = pbinom(y - 1, n, \pi_0, \text{lower.tail} = \text{FALSE})$  \pause
+			\item \textbf{Case 2.} $P(Y \leq y) = pbinom(y, n, \pi_0, \text{lower.tail} = \text{TRUE})$  \pause
+			\item \textbf{Case 3(a).} If $\hat{\pi}\geq \pi_0$, then $2\times P(Y \geq y) = 2 \times pbinom(y - 1, n, \pi_0, \text{lower.tail} = \text{FALSE})$  \pause
 			\item \textbf{Case 3(b).} If $\hat{\pi}< \pi_0$, then $2 \times P(Y \leq y) = 2 \times pbinom(y, n, \pi_0, \text{lower.tail} = \text{TRUE})$
 		\end{itemize}
 	\end{itemize}
@@ -319,13 +319,13 @@
 
 \begin{frame}{Binomial test method}{Example}
 	\begin{itemize}
-		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Conduct the test with $\alpha = 0.05$
+		\item A pharmaceutical company develops a new drug for migraines and wants to determine if there is evidence that the proportion of all humans who will experience nausea after taking the medication is less than half. The company conducts a study with $n = 24$ healthy volunteers who are administered the medication and finds that 8 report experiencing nausea. Conduct the test with $\alpha = 0.05$  \pause
 		\item[]
-		\item We have $y = 8$ out of $n = 24$ and we are testing $H_0: \pi \geq \pi_0$ versus $\pi < \pi_0$. So our p-value is:
+		\item We have $y = 8$ out of $n = 24$ and we are testing $H_0: \pi \geq \pi_0$ versus $\pi < \pi_0$.  \pause So our p-value is:  \pause
 		\begin{gather*}
 			P(Y \leq y) = P(Y \leq 8) = \\
 			 P(Y = 0) + P(Y = 1) + \hdots + P(Y = 8) =0.0758
-		\end{gather*}
+		\end{gather*}  \pause
 		\item Since $0.0758 = p\text{-value} > \alpha = 0.05$, we fail to reject $H_0$
 	\end{itemize}
 \end{frame}
@@ -338,9 +338,9 @@
 
 \begin{frame}{Inferences about $\pi_1 - \pi_2$}{Examples of research questions}
 	\begin{itemize}
-		\item Does the proportion of students who graduate in 4 years differ between students who study natural sciences versus students who study liberal arts?
+		\item Does the proportion of students who graduate in 4 years differ between students who study natural sciences versus students who study liberal arts?  \pause
 		\item[]
-		\item Is the prevalence of colon cancer different in African Americans / black Americans than in Caucasian / white Americans?
+		\item Is the prevalence of colon cancer different in African Americans / black Americans than in Caucasian / white Americans?  \pause
 		\item[]
 		\item Are Millennials employees more likely to work remotely than Generation X employees?
 	\end{itemize}
@@ -353,12 +353,12 @@
 
 \begin{frame}{Point estimates of $\pi_1 - \pi_2$}
 	\begin{itemize}
-		\item To answer questions such as those on the previous slide, we want to determine if there is a difference in two population proportions using independent samples from each population
+		\item To answer questions such as those on the previous slide, we want to determine if there is a difference in two population proportions using independent samples from each population  \pause
 		\begin{itemize}
 			\item We want to estimate and possibly make tests regarding $\pi_1 - \pi_2$
-		\end{itemize}
+		\end{itemize}  \pause
 		\item[]
-		\item It is usefull to present such samples using a table:
+		\item It is useful to present such samples using a table:  \pause
 		\begin{center}
 			\begin{tabular}{lcc}
 				\hline
@@ -367,7 +367,7 @@
 				Successes & $y_1$ & $y_2$ \\
 				Sample proportion & $\hat{\pi}_1 = \frac{y_1}{n_1}$ & $\hat{\pi}_2 = \frac{y_2}{n_2}$ \\ \hline
 			\end{tabular}
-		\end{center}
+		\end{center}  \pause
 	\item[]
 	\item The best estimate of the difference between population proportions $\pi_1 - \pi_2$ is $\hat{\pi}_1 - \hat{\pi}_2$
 	\end{itemize}
@@ -375,12 +375,12 @@
 
 \begin{frame}{Confidence intervals for $\pi_1 - \pi_2$}
 	\begin{itemize}
-		\item The standard error of $\pi_1 - \pi_2$ is:
+		\item The standard error of $\pi_1 - \pi_2$ is:  \pause
 		\begin{gather*}
 		\text{SE}(\pi_1 - \pi_2) = \sqrt{\frac{\pi_1 (1-\pi_1)}{n_1}+\frac{\pi_2 (1-\pi_2)}{n_2}}
-		\end{gather*}
+		\end{gather*}  \pause
 		\item[]
-		\item A Wald $100(1-\alpha)\%$ confidence interval is then:
+		\item A Wald $100(1-\alpha)\%$ confidence interval is then:  \pause
 		\begin{gather*}
 		\hat{\pi}_1 - \hat{\pi}_2 \pm z_{\alpha/2}\text{SE}(\hat{\pi}_1-\hat{\pi}_2)
 		\end{gather*}
@@ -389,7 +389,7 @@
 
 \begin{frame}{Confidence intervals for $\pi_1 - \pi_2$}{Example}
 	\begin{itemize}
-		\item A quality engineer at an appliance manufacturer wants to determine if the proportion of machines that fail during the three year warranty period differs between two brands (UltraClean and SooooClean machines). The engineer wants to have a point estimate and 95\% confidence interval for comparing the population proportions using the following sample from warranty claims:
+		\item A quality engineer at an appliance manufacturer wants to determine if the proportion of machines that fail during the three year warranty period differs between two brands (UltraClean and SooooClean machines). The engineer wants to have a point estimate and 95\% confidence interval for comparing the population proportions using the following sample from warranty claims:  \pause
 		\vspace{3mm}
 		\begin{center}
 			\begin{tabular}{lcc}
@@ -413,13 +413,13 @@
 				Successes & $278$ & $722$ \\
 				Sample proportion & 0.230 & 0.300 \\ \hline
 			\end{tabular}
-\end{center}}
+\end{center}} \pause
 	\begin{itemize}
-		\item We need to determine $\text{SE}(\hat{\pi}_1-\hat{\pi}_2)$: 
+		\item We need to determine $\text{SE}(\hat{\pi}_1-\hat{\pi}_2)$:  \pause
 		\begin{align*}
 		\text{SE}(\hat{\pi}_1-\hat{\pi}_2) &= \sqrt{\frac{\hat{\pi}_1 (1-\hat{\pi}_1)}{n_1}+\frac{\hat{\pi}_2 (1-\hat{\pi}_2)}{n_2}} \\ &=\sqrt{\frac{0.230 (0.770)}{1207}+\frac{0.300 (0.700)}{2409}} = 0.0153
-		\end{align*}
-		\item A 95\% Wald CI is then:
+		\end{align*}  \pause
+		\item A 95\% Wald CI is then:  \pause
 		\begin{align*}
 			\hat{\pi}_1 - \hat{\pi}_2 \pm z_{\alpha/2}\text{SE}(\hat{\pi}_1-\hat{\pi}_2) &= -0.07 \pm 1.96 (0.0153) =\\& (-0.100, -0.040)
 		\end{align*}
@@ -434,7 +434,7 @@
 
 \begin{frame}{Tests regarding $\pi_1 - \pi_2$}{Example Problem}
 	\begin{itemize}
-		\item A quality engineer at an appliance manufacturer wants to determine if the proportion of machines that fail during the three year warranty period differs between two brands (UltraClean and SooooClean machines). The engineer wants to test for a difference in the population proportions ($\alpha = 0.05$) using the following sample from warranty claims:
+		\item A quality engineer at an appliance manufacturer wants to determine if the proportion of machines that fail during the three year warranty period differs between two brands (UltraClean and SooooClean machines). The engineer wants to test for a difference in the population proportions ($\alpha = 0.05$) using the following sample from warranty claims: 
 		\vspace{3mm}
 		\begin{center}
 			\begin{tabular}{lcc}
@@ -450,24 +450,24 @@
 
 \begin{frame}{Tests regarding $\pi_1 - \pi_2$}{Process}
 	\begin{itemize}
- \item Assumptions: $n_1 \hat{\pi}_1 \geq 5$, $n_2 \hat{\pi}_2 \geq 5$, $n_1 (1-\hat{\pi}_1) \geq 5$ and $n_2 (1-\hat{\pi}_2) \geq 5$
+ \item Assumptions: $n_1 \hat{\pi}_1 \geq 5$, $n_2 \hat{\pi}_2 \geq 5$, $n_1 (1-\hat{\pi}_1) \geq 5$ and $n_2 (1-\hat{\pi}_2) \geq 5$  \pause
 		\item[]
-		\item Hypotheses:
+		\item Hypotheses:  \pause
 		\begin{itemize}
-			\item \textbf{Case 1.} $H_0: \pi_1-\pi_2 \leq 0$ versus $H_0: \pi_1-\pi_2 > 0$
-			\item \textbf{Case 2.} $H_0: \pi_1-\pi_2 \geq 0$ versus $H_0: \pi_1-\pi_2 < 0$
-			\item \textbf{Case 3.} $H_0: \pi_1-\pi_2 = 0$ versus $H_0: \pi_1-\pi_2 \neq 0$
+			\item \textbf{Case 1.} $H_0: \pi_1-\pi_2 \leq 0$ versus $H_0: \pi_1-\pi_2 > 0$  \pause
+			\item \textbf{Case 2.} $H_0: \pi_1-\pi_2 \geq 0$ versus $H_0: \pi_1-\pi_2 < 0$ \pause
+			\item \textbf{Case 3.} $H_0: \pi_1-\pi_2 = 0$ versus $H_0: \pi_1-\pi_2 \neq 0$ \pause
 			\item[]
 		\end{itemize}
 		
-		\item Test statistic:
+		\item Test statistic:  \pause
 		\begin{gather*}
 		z^*=\frac{(\hat{\pi}_1 - \hat{\pi}_2)}{\sqrt{\frac{\hat{\pi}_1 (1-\hat{\pi}_1)}{n_1}+\frac{\hat{\pi}_2 (1-\hat{\pi}_2)}{n_2}}}
-		\end{gather*}
-		\item Rejection rule / Rejection region: 
+		\end{gather*}  \pause
+		\item Rejection rule / Rejection region:  \pause
 		\begin{itemize}
-			\item \textbf{Case 1.} Reject $H_0$ if $z > z_{\alpha}$
-			\item \textbf{Case 2.} Reject $H_0$ if $z < -z_{\alpha}$
+			\item \textbf{Case 1.} Reject $H_0$ if $z > z_{\alpha}$  \pause
+			\item \textbf{Case 2.} Reject $H_0$ if $z < -z_{\alpha}$  \pause
 			\item \textbf{Case 3.} Reject $H_0$ if $|z| > z_{\alpha / 2}$
 			\item[]
 		\end{itemize}
@@ -476,15 +476,15 @@
 
 \begin{frame}{Tests regarding $\pi_1 - \pi_2$}{Example}
 	\begin{itemize}
-		\item Hypotheses: $H_0: \pi_1-\pi_2 = 0$ versus $H_0: \pi_1-\pi_2 \neq 0$
+		\item Hypotheses: $H_0: \pi_1-\pi_2 = 0$ versus $H_0: \pi_1-\pi_2 \neq 0$  \pause
 		\item[]
-		\item Rejection rule: Reject $H_0$ if $z < -1.96$
+		\item Rejection rule: Reject $H_0$ if $z < -1.96$  \pause
 		\item[]
-		\item Test statistic:
+		\item Test statistic:  \pause
 		\begin{gather*}
 			z^*=\frac{(\hat{\pi}_1 - \hat{\pi}_2)}{\sqrt{\frac{\hat{\pi}_1 (1-\hat{\pi}_1)}{n_1}+\frac{\hat{\pi}_2 (1-\hat{\pi}_2)}{n_2}}} = \frac{0.230 - 0.300}{\sqrt{\frac{0.230 (0.770)}{1207}+\frac{0.300 (0.700)}{2409}}} =  \\
 			\frac{-0.07}{0.0153} = -4.575
-		\end{gather*}
+		\end{gather*} \pause
 		\item Conclusion: Reject $H_0$. There is evidence that washing machine brands have different failure proportions. p-value: $2\times P(Z \geq |z^*|) =0.000005$ 
 	\end{itemize}
 \end{frame}
@@ -497,11 +497,11 @@
 
 \begin{frame}{Fisher's exact test}
 	\begin{itemize}
-		\item If any of the following do not hold: $n_1 \hat{\pi}_1 \geq 5$, $n_2 \hat{\pi}_2 \geq 5$, $n_1 (1-\hat{\pi}_1) \geq 5$ and $n_2 (1-\hat{\pi}_2) \geq 5$, then using a normal approximation is not a good idea
+		\item If any of the following do not hold: $n_1 \hat{\pi}_1 \geq 5$, $n_2 \hat{\pi}_2 \geq 5$, $n_1 (1-\hat{\pi}_1) \geq 5$ and $n_2 (1-\hat{\pi}_2) \geq 5$, then using a normal approximation is not a good idea  \pause
 		\item[]
-		\item Instead we will want to use the Fisher Exact Test
+		\item Instead we will want to use the Fisher Exact Test  \pause
 		\item[]
-		\item The idea:
+		\item The idea:  \pause
 		\begin{itemize}
 			\item A $2\times 2$ table:
 			\begin{center}
@@ -513,7 +513,7 @@
 					Total & $m$ & $n-m$ & $n$ \\ \hline
 				\end{tabular}
 			\vspace{5mm}
-			\end{center}
+			\end{center}  \pause
 			\item If we know the column and row totals we can calculate the probability of any specific table
 		\end{itemize}
 	\end{itemize}
@@ -535,16 +535,16 @@
 		\item Then: 
 		\begin{gather*}
 			P(x = k) = \frac{\binom{n_1}{k} \binom{n_2}{m-k}}{\binom{n}{m}}
-		\end{gather*}
+		\end{gather*}  \pause
 		where $\binom{n_1}{k} = \frac{n_1!}{k!(n_1-k)!}$
 	\end{itemize} 
 \end{frame}
 
 \begin{frame}{Fisher's exact test}{Process}
 	\begin{itemize}
-		\item Hypotheses: $H_0: \pi_1 \leq \pi_2$ versus $H_a: \pi_1 > \pi_2$
+		\item Hypotheses: $H_0: \pi_1 \leq \pi_2$ versus $H_a: \pi_1 > \pi_2$  \pause
 		\item[]
-		\item Rejection rule: For a specified $\alpha$, we will reject $H_0$ if $p-\text{value} \leq \alpha$
+		\item Rejection rule: For a specified $\alpha$, we will reject $H_0$ if $p-\text{value} \leq \alpha$  \pause
 		\begin{itemize}
 			\item $p-\text{value}$ is the probability of seeing a table at least as consistent with $H_a$ as the table we have observed, given the observed column and row totals
 		\end{itemize}
@@ -553,13 +553,13 @@
 
 \begin{frame}{Fisher's exact test}{Example}
 	\begin{itemize}
-		\item 26 million Americans have an oral HPV infection (NHANES study). A small proportion of those are HPV 16, which is associated with multiple cancer types
+		\item 26 million Americans have an oral HPV infection (NHANES study). A small proportion of those are HPV 16, which is associated with multiple cancer types  \pause
 		\item[]
-		\item Assume you want to determine whether HPV associated oral lesions are more likely to be cancerous given they are HPV 16 than other types of HPV (test with $\alpha = 0.10$)
+		\item Assume you want to determine whether HPV associated oral lesions are more likely to be cancerous given they are HPV 16 than other types of HPV (test with $\alpha = 0.10$)  \pause
 		\item[]
-		\item Hypotheses:
+		\item Hypotheses:  \pause
 		\begin{itemize}
-			\item $H_0:$ The proportion of lesions that are cancerous is lesser in HPV 16 cases than in non-HPV 16 cases. $H_0: \pi_1 \leq \pi_2$
+			\item $H_0:$ The proportion of lesions that are cancerous is lesser in HPV 16 cases than in non-HPV 16 cases. $H_0: \pi_1 \leq \pi_2$  \pause
 			\item[]
 			\item $H_a:$ The proportion of lesions that are cancerous is higher in HPV 16 cases than non-HPV 16 cases. $H_a: \pi_1 > \pi_2$
 		\end{itemize}
@@ -577,9 +577,9 @@
 				non-HPV 16 & $1$ &$27$ & $28$ \\
 				Total & $6$ & $47$ & $53$ \\ \hline
 			\end{tabular}
-		\end{center}
+		\end{center} \pause
 	\vspace{5mm}
-	\item First we note that $\hat{\pi}_1 = 5/25 = 0.20$, and $\hat{\pi}_2 = 1/28 = 0.0357$ 
+	\item First we note that $\hat{\pi}_1 = 5/25 = 0.20$, and $\hat{\pi}_2 = 1/28 = 0.0357$   \pause
 	\item[]
 	\item We can see that we need to use Fisher's exact test as $n_2 \hat{\pi}_2 =1 <5$
 	\end{itemize}
@@ -587,14 +587,14 @@
 
 \begin{frame}{Fisher's exact test}{Example}
 	\begin{itemize}
-		\item Hypotheses: $H_0: \pi_1 \leq \pi_2$ versus $H_a: \pi_1 > \pi_2$
+		\item Hypotheses: $H_0: \pi_1 \leq \pi_2$ versus $H_a: \pi_1 > \pi_2$  \pause
 		\item[]
-		\item Rejection rule: For a specified $\alpha$, we will reject $H_0$ if $p-\text{value} \leq 0.10$
+		\item Rejection rule: For a specified $\alpha$, we will reject $H_0$ if $p-\text{value} \leq 0.10$  \pause
 		\begin{itemize}
-			\item $p-\text{value}$ is the probability of seeing a table at least as consistent with $H_a$ as the table we have observed, given the observed column and row totals
+			\item $p-\text{value}$ is the probability of seeing a table at least as consistent with $H_a$ as the table we have observed, given the observed column and row totals  \pause
 			\item[]
 		\end{itemize}
-	\item For our problem this would be: $P(x \geq 5) = P(x = 5)+P(x = 6)+\hdots + P(x = 25)$
+	\item For our problem this would be: $P(x \geq 5) = P(x = 5)+P(x = 6)+\hdots + P(x = 25)$  \pause
 	\item[]
 	\item Or equivalently:
 	$1-P(x < 5) = 1-(P(0) + P(1) + P(2) + P(3) + P(4))$
@@ -603,15 +603,21 @@
 
 \begin{frame}{Fisher's exact test}{Example}
 	\begin{itemize}
-		\item To calculate the p-value:
+		\item To calculate the p-value:  \pause
 		\begin{align*}
 			P(x \geq 5) &= 1-P(x < 5) \\
 			&=1-(P(0) + P(1) + P(2) + P(3) + P(4)) \\ 
 			&=1-(0.0164 + 0.1070 + 0.2676 + 0.3282 + 0.2083)  \\
 			&=0.0725
-		\end{align*}
+		\end{align*}  \pause
 		\item Conclusion: We reject $H_0$ as the p-value is less than $\alpha$. There is evidence that the proportion of lesions that are cancerous is higher in HPV 16 cases than non-HPV 16 cases
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecutre \#16}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{1}
+	\end{center}
 \end{frame}
 
 \end{document}

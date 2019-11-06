@@ -1,0 +1,256 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
+
+\title[Lecture 18]{Lecture 18: Linear Regression}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{November}
+
+\begin{document}
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Introduction}
+	\begin{itemize}
+		\item ``The basic idea of regression analysis is to obtain a model for the functional relationship between a response variable (dependent variable) and one or more explanatory variables (independent variables)''
+		\item[]
+		\item Two important tasks for regression modeling are making predictions and deriving explanations:
+		\begin{itemize}
+			\item Making predictions: given the value of one variable, you want to predict what the value of the other is most likely to be
+			\item Deriving explainations: you want to determine if two variables are related to eachother; if so, knowing the value of one should give you information about the other
+			\item[]
+		\end{itemize}
+		\item \textbf{Simple linear regression:} There is a single independent variable $x$, and we want a linear function that will return the value of a continuous dependent variable $y$ that we should expect
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The simple linear regression model}
+Model: $y = \beta_0 + \beta_1 x + \varepsilon$
+		\begin{itemize}
+			\item $\beta_0$ is the intercept
+			\begin{itemize}
+				\item $\beta_0$ is where the line intercepts the $y$-axis
+				\item[]
+				\item $\beta_0$ is the predicted value of $y$ when $x=0$
+				\item[]
+			\end{itemize} 
+			\item $\beta_1$ is called the slope
+			\begin{itemize}
+				\item It $\beta_1$ gives us the expected unit change in $y$ for a unit change in $x$
+				\item[]
+			\end{itemize}
+			\item $\varepsilon$ is called the random error term
+			\item[]
+			\item Both $\beta_0$ and $\beta_1$ are population quantities (that we will want to estimate from a sample)
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{The simple linear regression model}
+$y = \beta_0 + \beta_1 x $
+	\begin{center}
+		\includegraphics[width=.6\linewidth]{IMG_20191104_224248}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The simple linear regression model}
+$y = \beta_0 + \beta_1 x + \varepsilon$
+\begin{center}
+	\includegraphics[width=.6\linewidth]{IMG_20191104_224711}
+\end{center}
+\end{frame}
+
+\begin{frame}{The simple linear regression model}
+Model: $y = \beta_0 + \beta_1 x + \varepsilon$
+\begin{itemize}
+	\item $\varepsilon$ is called the random error term
+	\item[]
+	\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$
+	\item[] 
+	\item Since $y$ is a continuous random variable, the values of $y$ have a probability distribution
+	\begin{itemize}
+		\item The center of this distribution is given by $y = \beta_0 + \beta_1 x $
+		\item[]
+		\item We can represent this as $E(y) = \beta_0 + \beta_1 x$
+		\item[] 
+		\item $E(y)$ means the ``expected value'' of $y$ given a specific value of $x$. Equivalently this is the mean of the distribution of $y$ for a given $x$
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The simple linear regression model}
+Model: $y = \beta_0 + \beta_1 x + \varepsilon$
+\begin{itemize}
+	\item $\varepsilon$ is called the random error term
+	\item[]
+	\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$
+	\item[] 
+	\item Since $y$ is a continuous random variable, the values of $y$ have a probability distribution
+	\begin{itemize}
+		\item As an example, let's consider $y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.5
+		\item[]
+		\item And let's consider other $\varepsilon$'s with smaller and larger variances
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The simple linear regression model}
+	$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.5
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{p1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{The simple linear regression model}
+$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 1
+\begin{center}
+	\includegraphics[width=.8\linewidth]{p2}
+\end{center}
+\end{frame}
+
+\begin{frame}{The simple linear regression model}
+$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.25
+\begin{center}
+	\includegraphics[width=.8\linewidth]{p3}
+\end{center}
+\end{frame}
+
+\begin{frame}{Formal assumptions of simple linear regression}
+	\begin{enumerate}
+		\item The relationship between $x$ and $y$ is linear
+		\item[]
+		\item $E(\varepsilon_i) = 0$ for all $i$
+		\item[]
+		\item $Var(\varepsilon_i) = \sigma^2$ for all $i$
+		\item[]
+		\item The errors are independent of each other
+		\item[]
+		\item The errors are all normally distributed. $\varepsilon_i$ is normally distributed for all $i$
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Violations}
+The relationship between $x$ and $y$ is \emph{not} linear
+\begin{center}
+	\includegraphics[width=.8\linewidth]{p4}
+\end{center}
+\end{frame}
+
+\begin{frame}{Violations}
+$E(\varepsilon_i) \neq 0$ for all $i$
+\begin{center}
+	\includegraphics[width=.8\linewidth]{p5}
+\end{center}
+\end{frame}
+
+\begin{frame}{Violations}
+$Var(\varepsilon_i) \neq \sigma^2$ for all $i$
+\begin{center}
+	\includegraphics[width=.8\linewidth]{p6}
+\end{center}
+\end{frame}
+
+\begin{frame}{Violations}
+The errors are \emph{not} independent of each other
+\begin{center}
+	\includegraphics[width=.8\linewidth]{p7}
+\end{center}
+\end{frame}
+
+\section{Estimating model parameters}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Estimating model parameters}
+	\begin{itemize}
+		\item Model: $y = \beta_0 + \beta_1 x + \varepsilon$
+		\begin{itemize}
+			\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$
+			\item[]
+		\end{itemize}
+		\item We want to determine regression line or prediction equation: $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+	\begin{itemize}
+		\item You want to determine a regression line for predicting Systolic Blood Pressure (SBP) from cortisol concentration 
+		\item Some data:
+		\begin{center}
+			\begin{tabular}{rrr}
+				\hline
+				Person& Cortisol ($x$) & SBP ($y$) \\ 
+				\hline
+				1 & 16.10 & 128.38 \\ 
+				2 & 11.85 & 115.04 \\ 
+				3 & 12.25 & 118.98 \\ 
+				4 & 16.45 & 121.64 \\ 
+				5 & 10.50 & 115.76 \\ 
+				6 & 10.86 & 110.81 \\ 
+				7 & 14.45 & 124.86 \\ 
+				8 & 12.90 & 123.01 \\ 
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+First, a scatterplot:
+\begin{center}
+	\includegraphics[width=.7\linewidth]{p8}
+\end{center}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+And now our goal:
+\begin{center}
+	\includegraphics[width=.7\linewidth]{p9}
+\end{center}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
+\begin{center}
+	\includegraphics[width=.7\linewidth]{p9b.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Process}
+	\begin{itemize}
+		\item We want to find $\hat{\beta}_0$ and $\hat{\beta}_1$ to minimize:
+		\begin{gather*}
+			\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2 = \sum_{i=1}^{n} \left[y_i - \left(\hat{\beta}_0 + \hat{\beta}_1 x\right)^2\right]
+		\end{gather*}
+		\item The \textbf{least-squares estimates of the slope and intercept} are:
+		\begin{gather*}
+			\hat{\beta}_1 = \frac{S_{xy}}{S_{xx}}\quad \text{and} \quad \hat{\beta}_0 = \bar{y}-\hat{\beta}_1 \bar{x}
+		\end{gather*}
+		where:
+		\begin{gather*}
+			S_{xy} = \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) \quad \text{and} \quad S_{xx} = \sum_{i=1}^{n}\left(x_i - \bar{x}\right)^2
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\end{document}

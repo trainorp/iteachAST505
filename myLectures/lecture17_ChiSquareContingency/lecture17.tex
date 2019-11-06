@@ -1,4 +1,4 @@
-\documentclass[xcolor=dvipsnames]{beamer} 
+\documentclass[xcolor=dvipsnames]{beamer}
 \usetheme{AnnArbor}
 \usecolortheme{beaver}
 
@@ -47,24 +47,24 @@
 		\begin{enumerate}
 			\item The experiment consists of $n$ identical trials
 			\item[]
-			\item Each trial results in one of $p$ outcomes
+			\item Each trial results in one of $k$ outcomes
 			\item[]
-			\item The probability that a single trial will result in an outcome $j$ is $\pi_j$ (for $j=1, 2, \hdots, p$), which remains constant from trial to trial. $\sum_{j=1}^p \pi_j = 1$
+			\item The probability that a single trial will result in an outcome $i$ is $\pi_i$ (for $i=1, 2, \hdots, p$), which remains constant from trial to trial. $\sum_{i=1}^k \pi_i = 1$
 			\item[]
 			\item The trials are independent
 			\item[]
-			\item We are interested in $n_j$, the number of trials that results in outcome $j$. $\sum_{j=1}^p n_j = n$
+			\item We are interested in $n_i$, the number of trials that results in outcome $i$. $\sum_{i=1}^k n_i = n$
 		\end{enumerate}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{The multinomial distribution}
 	\begin{itemize}
-		\item \textbf{The multinomial distribution}: The probability distribution for the number of observations for each of the $p$ outcomes is the multinomial distribution
+		\item \textbf{The multinomial distribution}: The probability distribution for the number of observations for each of the $k$ outcomes is the multinomial distribution
 		\item[]
 		\item The probability distribution function for the multinomial distribution function is:
 		\begin{gather*}
-			P(n_1, n_2, \hdots, n_p) = \frac{n!}{n_1!n_2!\hdots n_p!}\pi_1^{n_1}\pi_2^{n_2}\hdots \pi_p^{n_p}
+			P(n_1, n_2, \hdots, n_k) = \frac{n!}{n_1!n_2!\hdots n_k!}\pi_1^{n_1}\pi_2^{n_2}\hdots \pi_k^{n_k}
 		\end{gather*}
 	\end{itemize}
 \end{frame}
@@ -75,7 +75,7 @@
 		\item[]
 		\item Given the multinomial probability distribution function:
 		\begin{gather*}
-			P(n_1, n_2, \hdots, n_p) = \frac{n!}{n_1!n_2!\hdots n_p!}\pi_1^{n_1}\pi_2^{n_2}\hdots \pi_p^{n_p} \\
+			P(n_1, n_2, \hdots, n_k) = \frac{n!}{n_1!n_2!\hdots n_k!}\pi_1^{n_1}\pi_2^{n_2}\hdots \pi_k^{n_k} \\
 			P(4, 4, 2) = \frac{10!}{4!4!2!}(0.375)^{4}(0.345)^{4}(0.280)^{2} = 0.0692
 		\end{gather*}
 	\end{itemize}
@@ -85,7 +85,7 @@
 	\begin{itemize}
 		\item When we make inferences regarding multiple proportions, we will need to compute the expected number of outcomes from a multinomial distribution
 		\item[]
-		\item \textbf{Expected number of outcomes:} To determine the expected number of outcomes from $n$ trials, we determine $E_j = n\times \pi_j$ for each outcome $j$
+		\item \textbf{Expected number of outcomes:} To determine the expected number of outcomes from $n$ trials, we determine $E_i = n\times \pi_i$ for each outcome $i$
 	\end{itemize}
 \end{frame}
 
@@ -115,9 +115,9 @@
 		\item[]
 		\item The quantity:
 		\begin{gather*}
-			X^2 = \sum_{j=1}^p \frac{(n_j-E_j)^2}{E_j}
+			X^2 = \sum_{i=1}^k \frac{(n_i-E_i)^2}{E_i}
 		\end{gather*}
-		measures this agreement (or disagreement) and has a chi-squared distribution with $p-1$ degrees of freedom if the $E_j$'s are fairly large
+		measures this agreement (or disagreement) and has a chi-squared distribution with $k-1$ degrees of freedom if the $E_i$'s are fairly large
 	\end{itemize}
 \end{frame}
 
@@ -125,17 +125,17 @@
 	\begin{itemize}
 		\item Hypotheses:
 		\begin{itemize}
-			\item $H_0: \pi_j = \pi_{j0}$ for all outcome categories $j = 1, 2, \hdots, p$. The $\pi_{j0}$ are the specified probabilities
-			\item $H_a: \pi_j \neq \pi_{j0}$ for at least one of the outcome categories
+			\item $H_0: \pi_i = \pi_{i0}$ for all outcome categories $i = 1, 2, \hdots, k$. The $\pi_{i0}$ are the specified probabilities
+			\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories
 			\item[]
 		\end{itemize}
 	\item Test statistic: 
 	\begin{gather*}
-		X^2 = \sum_{j=1}^p \frac{(n_j-E_j)^2}{E_j}
+		X^2 = \sum_{i=1}^k \frac{(n_i-E_i)^2}{E_i}
 	\end{gather*}
-	where $n_j$ is the observed number in outcome category $j$, and $E_j=n \times \pi_{j0}$ is the expected number under $H_0$
+	where $n_i$ is the observed number in outcome category $i$, and $E_i=n \times \pi_{i0}$ is the expected number under $H_0$
 	\item[]
-	\item Rejection rule: Reject $H_0$ if $X^2 > \chi_{\alpha,\text{df}=p-1}^2$, with level of significance $P(\chi^2 > X)$
+	\item Rejection rule: Reject $H_0$ if $X^2 > \chi_{\alpha,\text{df}=k-1}^2$, with level of significance $P(\chi^2 > X)$
 	\end{itemize}
 \end{frame}
 
@@ -160,7 +160,7 @@
 		\item Hypotheses:
 		\begin{itemize}
 			\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$
-			\item $H_a: \pi_j \neq \pi_{j0}$ for at least one of the outcome categories
+			\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories
 			\item[]
 		\end{itemize}
 	\item Germantown Goodness-of-Fit test:
@@ -182,7 +182,7 @@
 	\item Hypotheses:
 	\begin{itemize}
 		\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$
-		\item $H_a: \pi_j \neq \pi_{j0}$ for at least one of the outcome categories
+		\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories
 		\item[]
 	\end{itemize}
 	\item Germantown Goodness-of-Fit test:
@@ -190,7 +190,7 @@
 	\begin{center}
 		\begin{tabular}{cccc}
 			\hline
-			Response & Observed & Expected & $\frac{(n_j-E_j)^2}{E_j}$ \\ \hline \hline
+			Response & Observed & Expected & $\frac{(n_i-E_i)^2}{E_i}$ \\ \hline \hline
 			Approve & 55 & $100 \times 0.573 = 57.3$ & $\frac{(55-57.3)^2}{57.3} = 0.09232$\\
 			Disapprove & 33 & $100 \times 0.332 = 33.2$ & $\frac{(33-33.2)^2}{33.2} = 0.00120$\\
 			No opinion & 12 & $100 \times 0.095 = 9.5$ & $\frac{(12-9.5)^2}{9.5}=0.65789$\\ \hline
@@ -199,7 +199,7 @@
 	\vspace{1mm}
 	\item Test statistic: 
 	\begin{gather*}
-	X^2 = \sum_{j=1}^p \frac{(n_j-E_j)^2}{E_j} = 0.09232 + 0.00120 + 0.65789 = 0.75141
+	X^2 = \sum_{i=1}^k \frac{(n_i-E_i)^2}{E_i} = 0.09232 + 0.00120 + 0.65789 = 0.75141
 	\end{gather*}
 	\item p-value: $P(\chi^2 > 0.75141) = 0.6868$
 \end{itemize}
@@ -210,7 +210,7 @@
 	\item Hypotheses:
 	\begin{itemize}
 		\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$
-		\item $H_a: \pi_j \neq \pi_{j0}$ for at least one of the outcome categories
+		\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories
 		\item[]
 	\end{itemize}
 	\item ``South End'' Goodness-of-Fit test:
@@ -218,7 +218,7 @@
 		\begin{center}
 			\begin{tabular}{cccc}
 				\hline
-				Response & Observed & Expected & $\frac{(n_j-E_j)^2}{E_j}$ \\ \hline \hline
+				Response & Observed & Expected & $\frac{(n_i-E_i)^2}{E_i}$ \\ \hline \hline
 				Approve & 42 & $100 \times 0.573 = 57.3$ & $\frac{(42-57.3)^2}{57.3} = 4.0853$\\
 				Disapprove & 49 & $100 \times 0.332 = 33.2$ & $\frac{(49-33.2)^2}{33.2} = 7.5193$\\
 				No opinion & 9 & $100 \times 0.095 = 9.5$ & $\frac{(9-9.5)^2}{9.5}=0.02632$\\ \hline
@@ -227,7 +227,7 @@
 	\vspace{1mm}
 	\item Test statistic: 
 	\begin{gather*}
-	X^2 = \sum_{j=1}^p \frac{(n_j-E_j)^2}{E_j} = 4.0853 + 7.5193 + 0.02632 = 11.63092
+	X^2 = \sum_{i=1}^k \frac{(n_i-E_i)^2}{E_i} = 4.0853 + 7.5193 + 0.02632 = 11.63092
 	\end{gather*}
 	\item p-value: $P(\chi^2 > 11.63092) = 0.00298$
 \end{itemize}
@@ -237,7 +237,7 @@
 	\begin{itemize}
 		\item The Chi-square distribution is the sampling distribution in approximation only
 		\item[]
-		\item It isn't always a great approximation. We should not use this test if $E_j <1$ for any $j$, or if more than 20\% of the $E_j$'s are less than 5
+		\item It isn't always a great approximation. We should not use this test if $E_i <1$ for any $i$, or if more than 20\% of the $E_i$'s are less than 5
 		\item[]
 		\item If that assumption is not met there are exact tests. We don't discuss, but can be done in software
 	\end{itemize}
@@ -500,19 +500,138 @@
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
-\begin{frame}{$\chi^2$ test of homogeneity}{Example}
-\begin{itemize}
-	\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is there an association between Apolipoprotein C-I (ApoCI) genotype and Alzheimer's disease? 
+\begin{frame}{$\chi^2$ test of homogeneity}
 	\begin{itemize}
-		\item This was studied by Shi, J., et al. (2003). doi: 10.1034/j.1600-0404.2003.00193.x
-		\item The authors recruited a cohort of 257 patients with Alzheimer's disease and 242 age-matched controls
+		\item The $\chi^2$ test of independence described earlier is for when you have a sample from one population and would like to determine if two categorical variables are dependent / independent
+		\item[]
+		\item Now we consider the situation that you have a sample from two or more populations / sub-populations and you wish to compare the distribution of observations across two categorical variables 
+		\item[]
+		\item This is a slightly different type of problem \emph{with the same statistical hypothesis testing framework}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of homogeneity}
+	\begin{itemize}
+		\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without Alzheimer's disease? 
+		\item[]
+		\item This was studied in a Chinese population by Shi, J., et al. (2003). doi: 10.1034/j.1600-0404.2003.00193.x
+		\item[]
+		\item The researchers recruited a cohort of 257 patients with Alzheimer's disease and 242 age-matched controls
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of homogeneity}{Hypotheses}
+\begin{itemize}
+	\item Hypotheses:
+	\begin{itemize}
+		\item $H_0: (\pi_{11}, \pi_{21}, \hdots, \pi_{r1})=(\pi_{12}, \pi_{22}, \hdots, \pi_{r2})=\dots = (\pi_{13}, \pi_{23}, \hdots, \pi_{r3})$
+		\item $H_a: \pi_{ij}$ are not equal across populations / sub-populations
 		\item[]
 	\end{itemize}
-	\item Hypotheses: 
+	\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without the disease? 
+	\item[]
+	\item This was studied in a Chinese population by Shi, J., et al. (2003). doi: 10.1034/j.1600-0404.2003.00193.x
+	\item[]
+	\item The researchers recruited a cohort of 257 patients with Alzheimer's disease and 242 age-matched controls
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of homogeneity}{Example}
+\begin{itemize}
+	\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without the disease? 
+	\item[]
+	\item Hypotheses:
 	\begin{itemize}
-		\item $H_0:$ The genotype and Alzheimer's status are independent 
-		\item $H_a:$ The genotype and Alzheimer's status are dependent (associated)
+		\item $H_0: (\pi_{11}, \pi_{21}, \hdots, \pi_{r1})=(\pi_{12}, \pi_{22}, \hdots, \pi_{r2})=\dots = (\pi_{13}, \pi_{23}, \hdots, \pi_{r3})$
+		\item $H_a: \pi_{ij}$ are not equal across populations / sub-populations
+		\item[]
 	\end{itemize}
+	\item The data from that study:
+	\begin{center}
+		\begin{tabular}{c|cc}
+			\hline
+			\textbf{ApoCI genotype} & \textbf{Alzheimer's (AD)} & \textbf{No AD} \\ \hline
+			AA & 14 & 5 \\
+			AB & 99 & 87 \\
+			BB & 144 & 150 \\ \hline
+		\end{tabular}
+	\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of homogeneity}{Example}
+\begin{itemize}
+	\item The data from that study:
+	\begin{center}
+		\begin{tabular}{c|cc|c}
+			\hline
+			\textbf{ApoCI genotype} & \textbf{Alzheimer's (AD)} & \textbf{No AD} & \textbf{Total} \\ \hline
+			AA & 14 & 5 &  19\\
+			AB & 99 & 87 &  186\\
+			BB & 144 & 150 &  294\\ \hline
+			\textbf{Total} & 257 & 242 & 499
+		\end{tabular}
+	\end{center}
+	\item[]
+	\item Using the formula $\hat{E}_{ij} = \frac{(n_{i.})(n_{.j})}{n}$:
+	\begin{center}
+	\begin{tabular}{c|cc|c}
+		\hline
+		\textbf{ApoCI genotype} & \textbf{Alzheimer's (AD)} & \textbf{No AD} & \textbf{Total}\\ \hline
+		AA &   9.7856 &   9.2144 & 19\\
+		AB &  95.7956&   90.2044 & 186\\
+		BB & 151.4188 & 142.5812 & 294\\ \hline
+		\textbf{Total} & 257 & 242 & 499
+	\end{tabular}
+\end{center}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of homogeneity}{Example}
+	\begin{itemize}
+		\item Using the formula $\hat{E}_{ij} = \frac{(n_{i.})(n_{.j})}{n}$:
+		\begin{center}
+			\begin{tabular}{c|cc|c}
+				\hline
+				\textbf{ApoCI genotype} & \textbf{Alzheimer's (AD)} & \textbf{No AD} & \textbf{Total}\\ \hline
+				AA &   9.7856 &   9.2144 & 19\\
+				AB &  95.7956&   90.2044 & 186\\
+				BB & 151.4188 & 142.5812 & 294\\ \hline
+				\textbf{Total} & 257 & 242 & 499
+			\end{tabular}
+		\end{center}
+	\item Table of values, $\frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}$
+			\begin{center}
+		\begin{tabular}{c|cc}
+			\hline
+			\textbf{ApoCI genotype} & \textbf{Alzheimer's (AD)} & \textbf{No AD}\\ \hline
+			AA& 1.8150310& 1.9275446\\
+			AB& 0.1071884& 0.1138324\\
+			BB& 0.3634859& 0.3860158\\ \hline
+		\end{tabular}
+	\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$\chi^2$ test of homogeneity}{Example}
+\begin{itemize}
+	\item Table of values, $\frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}$
+	\begin{center}
+		\begin{tabular}{c|cc}
+			\hline
+			\textbf{ApoCI genotype} & \textbf{Alzheimer's (AD)} & \textbf{No AD}\\ \hline
+			AA& 1.8150310& 1.9275446\\
+			AB& 0.1071884& 0.1138324\\
+			BB& 0.3634859& 0.3860158\\ \hline
+		\end{tabular}
+	\end{center}
+		\item Test statistic:
+		\begin{gather*}
+		X^2 = \sum_{i,j} \frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}} = 4.7131
+		\end{gather*}
+		\item Since the degrees of freedom is 2, the p-value is $P(\chi^2 > 4.7131)=0.0947$
+		\item[]
+		\item So there is some evidence that this result would be unlikely due to chance alone; genotype appears to be associated with AD
 \end{itemize}
 \end{frame}
 
@@ -521,9 +640,93 @@
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
-\section{Odds ratios}
-\begin{frame}{Outline}
-\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\begin{frame}{The strength of an association}
+	\begin{itemize}
+		\item Both the $\chi^2$ test of independence and homogeneity tell us how rare it is to see a contingency table such as the one we have observed if the null hypothesis were true
+		\item[]
+		\item However, the level of significance from those tests does not tell us the strength of the association
+		\item[]
+		\item For this we can look directly at the proportions / percentages to make (qualitative) inferences
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Proportions from a contingency table}
+	\begin{itemize}
+		\item Proportions of total:
+		{\scriptsize
+		\begin{center}
+			\begin{tabular}{|l|ccc|}
+				  \hline
+				  & \multicolumn{3}{c|}{Length of Stay (LOS)}\\
+  				Visitation & 2-9 & 10-19 & 20+ \\ \hline
+				Regular          & 0.326& 0.121& 0.023 \\
+				Less than monthly& 0.045& 0.083& 0.076 \\
+				Never            & 0.068& 0.136& 0.121 \\ \hline
+			\end{tabular}
+		\end{center}}
+	 \vspace{1mm}
+		\item Proportions within rows:
+			{\scriptsize
+			\begin{center}
+				\begin{tabular}{|l|ccc|}
+					\hline
+					& \multicolumn{3}{c|}{Length of Stay (LOS)}\\
+					Visitation & 2-9 & 10-19 & 20+ \\ \hline
+				Regular           & 0.694 & 0.258 & 0.048 \\
+				Less than monthly & 0.222 & 0.407 & 0.370 \\
+				Never             & 0.209 & 0.419 & 0.372 \\ \hline
+				\end{tabular}
+		\end{center}}
+	\vspace{1mm}
+		\item Proportions within columns:
+		{\scriptsize
+			\begin{center}
+				\begin{tabular}{|l|ccc|}
+					\hline
+					& \multicolumn{3}{c|}{Length of Stay (LOS)}\\
+					Visitation & 2-9 & 10-19 & 20+ \\ \hline
+				Regular            &0.741  &0.356  &0.103 \\
+				Less than monthly  &0.103  &0.244  &0.345 \\
+				Never              &0.155  &0.400  &0.552 \\ \hline
+				\end{tabular}
+		\end{center}}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Proportions from a contingency table}
+\begin{itemize}
+	\item Proportions within rows:
+	\begin{itemize}
+		\item Of those who receive regular visits, 69.4\% will have a length of stay of 2-9 years, while 4.8\% will have a length of stay of 20+ years
+	\end{itemize}
+	{\scriptsize
+		\begin{center}
+			\begin{tabular}{|l|ccc|}
+				\hline
+				& \multicolumn{3}{c|}{Length of Stay (LOS)}\\
+				Visitation & 2-9 & 10-19 & 20+ \\ \hline
+				Regular           & 0.694 & 0.258 & 0.048 \\
+				Less than monthly & 0.222 & 0.407 & 0.370 \\
+				Never             & 0.209 & 0.419 & 0.372 \\ \hline
+			\end{tabular}
+	\end{center}}
+	\vspace{1mm}
+	\item Proportions within columns:
+	\begin{itemize}
+		\item Of those with a length of stay of 20+ years, 10.3\% will have regular visits compared to 74.1\% for those with a length of stay of 2-9 years 
+	\end{itemize}
+	{\scriptsize
+		\begin{center}
+			\begin{tabular}{|l|ccc|}
+				\hline
+				& \multicolumn{3}{c|}{Length of Stay (LOS)}\\
+				Visitation & 2-9 & 10-19 & 20+ \\ \hline
+				Regular            &0.741  &0.356  &0.103 \\
+				Less than monthly  &0.103  &0.244  &0.345 \\
+				Never              &0.155  &0.400  &0.552 \\ \hline
+			\end{tabular}
+	\end{center}}
+\end{itemize}
 \end{frame}
 
 \end{document}

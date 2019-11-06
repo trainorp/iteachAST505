@@ -50,3 +50,6 @@ df1 %>% group_by(Tissue) %>% summarize(sr = sum(Rank), srn = sr**2 / length(Rank
 round(12/(40*41) * 17928.4 - 3*41, 3)
 
 pchisq(8.1834, 3, lower.tail = FALSE)
+
+diffs <- expand.grid(x = df1$x[df1$Tissue == "Brain"], y = df1$x[df1$Tissue == "Kidney"])
+median(diffs$y - diffs$x)

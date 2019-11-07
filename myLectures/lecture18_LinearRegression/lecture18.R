@@ -103,11 +103,11 @@ summary(lm1)
 
 xtable::xtable(df1)
 
-png(file = "p8.png", height = 5, width = 7, units = "in", res = 600)
+png(file = "p8.png", height = 5, width = 6.5, units = "in", res = 600)
 ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() + theme_bw()
 dev.off()
 
-png(file = "p9.png", height = 5, width = 7, units = "in", res = 600)
+png(file = "p9.png", height = 5, width = 6.5, units = "in", res = 600)
 ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() + 
   geom_abline(slope = 2.0875, intercept = 92.3177, color = "darkblue", lwd = 1.25) + labs(x = "Cortisol (x)", y = "SBP (y)") + 
   theme_bw()

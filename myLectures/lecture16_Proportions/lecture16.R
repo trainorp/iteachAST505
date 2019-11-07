@@ -19,7 +19,12 @@ round(qnorm(1-.10/2),3)
 c(round(piHat - round(sePi, 4) * round(qnorm(1-.10/2),3), 4), 
   round(piHat + round(sePi, 4) * round(qnorm(1-.10/2),3), 4))
 
+seNull <- sqrt(0.5*0.5 / 24)
+(piHat - 0.50) / seNull
+pnorm((piHat - 0.50) / seNull)
+
 prop.test(8, 24, conf.level = .90, correct = FALSE)
+binom.test(8, 24, alternative = "less")
 
 round(round(qnorm(1-.10/2),3) ** 2,3)
 8 + 0.5*(2.706) 

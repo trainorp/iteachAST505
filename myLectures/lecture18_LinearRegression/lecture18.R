@@ -112,3 +112,20 @@ ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() +
   geom_abline(slope = 2.0875, intercept = 92.3177, color = "darkblue", lwd = 1.25) + labs(x = "Cortisol (x)", y = "SBP (y)") + 
   theme_bw()
 dev.off()
+
+#### Parameter extimation ####
+df1$Cortisol - mean(df1$Cortisol)
+df1$SBP - mean(df1$SBP)
+
+(df1$Cortisol - mean(df1$Cortisol)) * (df1$SBP - mean(df1$SBP))
+sum((df1$Cortisol - mean(df1$Cortisol)) * (df1$SBP - mean(df1$SBP)))
+Sxy <- sum((df1$Cortisol - mean(df1$Cortisol)) * (df1$SBP - mean(df1$SBP)))
+(df1$Cortisol - mean(df1$Cortisol))^2
+sum((df1$Cortisol - mean(df1$Cortisol))^2)
+Sxx <- sum((df1$Cortisol - mean(df1$Cortisol))^2)
+
+Sxy / Sxx
+
+119.81 - (2.0875)*(13.17)
+
+predict(lm1)

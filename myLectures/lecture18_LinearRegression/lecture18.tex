@@ -194,10 +194,10 @@ The errors are \emph{not} independent of each other
 
 \begin{frame}{Estimating model parameters}{Example}
 	\begin{itemize}
-		\item You want to determine a regression line for predicting Systolic Blood Pressure (SBP) from cortisol concentration 
+		\item You want to determine a regression line for predicting Systolic Blood Pressure (SBP in mmHg) from cortisol concentration (in mcg/dL)
 		\item Some data:
 		\begin{center}
-			\begin{tabular}{rrr}
+			\begin{tabular}{ccc}
 				\hline
 				Person& Cortisol ($x$) & SBP ($y$) \\ 
 				\hline
@@ -250,6 +250,256 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 		\begin{gather*}
 			S_{xy} = \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) \quad \text{and} \quad S_{xx} = \sum_{i=1}^{n}\left(x_i - \bar{x}\right)^2
 		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+	\begin{itemize}
+		\item Towards finding $S_{xx}$ and $S_{xy}$:
+		\begin{itemize}
+			\item $\bar{x} = 13.17$ and $\bar{y} = 119.81$
+		\end{itemize}
+		\vspace{1mm}
+		\begin{center}
+			\begin{tabular}{ccccc}
+				\hline
+				Person & Cortisol ($x$) & $x-\bar{x}$ & SBP ($y$) & $y-\bar{y}$ \\ 
+				\hline
+				1 & 16.10 & 2.93 & 128.38  & 8.57\\ 
+				2 & 11.85 & -1.32 & 115.04  & -4.77\\ 
+				3 & 12.25 & -0.92 & 118.98  & -0.83\\ 
+				4 & 16.45 & 3.28 & 121.64  & 1.83\\ 
+				5 & 10.50 & -2.67 & 115.76  & -4.05\\ 
+				6 & 10.86 & -2.31 & 110.81  & -9.00\\ 
+				7 & 14.45 & 1.28 & 124.86  & 5.05\\ 
+				8 & 12.90 & -0.27 & 123.01  & 3.20\\ 
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+\begin{itemize}
+	\item Towards finding $S_{xx}$ and $S_{xy}$:
+	\begin{itemize}
+		\item $\bar{x} = 13.17$ and $\bar{y} = 119.81$
+	\end{itemize}
+	\vspace{1mm}
+	\begin{center}
+		\begin{tabular}{cccc}
+			\hline
+		 $x-\bar{x}$ & $y-\bar{y}$ & $(x_i - \bar{x})(y_i - \bar{y})$ & $\left(x_i - \bar{x}\right)^2$ \\ 
+			\hline
+			 2.93 &  8.57& 25.1101 & 8.5849\\ 
+			 -1.32 &  -4.77 & 6.2964 & 1.7424\\ 
+			 -0.92 & -0.83 & 0.7636 & 0.8464 \\ 
+			 3.28 &  1.83 & 6.0024 & 10.7584\\ 
+			 -2.67 &  -4.05 & 10.8135 & 7.1289\\ 
+			 -2.31 &  -9.00 & 20.7900 & 5.3361\\ 
+			 1.28 &  5.05 & 6.4640 & 1.6384\\ 
+			 -0.27 &  3.20 & -0.8640 & 0.0729\\ 
+			\hline
+		\end{tabular}
+	\end{center}
+		\vspace{1mm}
+		\item Then: $S_{xy} = \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) = 75.376$ and $S_{xx} = \sum_{i=1}^{n}\left(x_i - \bar{x}\right)^2 = 36.1084$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+	\begin{itemize}
+		\item Finally, $\hat{\beta}_1 = \frac{S_{xy}}{S_{xx}} =  \frac{75.376}{36.1084}  = 2.0875$
+		\item[]
+		\item And, $\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x} = 119.81 - (2.0875)(13.17) = 92.3177 $
+		\item[]
+		\item Interpretation of the model parameters:
+		\begin{itemize}
+			\item $\hat{\beta}_1$: For each one-unit increase in $x$ (that is an increase of 1 mcg/dL in cortisol) we expect a 2.0875 unit increase in $y$ (that is an increase of 2.0875 mmHg in SBP)
+			\item[]
+			\item $\hat{\beta}_0$: When $x$ is zero, we expect $y$ to be 92.3177 (that is if the cortisol level in mcg/dL was 0, SBP would be expected to be 92.3177 mmHg)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Predicted values \& residuals}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Predicted values}
+	\begin{itemize}
+		\item For each of the $x$ values in the data, we have $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$
+		\vspace{1mm}
+		\begin{center}
+			\begin{tabular}{cccc}
+				\hline
+				Person& Cortisol ($x$) & SBP ($y$)  & $\hat{y}$ \\ 
+				\hline
+				1 & 16.10 & 128.38  & 125.9264\\ 
+				2 & 11.85 & 115.04  & 117.0545\\ 
+				3 & 12.25 & 118.98  & 117.8895\\ 
+				4 & 16.45 & 121.64  & 126.6570\\ 
+				5 & 10.50 & 115.76  & 114.2364\\ 
+				6 & 10.86 & 110.81  & 114.9879\\ 
+				7 & 14.45 & 124.86  & 122.4820\\ 
+				8 & 12.90 & 123.01  & 119.2464 \\ 
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+      
+\begin{frame}{Residuals}
+	\begin{itemize}
+		\item In the model $y = \beta_0 + \beta_1 x + \varepsilon$
+		\begin{itemize}
+			\item $\varepsilon$ is a normally distributed random variable
+			\item $\varepsilon$ has mean zero and variance $\sigma^2_{\varepsilon}$
+			\vspace{1mm}
+			\begin{center}
+				\includegraphics[width=.6\linewidth]{IMG_20191104_224711}
+			\end{center}
+		\end{itemize} 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Residuals}
+\begin{itemize}
+	\item In the model $y = \beta_0 + \beta_1 x + \varepsilon$
+	\begin{itemize}
+		\item $\varepsilon$ is a normally distributed random variable
+		\item $\varepsilon$ has mean zero and variance $\sigma^2_{\varepsilon}$
+		\item[]
+	\end{itemize} 
+	\item \textbf{Residual.} A residual is the difference between an observed $y$ value and the predicted value from the model: $y_i - \hat{y}_i$
+	\item[]
+	\item The quantity: 
+	\begin{gather*}
+		s^2_{\varepsilon} = \frac{\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2}{n-2}
+	\end{gather*}
+	is an estimate of $\sigma^2_{\varepsilon}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Residuals}
+	\begin{itemize}
+		\item This quantity is a ``mean square'' found by dividing a sum of squares by the right degrees of freedom:
+		\begin{gather*}
+		s^2_{\varepsilon} = \frac{\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2}{n-2} = \frac{\text{SS}(\text{Error})}{n-2}
+		\end{gather*}
+		\begin{itemize}
+			\item $n-2$ is the right degrees of freedom as the reduction from $n$ to $n-2$ occurs from estimating $\beta_0$ and $\beta_1$
+			\item[]
+			\item The estimated variance of $\varepsilon$ may be seen from software as MSE(Error), or MS(Residual)
+			\item[]
+			\item The square root of $s_{\varepsilon}^2$, that is $s_{\varepsilon}$ is called the residual standard error or residual standard deviation
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Residuals}{Example}
+	\begin{itemize}
+		\item Now we can add the residuals:
+		\vspace{1mm}
+		\begin{center}
+			\begin{tabular}{ccccc}
+				\hline
+				Person& Cortisol ($x$) & SBP ($y$)  & $\hat{y}$ & $y_i - \hat{y}_i$ \\ 
+				\hline
+				1 & 16.10 & 128.38  & 125.9264 & 2.454\\ 
+				2 & 11.85 & 115.04  & 117.0545 & -2.015\\ 
+				3 & 12.25 & 118.98  & 117.8895 & 1.090\\ 
+				4 & 16.45 & 121.64  & 126.6570 & -5.017\\ 
+				5 & 10.50 & 115.76  & 114.2364 & 1.524\\ 
+				6 & 10.86 & 110.81  & 114.9879 & -4.178\\ 
+				7 & 14.45 & 124.86  & 122.4820 & 2.378\\ 
+				8 & 12.90 & 123.01  & 119.2464 &  3.764\\ 
+				\hline
+			\end{tabular}
+		\end{center}
+	\vspace{1mm}
+	\item And: 	$s^2_{\varepsilon} = \frac{\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2}{n-2} = \frac{76.042}{6} = 12.674$ and $s_{\varepsilon}=3.560$
+	\end{itemize}
+\end{frame}
+
+\section{Inference regarding regression parameters}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_1$}
+	\begin{itemize}
+		\item $\hat{\beta}_0$, $\hat{\beta}_1$, $s^2_{\varepsilon}$ are all point estimates of population parameters: $\beta_0$, $\beta_1$, and $\sigma^2_{\varepsilon}$
+		\item[]
+		\item Standard error of $\hat{\beta}_1$:
+		\begin{itemize}
+			\item For $\beta_1$, the standard error is given by $\sigma_{\hat{\beta}_1} = \sigma_{\varepsilon} \sqrt{\frac{1}{S_{xx}}}$
+			\item[]
+			\item We don't know $\sigma_{\varepsilon}$, so we estimate it by $s_{\varepsilon}$ (the residual standard deviation / residual standard error)
+			\item[]
+		\end{itemize}
+	\item From our cortisol and SBP example: $\hat{\beta}_1 = 2.0875$, $S_{xx} = 36.1084$, and $s_{\varepsilon}=3.560$, so:
+	\begin{gather*}
+		\hat{\sigma}_{\hat{\beta}_1} = s_{\varepsilon} \sqrt{1/S_{xx}} = {s_{\varepsilon} / \sqrt{S_{xx}}}= 3.560 \sqrt{1/36.1084} = 0.5924
+	\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_1$}{Hypothesis tests}
+	\begin{itemize}
+		\item Hypotheses:
+		\begin{itemize}
+			\item \textbf{Case 1.} $H_0: \beta_1 \leq 0$ versus $H_a: \beta_1 > 0$
+			\item \textbf{Case 2.} $H_0: \beta_1 \geq 0$ versus $H_a: \beta_1 < 0$
+			\item \textbf{Case 3.} $H_0: \beta_1 = 0$ versus $H_a: \beta_1 \neq 0$
+			\item[]
+		\end{itemize}
+	\item Test statistic:
+	\begin{gather*}
+		t^*=\frac{\hat{\beta}_1-0}{s_{\varepsilon} / \sqrt{S_{xx}}}
+	\end{gather*}
+	\item Rejection rule. For $\text{df} = n-2$ and Type I error $\alpha$
+	\begin{itemize}
+		\item Reject $H_0$ if $t^* > t_{\alpha}$ with p-value $P(t \geq t^*)$
+		\item Reject $H_0$ if $t^* < -t_{\alpha}$ with p-value $P(t \leq t^*)$
+		\item Reject $H_0$ if $|t^*| > t_{\alpha / 2}$ with p-value $2\times P(t \geq |t^*|)$
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_1$}{Hypothesis tests example}
+	\begin{itemize}
+		\item Research question: Is there an association between cortisol and SBP?
+		\item[]
+		\item Hypotheses: $H_0: \beta_1 = 0$ versus $H_a: \beta_1 \neq 0$
+		\begin{itemize}
+			\item There is not an expected linear change in SBP given change in the level of cortisol
+			\item[]
+		\end{itemize}
+		\item Test statistic: $t^*=\frac{\hat{\beta}_1-0}{s_{\varepsilon} / \sqrt{S_{xx}}}= \frac{2.0875}{0.5924}=3.5238$
+		\item[]
+		\item p-value $2\times P(t \geq |t^*|) = 2 \times P(t \geq 3.5238) = 0.0125$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_1$}{Confidence intervals}
+\begin{itemize}
+	\item For a $100(1-\alpha)\%$ confidence interval for a slope parameter: $\left(\hat{\beta}_1 - t_{\alpha / 2} {s_{\varepsilon} / \sqrt{S_{xx}}},\; \hat{\beta}_1 + t_{\alpha / 2} {s_{\varepsilon} / \sqrt{S_{xx}}}\right)$
+	\item[]
+	\item For our example, we have a 95\% confidence for the change in SBP ($y$) expected for a unit change in cortisol ($x$):
+	\begin{gather*}
+		\left(\hat{\beta}_1 - t_{\alpha / 2} {s_{\varepsilon} / \sqrt{S_{xx}}},\; \hat{\beta}_1 + t_{\alpha / 2} {s_{\varepsilon} / \sqrt{S_{xx}}}\right) \\ 
+		(2.0875 - 2.447(0.5924), 2.0875 + 2.447(0.5924))
+		\\
+		(0.6378,\; 3.5372)
+	\end{gather*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_1$}{$F$-test}
+	\begin{itemize}
+		\item $F$-tests
 	\end{itemize}
 \end{frame}
 

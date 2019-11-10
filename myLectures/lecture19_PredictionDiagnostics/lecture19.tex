@@ -1,0 +1,170 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\usetheme{AnnArbor}
+\usecolortheme{beaver}
+
+\usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+\definecolor{mycol}{rgb}{.4,.85,1}
+\setbeamercolor{title}{bg=mycol,fg=black} 
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
+\setbeamercolor{block title}{fg=white,bg=red!50!black}
+% \setbeamercolor{block title}{fg=white,bg=blue!75!black}
+
+\newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
+
+\title[Lecture 18]{Lecture 18: Parameter Estimation in Linear Regression}
+\author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
+\institute[NMSU]{New Mexico State University}
+\date{November}
+
+\begin{document}
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Model diagnostics}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item When we estimate a linear regression model, we want to know how good the model fits the data
+		\item[]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Leverage and Influence}
+	\begin{itemize}
+		\item \textbf{High leverage point:} A point in the dataset that is an outlier in $x$, has greater weight in the estimatation of the slope
+		\item[]
+		\item \textbf{High influence point:} A point that is a high leverage point and also an oulier in $y$. The great weight it has in the estimation of the slope will dramatically alter the estimate of the slope (inappropriately)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Leverage and Influence}
+A high leverage point: $\hat{\beta}_1$ changes from 2.0875 to 2.1378
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/p10}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Leverage and Influence}
+A high influence point: $\hat{\beta}_1$ changes from 2.0875 to 1.0954
+\begin{center}
+	\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/p11}
+\end{center}
+\end{frame}
+
+\begin{frame}{Leverage and Influence}
+A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
+\begin{center}
+	\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/p12}
+\end{center}
+\end{frame}
+
+\begin{frame}{The accuracy of $\hat{\beta}_1$}
+	\begin{itemize}
+		\item The standard error of $\hat{\beta}_1$ informs us how accurately we can estimate the population value $\beta_1$
+		\item[]
+		\item From $\sigma_{\hat{\beta}_1} = \frac{\sigma_{\varepsilon}}{\sqrt{S_{xx}}}$ we can see that:
+		\begin{itemize}
+			\item The less variability there is in $y$ for a given value of $x$, the more accurately we can estimate $\beta_1$
+			\item[]
+			\item The greater $S_{xx}$, the more accurately we can estimate $\beta_1$
+			\item[]
+			\item ``The slope is the predicted change in y per unit change in $x$; if $x$ changes very little in the data, so that $S_{xx}$ is small, it is difficult to estimate the rate of change in $y$ accurately''
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The accuracy of $\hat{\beta}_0$}
+	\begin{itemize}
+		\item The standard error of $\hat{\beta}_0$ informs us how accurately we can estimate the population value $\beta_0$
+		\item[]
+		\item From $\sigma_{\hat{\beta}_0} = \sigma_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}$ we can see that:
+		\begin{itemize}
+			\item The greater $\bar{x}^2$ is, the less accuracy we have in estimating $\beta_0$
+			\item[]
+			\item $\beta_0$ is the $y$ value for $x = 0$. Consequently if most of the $x$ values are far away from zero, it is hard to estimate $y$ at $x = 0$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Sum of Squares}
+	\begin{itemize}
+		\item Recall that
+		\begin{gather*}
+		s^2_{\varepsilon} = \frac{\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2}{n-2} = \frac{\text{SS}(\text{Error})}{n-2}
+		\end{gather*}
+		is an estimate of $\sigma_{\varepsilon}^2$
+		\item[]
+		\item We have the following sum of squares:
+		\begin{itemize}
+			\item Error or residual sum of squares: $\sum_{i=1}^n (y_i - \hat{y}_i)^2$
+			\item[]
+			\item Model or regression sum of squares: $\sum_{i=1}^n (\hat{y}_i-\bar{y})^2$
+			\item[]
+			\item Total sum of squares: $\sum_{i=1}^n (y_i -\bar{y})^2 = \text{SS}(\text{Regression})+\text{SS}(\text{Error})$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{A Sum of Squares $F$-test}
+	\begin{itemize}
+		\item If we determine the ratio of the model/regression mean square to the error or residual mean square it tells us the ratio of the variability that is accounted for by the model, versus that which is not
+		\item[]
+		\item Under the null hypothesis that the model has no predictive value, this ratio will have an $F$-distribution 
+		\item[]
+		\item For our simple linear model, ``no predictive value'' corresponds to $\beta_1 = 0$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Regression model $F$-test}
+	\begin{itemize}
+		\item Hypotheses. $H_0: \beta_1 = 0$ versus $H_a: \beta_1 \neq 0$
+		\item[]
+		\item Test statistic:
+		\begin{gather*}
+		F^*= \frac{\text{MS}(\text{Regression})}{\text{MS}(\text{Error})}
+		\end{gather*}
+		\item Rejection rule: Reject $H_0$ if $F^*> F_{\alpha}$ given $\text{df}_1=1$ and $\text{df}_2=n-2$
+		\item[]
+		\item $p-value$: $P(F > F^*)$ given $\text{df}_1=1$ and $\text{df}_2=n-2$
+		\item[]
+		\item This test will be equivalent to the $t$-test regarding $\beta_1$ for simple linear regression
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{$F$-test example}
+	\begin{itemize}
+		\item Back to the example of predicting SBP from cortisol level:
+		\begin{itemize}
+			\item Regression sum of squares: 157.347
+			\item $\text{MS}(\text{Regerssion}) = 157.347 / 1 = 157.347$
+			\item Error sum of squares: 76.034
+			\item $\text{MS}(\text{Error}) = 76.034 / 6 = 12.672$
+			\item[]
+		\end{itemize}
+		\item So for testing whether the model has predictive value ($H_a$), versus it does not, $H_0$:
+		\begin{gather*}
+			F^*= \frac{\text{MS}(\text{Regression})}{\text{MS}(\text{Error})} = \frac{157.347}{12.672} = 12.417
+		\end{gather*}
+		\item The p-value for this test is $P(F \geq F^*) = P(F \geq 12.417) = 0.01246$,  given $\text{df}_1=1$ and $\text{df}_2=n-2 = 6$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Prediction}
+	content...
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_1$}{$F$-test}
+\begin{itemize}
+	\item $F$-tests
+\end{itemize}
+\end{frame}
+
+\end{document}

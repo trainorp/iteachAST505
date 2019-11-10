@@ -11,7 +11,7 @@
 
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
 
-\title[Lecture 18]{Lecture 18: Linear Regression}
+\title[Lecture 18]{Lecture 18: Parameter Estimation in Linear Regression}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
 \date{November}
@@ -485,11 +485,15 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Inference regarding $\beta_1$}{Confidence intervals}
 \begin{itemize}
-	\item For a $100(1-\alpha)\%$ confidence interval for a slope parameter: $\left(\hat{\beta}_1 - t_{\alpha / 2} {s_{\varepsilon} / \sqrt{S_{xx}}},\; \hat{\beta}_1 + t_{\alpha / 2} {s_{\varepsilon} / \sqrt{S_{xx}}}\right)$
-	\item[]
+	\item For a $100(1-\alpha)\%$ confidence interval for a slope parameter: 
+	\begin{gather*}
+		\hat{\beta}_1 \pm t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}} \\
+		\left(\hat{\beta}_1 - t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}},\; \hat{\beta}_1 + t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}}\right)
+	\end{gather*}
+
 	\item For our example, we have a 95\% confidence for the change in SBP ($y$) expected for a unit change in cortisol ($x$):
 	\begin{gather*}
-		\left(\hat{\beta}_1 - t_{\alpha / 2} {s_{\varepsilon} / \sqrt{S_{xx}}},\; \hat{\beta}_1 + t_{\alpha / 2} {s_{\varepsilon} / \sqrt{S_{xx}}}\right) \\ 
+		\left(\hat{\beta}_1 - t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}},\; \hat{\beta}_1 + t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}}\right) \\ 
 		(2.0875 - 2.447(0.5924), 2.0875 + 2.447(0.5924))
 		\\
 		(0.6378,\; 3.5372)
@@ -497,10 +501,42 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Inference regarding $\beta_1$}{$F$-test}
+\begin{frame}{Inference regarding $\beta_0$}{Hypothesis tests}
 	\begin{itemize}
-		\item $F$-tests
+		\item The estimated standard error of $\beta_0$ is given by $\hat{\sigma}_{\hat{\beta}_0} = s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}$
+		\item[]
+		\item This allows us to test hypotheses regarding the value of $\beta_0$
+		\begin{itemize}
+			\item Many software by the default do $t$-tests regarding $\beta_0$, testing $H_0: \beta_0 = 0$, versus $\beta_0 \neq 0$
+			\item[]
+			\item Often this is not of interest. In our cortisol predicting SBP example, we know that even if a person had no cortisol, SBP would be greater than zero (or the person would be dead)
+			\item[]
+			\item The procedure would be the same as for tests involving $\beta_1$
+		\end{itemize}
+		
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_0$}{Confidence intervals}
+	\begin{itemize}
+		\item For a $100(1-\alpha)\%$ confidence interval for an intercept parameter: 
+		\begin{gather*}
+		\hat{\beta}_0 \pm t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}} \\
+		\left(\hat{\beta}_0 - t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}},\; \hat{\beta}_0 + t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}}\right)
+		\end{gather*}
+		\item For the intercept of our model for predicting SBP from cortisol concentration:
+		\begin{gather*}
+		\left(\hat{\beta}_0 - t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}},\; \hat{\beta}_0 + t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}}\right) \\
+		(92.3177 - 2.447(3.56)(2.220), \; 92.3177 - 2.447(3.56)(2.220)) \\
+		(72.979,\; 111.656)
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecture \#18}
+	\begin{center}
+		\includegraphics[width=.9 \linewidth]{DSC_0379_01}
+	\end{center}
 \end{frame}
 
 \end{document}

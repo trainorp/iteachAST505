@@ -129,3 +129,65 @@ Sxy / Sxx
 119.81 - (2.0875)*(13.17)
 
 predict(lm1)
+round(residuals(lm1), 3)
+round(sum(round(residuals(lm1), 3)^2), 3)
+round(sum(round(residuals(lm1), 3)^2), 3) / 6
+sqrt(round(sum(round(residuals(lm1), 3)^2), 3) / 6)
+
+3.560 * sqrt(1 / 36.1084)
+3.560 * 1 / sqrt(36.1084)
+
+2.0875 / 0.5924
+
+2 * pt(2.0875 / 0.5924, 6, lower.tail = FALSE)
+
+2.0875 - qt(.975, 6) * 0.592442
+2.0875 + qt(.975, 6) * 0.592442
+confint(lm1)
+
+mean(df1$Cortisol)^2
+92.3177 - qt(.975, 6) * 3.56 * sqrt((1 / 8) + mean(df1$Cortisol)^2 / Sxx)
+92.3177 + qt(.975, 6) * 3.56 * sqrt((1 / 8) + mean(df1$Cortisol)^2 / Sxx)
+
+influence.measures(lm1)
+
+df1b <- rbind(cbind(df1, group = "old"), data.frame(Cortisol = 22, SBP = NA, group = "new"))
+set.seed(3333)
+df1b$SBP[9] <- 120 + 2*(22 - mean(df1$Cortisol)) + .5 * rnorm(1, 0, 4)
+summary(lm1)
+lm2 <- update(lm1, data = df1b)
+summary(lm2)
+
+png(file = "p10.png", height = 5, width = 7, units = "in", res = 600)
+ggplot(df1b, aes(Cortisol, SBP, color = group)) + geom_point() + 
+  geom_abline(intercept = 92.3177, slope = 2.0875, color = "darkblue") + 
+  geom_abline(intercept = 91.6814, slope = 2.1378, color = "indianred") + 
+  labs(x = "Cortisol (x)", y = "SBP (y)")  + theme_bw() + guides(color = FALSE) + ylim(c(102, 145))
+dev.off()
+
+set.seed(3333)
+df1b$SBP[9] <- 120 + 2*(22 - mean(df1$Cortisol)) + .5 * rnorm(1, 0, 4) - 14
+lm2 <- update(lm1, data = df1b)
+summary(lm2)
+
+png(file = "p11.png", height = 5, width = 7, units = "in", res = 600)
+ggplot(df1b, aes(Cortisol, SBP, color = group)) + geom_point() + 
+  geom_abline(intercept = 92.3177, slope = 2.0875, color = "darkblue") + 
+  geom_abline(intercept = 104.8771 , slope = 1.0954, color = "indianred") + 
+  labs(x = "Cortisol (x)", y = "SBP (y)")  + theme_bw() + guides(color = FALSE)  + ylim(c(102, 145))
+dev.off()
+
+set.seed(3333)
+df1b$SBP[9] <- 120 + 2*(22 - mean(df1$Cortisol)) + .5 * rnorm(1, 0, 4) - 34
+lm2 <- update(lm1, data = df1b)
+summary(lm2)
+
+png(file = "p12.png", height = 5, width = 7, units = "in", res = 600)
+ggplot(df1b, aes(Cortisol, SBP, color = group)) + geom_point() + 
+  geom_abline(intercept = 92.3177, slope = 2.0875, color = "darkblue") + 
+  geom_abline(intercept = 123.7280 , slope = -0.3938, color = "indianred") + 
+  labs(x = "Cortisol (x)", y = "SBP (y)")  + theme_bw() + guides(color = FALSE)  + ylim(c(102, 145))
+dev.off()
+
+
+anova(lm1)

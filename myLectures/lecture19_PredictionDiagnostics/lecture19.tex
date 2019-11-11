@@ -11,7 +11,7 @@
 
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
 
-\title[Lecture 18]{Lecture 18: Parameter Estimation in Linear Regression}
+\title[Lecture 19]{Lecture 19: }
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
 \date{November}
@@ -25,7 +25,7 @@
 \tableofcontents[hideallsubsections]
 \end{frame}
 
-\section{Model diagnostics}
+\section{Model diagnostics (Part 1)}
 \begin{frame}{Outline}
 \tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
@@ -94,6 +94,12 @@ A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{The accuracy of $\hat{\beta}_0$}
+\begin{center}
+	\includegraphics[width=.75\linewidth]{../lecture18_LinearRegression/p9Beta0}
+\end{center}
+\end{frame}
+
 \begin{frame}{Sum of Squares}
 	\begin{itemize}
 		\item Recall that
@@ -157,14 +163,236 @@ A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
 	\end{itemize}
 \end{frame}
 
+\section{Prediction}
+
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
 \begin{frame}{Prediction}
+	\begin{itemize}
+		\item Prediction:
+		\begin{itemize}
+			\item Thus far we have considered modeling the relationship between $x$ and $y$, given a sample from a population
+			\item[]
+			\item Often our goal is to determine what the values of $y$ are likely to be for $x$ values that we haven't yet observed
+			\item[]
+			\item Example: From our example of using cortisol to predict SBP values, we used a sample to determine a model. Now we may want to use that model to predict the SBP value from cortisol for a new person 
+			\item[]
+		\end{itemize}
+				\item Other examples:
+	\begin{itemize}
+		\item A bank wants to determine who is likely to default on a loan based on the characteristics of customers who have defaulted in the past
+		\item[]
+		\item A hydrologist might want to predict the amount of water held in a reservoir in summer from measurements of winter snowpack (using data from the past to estimate the relationship)
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Prediction}
+	\begin{itemize}
+		\item Two types of prediction tasks:
+		\begin{enumerate}
+			\item Predicting the mean of $y$ given $x$, that is $E(y)$ given $x$
+			\item Predicting individual $y$ values given $x$
+			\item[]
+		\end{enumerate}
+		\item Example. From before we had that $\hat{\text{SBP}} = 92.3177 + 2.0875 \times \text{Cortisol}$
+		\begin{enumerate}
+			\item Predicting the average of $SBP$ values for the population with $\text{Cortisol} = 15$: 
+			\begin{gather*}
+				E(\text{SBP}) = 92.3177 + 2.0875(15)
+			\end{gather*}
+			\item Predicting the specific $SBP$ value for an individual with $\text{Cortisol} = 15$: 
+			\begin{gather*}
+				\hat{\text{SBP}} = 92.3177 + 2.0875(15)
+			\end{gather*}
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Prediction}
+	\begin{center}
+		\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/IMG_20191104_224711}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}
+	\begin{itemize}
+		\item For estimating the mean (or expected value) of $y$ given a new $x$, we have: $E(y_{\text{new}}) = \hat{\beta}_0 + \hat{\beta}_1 x_{\text{new}}$
+		\item[]
+		\item The standard error of $E(y_{\text{new}})$ is: 
+		\begin{gather*}
+			\sigma_{\varepsilon} \sqrt{\frac{1}{n} + \frac{(x_{\text{new}}-\bar{x})^2}{S_{xx}}}
+		\end{gather*}
+		\item This gives us a $100(1-\alpha)\%$ confidence interval for $E(y_{\text{new}})$:
+		\begin{gather*}
+		\hat{y}_{\text{new}} \pm t_{\alpha / 2, \text{df} = n-2}s_{\varepsilon}\sqrt{\frac{1}{n} + \frac{(x_{\text{new}}-\bar{x})^2}{S_{xx}}}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}
+	\begin{itemize}
+		\item In our model for predicting SBP from cortisol we had that: $s_{\varepsilon} = 3.560$, $S_{xx} = 36.1084$ and $\bar{x}=13.17$
+		\item[]
+		\item A point estimate for the average value of $y$ (SBP), given $x=15$ ($\text{Cortisol}=15$) is:
+		\begin{gather*}
+			92.3177 + 2.0875(15) = 123.6302
+		\end{gather*}
+		\item A 95\% confidence interval for the average value of $y$ (SBP) given $x=15$ ($\text{Cortisol}=15$) is:
+		\begin{gather*}
+			\hat{y}_{\text{new}} \pm t_{\alpha / 2, \text{df} = n-2}s_{\varepsilon}\sqrt{\frac{1}{n} + \frac{(x_{\text{new}}-\bar{x})^2}{S_{xx}}} \\
+			123.6302 \pm 2.447 (3.560)\sqrt{\frac{1}{8} + \frac{(15-13.17)^2}{36.1084}} = (119.5652, 127.6952)
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}
+\begin{center}
+	\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/p9Conf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}{Extrapolation Penalty}
+	\begin{center}
+		\includegraphics[width=.75\linewidth]{../lecture18_LinearRegression/p9Confb}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}{Extrapolation Penalty}
+\begin{center}
+	\includegraphics[width=.75\linewidth]{../lecture18_LinearRegression/p9Confc}
+\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}{Extrapolation Penalty}
+\begin{itemize}
+	\item \textbf{Extrapolation penalty:} The term $\frac{(x_{\text{new}}-\bar{x})^2}{S_{xx}}$ in $s_{\varepsilon}\sqrt{\frac{1}{n} + \frac{(x_{\text{new}}-\bar{x})^2}{S_{xx}}}$ increases the width of the confidence interval 
+	\item[]
+	\item So the further away $x_{\text{new}}$ is from $\bar{x}$, the greater the width of the confidence interval of $E(y_{\text{new}})$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $y_{\text{new}}$}
+	\begin{itemize}
+		\item The point estimate for $y_{\text{new}}$ given $x_{\text{new}}$ is $\hat{y}=\hat{\beta}_0 + \hat{\beta}_1 x_{\text{new}}$
+		\item[]
+		\item The formula for a $100(1-\alpha)\%$: 
+		\begin{gather*}
+			\hat{y}_{\text{new}} \pm t_{\alpha / 2, \text{df} = n-2}s_{\varepsilon}\sqrt{1+\frac{1}{n} + \frac{(x_{\text{new}}-\bar{x})^2}{S_{xx}}}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $y_{\text{new}}$}{Example}
+\begin{itemize}
+		\item In our model for predicting SBP from cortisol we had that: $s_{\varepsilon} = 3.560$, $S_{xx} = 36.1084$ and $\bar{x}=13.17$
+\item[]
+\item A point estimate for $y$ (SBP), given $x=15$ ($\text{Cortisol}=15$) is:
+\begin{gather*}
+92.3177 + 2.0875(15) = 123.6302
+\end{gather*}
+\item A 95\% confidence interval for the value of $y$ (SBP) given $x=15$ ($\text{Cortisol}=15$) is:
+	\begin{gather*}
+	\hat{y}_{\text{new}} \pm t_{\alpha / 2, \text{df} = n-2}s_{\varepsilon}\sqrt{1+\frac{1}{n} + \frac{(x_{\text{new}}-\bar{x})^2}{S_{xx}}} \\
+	123.6302 \pm 2.447 (3.560)\sqrt{1+ \frac{1}{8} + \frac{(15-13.17)^2}{36.1084}} = \\
+	(114.0171, 133.2433)
+	\end{gather*}
+\end{itemize}
+\end{frame}
+
+\section{Model diagnostics (Part 2)}
+\begin{frame}{Outline}
+\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Lack of fit in linear regression}{Plot of $y_i - \hat{y}_i$ versus $\hat{y}_i$}
+	\begin{itemize}
+		\item We started by assuming a particular form of model relating $x$ and $y$, that is: $y = \beta_0 + \beta_1 x + \varepsilon$
+		\item[]
+		\item But how do we know if that form is ``good'' or not?
+		\item[]
+		\item A good starting point is a scatterplot of the residuals versus predicted values, that is $y_i - \hat{y}_i$ versus $\hat{y}_i$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Formal assumptions of simple linear regression}
+\begin{enumerate}
+	\item The relationship between $x$ and $y$ is linear
+	\item[]
+	\item $E(\varepsilon_i) = 0$ for all $i$
+	\item[]
+	\item $Var(\varepsilon_i) = \sigma^2$ for all $i$
+	\item[]
+	\item The errors are independent of each other
+	\item[]
+	\item The errors are all normally distributed. $\varepsilon_i$ is normally distributed for all $i$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{An appropriate model}{Regression line}
+\begin{itemize}
+	\item Relationship between $x$ and $y$ is linear; homogeneous variance
+\end{itemize}
+	\begin{center}
+		\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p10}
+	\end{center}
+\end{frame}
+
+\begin{frame}{An appropriate model}{Plot of $y_i - \hat{y}_i$ versus $\hat{y}_i$}
+\begin{itemize}
+	\item Relationship between $x$ and $y$ is linear; homogeneous variance
+\end{itemize}
+\begin{center}
+	\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p11}
+\end{center}
+\end{frame}
+
+\begin{frame}{Not an appropriate model}{Regression line}
+\begin{itemize}
+	\item Relationship between $x$ and $y$ is not linear; homogeneous variance
+\end{itemize}
+\begin{center}
+	\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p10a}
+\end{center}
+\end{frame}
+
+\begin{frame}{Not an appropriate model}{Plot of $y_i - \hat{y}_i$ versus $\hat{y}_i$}
+\begin{itemize}
+\item Relationship between $x$ and $y$ is not linear; homogeneous variance
+\end{itemize}
+\begin{center}
+\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p11a}
+\end{center}
+\end{frame}
+
+\begin{frame}{Not an appropriate model}{Regression line}
+\begin{itemize}
+	\item Relationship between $x$ and $y$ is linear; non-homogeneous variance
+\end{itemize}
+\begin{center}
+	\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p10b}
+\end{center}
+\end{frame}
+
+\begin{frame}{Not an appropriate model}{Plot of $y_i - \hat{y}_i$ versus $\hat{y}_i$}
+\begin{itemize}
+\item Relationship between $x$ and $y$ is linear; non-homogeneous variance
+\end{itemize}
+\begin{center}
+\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p11b}
+\end{center}
+\end{frame}
+
+\begin{frame}{Example}
 	content...
 \end{frame}
 
-\begin{frame}{Inference regarding $\beta_1$}{$F$-test}
-\begin{itemize}
-	\item $F$-tests
-\end{itemize}
+\begin{frame}{The end of Lecture \#19}
+	\begin{center}
+		\includegraphics[width = .75\linewidth]{33}
+	\end{center}
 \end{frame}
 
 \end{document}

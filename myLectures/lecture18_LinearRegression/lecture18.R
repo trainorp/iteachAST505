@@ -113,6 +113,20 @@ ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() +
   theme_bw()
 dev.off()
 
+png(file = "p9b.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() + 
+  geom_abline(slope = 2.0875, intercept = 92.3177, color = "darkblue", lwd = 1.25) + labs(x = "Cortisol (x)", y = "SBP (y)") + 
+  annotate("label", x = 14.5, y = 112.5, label = expression(SBP == 92.3177 + 2.0875 * Cortisol), size = 7) +
+  theme_bw()
+dev.off()
+
+png(file = "p9Beta0.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() + 
+  geom_abline(slope = 2.0875, intercept = 92.3177, color = "darkblue", lwd = 1.25) + labs(x = "Cortisol (x)", y = "SBP (y)") + 
+  xlim(0, 20) + ylim(0, 200) + annotate("label", x = 10, y = 50, label = expression(SBP == 92.3177 + 2.0875 * Cortisol), size = 7) +
+  theme_bw()
+dev.off()
+
 #### Parameter extimation ####
 df1$Cortisol - mean(df1$Cortisol)
 df1$SBP - mean(df1$SBP)
@@ -189,5 +203,102 @@ ggplot(df1b, aes(Cortisol, SBP, color = group)) + geom_point() +
   labs(x = "Cortisol (x)", y = "SBP (y)")  + theme_bw() + guides(color = FALSE)  + ylim(c(102, 145))
 dev.off()
 
-
 anova(lm1)
+
+predict(lm1, newdata = data.frame(Cortisol = 15))
+
+92.3177+2.0875*15
+
+round(qt(.975, 6), 3)
+92.3177+2.0875*15 - 2.447 * 3.560 * sqrt(1/8 + (15 - 13.17)^2 / 36.1084)
+92.3177+2.0875*15 + 2.447 * 3.560 * sqrt(1/8 + (15 - 13.17)^2 / 36.1084)
+
+predict(lm1, newdata = data.frame(Cortisol = 15), se.fit = TRUE, interval = "confidence")
+predict(lm1, newdata = data.frame(Cortisol = 15), interval = "prediction")
+
+png(file = "p9Conf.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() + 
+  geom_abline(slope = 2.0875, intercept = 92.3177, color = "darkblue", lwd = 1.25) + labs(x = "Cortisol (x)", y = "SBP (y)") + 
+  geom_errorbar(mapping = aes(x = 15, ymin = 119.5652, ymax = 127.6952), color = "deeppink", lwd = 1.5, width = .5) +
+  annotate("point", x = 15, y = 123.6301, color = "cyan", size = 8) + 
+  annotate("label", x = 14.5, y = 112.5, label = expression(SBP == 92.3177 + 2.0875 * Cortisol), size = 7) +
+  theme_bw()
+dev.off()
+
+png(file = "p9Confb.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() + 
+  geom_abline(slope = 2.0875, intercept = 92.3177, color = "darkblue", lwd = 1.25) + labs(x = "Cortisol (x)", y = "SBP (y)") + 
+  geom_vline(xintercept = mean(df1$Cortisol), lty = 2, color = "orange") + 
+  geom_errorbar(mapping = aes(x = 15, ymin = 119.5652, ymax = 127.6952), color = "deeppink", lwd = 1.5, width = .5) +
+  annotate("point", x = 15, y = 123.6301, color = "cyan") + 
+  xlim(0, 20) + ylim(0, 200) +
+  theme_bw()
+dev.off()
+
+predict(lm1, newdata = data.frame(Cortisol = 2), se.fit = TRUE, interval = "confidence")
+png(file = "p9Confc.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df1, aes(x = Cortisol, y = SBP)) + geom_point() + 
+  geom_abline(slope = 2.0875, intercept = 92.3177, color = "darkblue", lwd = 1.25) + labs(x = "Cortisol (x)", y = "SBP (y)") + 
+  geom_vline(xintercept = mean(df1$Cortisol), lty = 2, color = "orange") + 
+  geom_errorbar(mapping = aes(x = 2, ymin = 80.01065, ymax = 112.9748), color = "deeppink", lwd = 1.5, width = .5) +
+  annotate("point", x = 2, y = 96.49271, color = "cyan") + 
+  xlim(0, 20) + ylim(0, 200) +
+  theme_bw()
+dev.off()
+
+# Prediction interval:
+92.3177+2.0875*15 - 2.447 * 3.560 * sqrt(1 + 1/8 + (15 - 13.17)^2 / 36.1084)
+92.3177+2.0875*15 + 2.447 * 3.560 * sqrt(1 + 1/8 + (15 - 13.17)^2 / 36.1084)
+predict(lm1, newdata = data.frame(Cortisol = 15), interval = "prediction")
+
+########### Bad residuals ###########
+set.seed(9)
+df2 <- data.frame(x = runif(50, 0, 10))
+set.seed(9+3)
+df2$y <- - df2$x + rnorm(50, 0, 1) 
+lm2 <- lm(y ~ x, data = df2)
+
+png(file = "p10.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df2, aes(x = x, y = y)) + geom_point() + geom_abline(slope = coef(lm2)[2], intercept = coef(lm2)[1], color = "darkblue", lwd = 1.25) + 
+  theme_bw()
+dev.off()
+df2$Predicted <- predict(lm2)
+df2$Residuals <- lm2$residuals
+png(file = "p11.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df2, aes(x = Predicted, y = Residuals)) + geom_point() + 
+  geom_hline(yintercept = 0, color = "darkred", lwd = 1.25) + 
+  theme_bw()
+dev.off()
+
+set.seed(9+3)
+df2$y <- (df2$x - 4) ^ 2 + rnorm(50, 0, 1) 
+lm2 <- lm(y ~ x, data = df2)
+
+png(file = "p10a.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df2, aes(x = x, y = y)) + geom_point() + geom_abline(slope = coef(lm2)[2], intercept = coef(lm2)[1], color = "darkblue", lwd = 1.25) + 
+  theme_bw()
+dev.off()
+df2$Predicted <- predict(lm2)
+df2$Residuals <- lm2$residuals
+png(file = "p11a.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df2, aes(x = Predicted, y = Residuals)) + geom_point() + 
+  geom_hline(yintercept = 0, color = "darkred", lwd = 1.25) + 
+  theme_bw()
+dev.off()
+
+set.seed(9+3233)
+df2$e <- rnorm(50, 0, .2)
+df2$y <- df2$x + df2$e * (df2$x) ^ 1.5
+lm2 <- lm(y ~ x, data = df2)
+
+png(file = "p10b.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df2, aes(x = x, y = y)) + geom_point() + geom_abline(slope = coef(lm2)[2], intercept = coef(lm2)[1], color = "darkblue", lwd = 1.25) + 
+  theme_bw()
+dev.off()
+df2$Predicted <- predict(lm2)
+df2$Residuals <- lm2$residuals
+png(file = "p11b.png", height = 5, width = 6.5, units = "in", res = 600)
+ggplot(df2, aes(x = Predicted, y = Residuals)) + geom_point() + 
+  geom_hline(yintercept = 0, color = "darkred", lwd = 1.25) + 
+  theme_bw()
+dev.off()

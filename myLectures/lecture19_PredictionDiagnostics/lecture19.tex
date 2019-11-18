@@ -11,10 +11,10 @@
 
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
 
-\title[Lecture 19]{Lecture 19: }
+\title[Lecture 19]{Lecture 19: Linear Regression: Prediction and Diagnostics}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{November}
+\date{November 18, 2019}
 
 \begin{document}
 \begin{frame}
@@ -48,21 +48,21 @@
 \begin{frame}{Leverage and Influence}
 A high leverage point: $\hat{\beta}_1$ changes from 2.0875 to 2.1378
 	\begin{center}
-		\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/p10}
+		\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p10}
 	\end{center}
 \end{frame}
 
 \begin{frame}{Leverage and Influence}
 A high influence point: $\hat{\beta}_1$ changes from 2.0875 to 1.0954
 \begin{center}
-	\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/p11}
+	\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p11}
 \end{center}
 \end{frame}
 
 \begin{frame}{Leverage and Influence}
 A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
 \begin{center}
-	\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/p12}
+	\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p12}
 \end{center}
 \end{frame}
 
@@ -163,6 +163,24 @@ A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{$F$-test example}{Using R}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/Rlm4}
+	\end{center}
+\end{frame}
+
+\begin{frame}{$F$-test example}{Using R}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/Rlm5}
+	\end{center}
+\end{frame}
+
+\begin{frame}{$F$-test example}{Using SAS}
+	\begin{center}
+		\includegraphics[width=.6\linewidth]{../lecture18_LinearRegression/SAS1_6}
+	\end{center}
+\end{frame}
+
 \section{Prediction}
 
 \begin{frame}{Outline}
@@ -250,7 +268,7 @@ A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
 
 \begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}
 \begin{center}
-	\includegraphics[width=.8\linewidth]{../lecture18_LinearRegression/p9Conf}
+	\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/p9Conf}
 \end{center}
 \end{frame}
 
@@ -272,6 +290,30 @@ A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
 	\item[]
 	\item So the further away $x_{\text{new}}$ is from $\bar{x}$, the greater the width of the confidence interval of $E(y_{\text{new}})$
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}{R example}
+	\begin{center}
+		\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/Rlm6}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}{R example}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{../lecture18_LinearRegression/Rlm7}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}{SAS example}
+	\begin{center}
+		\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/sas1_7}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $E(y_{\text{new}})$}{SAS example}
+	\begin{center}
+		\includegraphics[width=.55\linewidth]{../lecture18_LinearRegression/sas1_8}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Point estimate and CI for $y_{\text{new}}$}
@@ -301,6 +343,25 @@ A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
 	\end{gather*}
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Point estimate and CI for $y_{\text{new}}$}{R example}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{../lecture18_LinearRegression/Rlm8}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $y_{\text{new}}$}{SAS example}
+	\begin{center}
+		\includegraphics[width=.7\linewidth]{../lecture18_LinearRegression/SAS1_9}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Point estimate and CI for $y_{\text{new}}$}{SAS example}
+	\begin{center}
+		\includegraphics[width=.6\linewidth]{../lecture18_LinearRegression/SAS1_10}
+	\end{center}
+\end{frame}
+
 
 \section{Model diagnostics (Part 2)}
 \begin{frame}{Outline}
@@ -386,7 +447,39 @@ A high influence point: $\hat{\beta}_1$ changes from 2.0875 to -0.3938
 \end{frame}
 
 \begin{frame}{Example}
-	content...
+\begin{itemize}
+	\item A real estate analytics company wants to determine the relationship between the size of single family homes and the sales price
+\end{itemize}
+	\begin{center}
+	\includegraphics[width = .6\linewidth]{../lecture18_LinearRegression/p12}
+\end{center}
+\end{frame}
+
+\begin{frame}{Example}
+	\begin{itemize}
+		\item A real estate analytics company wants to determine the relationship between the size of single family homes and the sales price
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width = .6\linewidth]{../lecture18_LinearRegression/p14}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Example}
+	\begin{itemize}
+		\item A real estate analytics company wants to determine the relationship between the size of single family homes and the sales price
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width = .6\linewidth]{../lecture18_LinearRegression/p13}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Example}
+	\begin{itemize}
+		\item A real estate analytics company wants to determine the relationship between the size of single family homes and the sales price
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width = .6\linewidth]{../lecture18_LinearRegression/p14}
+	\end{center}
 \end{frame}
 
 \begin{frame}{The end of Lecture \#19}

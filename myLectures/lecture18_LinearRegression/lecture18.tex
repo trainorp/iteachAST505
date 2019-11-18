@@ -14,7 +14,7 @@
 \title[Lecture 18]{Lecture 18: Parameter Estimation in Linear Regression}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{November}
+\date{November 12, 2019}
 
 \begin{document}
 \begin{frame}
@@ -32,12 +32,12 @@
 
 \begin{frame}{Introduction}
 	\begin{itemize}
-		\item ``The basic idea of regression analysis is to obtain a model for the functional relationship between a response variable (dependent variable) and one or more explanatory variables (independent variables)''
+		\item ``The basic idea of regression analysis is to obtain a model for the functional relationship between a response variable (dependent variable) and one or more explanatory variables (independent variables)'' \pause
 		\item[]
-		\item Two important tasks for regression modeling are making predictions and deriving explanations:
+		\item Two important tasks for regression modeling are making predictions and deriving explanations: \pause
 		\begin{itemize}
-			\item Making predictions: given the value of one variable, you want to predict what the value of the other is most likely to be
-			\item Deriving explainations: you want to determine if two variables are related to eachother; if so, knowing the value of one should give you information about the other
+			\item Making predictions: given the value of one variable, you want to predict what the value of the other is most likely to be \pause
+			\item Deriving explanations: you want to determine if two variables are related to each other; if so, knowing the value of one should give you information about the other \pause
 			\item[]
 		\end{itemize}
 		\item \textbf{Simple linear regression:} There is a single independent variable $x$, and we want a linear function that will return the value of a continuous dependent variable $y$ that we should expect
@@ -45,21 +45,21 @@
 \end{frame}
 
 \begin{frame}{The simple linear regression model}
-Model: $y = \beta_0 + \beta_1 x + \varepsilon$
+Model: $y = \beta_0 + \beta_1 x + \varepsilon$ \pause
 		\begin{itemize}
-			\item $\beta_0$ is the intercept
+			\item $\beta_0$ is the intercept \pause
 			\begin{itemize}
-				\item $\beta_0$ is where the line intercepts the $y$-axis
+				\item $\beta_0$ is where the line intercepts the $y$-axis \pause
 				\item[]
-				\item $\beta_0$ is the predicted value of $y$ when $x=0$
+				\item $\beta_0$ is the predicted value of $y$ when $x=0$ \pause
 				\item[]
 			\end{itemize} 
-			\item $\beta_1$ is called the slope
+			\item $\beta_1$ is called the slope \pause
 			\begin{itemize}
-				\item It $\beta_1$ gives us the expected unit change in $y$ for a unit change in $x$
+				\item It $\beta_1$ gives us the expected unit change in $y$ for a unit change in $x$ \pause
 				\item[]
 			\end{itemize}
-			\item $\varepsilon$ is called the random error term
+			\item $\varepsilon$ is called the random error term \pause
 			\item[]
 			\item Both $\beta_0$ and $\beta_1$ are population quantities (that we will want to estimate from a sample)
 		\end{itemize}
@@ -82,31 +82,31 @@ $y = \beta_0 + \beta_1 x + \varepsilon$
 \begin{frame}{The simple linear regression model}
 Model: $y = \beta_0 + \beta_1 x + \varepsilon$
 \begin{itemize}
-	\item $\varepsilon$ is called the random error term
+	\item $\varepsilon$ is called the random error term \pause
 	\item[]
-	\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$
+	\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$ \pause
 	\item[] 
-	\item Since $y$ is a continuous random variable, the values of $y$ have a probability distribution
+	\item Since $y$ is a continuous random variable, the values of $y$ have a probability distribution \pause
 	\begin{itemize}
-		\item The center of this distribution is given by $y = \beta_0 + \beta_1 x $
+		\item The center of this distribution is given by $y = \beta_0 + \beta_1 x $ \pause
 		\item[]
-		\item We can represent this as $E(y) = \beta_0 + \beta_1 x$
+		\item We can represent this as $E(y) = \beta_0 + \beta_1 x$ \pause
 		\item[] 
-		\item $E(y)$ means the ``expected value'' of $y$ given a specific value of $x$. Equivalently this is the mean of the distribution of $y$ for a given $x$
+		\item $E(y)$ means the ``expected value'' of $y$ given a specific value of $x$. Equivalently this is the mean of the distribution of $y$ for a given $x$ 
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{The simple linear regression model}
-Model: $y = \beta_0 + \beta_1 x + \varepsilon$
+Model: $y = \beta_0 + \beta_1 x + \varepsilon$ \pause 
 \begin{itemize}
-	\item $\varepsilon$ is called the random error term
+	\item $\varepsilon$ is called the random error term \pause
 	\item[]
-	\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$
+	\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$ \pause
 	\item[] 
-	\item Since $y$ is a continuous random variable, the values of $y$ have a probability distribution
+	\item Since $y$ is a continuous random variable, the values of $y$ have a probability distribution \pause
 	\begin{itemize}
-		\item As an example, let's consider $y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.5
+		\item As an example, let's consider $y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.5 \pause
 		\item[]
 		\item And let's consider other $\varepsilon$'s with smaller and larger variances
 	\end{itemize}
@@ -114,21 +114,21 @@ Model: $y = \beta_0 + \beta_1 x + \varepsilon$
 \end{frame}
 
 \begin{frame}{The simple linear regression model}
-	$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.5
+	$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.5 \pause
 	\begin{center}
 		\includegraphics[width=.8\linewidth]{p1}
 	\end{center}
 \end{frame}
 
 \begin{frame}{The simple linear regression model}
-$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 1
+$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 1 \pause
 \begin{center}
 	\includegraphics[width=.8\linewidth]{p2}
 \end{center}
 \end{frame}
 
 \begin{frame}{The simple linear regression model}
-$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.25
+$y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with mean 0, and standard deviation 0.25 \pause
 \begin{center}
 	\includegraphics[width=.8\linewidth]{p3}
 \end{center}
@@ -136,20 +136,20 @@ $y = 1 + 0.75x + \varepsilon$, where $\varepsilon$ is a normal distribution with
 
 \begin{frame}{Formal assumptions of simple linear regression}
 	\begin{enumerate}
-		\item The relationship between $x$ and $y$ is linear
+		\item The relationship between $x$ and $y$ is linear \pause
 		\item[]
-		\item $E(\varepsilon_i) = 0$ for all $i$
+		\item $E(\varepsilon_i) = 0$ for all $i$ \pause
 		\item[]
-		\item $Var(\varepsilon_i) = \sigma^2$ for all $i$
+		\item $Var(\varepsilon_i) = \sigma^2$ for all $i$ \pause
 		\item[]
-		\item The errors are independent of each other
+		\item The errors are independent of each other \pause
 		\item[]
 		\item The errors are all normally distributed. $\varepsilon_i$ is normally distributed for all $i$
 	\end{enumerate}
 \end{frame}
 
 \begin{frame}{Violations}
-The relationship between $x$ and $y$ is \emph{not} linear
+The relationship between $x$ and $y$ is \emph{not} linear 
 \begin{center}
 	\includegraphics[width=.8\linewidth]{p4}
 \end{center}
@@ -183,9 +183,9 @@ The errors are \emph{not} independent of each other
 
 \begin{frame}{Estimating model parameters}
 	\begin{itemize}
-		\item Model: $y = \beta_0 + \beta_1 x + \varepsilon$
+		\item Model: $y = \beta_0 + \beta_1 x + \varepsilon$ \pause
 		\begin{itemize}
-			\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$
+			\item Both $\beta_0$ and $\beta_1$ are population quantities that describe the relationship between $x$ and $y$ \pause
 			\item[]
 		\end{itemize}
 		\item We want to determine regression line or prediction equation: $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$
@@ -194,8 +194,8 @@ The errors are \emph{not} independent of each other
 
 \begin{frame}{Estimating model parameters}{Example}
 	\begin{itemize}
-		\item You want to determine a regression line for predicting Systolic Blood Pressure (SBP in mmHg) from cortisol concentration (in mcg/dL)
-		\item Some data:
+		\item You want to determine a regression line for predicting Systolic Blood Pressure (SBP in mmHg) from cortisol concentration (in mcg/dL) \pause
+		\item Some data: \pause
 		\begin{center}
 			\begin{tabular}{ccc}
 				\hline
@@ -238,11 +238,11 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Estimating model parameters}{Process}
 	\begin{itemize}
-		\item We want to find $\hat{\beta}_0$ and $\hat{\beta}_1$ to minimize:
+		\item We want to find $\hat{\beta}_0$ and $\hat{\beta}_1$ to minimize: \pause
 		\begin{gather*}
 			\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2 = \sum_{i=1}^{n} \left[y_i - \left(\hat{\beta}_0 + \hat{\beta}_1 x\right)^2\right]
-		\end{gather*}
-		\item The \textbf{least-squares estimates of the slope and intercept} are:
+		\end{gather*} \pause
+		\item The \textbf{least-squares estimates of the slope and intercept} are: \pause
 		\begin{gather*}
 			\hat{\beta}_1 = \frac{S_{xy}}{S_{xx}}\quad \text{and} \quad \hat{\beta}_0 = \bar{y}-\hat{\beta}_1 \bar{x}
 		\end{gather*}
@@ -255,9 +255,9 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Estimating model parameters}{Example}
 	\begin{itemize}
-		\item Towards finding $S_{xx}$ and $S_{xy}$:
+		\item Towards finding $S_{xx}$ and $S_{xy}$: \pause
 		\begin{itemize}
-			\item $\bar{x} = 13.17$ and $\bar{y} = 119.81$
+			\item $\bar{x} = 13.17$ and $\bar{y} = 119.81$ \pause
 		\end{itemize}
 		\vspace{1mm}
 		\begin{center}
@@ -309,13 +309,13 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Estimating model parameters}{Example}
 	\begin{itemize}
-		\item Finally, $\hat{\beta}_1 = \frac{S_{xy}}{S_{xx}} =  \frac{75.376}{36.1084}  = 2.0875$
+		\item Finally, $\hat{\beta}_1 = \frac{S_{xy}}{S_{xx}} =  \frac{75.376}{36.1084}  = 2.0875$ \pause
 		\item[]
-		\item And, $\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x} = 119.81 - (2.0875)(13.17) = 92.3177 $
+		\item And, $\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x} = 119.81 - (2.0875)(13.17) = 92.3177 $ \pause
 		\item[]
-		\item Interpretation of the model parameters:
+		\item Interpretation of the model parameters: \pause
 		\begin{itemize}
-			\item $\hat{\beta}_1$: For each one-unit increase in $x$ (that is an increase of 1 mcg/dL in cortisol) we expect a 2.0875 unit increase in $y$ (that is an increase of 2.0875 mmHg in SBP)
+			\item $\hat{\beta}_1$: For each one-unit increase in $x$ (that is an increase of 1 mcg/dL in cortisol) we expect a 2.0875 unit increase in $y$ (that is an increase of 2.0875 mmHg in SBP) \pause
 			\item[]
 			\item $\hat{\beta}_0$: When $x$ is zero, we expect $y$ to be 92.3177 (that is if the cortisol level in mcg/dL was 0, SBP would be expected to be 92.3177 mmHg)
 		\end{itemize}
@@ -324,7 +324,31 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Estimating model parameters}{Example}
 	\begin{center}
-		\includegraphics[width=.75\linewidth]{p9b}
+		\includegraphics[width=.85\linewidth]{Rlm0}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+	\begin{center}
+		\includegraphics[width=.85\linewidth]{Rlm1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+	\begin{center}
+		\includegraphics[width=.85\linewidth]{SAS1_0}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+	\begin{center}
+		\includegraphics[width=.55\linewidth]{SAS1_1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating model parameters}{Example}
+	\begin{center}
+		\includegraphics[width=.75\linewidth]{p9Beta}
 	\end{center}
 \end{frame}
 
@@ -341,7 +365,7 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Predicted values}
 	\begin{itemize}
-		\item For each of the $x$ values in the data, we have $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$
+		\item For each of the $x$ values in the data, we have $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$ \pause
 		\vspace{1mm}
 		\begin{center}
 			\begin{tabular}{cccc}
@@ -364,7 +388,7 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
       
 \begin{frame}{Residuals}
 	\begin{itemize}
-		\item In the model $y = \beta_0 + \beta_1 x + \varepsilon$
+		\item In the model $y = \beta_0 + \beta_1 x + \varepsilon$ 
 		\begin{itemize}
 			\item $\varepsilon$ is a normally distributed random variable
 			\item $\varepsilon$ has mean zero and variance $\sigma^2_{\varepsilon}$
@@ -384,26 +408,26 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 		\item $\varepsilon$ has mean zero and variance $\sigma^2_{\varepsilon}$
 		\item[]
 	\end{itemize} 
-	\item \textbf{Residual.} A residual is the difference between an observed $y$ value and the predicted value from the model: $y_i - \hat{y}_i$
+	\item \textbf{Residual.} A residual is the difference between an observed $y$ value and the predicted value from the model: $y_i - \hat{y}_i$ \pause
 	\item[]
-	\item The quantity: 
+	\item The quantity: \pause
 	\begin{gather*}
 		s^2_{\varepsilon} = \frac{\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2}{n-2}
-	\end{gather*}
+	\end{gather*} 
 	is an estimate of $\sigma^2_{\varepsilon}$
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Residuals}
 	\begin{itemize}
-		\item This quantity is a ``mean square'' found by dividing a sum of squares by the right degrees of freedom:
+		\item This quantity is a ``mean square'' found by dividing a sum of squares by the right degrees of freedom: \pause
 		\begin{gather*}
 		s^2_{\varepsilon} = \frac{\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2}{n-2} = \frac{\text{SS}(\text{Error})}{n-2}
-		\end{gather*}
+		\end{gather*} \pause
 		\begin{itemize}
-			\item $n-2$ is the right degrees of freedom as the reduction from $n$ to $n-2$ occurs from estimating $\beta_0$ and $\beta_1$
+			\item $n-2$ is the right degrees of freedom as the reduction from $n$ to $n-2$ occurs from estimating $\beta_0$ and $\beta_1$ \pause
 			\item[]
-			\item The estimated variance of $\varepsilon$ may be seen from software as MSE(Error), or MS(Residual)
+			\item The estimated variance of $\varepsilon$ may be seen from software as MSE(Error), or MS(Residual) \pause
 			\item[]
 			\item The square root of $s_{\varepsilon}^2$, that is $s_{\varepsilon}$ is called the residual standard error or residual standard deviation
 		\end{itemize}
@@ -412,7 +436,7 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Residuals}{Example}
 	\begin{itemize}
-		\item Now we can add the residuals:
+		\item Now we can add the residuals: \pause
 		\vspace{1mm}
 		\begin{center}
 			\begin{tabular}{ccccc}
@@ -429,10 +453,28 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 				8 & 12.90 & 123.01  & 119.2464 &  3.764\\ 
 				\hline
 			\end{tabular}
-		\end{center}
+		\end{center} \pause
 	\vspace{1mm}
 	\item And: 	$s^2_{\varepsilon} = \frac{\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2}{n-2} = \frac{76.042}{6} = 12.674$ and $s_{\varepsilon}=3.560$
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Predicted \& Residuals}{R Example}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{Rresid}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Predicted \& Residuals}{SAS Example}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{sas1_1p5}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Predicted \& Residuals}{SAS Example}
+	\begin{center}
+		\includegraphics[width=.7\linewidth]{sas1_2}
+	\end{center}
 \end{frame}
 
 \section{Inference regarding regression parameters}
@@ -442,16 +484,16 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Inference regarding $\beta_1$}
 	\begin{itemize}
-		\item $\hat{\beta}_0$, $\hat{\beta}_1$, $s^2_{\varepsilon}$ are all point estimates of population parameters: $\beta_0$, $\beta_1$, and $\sigma^2_{\varepsilon}$
+		\item $\hat{\beta}_0$, $\hat{\beta}_1$, $s^2_{\varepsilon}$ are all point estimates of population parameters: $\beta_0$, $\beta_1$, and $\sigma^2_{\varepsilon}$ \pause
 		\item[]
-		\item Standard error of $\hat{\beta}_1$:
+		\item Standard error of $\hat{\beta}_1$: \pause
 		\begin{itemize}
-			\item For $\beta_1$, the standard error is given by $\sigma_{\hat{\beta}_1} = \sigma_{\varepsilon} \sqrt{\frac{1}{S_{xx}}}$
+			\item For $\beta_1$, the standard error is given by $\sigma_{\hat{\beta}_1} = \sigma_{\varepsilon} \sqrt{\frac{1}{S_{xx}}}$ \pause
 			\item[]
-			\item We don't know $\sigma_{\varepsilon}$, so we estimate it by $s_{\varepsilon}$ (the residual standard deviation / residual standard error)
+			\item We don't know $\sigma_{\varepsilon}$, so we estimate it by $s_{\varepsilon}$ (the residual standard deviation / residual standard error) \pause
 			\item[]
 		\end{itemize}
-	\item From our cortisol and SBP example: $\hat{\beta}_1 = 2.0875$, $S_{xx} = 36.1084$, and $s_{\varepsilon}=3.560$, so:
+	\item From our cortisol and SBP example: $\hat{\beta}_1 = 2.0875$, $S_{xx} = 36.1084$, and $s_{\varepsilon}=3.560$, so: \pause
 	\begin{gather*}
 		\hat{\sigma}_{\hat{\beta}_1} = s_{\varepsilon} \sqrt{1/S_{xx}} = {s_{\varepsilon} / \sqrt{S_{xx}}}= 3.560 \sqrt{1/36.1084} = 0.5924
 	\end{gather*}
@@ -460,21 +502,21 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Inference regarding $\beta_1$}{Hypothesis tests}
 	\begin{itemize}
-		\item Hypotheses:
+		\item Hypotheses: \pause
 		\begin{itemize}
-			\item \textbf{Case 1.} $H_0: \beta_1 \leq 0$ versus $H_a: \beta_1 > 0$
-			\item \textbf{Case 2.} $H_0: \beta_1 \geq 0$ versus $H_a: \beta_1 < 0$
-			\item \textbf{Case 3.} $H_0: \beta_1 = 0$ versus $H_a: \beta_1 \neq 0$
+			\item \textbf{Case 1.} $H_0: \beta_1 \leq 0$ versus $H_a: \beta_1 > 0$\pause
+			\item \textbf{Case 2.} $H_0: \beta_1 \geq 0$ versus $H_a: \beta_1 < 0$\pause
+			\item \textbf{Case 3.} $H_0: \beta_1 = 0$ versus $H_a: \beta_1 \neq 0$\pause
 			\item[]
 		\end{itemize}
-	\item Test statistic:
+	\item Test statistic:\pause
 	\begin{gather*}
 		t^*=\frac{\hat{\beta}_1-0}{s_{\varepsilon} / \sqrt{S_{xx}}}
-	\end{gather*}
-	\item Rejection rule. For $\text{df} = n-2$ and Type I error $\alpha$
+	\end{gather*}\pause
+	\item Rejection rule. For $\text{df} = n-2$ and Type I error $\alpha$\pause
 	\begin{itemize}
-		\item Reject $H_0$ if $t^* > t_{\alpha}$ with p-value $P(t \geq t^*)$
-		\item Reject $H_0$ if $t^* < -t_{\alpha}$ with p-value $P(t \leq t^*)$
+		\item Reject $H_0$ if $t^* > t_{\alpha}$ with p-value $P(t \geq t^*)$\pause
+		\item Reject $H_0$ if $t^* < -t_{\alpha}$ with p-value $P(t \leq t^*)$\pause
 		\item Reject $H_0$ if $|t^*| > t_{\alpha / 2}$ with p-value $2\times P(t \geq |t^*|)$
 	\end{itemize}
 	\end{itemize}
@@ -482,28 +524,40 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Inference regarding $\beta_1$}{Hypothesis tests example}
 	\begin{itemize}
-		\item Research question: Is there an association between cortisol and SBP?
+		\item Research question: Is there an association between cortisol and SBP? \pause
 		\item[]
-		\item Hypotheses: $H_0: \beta_1 = 0$ versus $H_a: \beta_1 \neq 0$
+		\item Hypotheses: $H_0: \beta_1 = 0$ versus $H_a: \beta_1 \neq 0$ \pause
 		\begin{itemize}
-			\item There is not an expected linear change in SBP given change in the level of cortisol
+			\item There is not an expected linear change in SBP given change in the level of cortisol \pause
 			\item[]
 		\end{itemize}
-		\item Test statistic: $t^*=\frac{\hat{\beta}_1-0}{s_{\varepsilon} / \sqrt{S_{xx}}}= \frac{2.0875}{0.5924}=3.5238$
+		\item Test statistic: $t^*=\frac{\hat{\beta}_1-0}{s_{\varepsilon} / \sqrt{S_{xx}}}= \frac{2.0875}{0.5924}=3.5238$ \pause
 		\item[]
 		\item p-value $2\times P(t \geq |t^*|) = 2 \times P(t \geq 3.5238) = 0.0125$
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Inference regarding $\beta_1$}{Hypothesis tests example}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{Rlm2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_1$}{Hypothesis tests example}
+	\begin{center}
+		\includegraphics[width=.6\linewidth]{sas1_3}
+	\end{center}
+\end{frame}
+
 \begin{frame}{Inference regarding $\beta_1$}{Confidence intervals}
 \begin{itemize}
-	\item For a $100(1-\alpha)\%$ confidence interval for a slope parameter: 
+	\item For a $100(1-\alpha)\%$ confidence interval for a slope parameter: \pause
 	\begin{gather*}
 		\hat{\beta}_1 \pm t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}} \\
 		\left(\hat{\beta}_1 - t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}},\; \hat{\beta}_1 + t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}}\right)
-	\end{gather*}
+	\end{gather*}\pause
 
-	\item For our example, we have a 95\% confidence for the change in SBP ($y$) expected for a unit change in cortisol ($x$):
+	\item For our example, we have a 95\% confidence for the change in SBP ($y$) expected for a unit change in cortisol ($x$): \pause
 	\begin{gather*}
 		\left(\hat{\beta}_1 - t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}},\; \hat{\beta}_1 + t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} / \sqrt{S_{xx}}}\right) \\ 
 		(2.0875 - 2.447(0.5924), 2.0875 + 2.447(0.5924))
@@ -515,13 +569,13 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Inference regarding $\beta_0$}{Hypothesis tests}
 	\begin{itemize}
-		\item The estimated standard error of $\beta_0$ is given by $\hat{\sigma}_{\hat{\beta}_0} = s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}$
+		\item The estimated standard error of $\beta_0$ is given by $\hat{\sigma}_{\hat{\beta}_0} = s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}$ \pause
 		\item[]
-		\item This allows us to test hypotheses regarding the value of $\beta_0$
+		\item This allows us to test hypotheses regarding the value of $\beta_0$\pause
 		\begin{itemize}
-			\item Many software by the default do $t$-tests regarding $\beta_0$, testing $H_0: \beta_0 = 0$, versus $\beta_0 \neq 0$
+			\item Many software by the default do $t$-tests regarding $\beta_0$, testing $H_0: \beta_0 = 0$, versus $\beta_0 \neq 0$ \pause
 			\item[]
-			\item Often this is not of interest. In our cortisol predicting SBP example, we know that even if a person had no cortisol, SBP would be greater than zero (or the person would be dead)
+			\item Often this is not of interest. In our cortisol predicting SBP example, we know that even if a person had no cortisol, SBP would be greater than zero (or the person would be dead) \pause
 			\item[]
 			\item The procedure would be the same as for tests involving $\beta_1$
 		\end{itemize}
@@ -531,18 +585,36 @@ Goal: We want to minimize $\sum_{i=1}^{n} \left(y_i - \hat{y}_i\right)^2$:
 
 \begin{frame}{Inference regarding $\beta_0$}{Confidence intervals}
 	\begin{itemize}
-		\item For a $100(1-\alpha)\%$ confidence interval for an intercept parameter: 
+		\item For a $100(1-\alpha)\%$ confidence interval for an intercept parameter: \pause
 		\begin{gather*}
 		\hat{\beta}_0 \pm t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}} \\
 		\left(\hat{\beta}_0 - t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}},\; \hat{\beta}_0 + t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}}\right)
-		\end{gather*}
-		\item For the intercept of our model for predicting SBP from cortisol concentration:
+		\end{gather*} \pause
+		\item For the intercept of our model for predicting SBP from cortisol concentration: \pause
 		\begin{gather*}
 		\left(\hat{\beta}_0 - t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}},\; \hat{\beta}_0 + t_{\alpha / 2,\text{df}=n-2} {s_{\varepsilon} \sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}}\right) \\
 		(92.3177 - 2.447(3.56)(2.220), \; 92.3177 - 2.447(3.56)(2.220)) \\
 		(72.979,\; 111.656)
 		\end{gather*}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_0$ and $\beta_1$}{Confidence intervals}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{Rlm3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_0$ and $\beta_1$}{Confidence intervals}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{sas1_4}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Inference regarding $\beta_0$ and $\beta_1$}{Confidence intervals}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{sas1_5}
+	\end{center}
 \end{frame}
 
 \begin{frame}{The end of Lecture \#18}

@@ -54,9 +54,10 @@ dev.off()
 df1 <- df0
 df1$y[df1$x < 1.75] <- df1$y[df1$x < 1.75]- 1
 df1$y[df1$x > 1.75]<- df1$y[df1$x > 1.75] + 1
+lmIDK <- lm(y ~ x, data = df1)
 png(file = "p5.png", height = 5, width = 7, units = "in", res = 600)
 ggplot(df1, aes(x, y)) + geom_point() + geom_vline(xintercept = 0, color = "grey30") + geom_hline(yintercept = 0, color = "grey30") +
-  geom_abline(slope = .75, intercept = 1, color = "darkblue", lwd = 1.25) + xlim(-1, 4.1) + ylim(-.5, 5) + theme_minimal()
+  geom_abline(slope = 1.2, intercept = 0.45, color = "darkblue", lwd = 1.25) + xlim(-1, 4.1) + ylim(-.5, 5) + theme_minimal()
 dev.off()
 
 # Non-constant variance: 
@@ -97,6 +98,7 @@ set.seed(3333)
 df1$SBP <-  + 120 + 2*(df1$Cortisol - mean(df1$Cortisol)) + rnorm(8, 0, 4)
 df1$Cortisol <- round(df1$Cortisol, 2)
 df1$SBP <- round(df1$SBP, 2)
+write.csv(df1, file = "df1.csv", row.names = FALSE)
 
 lm1 <- lm(SBP ~ Cortisol, data = df1)
 summary(lm1)
@@ -137,10 +139,33 @@ Sxy <- sum((df1$Cortisol - mean(df1$Cortisol)) * (df1$SBP - mean(df1$SBP)))
 (df1$Cortisol - mean(df1$Cortisol))^2
 sum((df1$Cortisol - mean(df1$Cortisol))^2)
 Sxx <- sum((df1$Cortisol - mean(df1$Cortisol))^2)
+Syy <- sum((df1$SBP - mean(df1$SBP))^2)
 
 Sxy / Sxx
 
+# Correlation coefficient:
+75.376 / sqrt(36.1084*233.3806)
+(233.3806 - 76.034)/(233.3806)
+
 119.81 - (2.0875)*(13.17)
+
+0.8211 * sqrt(6) / sqrt(1-0.6742)
+round(0.8211 * sqrt(6) / sqrt(1-0.6742), 3)
+cor.test(df1$Cortisol, df1$SBP, alternative = "greater")
+summary(lm1)
+cor.test(df1$Cortisol, df1$SBP)
+cor.test(df1$Cortisol, df1$SBP, conf.level = .9)
+
+
+.5 * log((1+0.8211)/(1-0.8211))
+z1 <- 1.160185 - (1.645)/sqrt(5) 
+z2 <- 1.160185 + (1.645)/sqrt(5) 
+(exp(2* z1)-1)/(exp(2*z1)+1)
+(exp(2* z2)-1)/(exp(2*z2)+1)
+
+# Intercept only model:
+lm0 <- update(lm1, . ~ . - Cortisol)
+anova(lm1, lm0)
 
 predict(lm1)
 round(residuals(lm1), 3)
@@ -302,3 +327,117 @@ ggplot(df2, aes(x = Predicted, y = Residuals)) + geom_point() +
   geom_hline(yintercept = 0, color = "darkred", lwd = 1.25) + 
   theme_bw()
 dev.off()
+
+########### Heterogenous variance example ###########
+set.seed(5)
+df3 <- data.frame(SquareFt = round(rbeta(70, 2, 5) * 8000))
+df3 <- df3 %>% filter(SquareFt > 700)
+set.seed(5 + 33)
+df3$e <- rnorm(67, 1, 1)
+df3$Price <- 100 * df3$SquareFt + df3$e * (df3$SquareFt) ^ 1.5
+
+png(filename = "p12.png", height = 5, width = 6, units = "in", res = 600)
+ggplot(df3, aes(x = SquareFt, y = Price)) + geom_point() + ylim(0, 1200000) + theme_bw()
+dev.off()
+
+lm3 <- lm(Price ~ SquareFt, data = df3)
+summary(lm3)
+
+png(filename = "p13.png", height = 5, width = 6, units = "in", res = 600)
+ggplot(df3, aes(x = SquareFt, y = Price)) + geom_point() + ylim(0, 1200000) +
+  geom_abline(intercept = coef(lm3)[1], slope = coef(lm3)[2], color = "darkblue", lwd = 1.25) + theme_bw()
+dev.off()
+
+df3$Residuals <- lm3$residuals
+df3$Fitted <- lm3$fitted.values
+
+png(filename = "p14.png", height = 5, width = 6, units = "in", res = 600)
+ggplot(df3, aes(x = Fitted, y = Residuals)) + geom_point() + 
+  geom_hline(yintercept = 0, color = "darkred", lwd = 1.25, lty = 2) + theme_bw()
+dev.off()
+
+########### Non-linear correlation example ###########
+set.seed(999)
+df4 <- data.frame(x = seq(-2, 2, .01), y = (seq(-2, 2, .01) + rnorm(nrow(df4), mean = 0, sd = .25))**2)
+df4$y <- df4$y 
+
+png(filename = "noCorr.png", height = 4, width = 5, units = "in", res = 600)
+ggplot(df4, aes(x, y)) + geom_point() + geom_abline(intercept = 1.42118, slope = -0.04726, lwd = 1.25, color = "darkblue") + 
+  theme_bw()
+dev.off()
+
+lm4 <- lm(y ~ x, data = df4)
+summary(lm4)
+sqrt(0.001616)
+cor.test(df4$x, df4$y)
+
+
+########### Non-linear correlation example2 ###########
+df4 <- data.frame(x = c(seq(0.01, 1, .01), seq(1.01, 3, .05)), y = log(c(seq(0.01, 1, .01), seq(1.01, 3, .05))))
+set.seed(99)
+df4$err <- rnorm(140, mean = 0, sd = .25) * df4$x
+df4$y <- df4$y + df4$err
+
+png(filename = "noCorr2.png", height = 4, width = 5, units = "in", res = 600)
+ggplot(df4, aes(x, y)) + geom_point(size = .9) + 
+  geom_abline(intercept = -1.61726, slope = 1.17516, lwd = 1.25, color = "darkblue") + 
+  theme_bw()
+dev.off()
+
+lm4 <- lm(y ~ x, data = df4)
+summary(lm4)
+cor.test(df4$x, df4$y)
+cor.test(df4$x, df4$y, method = "spearman")
+
+########### Statistical vs. practical significance ###########
+set.seed(123)
+m5 <- as.data.frame(MASS::mvrnorm(n = 2000, mu = c(10, 15), Sigma = matrix(c(1, .05, .05, 1), nrow = 2, byrow = TRUE)))
+
+png(filename = "noCorr3.png", height = 4, width = 5, units = "in", res = 600)
+ggplot(m5, aes(x = V1, y = V2)) + geom_point(size = .75) + theme_bw() + 
+  labs(x = "Gene 1 Normalized Expression", y = "Gene 2 Normalized Expression")
+dev.off()
+
+cor.test(m5$V1, m5$V2)
+
+0.06548 * sqrt(1998)/sqrt(1-(0.06548)^2)
+2*pt(2.933, df = 1998, lower.tail = FALSE)
+
+0.06548 ** 2
+
+lm5 <- lm(V2 ~ V1, data = m5)
+lm5_0 <- update(lm5, . ~ . - V1)
+summary(lm5_0)
+png(filename = "noCorr4.png", height = 4, width = 5, units = "in", res = 600)
+ggplot(m5, aes(x = V1, y = V2)) + geom_point(size = .75) + theme_bw() + 
+  geom_abline(intercept = 14.36278, slope = 0.06463, lwd = 1.25, color = "darkblue") +
+  labs(x = "Gene 1 Normalized Expression", y = "Gene 2 Normalized Expression")
+dev.off()
+
+########### Spearman example ###########
+# 
+df6 <- data.frame(Concentration = seq(1, 16, 1))
+set.seed(34)
+df6$Rate <- 1 / (1 + exp(-df6$Concentration + 7 + rnorm(16, 0, .75)))
+df6 <- df6[1:14,]
+
+png(filename = "noCorr5.png", height = 4, width = 5, units = "in", res = 600)
+ggplot(df6, aes(x = Concentration, y = Rate)) + geom_point() + theme_bw()
+dev.off()
+
+lm6 <- lm(Rate ~ Concentration, df6)
+summary(lm6)
+
+cor.test(df6$Concentration, df6$Rate)
+cor.test(df6$Concentration, df6$Rate, method = "spearman")
+
+xtable::xtable(df6)
+
+df6$xRanks <- 1:nrow(df6)
+df6$yRanks <- rank(df6$Rate)
+
+sum((df6$xRanks - mean(df6$xRanks))^2)
+sum((df6$yRanks - mean(df6$yRanks))^2)
+225.5 / 227.5
+
+sum((df6$xRanks - mean(df6$xRanks)) * (df6$yRanks - mean(df6$yRanks)))

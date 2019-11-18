@@ -14,7 +14,7 @@
 \title[Lecture 17]{Lecture 17: Inference regarding several proportions}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{November}
+\date{November 11, 2019}
 
 \begin{document}
 
@@ -33,9 +33,9 @@
 
 \begin{frame}{The multinomial experiment}
 	\begin{itemize}
-		\item Earlier in the course we discussed binomial experiments that yielded binary responses (two outcomes)
+		\item Earlier in the course we discussed binomial experiments that yielded binary responses (two outcomes) \pause
 		\item[]
-		\item Now we will discuss the case where we have experiments with 3 or more possible outcomes
+		\item Now we will discuss the case where we have experiments with 3 or more possible outcomes \pause
 		\item[]
 		\item Example: You conduct a poll where you ask respondents if they prefer Candidate A, Candidate B, Candidate C, or do not have a preference (4 possible outcomes)
 	\end{itemize}
@@ -43,26 +43,26 @@
 
 \begin{frame}{The multinomial experiment}{Criteria for a multinomial experiment}
 	\begin{itemize}
-		\item Criteria:
+		\item Criteria for a multinomial experiment: \pause
 		\begin{enumerate}
-			\item The experiment consists of $n$ identical trials
+			\item The experiment consists of $n$ identical trials \pause
 			\item[]
-			\item Each trial results in one of $k$ outcomes
+			\item Each trial results in one of $k$ outcomes \pause
 			\item[]
-			\item The probability that a single trial will result in an outcome $i$ is $\pi_i$ (for $i=1, 2, \hdots, p$), which remains constant from trial to trial. $\sum_{i=1}^k \pi_i = 1$
+			\item The probability that a single trial will result in an outcome $i$ is $\pi_i$ (for $i=1, 2, \hdots, p$), which remains constant from trial to trial. $\sum_{i=1}^k \pi_i = 1$ \pause
 			\item[]
-			\item The trials are independent
+			\item The trials are independent \pause
 			\item[]
-			\item We are interested in $n_i$, the number of trials that results in outcome $i$. $\sum_{i=1}^k n_i = n$
+			\item We are interested in $n_i$, the number of trials that results in outcome $i$. $\sum_{i=1}^k n_i = n$ \pause
 		\end{enumerate}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{The multinomial distribution}
 	\begin{itemize}
-		\item \textbf{The multinomial distribution}: The probability distribution for the number of observations for each of the $k$ outcomes is the multinomial distribution
+		\item \textbf{The multinomial distribution}: The probability distribution for the number of observations for each of the $k$ outcomes is the multinomial distribution \pause
 		\item[]
-		\item The probability distribution function for the multinomial distribution function is:
+		\item The probability distribution function for the multinomial distribution function is: \pause
 		\begin{gather*}
 			P(n_1, n_2, \hdots, n_k) = \frac{n!}{n_1!n_2!\hdots n_k!}\pi_1^{n_1}\pi_2^{n_2}\hdots \pi_k^{n_k}
 		\end{gather*}
@@ -71,9 +71,9 @@
 
 \begin{frame}{The multinomial distribution}{Example}
 	\begin{itemize}
-		\item A ballot initiative proposes increasing the sales tax by .5\% to fund a new library. If the percentage of residents who supports the tax is 37.5\%, with 34.5\% opposed, and 28.0\% undecided; what is the probability that in a random sample of 10 residents, 4 support the tax, 4 are opposed, and 2 are undecided?
+		\item A ballot initiative proposes increasing the sales tax by .5\% to fund a new library. If the percentage of residents who supports the tax is 37.5\%, with 34.5\% opposed, and 28.0\% undecided; what is the probability that in a random sample of 10 residents, 4 support the tax, 4 are opposed, and 2 are undecided? \pause
 		\item[]
-		\item Given the multinomial probability distribution function:
+		\item Given the multinomial probability distribution function: \pause
 		\begin{gather*}
 			P(n_1, n_2, \hdots, n_k) = \frac{n!}{n_1!n_2!\hdots n_k!}\pi_1^{n_1}\pi_2^{n_2}\hdots \pi_k^{n_k} \\
 			P(4, 4, 2) = \frac{10!}{4!4!2!}(0.375)^{4}(0.345)^{4}(0.280)^{2} = 0.0692
@@ -83,7 +83,7 @@
 
 \begin{frame}{The multinomial distribution}{Expected number of outcomes}
 	\begin{itemize}
-		\item When we make inferences regarding multiple proportions, we will need to compute the expected number of outcomes from a multinomial distribution
+		\item When we make inferences regarding multiple proportions, we will need to compute the expected number of outcomes from a multinomial distribution \pause
 		\item[]
 		\item \textbf{Expected number of outcomes:} To determine the expected number of outcomes from $n$ trials, we determine $E_i = n\times \pi_i$ for each outcome $i$
 	\end{itemize}
@@ -91,11 +91,11 @@
 
 \begin{frame}{The multinomial distribution}{Example expected number of outcomes}
 	\begin{itemize}
-		\item A ballot initiative proposes increasing the sales tax by .5\% to fund a new library. If the percentage of residents who supports the tax is 37.5\%, with 34.5\% opposed, and 28.0\% undecided; what is the expected number of residents with each response from a sample of 200 voters?
+		\item A ballot initiative proposes increasing the sales tax by .5\% to fund a new library. If the percentage of residents who supports the tax is 37.5\%, with 34.5\% opposed, and 28.0\% undecided; what is the expected number of residents with each response from a sample of 200 voters? \pause
 		\begin{itemize}
-			\item Support: $200 \times 0.375 = 75$
+			\item Support: $200 \times 0.375 = 75$ \pause
 			\item[]
-			\item Oppose: $200 \times 0.345 = 69$
+			\item Oppose: $200 \times 0.345 = 69$ \pause
 			\item[]
 			\item Undecided: $200 \times 0.280 = 56$
 		\end{itemize}
@@ -109,9 +109,9 @@
 
 \begin{frame}{Chi-Square Goodness-of-Fit Test}
 	\begin{itemize}
-		\item We often want to determine how likely a collection of outcomes is given specified multinomial probabilities
+		\item We often want to determine how likely a collection of outcomes is given specified multinomial probabilities \pause
 		\item[]
-		\item More specifically, if we specify a multinomial probabilities, we may want to determine the agreement between the counts of each outcome we observe versus what we would expect
+		\item More specifically, if we specify a multinomial probabilities, we may want to determine the agreement between the counts of each outcome we observe versus what we would expect \pause
 		\item[]
 		\item The quantity:
 		\begin{gather*}
@@ -125,15 +125,15 @@
 	\begin{itemize}
 		\item Hypotheses:
 		\begin{itemize}
-			\item $H_0: \pi_i = \pi_{i0}$ for all outcome categories $i = 1, 2, \hdots, k$. The $\pi_{i0}$ are the specified probabilities
-			\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories
+			\item $H_0: \pi_i = \pi_{i0}$ for all outcome categories $i = 1, 2, \hdots, k$. The $\pi_{i0}$ are the specified probabilities \pause
+			\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories \pause
 			\item[]
 		\end{itemize}
-	\item Test statistic: 
+	\item Test statistic: \pause
 	\begin{gather*}
 		X^2 = \sum_{i=1}^k \frac{(n_i-E_i)^2}{E_i}
-	\end{gather*}
-	where $n_i$ is the observed number in outcome category $i$, and $E_i=n \times \pi_{i0}$ is the expected number under $H_0$
+	\end{gather*} 
+	where $n_i$ is the observed number in outcome category $i$, and $E_i=n \times \pi_{i0}$ is the expected number under $H_0$ \pause
 	\item[]
 	\item Rejection rule: Reject $H_0$ if $X^2 > \chi_{\alpha,\text{df}=k-1}^2$, with level of significance $P(\chi^2 > X)$
 	\end{itemize}
@@ -141,7 +141,7 @@
 
 \begin{frame}{Chi-Square Goodness-of-Fit Test}{Example}
 	\begin{itemize}
-		\item A large sample poll was conducted in the ``East end'' neighborhoods of the city of Louisville, KY. The poll found that 57.3\% of the residents approve of the current mayor, 33.2\% do not approve of the current mayor, and 9.5\% have no opinion regarding the current mayor. You want to evaluate whether these results also generalize well to different parts of the city. You conduct a similar poll with 100 respondents each in the ``Germantown'' neighborhood and in the ``South End'' and observe the following:
+		\item A large sample poll was conducted in the ``East end'' neighborhoods of the city of Louisville, KY. The poll found that 57.3\% of the residents approve of the current mayor, 33.2\% do not approve of the current mayor, and 9.5\% have no opinion regarding the current mayor. You want to evaluate whether these results also generalize well to different parts of the city. You conduct a similar poll with 100 respondents each in the ``Germantown'' neighborhood and in the ``South End'' and observe the following: \pause
 		\vspace{2mm}
 		\begin{center}
 			\begin{tabular}{ccc}
@@ -157,13 +157,15 @@
 
 \begin{frame}{Chi-Square Goodness-of-Fit Test}{Example}
 	\begin{itemize}
-		\item Hypotheses:
+		\item Are the proportions different in the Germantown neighborhood than what we have already observed? \pause
+		\item[]
+		\item Hypotheses:\pause
 		\begin{itemize}
-			\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$
-			\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories
+			\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$ \pause
+			\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories \pause
 			\item[]
 		\end{itemize}
-	\item Germantown Goodness-of-Fit test:
+	\item Germantown Goodness-of-Fit test: \pause
 	\vspace{1mm}
 	\begin{center}
 		\begin{tabular}{ccc}
@@ -195,25 +197,31 @@
 			Disapprove & 33 & $100 \times 0.332 = 33.2$ & $\frac{(33-33.2)^2}{33.2} = 0.00120$\\
 			No opinion & 12 & $100 \times 0.095 = 9.5$ & $\frac{(12-9.5)^2}{9.5}=0.65789$\\ \hline
 		\end{tabular}
-	\end{center}}
+	\end{center}}\pause
 	\vspace{1mm}
-	\item Test statistic: 
+	\item Test statistic: \pause
 	\begin{gather*}
 	X^2 = \sum_{i=1}^k \frac{(n_i-E_i)^2}{E_i} = 0.09232 + 0.00120 + 0.65789 = 0.75141
-	\end{gather*}
+	\end{gather*} \pause
 	\item p-value: $P(\chi^2 > 0.75141) = 0.6868$
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Chi-Square Goodness-of-Fit Test}{Example}
+	\begin{itemize}
+		\item And now, is there evidence that the proportions differ in the South End neighborhoods than what we previously observed?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Chi-Square Goodness-of-Fit Test}{Example}
 \begin{itemize}
-	\item Hypotheses:
+	\item Hypotheses: \pause
 	\begin{itemize}
 		\item $H_0: \pi_{\text{Approve}} = 0.573,\; \pi_{\text{Disapprove}} = 0.332,\; \pi_{\text{No opinion}}=0.095$
-		\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories
+		\item $H_a: \pi_i \neq \pi_{i0}$ for at least one of the outcome categories  \pause
 		\item[]
 	\end{itemize}
-	\item ``South End'' Goodness-of-Fit test:
+	\item ``South End'' Goodness-of-Fit test:  \pause
 	{\scriptsize
 		\begin{center}
 			\begin{tabular}{cccc}
@@ -223,21 +231,21 @@
 				Disapprove & 49 & $100 \times 0.332 = 33.2$ & $\frac{(49-33.2)^2}{33.2} = 7.5193$\\
 				No opinion & 9 & $100 \times 0.095 = 9.5$ & $\frac{(9-9.5)^2}{9.5}=0.02632$\\ \hline
 			\end{tabular}
-	\end{center}}
+	\end{center}}  \pause
 	\vspace{1mm}
-	\item Test statistic: 
+	\item Test statistic:  \pause
 	\begin{gather*}
 	X^2 = \sum_{i=1}^k \frac{(n_i-E_i)^2}{E_i} = 4.0853 + 7.5193 + 0.02632 = 11.63092
-	\end{gather*}
+	\end{gather*} \pause
 	\item p-value: $P(\chi^2 > 11.63092) = 0.00298$
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Chi-Square Goodness-of-Fit Test}{Note}
 	\begin{itemize}
-		\item The Chi-square distribution is the sampling distribution in approximation only
+		\item The Chi-square distribution is the sampling distribution in approximation only  \pause
 		\item[]
-		\item It isn't always a great approximation. We should not use this test if $E_i <1$ for any $i$, or if more than 20\% of the $E_i$'s are less than 5
+		\item It isn't always a great approximation. We should not use this test if $E_i <1$ for any $i$, or if more than 20\% of the $E_i$'s are less than 5  \pause
 		\item[]
 		\item If that assumption is not met there are exact tests. We don't discuss, but can be done in software
 	\end{itemize}
@@ -250,10 +258,10 @@
 
 \begin{frame}{Contingency tables}
 	\begin{itemize}
-		\item \textbf{Contingency tables:} When we have two categorical variables and a sample from some population, we organize the data into $r\times c$ tables called contingency tables
+		\item \textbf{Contingency tables:} When we have two categorical variables and a sample from some population, we organize the data into $r\times c$ tables called contingency tables  \pause
 		\begin{itemize}
-			\item $r$ is the number of rows
-			\item $c$ is the number of columns
+			\item $r$ is the number of rows  \pause
+			\item $c$ is the number of columns  \pause
 		\end{itemize}
 		\item[]
 		\item Example*: Visitation pasterns of 132 long-term schizophrenic patients in mental hospitals in London
@@ -274,7 +282,7 @@
 
 \begin{frame}{Independence / Dependence}
 	\begin{itemize}
-		\item Given two categorical variables, we often want to determine if they are independent versus dependent
+		\item Given two categorical variables, we often want to determine if they are independent versus dependent  \pause
 		\item[]
 		\item We will develop a $\chi^2$ test that determines whether the ``amount'' of dependence that we measure between two categorical random variables is greater than what we would expect due to chance alone 
 	\end{itemize}
@@ -282,17 +290,17 @@
 
 \begin{frame}{Dependence \& Proportion tables}
 \begin{itemize}
-	\item Recall: $r$ is the number of rows and $c$ is the number of columns
+	\item Recall: $r$ is the number of rows and $c$ is the number of columns  \pause
 	\item[]
-	\item Population proportions:
+	\item Population proportions:  \pause
 	\begin{itemize}
-		\item The population proportion in row $i$ and column $j$ is denoted $\pi_{ij}$
-		\item The total proportion for row $i$ is $\pi_{i.}$
-		\item The total proportion for column $j$ is $\pi_{.j}$
-		\item If the row and column probabilities are independent then: $\pi_{ij}=\pi_{i.}\pi_{.j}$
+		\item The population proportion in row $i$ and column $j$ is denoted $\pi_{ij}$  \pause
+		\item The total proportion for row $i$ is $\pi_{i.}$  \pause
+		\item The total proportion for column $j$ is $\pi_{.j}$  \pause
+		\item If the row and column probabilities are independent then: $\pi_{ij}=\pi_{i.}\pi_{.j}$  \pause
 		\item[]
 	\end{itemize}
-	\item A fictitious example of two independent variables:
+	\item A fictitious example of two independent variables:  \pause
 	\begin{center}
 		\begin{tabular}{|l|ccc|c|}
 			\hline
@@ -348,25 +356,25 @@
 		\item If the row and column probabilities are independent then: $\pi_{ij}=\pi_{i.}\pi_{.j}$
 		\item[]
 	\end{itemize}
-	\item \textbf{Estimated expected value:} Under the hypothesis of independence, the estimated expected value is:
+	\item \textbf{Estimated expected value:} Under the hypothesis of independence, the estimated expected value is:  \pause
 	\begin{gather*}
-		\hat{E}_{ij} =n\frac{(n_{i.})}{n} \frac{(n_{.j})}{n} = n \hat{\pi}_{ij}
+		\hat{E}_{ij} =n\frac{(n_{i.})}{n} \frac{(n_{.j})}{n} =  \frac{(n_{i.})(n_{.j})}{n} = n \hat{\pi}_{ij}
 	\end{gather*}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{$\chi^2$ test of independence}{Process}
 	\begin{itemize}
-		\item Hypotheses:
+		\item Hypotheses:  \pause
 		\begin{itemize}
-			\item $H_0:$ The row and column variables are independent
-			\item $H_a:$ The row and column variables are dependent (associated)
+			\item $H_0:$ The row and column variables are independent  \pause
+			\item $H_a:$ The row and column variables are dependent (associated)  \pause
 			\item[]
 		\end{itemize}
 	\item Test statistic:
 	\begin{gather*}
 		X^2 = \sum_{i,j} \frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}
-	\end{gather*}
+	\end{gather*}  \pause
 	\item[]
 	\item Rejection rule: Reject $H_0$ if $X^2 > \chi^2_{\alpha,\text{df}=(r-1)(c-1)}$ with level of significance, p-value: $P(\chi^2 > X^2)$
 	\end{itemize}
@@ -374,14 +382,14 @@
 
 \begin{frame}{$\chi^2$ test of independence}{Example}
 	\begin{itemize}
-		\item Back to the length of stay and visitation data for schizophrenic patients in mental hospitals in London
+		\item Back to the length of stay and visitation data for schizophrenic patients in mental hospitals in London  \pause
 		\begin{itemize}
-			\item Let's determine if there is evidence that length of stay and the pattern of visitation are dependent ($H_a$), at $\alpha = .05$
+			\item Let's determine if there is evidence that length of stay and the pattern of visitation are dependent ($H_a$), at $\alpha = .05$  \pause
 			\item[]
-			\item RR: Reject $H_0$ if $X^2 > \chi^2_{\alpha,\text{df}=(r-1)(c-1)}=\chi^2_{0.05,4}= 9.488$
+			\item RR: Reject $H_0$ if $X^2 > \chi^2_{\alpha,\text{df}=(r-1)(c-1)}=\chi^2_{0.05,4}= 9.488$  \pause
 			\item[]
 		\end{itemize}
-		\item Proportion table:
+		\item Proportion table:  \pause
 		\begin{center}
 			\begin{tabular}{|l|ccc|c|}
 				\hline
@@ -411,7 +419,7 @@
 				Never & 0.068 & 0.136 & 0.121 & 0.326\\ \hline
 				Total & 0.439 & 0.341 & 0.220 & 1.00\\ \hline
 			\end{tabular}
-		\end{center}}
+		\end{center}}  \pause
 	\vspace{1mm}
 	\item Expected value of the proportions under the null hypothesis:
 	\vspace{1mm}
@@ -445,7 +453,7 @@
 			Never             &0.1432 &0.1111 &0.0716 & 0.326\\ \hline
 			Total & 0.439 & 0.341 & 0.220 &1.00 \\ \hline
 		\end{tabular}
-	\end{center}}
+	\end{center}}  \pause
 	\vspace{1mm}
 	\item Estimated expected values, $\hat{E}_{ij}$:
 	\vspace{1mm}
@@ -479,7 +487,7 @@
 				Never             &5.1876 &0.7583 &4.5377 & 10.4836\\ \hline
 				Total & 17.1991 & 2.3571 &15.6201& 35.1763 \\ \hline
 			\end{tabular}
-	\end{center}}
+	\end{center}}  \pause
 	\vspace{2mm}
 	\item Conclusion: Since $35.1763 > 9.488$, we reject $H_0$. We have evidence that there is dependency between visitation patterns and the length of stay for these patients. The p-value is $P(\chi^2 > 35.1763) =0.0000004$
 \end{itemize}
@@ -487,9 +495,9 @@
 
 \begin{frame}{Important note on the $\chi^2$ test of independence}
 	\begin{itemize}
-		\item As with any hypothesis test, the level of significance (and equivalently whether the null hypothesis is rejected), is a function of both the strength of an association / effect size and the sample size
+		\item As with any hypothesis test, the level of significance (and equivalently whether the null hypothesis is rejected), is a function of both the strength of an association / effect size and the sample size  \pause
 		\item[]
-		\item For a fixed strength of an association, the larger the sample size, the smaller the p-value
+		\item For a fixed strength of an association, the larger the sample size, the smaller the p-value  \pause
 		\item[]
 		\item Consequently, p-values should not be used to determine the strength of an association; only the likelihood the observed result was due to random chance
 	\end{itemize}
@@ -502,9 +510,9 @@
 
 \begin{frame}{$\chi^2$ test of homogeneity}
 	\begin{itemize}
-		\item The $\chi^2$ test of independence described earlier is for when you have a sample from one population and would like to determine if two categorical variables are dependent / independent
+		\item The $\chi^2$ test of independence described earlier is for when you have a sample from one population and would like to determine if two categorical variables are dependent / independent  \pause
 		\item[]
-		\item Now we consider the situation that you have a sample from two or more populations / sub-populations and you wish to compare the distribution of observations across two categorical variables 
+		\item Now we consider the situation that you have a sample from two or more populations / sub-populations and you wish to compare the distribution of observations across two categorical variables  \pause
 		\item[]
 		\item This is a slightly different type of problem \emph{with the same statistical hypothesis testing framework}
 	\end{itemize}
@@ -512,9 +520,9 @@
 
 \begin{frame}{$\chi^2$ test of homogeneity}
 	\begin{itemize}
-		\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without Alzheimer's disease? 
+		\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without Alzheimer's disease?   \pause
 		\item[]
-		\item This was studied in a Chinese population by Shi, J., et al. (2003). doi: 10.1034/j.1600-0404.2003.00193.x
+		\item This was studied in a Chinese population by Shi, J., et al. (2003). doi: 10.1034/j.1600-0404.2003.00193.x  \pause
 		\item[]
 		\item The researchers recruited a cohort of 257 patients with Alzheimer's disease and 242 age-matched controls
 	\end{itemize}
@@ -522,15 +530,15 @@
 
 \begin{frame}{$\chi^2$ test of homogeneity}{Hypotheses}
 \begin{itemize}
-	\item Hypotheses:
+	\item Hypotheses:  \pause
 	\begin{itemize}
 		\item $H_0: (\pi_{11}, \pi_{21}, \hdots, \pi_{r1})=(\pi_{12}, \pi_{22}, \hdots, \pi_{r2})=\dots = (\pi_{13}, \pi_{23}, \hdots, \pi_{r3})$
 		\item $H_a: \pi_{ij}$ are not equal across populations / sub-populations
 		\item[]
-	\end{itemize}
-	\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without the disease? 
+	\end{itemize}  \pause
+	\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without the disease?  \pause 
 	\item[]
-	\item This was studied in a Chinese population by Shi, J., et al. (2003). doi: 10.1034/j.1600-0404.2003.00193.x
+	\item This was studied in a Chinese population by Shi, J., et al. (2003). doi: 10.1034/j.1600-0404.2003.00193.x  \pause
 	\item[]
 	\item The researchers recruited a cohort of 257 patients with Alzheimer's disease and 242 age-matched controls
 \end{itemize}
@@ -538,7 +546,7 @@
 
 \begin{frame}{$\chi^2$ test of homogeneity}{Example}
 \begin{itemize}
-	\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without the disease? 
+	\item Example research question: There are 3 genotypes for ApoCI, \{AA, AB, BB\}. Is the distribution of Apolipoprotein C-I (ApoCI) genotype the same for Alzheimer's patients as in patients without the disease?  
 	\item[]
 	\item Hypotheses:
 	\begin{itemize}
@@ -546,7 +554,7 @@
 		\item $H_a: \pi_{ij}$ are not equal across populations / sub-populations
 		\item[]
 	\end{itemize}
-	\item The data from that study:
+	\item The data from that study:  \pause
 	\begin{center}
 		\begin{tabular}{c|cc}
 			\hline
@@ -571,9 +579,9 @@
 			BB & 144 & 150 &  294\\ \hline
 			\textbf{Total} & 257 & 242 & 499
 		\end{tabular}
-	\end{center}
+	\end{center}  \pause
 	\item[]
-	\item Using the formula $\hat{E}_{ij} = \frac{(n_{i.})(n_{.j})}{n}$:
+	\item Using the formula $\hat{E}_{ij} = \frac{(n_{i.})(n_{.j})}{n}$:  \pause
 	\begin{center}
 	\begin{tabular}{c|cc|c}
 		\hline
@@ -599,8 +607,8 @@
 				BB & 151.4188 & 142.5812 & 294\\ \hline
 				\textbf{Total} & 257 & 242 & 499
 			\end{tabular}
-		\end{center}
-	\item Table of values, $\frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}$
+		\end{center}\pause
+	\item Table of values, $\frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}$: \pause
 			\begin{center}
 		\begin{tabular}{c|cc}
 			\hline
@@ -615,7 +623,7 @@
 
 \begin{frame}{$\chi^2$ test of homogeneity}{Example}
 \begin{itemize}
-	\item Table of values, $\frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}$
+	\item Table of values, $\frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}}$: 
 	\begin{center}
 		\begin{tabular}{c|cc}
 			\hline
@@ -624,12 +632,12 @@
 			AB& 0.1071884& 0.1138324\\
 			BB& 0.3634859& 0.3860158\\ \hline
 		\end{tabular}
-	\end{center}
-		\item Test statistic:
+	\end{center} \pause
+		\item Test statistic: \pause
 		\begin{gather*}
 		X^2 = \sum_{i,j} \frac{(n_{ij}-\hat{E}_{ij})^2}{\hat{E}_{ij}} = 4.7131
-		\end{gather*}
-		\item Since the degrees of freedom is 2, the p-value is $P(\chi^2 > 4.7131)=0.0947$
+		\end{gather*} \pause
+		\item Since the degrees of freedom is 2, the p-value is $P(\chi^2 > 4.7131)=0.0947$ \pause
 		\item[]
 		\item So there is some evidence that this result would be unlikely due to chance alone; genotype appears to be associated with AD
 \end{itemize}
@@ -642,17 +650,17 @@
 
 \begin{frame}{The strength of an association}
 	\begin{itemize}
-		\item Both the $\chi^2$ test of independence and homogeneity tell us how rare it is to see a contingency table such as the one we have observed if the null hypothesis were true
+		\item Both the $\chi^2$ test of independence and homogeneity tell us how rare it is to see a contingency table such as the one we have observed if the null hypothesis were true \pause
 		\item[]
-		\item However, the level of significance from those tests does not tell us the strength of the association
+		\item However, the level of significance from those tests does not tell us the strength of the association \pause
 		\item[]
-		\item For this we can look directly at the proportions / percentages to make (qualitative) inferences
+		\item For this we can look directly at the proportions / percentages to make inferences \pause
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Proportions from a contingency table}
 	\begin{itemize}
-		\item Proportions of total:
+		\item Proportions of total: \pause
 		{\scriptsize
 		\begin{center}
 			\begin{tabular}{|l|ccc|}
@@ -663,7 +671,7 @@
 				Less than monthly& 0.045& 0.083& 0.076 \\
 				Never            & 0.068& 0.136& 0.121 \\ \hline
 			\end{tabular}
-		\end{center}}
+		\end{center}} \pause
 	 \vspace{1mm}
 		\item Proportions within rows:
 			{\scriptsize
@@ -676,7 +684,7 @@
 				Less than monthly & 0.222 & 0.407 & 0.370 \\
 				Never             & 0.209 & 0.419 & 0.372 \\ \hline
 				\end{tabular}
-		\end{center}}
+		\end{center}} \pause
 	\vspace{1mm}
 		\item Proportions within columns:
 		{\scriptsize
@@ -709,7 +717,7 @@
 				Less than monthly & 0.222 & 0.407 & 0.370 \\
 				Never             & 0.209 & 0.419 & 0.372 \\ \hline
 			\end{tabular}
-	\end{center}}
+	\end{center}} \pause
 	\vspace{1mm}
 	\item Proportions within columns:
 	\begin{itemize}
@@ -727,6 +735,12 @@
 			\end{tabular}
 	\end{center}}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{The end of Lecture \#17}
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{DSC_0177_v1}
+	\end{center}
 \end{frame}
 
 \end{document}

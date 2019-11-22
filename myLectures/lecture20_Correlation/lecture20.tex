@@ -11,7 +11,7 @@
 
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
 
-\title[Lecture 20]{Lecture 19. Linear Regression: Correlation}
+\title[Lecture 20]{Lecture 20. Linear Regression: Correlation}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
 \date{November 20, 2019}
@@ -32,9 +32,9 @@
 
 \begin{frame}{The correlation coefficient}{A blast from the past}
 	\begin{itemize}
-		\item \textbf{\emph{Correlation coefficient:}} The correlation coefficient measures the strength of the linear relationship between two quantitative variables. We denote it $r$
+		\item \textbf{\emph{Correlation coefficient:}} The correlation coefficient measures the strength of the linear relationship between two quantitative variables. We denote it $r$ \pause
 		\item[]
-		\item Old formula: 
+		\item Old formula: \pause
 		\begin{gather*}
 		r = \frac{\sum_{i=1}^n(x_i -\bar{x})(y_i - \bar{y})}{(n-1) s_x s_y}
 		\end{gather*}
@@ -54,11 +54,11 @@
 					\item Old formula: 
 			\begin{gather*}
 			r = \frac{\sum_{i=1}^n(x_i -\bar{x})(y_i - \bar{y})}{(n-1) s_x s_y}
-			\end{gather*}
+			\end{gather*} \pause
 			\item New formula (relating to linear regression):
 			\begin{gather*}
 			r_{yx} = \frac{\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{S_{xx}S_{yy}}} = \frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}
-			\end{gather*}
+			\end{gather*} \pause
 			\item The better $x$ predicts $y$, given $\hat{y}=\hat{\beta}_0 + \hat{\beta}_1 x$, the greater $r_{yx}$
 		\end{itemize}
 	\end{itemize}
@@ -72,23 +72,18 @@
 
 \begin{frame}{The correlation coefficient}{Example}
 	\begin{itemize}
-	\item In our example of predicting blood pressure from cortisol:
+	\item In our example of predicting blood pressure from cortisol: \pause
 	\begin{itemize}
-		\item $S_{xx} = 36.1084$
-		\item $S_{xy} = 75.376$
-		\item $S_{yy} = \text{SS}(\text{Total}) = 233.3806$
+		\item $S_{xx} = 36.1084$ \pause
+		\item $S_{xy} = 75.376$ \pause
+		\item $S_{yy} = \text{SS}(\text{Total}) = 233.3806$ \pause
 	\end{itemize}
 	\item[]
-		\item So then:
+		\item So then: \pause
 		\begin{gather*}
 		r_{yx} = \frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}} = \frac{75.376}{\sqrt{(36.1084)(233.3806)}} = 0.8211
 		\end{gather*}
 	\end{itemize}
-\end{frame}
-
-\section{The coefficient of determination}
-\begin{frame}{Outline}
-	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
 \end{frame}
 
 \begin{frame}{The correlation coefficient}{Nonlinear}
@@ -99,42 +94,47 @@
 	\end{center}
 \end{frame}
 
+\section{The coefficient of determination}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
 \begin{frame}{The coefficient of determination}
 	\begin{itemize}
-		\item The coefficient of determination:
+		\item The coefficient of determination: \pause
 		\begin{gather*}
 		r^2_{yx} = \frac{\text{SS}(\text{Total})-\text{SS}(\text{Error})}{\text{SS}(\text{Total})}
-		\end{gather*}
+		\end{gather*} \pause
 		\item The correlation coefficient is the square root of the coefficient of determination
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{The coefficient of determination}
 	\begin{itemize}
-		\item Back to our example of predicting blood pressure from cortisol, we had the following sum of squares:
+		\item Back to our example of predicting blood pressure from cortisol, we had the following sum of squares: \pause
 		\begin{itemize}
-			\item Error or residual sum of squares: $\sum_{i=1}^n (y_i - \hat{y}_i)^2=76.034$
+			\item Error or residual sum of squares: $\sum_{i=1}^n (y_i - \hat{y}_i)^2=76.034$ \pause
 			\item[]
-			\item Model or regression sum of squares: $\sum_{i=1}^n (\hat{y}_i-\bar{y})^2=157.347$
+			\item Model or regression sum of squares: $\sum_{i=1}^n (\hat{y}_i-\bar{y})^2=157.347$ \pause
 			\item[]
-			\item Total sum of squares: $\sum_{i=1}^n (y_i -\bar{y})^2 = \text{SS}(\text{Regression})+\text{SS}(\text{Error}) = 233.3806$
+			\item Total sum of squares: $\sum_{i=1}^n (y_i -\bar{y})^2 = \text{SS}(\text{Regression})+\text{SS}(\text{Error}) = 233.3806$ \pause
 			\item[]
 		\end{itemize}
 		\item The coefficient of determination:
 		\begin{gather*}
-		r^2_{yx} = \frac{\text{SS}(\text{Total})-\text{SS}(\text{Error})}{\text{SS}(\text{Total})} = \frac{233.3806 - 76.034}{233.3806} = 0.6742
+		r^2_{yx} = \frac{\text{SS}(\text{Total})-\text{SS}(\text{Error})}{\text{SS}(\text{Total})} = \frac{233.3806 - 76.034}{233.3806} = 0.6742 
 		\end{gather*}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{The coefficient of determination}{Important interpretation}
 	\begin{itemize}
-		\item \textbf{Intercept only model}: The model $y = \beta_0 + \varepsilon$
+		\item \textbf{Intercept only model}: The model $y = \beta_0 + \varepsilon$ \pause
 		\begin{itemize}
-			\item Corresponds to $\hat{y} = \bar{y}$
+			\item Corresponds to $\hat{y} = \bar{y}$ \pause
 			\item[]
 		\end{itemize}
-		\item The coefficient of determination represents the proportionate reduction in error in using the model $\hat{y}=\hat{\beta}_0 + \hat{\beta}_1 x$ instead of $\hat{y}=\hat{\beta}_0 =\bar{y}$
+		\item The coefficient of determination represents the proportionate reduction in error in using the model $\hat{y}=\hat{\beta}_0 + \hat{\beta}_1 x$ instead of $\hat{y}=\hat{\beta}_0 =\bar{y}$ \pause
 		\item[]
 		\item In our example of predicting blood pressure from cortisol, there is a 67.4\% reduction in the error in predicting $\hat{y}$ by using $\hat{y}=\hat{\beta}_0 + \hat{\beta}_1 x$ instead of $\hat{y} = \bar{y}$
 	\end{itemize}
@@ -148,7 +148,7 @@
 
 \begin{frame}{Correlation inference}
 	\begin{itemize}
-		\item The correlation coefficient $r_{yx}$ is an estimate determined from a sample of the population parameter $\rho_{yx}$
+		\item The correlation coefficient $r_{yx}$ is an estimate determined from a sample of the population parameter $\rho_{yx}$ \pause
 		\item[]
 		\item We can test hypotheses regarding the value of $\rho_{yx}$
 	\end{itemize}
@@ -156,22 +156,22 @@
 
 \begin{frame}{Correlation inference}{Process}
 	\begin{itemize}
-	\item Hypotheses: 
+	\item Hypotheses: \pause
 	\begin{itemize}
-		\item \textbf{Case 1.} $H_0: \rho_{yx} \leq 0$ versus $H_a: \rho_{yx} > 0$
-		\item \textbf{Case 2.} $H_0: \rho_{yx} \geq 0$ versus $H_a: \rho_{yx} < 0$
-		\item \textbf{Case 3.} $H_0: \rho_{yx} = 0$ versus $H_a: \rho_{yx} \neq 0$
+		\item \textbf{Case 1.} $H_0: \rho_{yx} \leq 0$ versus $H_a: \rho_{yx} > 0$ \pause
+		\item \textbf{Case 2.} $H_0: \rho_{yx} \geq 0$ versus $H_a: \rho_{yx} < 0$ \pause
+		\item \textbf{Case 3.} $H_0: \rho_{yx} = 0$ versus $H_a: \rho_{yx} \neq 0$ \pause
 	\end{itemize}
 	\item[]
 	\item Test statistic:
 	\begin{gather*}
 	t^* = r_{yx} \frac{\sqrt{n-2}}{\sqrt{1-r^2_{yx}}}
-	\end{gather*}
+	\end{gather*} \pause
 	
-	\item Rejection rule: For a fixed Type I error probability $\alpha$, 
+	\item RR: For a fixed Type I error probability $\alpha$ and $\text{df}=n-2$, \pause
 	\begin{itemize}
-		\item \textbf{Case 1.} Reject $H_0$ if $t^* > t_{\alpha}$ with p-value: $P(t\geq t^*)$
-		\item \textbf{Case 2.} Reject $H_0$ if $t^* < -t_{\alpha}$ with p-value: $P(t\leq t^*)$
+		\item \textbf{Case 1.} Reject $H_0$ if $t^* > t_{\alpha}$ with p-value: $P(t\geq t^*)$ \pause
+		\item \textbf{Case 2.} Reject $H_0$ if $t^* < -t_{\alpha}$ with p-value: $P(t\leq t^*)$ \pause
 		\item \textbf{Case 3.} Reject $H_0$ if $|t^*| > t_{\alpha / 2}$ with p-value: $2\times P(t\geq |t^*|)$
 	\end{itemize}
 	\end{itemize}
@@ -179,16 +179,16 @@
 
 \begin{frame}{Correlation inference}{Example}
 	\begin{itemize}
-		\item Research question, ``is there a positive correlation between cortisol levels and blood pressure?''. Let's test with $\alpha = 0.05$
+		\item Research question, ``is there a positive correlation between cortisol levels and blood pressure?''. Let's test with $\alpha = 0.05$ \pause
 		\item[]
-		\item Hypotheses: \textbf{Case 1.} $H_0: \rho_{yx} \leq 0$ versus $H_a: \rho_{yx} > 0$
+		\item Hypotheses: \textbf{Case 1.} $H_0: \rho_{yx} \leq 0$ versus $H_a: \rho_{yx} > 0$\pause
 		\item[]
-		\item Test statistic:
+		\item Test statistic: \pause
 		\begin{gather*}
 		t^* = r_{yx} \frac{\sqrt{n-2}}{\sqrt{1-r^2_{yx}}} = 0.8211 \frac{\sqrt{6}}{\sqrt{1-0.6742}} = 3.5237
-		\end{gather*}
+		\end{gather*} \pause
 		
-		\item Rejection rule: Reject $H_0$ if $t^* > t_{\alpha} = 1.645$
+		\item Rejection rule: Reject $H_0$ if $t^* > t_{\alpha} = 1.943$ \pause
 		\item[]
 		\item Conclusion. We do have evidence of a positive correlation. The p-value is $P(t\geq 3.5237)=0.006$
 	\end{itemize}
@@ -196,7 +196,7 @@
 
 \begin{frame}{Correlation inference}{More on the relationship with linear regression}
 	\begin{itemize}
-		\item The observed test statistic from the correlation test matches the test statistic from the test of $H_0: \beta_1 \leq 0$ versus $H_a: \beta_1 >0$
+		\item The observed test statistic from the correlation test matches the test statistic from the test of $H_0: \beta_1 \leq 0$ versus $H_a: \beta_1 >0$ \pause
 		\item[]
 		\item In general: $\hat{\beta}_1 = r_{yx} \sqrt{\frac{S_{yy}}{S_{xx}}}$
 	\end{itemize}
@@ -204,12 +204,12 @@
 
 \begin{frame}{Correlation coefficient}{Confidence intervals}
 	\begin{itemize}
-		\item A confidence interval can be determined for a correlation coefficient given that $n$ is ``fairly large'' and $(x,y)$ is bivariate normal
+		\item A confidence interval can be determined for a correlation coefficient given that $n$ is ``fairly large'' and $(x,y)$ is bivariate normal \pause
 		\item[]
-		\item A $100(1-\alpha /2)$ confidence interval for $\rho_{yx}$ is given by:
+		\item A $100(1-\alpha)\%$ confidence interval for $\rho_{yx}$ is given by: \pause
 		\begin{gather*}
 		\left(\frac{e^{2 z_1}-1}{e^{2 z_1}+1}, \frac{e^{2 z_2}-1}{e^{2 z_2}+1} \right)
-		\end{gather*}
+		\end{gather*} \pause
 		where:
 		\begin{gather*}
 		z = \frac{1}{2} \ln \left( \frac{1+r_{yx}}{1-r_{yx}} \right) \\
@@ -230,8 +230,8 @@
 		\item Let's determine a 90\% confidence interval for the correlation between cortisol levels and blood pressure:
 		\begin{gather*}
 		z = \frac{1}{2} \ln \left( \frac{1+r_{yx}}{1-r_{yx}} \right) =  \frac{1}{2} \ln \left( \frac{1+0.8211}{1-0.8211} \right) = 1.160185\\
-		z_1 = z - \frac{z_{\alpha / 2}}{\sqrt{n-3}} = 1.160185 - \frac{1.645}{5} = 0.42452 \\
-		z_2 = z + \frac{z_{\alpha / 2}}{\sqrt{n-3}} = 1.160185 + \frac{1.645}{5} = 1.89585
+		z_1 = z - \frac{z_{\alpha / 2}}{\sqrt{n-3}} = 1.160185 - \frac{1.645}{\sqrt{5}} = 0.42452 \\
+		z_2 = z + \frac{z_{\alpha / 2}}{\sqrt{n-3}} = 1.160185 + \frac{1.645}{\sqrt{5}} = 1.89585
 		\end{gather*}
 		Then: 
 		\begin{gather*}
@@ -248,11 +248,11 @@
 
 \begin{frame}{Statistical significance versus practical significance}
 	\begin{itemize}
-		\item Research question: Is there is a correlation between the expression (or amount) of Gene 1 and Gene 2 (at $\alpha = 0.05$)?
+		\item Research question: Is there is a correlation between the expression (or amount) of Gene 1 and Gene 2 (at $\alpha = 0.05$)? \pause
 		\item[]
-		\item Hypotheses: \textbf{Case 3.} $H_0: \rho_{yx} = 0$ versus $H_a: \rho_{yx} \neq 0$
+		\item Hypotheses: \textbf{Case 3.} $H_0: \rho_{yx} = 0$ versus $H_a: \rho_{yx} \neq 0$ \pause
 		\item[]
-		\item Rejection rule: Reject $H_0$ if $|t^*| > t_{\alpha / 2}$ with p-value: $2\times P(t\geq |t^*|)$
+		\item Rejection rule: Reject $H_0$ if $|t^*| > t_{\alpha / 2}$ with p-value: $2\times P(t\geq |t^*|)$ \pause
 		\item[]
 		\item Approach: You measure the expression of both genes with a sample size of $n = 2000$ and observe the data on the following slide
 	\end{itemize}
@@ -266,15 +266,15 @@
 
 \begin{frame}{Statistical significance versus practical significance}
 	\begin{itemize}
-	\item You determine that $r_{yx} = 0.06548$
+	\item You determine that $r_{yx} = 0.06548$ \pause
 	\item[]
-	\item Test statistic:
+	\item Test statistic: \pause
 	\begin{gather*}
 		t^* = r_{yx} \frac{\sqrt{n-2}}{\sqrt{1-r^2_{yx}}} = 0.06548 \frac{\sqrt{1998}}{\sqrt{1-(0.06548)^2}} = 2.9332
-	\end{gather*}
-	\item Conclusion: Reject $H_0$, we have evidence that there is a correlation, with p-value 0.0034
+	\end{gather*} \pause
+	\item Conclusion: Reject $H_0$, we have evidence that there is a correlation, with a p-value of 0.0034 \pause
 	\item[]
-	\item However, $ r_{yx}^2 = 0.0042$. So the proportional reduction in the error in predicting Gene 2 expression using Gene 1 expression is 0.42\%
+	\item However, $ r_{yx}^2 = 0.0042$. So the proportional reduction in the error in predicting Gene 2 expression using Gene 1 expression is 0.42\% 
 	\end{itemize}
 \end{frame}
 
@@ -286,11 +286,11 @@
 
 \begin{frame}{Statistical significance versus practical significance}
 	\begin{itemize}
-		\item Recall the residual standard error: 
+		\item Recall the residual standard error: \pause
 		\begin{gather*}
 		s_{\varepsilon} = \sqrt{s^2_{\varepsilon}} = \sqrt{\frac{\sum_{i=1}^{n}\left(y_i - \hat{y}_i\right)^2}{n-2}}
-		\end{gather*} 
-		\item The residual standard error from predicting Gene 2 expression from Gene 1 using $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$, is 0.9849
+		\end{gather*} \pause
+		\item The residual standard error from predicting Gene 2 expression from Gene 1 using $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x$, is 0.9849 \pause
 		\item[]
 		\item The residual standard error from predicting Gene 2 expression using the intercept only model $\hat{y}=\hat{\beta}_0 = \bar{y}$, is 0.9868
 	\end{itemize}
@@ -309,13 +309,13 @@
 
 \begin{frame}{The Spearman rank correlation coefficient}
 	\begin{itemize}
-		\item The Pearson correlation coefficient measures the relationship between two continuous random variables when:
+		\item The Pearson correlation coefficient measures the relationship between two continuous random variables when: \pause
 		\begin{itemize}
-			\item $(x,y)$ are bivariate normal
-			\item The relationship between $x$ and $y$ is linear
+			\item $(x,y)$ are bivariate normal \pause
+			\item The relationship between $x$ and $y$ is linear \pause
 			\item[]
 		\end{itemize}
-		\item When these conditions do not hold, but the relationship between $x$ and $y$ is monotonic, then the Spearman rank correlation coefficient can be used to measure association
+		\item When these conditions do not hold, but the relationship between $x$ and $y$ is monotonic, then the Spearman rank correlation coefficient can be used to measure association \pause
 		\item[]
 		\item \textbf{Process:} Determine the ranks for the $x$ and $y$ values, and then determine the Pearson correlation coefficient between the ranks
 	\end{itemize}
@@ -380,13 +380,13 @@
 
 \begin{frame}{The Spearman rank correlation coefficient}{Example}
 	\begin{itemize}
-		\item Using the ranks from before: $S_{xy} = 225.5$, $S_{xx}=227.5$, and $S_{yy}=227.5$
+		\item Using the ranks from before: $S_{xy} = 225.5$, $S_{xx}=227.5$, and $S_{yy}=227.5$ \pause
 		\item[]
-		\item So then:
+		\item So then: \pause
 		\begin{gather*}
 			r_{s}=\frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}} = \frac{225.5}{\sqrt{(227.5)(227.5)}} = 0.9912
-		\end{gather*}
-		is the Spearman rank correlation coefficient
+		\end{gather*} 
+		is the Spearman rank correlation coefficient \pause
 		\item[]
 		\item In comparison, the Pearson correlation coefficient is: 0.9544
 	\end{itemize}

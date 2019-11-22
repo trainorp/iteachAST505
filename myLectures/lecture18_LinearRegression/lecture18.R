@@ -197,7 +197,7 @@ summary(lm1)
 lm2 <- update(lm1, data = df1b)
 summary(lm2)
 
-png(file = "p10.png", height = 5, width = 7, units = "in", res = 600)
+png(file = "p0_10.png", height = 5, width = 7, units = "in", res = 600)
 ggplot(df1b, aes(Cortisol, SBP, color = group)) + geom_point() + 
   geom_abline(intercept = 92.3177, slope = 2.0875, color = "darkblue") + 
   geom_abline(intercept = 91.6814, slope = 2.1378, color = "indianred") + 
@@ -209,7 +209,7 @@ df1b$SBP[9] <- 120 + 2*(22 - mean(df1$Cortisol)) + .5 * rnorm(1, 0, 4) - 14
 lm2 <- update(lm1, data = df1b)
 summary(lm2)
 
-png(file = "p11.png", height = 5, width = 7, units = "in", res = 600)
+png(file = "p0_11.png", height = 5, width = 7, units = "in", res = 600)
 ggplot(df1b, aes(Cortisol, SBP, color = group)) + geom_point() + 
   geom_abline(intercept = 92.3177, slope = 2.0875, color = "darkblue") + 
   geom_abline(intercept = 104.8771 , slope = 1.0954, color = "indianred") + 
@@ -221,7 +221,7 @@ df1b$SBP[9] <- 120 + 2*(22 - mean(df1$Cortisol)) + .5 * rnorm(1, 0, 4) - 34
 lm2 <- update(lm1, data = df1b)
 summary(lm2)
 
-png(file = "p12.png", height = 5, width = 7, units = "in", res = 600)
+png(file = "p0_12.png", height = 5, width = 7, units = "in", res = 600)
 ggplot(df1b, aes(Cortisol, SBP, color = group)) + geom_point() + 
   geom_abline(intercept = 92.3177, slope = 2.0875, color = "darkblue") + 
   geom_abline(intercept = 123.7280 , slope = -0.3938, color = "indianred") + 
@@ -356,6 +356,33 @@ ggplot(df3, aes(x = Fitted, y = Residuals)) + geom_point() +
   geom_hline(yintercept = 0, color = "darkred", lwd = 1.25, lty = 2) + theme_bw()
 dev.off()
 
+# Variable transformation:
+df3$PriceTrans <- log(df3$Price)
+df3$PriceTrans2 <- sqrt(df3$Price)
+lm3Trans <- lm(PriceTrans ~ SquareFt, data = df3)
+df3$TransResiduals <- lm3Trans$residuals
+df3$TransFitted <- lm3Trans$fitted.values
+
+png(filename = "p12Trans.png", height = 5, width = 6, units = "in", res = 600)
+ggplot(df3, aes(x = SquareFt, y = PriceTrans)) + geom_point() + 
+  geom_abline(intercept = coef(lm3Trans)[1], slope = coef(lm3Trans)[2], color = "darkblue", lwd = 1.25)+
+  theme_bw() + labs(x = "Square Feet", y = "Log(Price)")
+dev.off()
+
+png(filename = "p14Trans.png", height = 5, width = 6, units = "in", res = 600)
+ggplot(df3, aes(x = TransFitted, y = TransResiduals)) + geom_point() + ylim(-.9, .9) +
+  labs(x = "Predicted", y = "Residual") + 
+  geom_hline(yintercept = 0, color = "darkred", lwd = 1.25, lty = 2) + theme_bw()
+dev.off()
+
+# Coefficient Interpretation
+summary(lm3)
+summary(lm3Trans)
+
+lm3TransPreds <- exp(predict(lm3Trans, newdata = data.frame(SquareFt = c(1120, 1121))))
+lm3TransPreds[2] / lm3TransPreds[1]
+exp(0.00036310)
+
 ########### Non-linear correlation example ###########
 set.seed(999)
 df4 <- data.frame(x = seq(-2, 2, .01), y = (seq(-2, 2, .01) + rnorm(nrow(df4), mean = 0, sd = .25))**2)
@@ -441,3 +468,31 @@ sum((df6$yRanks - mean(df6$yRanks))^2)
 225.5 / 227.5
 
 sum((df6$xRanks - mean(df6$xRanks)) * (df6$yRanks - mean(df6$yRanks)))
+
+########### Transformation of x ###########
+set.seed(58)
+df7 <- data.frame(x = runif(20, -2, 2))
+df7$x <- round(df7$x, 2)
+set.seed(53)
+df7$y <- -(rnorm(20, 0, .15) + df7$x)**2 + 10
+df7$y <- round(df7$y, 2)
+df7$xSquared <- df7$x**2
+lm7 <- lm(y ~ xSquared, data = df7)
+summary(lm7)
+
+df7Big <- data.frame(x = seq(-3, 3, .001))
+df7Big$y <- coef(lm7)[1] + coef(lm7)[2]*df7Big$x**2
+
+png(filename = "nonLinear1.png", height = 4, width = 5, units = "in", res = 600)
+ggplot(df7, aes(x = x, y = y)) + geom_point() + theme_bw() + xlim(-2.25, 2.25) + ylim(6, 10.25) +
+  labs(x = "Deviation from optimal quantity (thousands)", y = "Profit")
+dev.off()
+
+png(filename = "nonLinear2.png", height = 4, width = 5, units = "in", res = 600)
+ggplot(df7, aes(x = x, y = y)) + geom_point() + xlim(-2.25, 2.25) + ylim(6, 10.25) +
+  geom_line(data = df7Big, mapping = aes(x = x, y = y), lwd = 1.25, color = "darkblue") + 
+  labs(x = "Deviation from optimal quantity (thousands)", y = "Profit") + theme_bw()
+dev.off()
+
+df7b <- df7 %>% select(`Deviation from Optimal` = x, `Profit Margin` = y)
+write.csv(df7b, file = "df7b.csv", row.names = FALSE)

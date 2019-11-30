@@ -3,6 +3,7 @@
 \usecolortheme{beaver}
 
 \usepackage{amsmath,graphicx,booktabs,tikz,subfig,color,lmodern}
+
 \definecolor{mycol}{rgb}{.4,.85,1}
 \setbeamercolor{title}{bg=mycol,fg=black} 
 \setbeamercolor{palette primary}{use=structure,fg=white,bg=red}
@@ -45,15 +46,559 @@
 
 \begin{frame}{``Generalized linear model'' / Linear models}
 	\begin{itemize}
-		\item \textbf{General linear model:} The general linear model has the form: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \hdots + \beta_k x_k + \varepsilon$
+		\item \textbf{General linear model:} The general linear model has the form: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \hdots + \beta_p x_p + \varepsilon$
 		\item[]
 		\item We can call a ``general linear model'', a ``linear model'' to avoid confusion with ``generalized linear models''
 		\item[]
 		\item We can use linear models to describe a wide range of relationships between variables
+		\item[]
+		\item We refer to the $x$ variables as predictors or independent variables; the $y$ variable is the response variable or dependent variable
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Linear models}
+\begin{frame}{Linear models}{Simple linear regression}
+	\begin{itemize}
+		\item Form: $y = \beta_0 + \beta_1 x + \varepsilon$
+		\item $\hat{y} = 3.19495 + 1.02910 x $
+	\end{itemize}
+\begin{center}
+	\includegraphics[width=.6\linewidth]{lm1}
+\end{center}
+\end{frame}
+
+\begin{frame}{Linear models}{Polynomial regression}
+	\begin{itemize}
+		\item Form: $y = \beta_0 + \beta_1 x + \beta_2 x^2 + \varepsilon$
+		\item $\hat{y} = 1.8441 - 1.5975 x + 1.9928x^2 $
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=.6\linewidth]{lm2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Linear models}{Polynomial regression}
+	\begin{itemize}
+		\item Form: $y = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3 + \varepsilon$
+		\item $\hat{y} = 1.2700 +0.9327 x + 0.8523 x^2 + 0.8925 x^3$
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=.6\linewidth]{lm3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Linear models}{Multiple regression}
+	\begin{itemize}
+		\item Form: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \varepsilon$
+		\item $\hat{y} = -0.014539 +0.227859 x_1 + 0.260445  x_2 $
+	\end{itemize}
+	\vspace{-1.5mm}
+	\begin{center}
+		\includegraphics[width=.55\linewidth]{lm4_1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Linear models}{Multiple regression}
+	\begin{itemize}
+		\item Form: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \varepsilon$
+		\item $\hat{y} = -0.014539 +0.227859 x_1 + 0.260445  x_2 $
+	\end{itemize}
+	\vspace{-1.5mm}
+	\begin{center}
+		\includegraphics[width=.55\linewidth]{lm4_2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{``Generalized linear model'' / Linear models}
+	\begin{itemize}
+		\item \textbf{General linear model:} The general linear model has the form: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \hdots + \beta_p x_p + \varepsilon$
+		\begin{itemize}
+			\item Both polynomial and multiple regression can be represented in this way
+			\item[]
+		\end{itemize}
+		\item Notation: Observations are indexed with $i = 1, 2, \hdots, n$, and the independent variables are indexed with $j = 1, 2, \hdots, p$
+		\item[]
+		\item Then the model for individual responses is: $y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \hdots + \beta_p x_{ip} + \varepsilon_i$
+		\item[]
+		\item And we can make predictions with: $\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 x_1 + \hat{\beta}_2 x_2 + \hdots + \hat{\beta}_p x_p $
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{``Generalized linear model'' / Linear models}{Assumptions}
+\begin{itemize}
+	\item Assumptions:
+	\begin{enumerate}
+		\item The $\varepsilon_i$s are normally distributed 
+		\item The form of the relationship between $y$ and the $x_j$ variables is correctly specified so that $E(\varepsilon_i) = 0$ for all $i$
+		\item $Var(\varepsilon_i) = \sigma_{\varepsilon}^2$ for all $i$
+		\item The $\varepsilon_i$s are independent
+		\item[]
+	\end{enumerate}	
+	\item Parameter estimation is the same as with simple linear regression
+	\item[]
+	\item That is, we choose $\hat{\beta}_0$, $\hat{\beta}_1$, ..., $\hat{\beta}_p$ to minimize $\text{SS}(\text{Residuals}) = \sum_{i=1}^n (y_i -\hat{y}_i)^2$
+\end{itemize}
+\end{frame}
+
+\section{Parameter estimation}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}
+	\begin{itemize}
+		\item Least squares normal equations:
+		\begin{align*}
+		\sum_{i=1}^n y_i &= n \hat{\beta}_0 + \hat{\beta}_1 \sum_{i=1}^n x_{i1} +  \hat{\beta}_2 \sum_{i=1}^n x_{i2} + \hdots + \hat{\beta}_p \sum_{i=1}^n x_{ip} \\
+		\sum_{i=1}^n x_{i1} y_i &= \hat{\beta}_0 \sum_{i=1}^n x_{i1} + \hat{\beta}_1 \sum_{i=1}^n x^2_{i1} + \hat{\beta}_2 \sum_{i=1}^n x_{i1} x_{i2} + \hat{\beta}_p \sum_{i=1}^n x_{i1} x_{ip} \\
+		\vdots & \quad \quad \quad \quad \quad \vdots \\
+		\sum_{i=1}^n x_{ip} y_i &=  \hat{\beta}_0 \sum_{i=1}^n x_{ip} + \hat{\beta}_1 \sum_{i=1}^n x_{ip} x_{i1} + \hat{\beta}_2 \sum_{i=1}^n x_{ip} x_{i2} + \hdots + \hat{\beta}_p \sum_{i=1}^n x^2_{ip} 
+		\end{align*}
+		\item We just use software to estimate
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{Example}
+	\begin{itemize}
+		\item Research question: Is there a relationship between conductivity and the levels of Sodium (Na) and Potassium (K) in soil? Can we predict soil conductivity from Na and K levels?
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{soilData}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{R Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{soilModelR1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{R Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{soilModelR2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{R Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{soilModelR3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{R Example--Basic model diagnostics}
+	\begin{columns}
+		\begin{column}{.35\textwidth}
+			\begin{center}
+				\includegraphics[width = .9\linewidth]{soilModelR4}
+			\end{center}
+		\end{column}
+
+		\begin{column}{.65\textwidth}
+			\begin{center}
+					\vspace{-6mm}
+				\includegraphics[width = .9\linewidth]{soilModelR5}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{R Example--Basic model diagnostics}
+	\begin{columns}
+		\begin{column}{.35\textwidth}
+			\begin{center}
+				\includegraphics[width = .9\linewidth]{soilModelR6}
+			\end{center}
+		\end{column}
+		
+		\begin{column}{.65\textwidth}
+			\begin{center}
+				\vspace{-6mm}
+				\includegraphics[width = .9\linewidth]{soilModelR7}
+			\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{SAS Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{sasModel1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{SAS Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{sasModel2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{SAS Example}
+	\begin{center}
+		\includegraphics[width = .6\linewidth]{sasModel4}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{SAS Example--Basic model diagnostics}
+	\begin{center}
+		\includegraphics[width = .7\linewidth]{sasModel5b}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Estimating regression coefficients}{SAS Example--Basic model diagnostics}
+	\begin{center}
+		\includegraphics[width = .7\linewidth]{sasModel5c}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Interpretation of regression parameters}
+	\begin{itemize}
+		\item \textbf{General linear model:} The general linear model has the form: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \hdots + \beta_p x_p + \varepsilon$
+		\item[]
+		\item The interpretation of our estimated model parameters $\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hdots, \hat{\beta}_p$ depends on the form of the model
+		\item[]
+		\item Model forms we will consider might contain:
+		\begin{itemize}
+			\item Quantitative independent variables; no ``interactions'' between the variables
+			\item Quantitative independent variables; with ``interactions'' between the variables
+			\item Categorical variables (or a mix of quantitative and categorical variables)
+			\item Polynomial or nonlinear functions of quantitative independent variables
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpretation of regression parameters}{Quantitative independent variables}
+	\begin{itemize}
+		\item Consider $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \hdots + \beta_p x_p + \varepsilon$, where each $x_j$ is a quantitative random variable 
+		\item[]
+		\item Each $\beta_j$ ($j \neq 0$) is the expected change in $y$ for a unit increase in $x_j$ when all of the other random variables are held constant
+		\begin{itemize}
+			\item Following this definition, $\beta_j$ is a ``partial slope''
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpretation of regression parameters}{Quantitative independent variables: Example}
+	\begin{itemize}
+		\item Research question: Is there a relationship between conductivity and the levels of Sodium (Na) and Potassium (K) in soil? Can we predict soil conductivity from Na and K levels?
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{soilData}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Interpretation of regression parameters}{Quantitative independent variables: Example}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{soilModelR3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Interpretation of regression parameters}{Quantitative independent variables: Example}
+	\begin{itemize}
+		\item Our model is then: $\hat{y} = 2.3249 + 0.9881(\text{Na}) - 2.2849(\text{K})$
+		\item[]
+		\item To interpret $\hat{\beta}_1$, the partial slope parameter for sodium (Na):
+		\begin{itemize}
+			\item If we hold the level of potassium (K) constant, then for each one-unit change in sodium (Na), we have an expected 0.9881 unit increase in conductivity ($y$)
+			\item[]
+		\end{itemize}
+			\item To interpret $\hat{\beta}_2$, the partial slope parameter for potassium (K):
+	\begin{itemize}
+		\item If we hold the level of sodium (Na) constant, then for each one-unit change in potassium (K), we have an expected 2.2849 unit \emph{decrease} in conductivity ($y$)
+		\item[]
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpretation of regression parameters}{Quantitative independent variables: Example}
+	\begin{itemize}
+		\item Our model is then: $\hat{y} = 2.3249 + 0.9881(\text{Na}) - 2.2849(\text{K})$
+		\begin{center}
+			\includegraphics[width=.7\linewidth]{partialPlot}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\section{Interaction terms}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Interaction terms}
+	\begin{itemize}
+		\item Assume we want to predict $y$ given $x_1$ and $x_2$
+		\begin{itemize}
+			\item The model $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \varepsilon$ assumes that the effect of $x_1$ on $y$ is independent of the value of $x_2$ (and visa versa)
+			\item[]
+			\item It is possible that the effect of $x_1$ on $y$ depends on the value of $x_2$ 
+			\item[]
+		\end{itemize}
+		\item Example: The price of a home may depend on the size of the house, the typical household income, and their interaction
+		\begin{itemize}
+			\item \$ difference between a 1,200 and a 2,200 square foot house may be millions of dollars in Palo Alto, California (household incomes are high) 
+			\item[]
+			\item \$ difference between a 1,200 and a 2,200 square foot house may be a few thousand dollars in Paintsville, Kentucky (household incomes are low) 
+			\item[]
+			\item If $x_1$ is the square footage and $x_2$ is household income, the effect of $x_1$ on $y$ (home price) depends on the value of $x_2$ 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interaction terms}{Example}
+	\begin{itemize}
+		\item Research question: Does the price ($y$) of a house depend on size (in square feet, $x_1$) and household income ($x_2$)? Can we predict price ($y$) from size ($x_1$) and household income ($x_2$)?
+		\item[]
+		\item Data: 250 observations of home price, home size, and neighborhood typical household income
+		\item[]
+		\item The data is available  \href{https://wordpress.nmsu.edu/ptrainor/2019/11/26/ast-505-materials/}{\textbf{here}}
+		\item[]
+		\item Since we suspect that the effect of size depends on the household income we use $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 (x_1 * x_2) + \varepsilon$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interaction terms}{Example}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{house1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Interaction terms}{Example}
+	\begin{itemize}
+		\item Research question: Does the price ($y$) of a house depend on size (in square feet, $x_1$) and household income ($x_2$)? Can we predict price ($y$) from size ($x_1$) and household income ($x_2$)?
+		\item[]
+		\item Model with interaction term:
+		\begin{itemize}
+			\item Form: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 (x_1 * x_2) + \varepsilon$
+			\item With parameter estimates: $\hat{Price} = 41.7400 + 1.9740 (\text{Square Feet}) + 1.0803 (\text{Household Income})+ 1.4308 (\text{Square Feet}\times \text{Household income}) $
+			\item[]
+		\end{itemize}
+	\item Example parameter interpretation:
+	\begin{itemize}
+		\item If $\text{Household Income} = 40$, then:
+		\begin{align*}
+			\hat{Price} = 84.9520 + 59.2060 (\text{Square Feet}) 
+		\end{align*}
+		\item If $\text{Household Income} = 240$, then:
+		\begin{align*}
+		\hat{Price} = 301.012 + 345.3660 (\text{Square Feet}) 
+		\end{align*}
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Interaction terms}{Example}
+	\begin{center}
+		\includegraphics[width=.9\linewidth]{houseInteract}
+	\end{center}
+\end{frame}
+
+\section{Categorical (independent) variables}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Categorical (independent) variables}
+	\begin{itemize}
+		\item Thus far we have only considered general linear models with continuous independent variables 
+		\item[]
+		\item Now we will consider general linear models with categorical predictor variables
+		\item[]
+		\item Example research question: Does the level of low density lipoprotein (LDL) in humans depend on ethnicity? Can we predict LDL levels ($y$) from ethnicity?
+		\begin{itemize}
+			\item Ethnicity is a categorical variable
+			\item Let's assume it is categorized as: Asian-American, Black/African-American, Hispanic/Latino, White/Caucasian 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dummy variables}
+	\begin{itemize}
+		\item Example research question: Does the level of low density lipoprotein (LDL) in humans depend on ethnicity? Can we predict LDL levels ($y$) from ethnicity?
+		\item[]
+		\item Data: A simulated study of 400 human subjects with 100 of each ethnicity
+		\item[]
+		\item What we want is to have a model like this:
+		\begin{itemize}
+			\item $y = \mu_{\text{Asian-American}} + \varepsilon$ for Asian-American subjects
+			\item $y = \mu_{\text{Black/African-American}} + \varepsilon$ for Black/African-American subjects
+			\item $y = \mu_{\text{Hispanic/Latino}} + \varepsilon$ for Hispanic/Latino subjects
+			\item $y = \mu_{\text{White/Caucasian}} + \varepsilon$ for White/Caucasian subjects
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dummy variables}
+	\begin{itemize}
+		\item We will create ``dummy variables'' like this:
+		\begin{itemize}
+			\item We set Asian-American to be the reference level (factor level)
+			\item $x_1 = 1$ if a subject is Black/African-American; $x_1 = 0$ otherwise
+			\item $x_2 = 1$ if a subject is Hispanic/Latino subjects; $x_2 = 0$ otherwise
+			\item $x_3 = 1$ if a subject is White/Caucasian; $x_3 = 0$ otherwise
+			\item[]
+		\end{itemize}
+	\item Our model is then $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \varepsilon$
+	\item[]
+	\item Then for each we have:
+	\begin{itemize}
+		\item $E(y) = \beta_0 + \beta_1(0) + \beta_2(0) + \beta_3(0) = \beta_0$ for Asian-American
+		\item $E(y) = \beta_0 + \beta_1(1) + \beta_2(0) + \beta_3(0) = \beta_0 + \beta_1$ for Black/African-American
+		\item $E(y) = \beta_0 + \beta_1(0) + \beta_2(1) + \beta_3(0) = \beta_0 + \beta_2$ for Hispanic/Latino
+		\item $E(y) = \beta_0 + \beta_1(0) + \beta_2(0) + \beta_3(1) = \beta_0 + \beta_3$ for White/Caucasian
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dummy variables}
+	\begin{itemize}
+		\item We can also see that:
+		\begin{itemize}
+			\item $\beta_0 = \mu_{\text{Asian-American}}$
+			\item $\beta_1 = \mu_{\text{Black/African-American}} -\mu_{\text{Asian-American}}$
+			\item $\beta_2 = \mu_{\text{Hispanic/Latino}}- \mu_{\text{Asian-American}}$
+			\item $\beta_3 = \mu_{\text{White/Caucasian}} - \mu_{\text{Asian-American}}$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Categorical (independent) variables}{Example}
+	\begin{center}
+		\includegraphics[width = 1\linewidth]{ldl1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Categorical (independent) variables}{Example}
+	\begin{itemize}
+		\item From the coefficient estimates on the previous slide we have:
+			\begin{itemize}
+			\item $\hat{\beta_0} = \hat{\mu}_{\text{Asian-American}} = 76.747$
+			\item $\hat{\beta_1} = \hat{\mu}_{\text{Black/African-American}} -\hat{\mu}_{\text{Asian-American}} = 8.227$
+			\item $\hat{\beta_2} = \hat{\mu}_{\text{Hispanic/Latino}}- \hat{\mu}_{\text{Asian-American}} = 7.110$
+			\item $\hat{\beta_3} = \hat{\mu}_{\text{White/Caucasian}} - \hat{\mu}_{\text{Asian-American}}= 1.719$
+			\item[]
+		\end{itemize}
+		\item And consequently,
+		\begin{itemize}
+			\item $\hat{\beta_0} = \hat{\mu}_{\text{Asian-American}} = 76.747$
+			\item $\hat{\beta_1} = \hat{\mu}_{\text{Black/African-American}} =  76.747 + 8.227= 84.974$
+			\item $\hat{\beta_2} = \hat{\mu}_{\text{Hispanic/Latino}} =  76.747 + 7.110 = 83.857$
+			\item $\hat{\beta_3} = \hat{\mu}_{\text{White/Caucasian}} =   76.747 + 1.719 = 78.466$
+			\item[]
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Categorical (independent) variables}{Example}
+	\begin{center}
+		\includegraphics[width = .8\linewidth]{EthnScatter}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Categorical and continuous variables}
+	\begin{itemize}
+		\item Example research question: Does the level of low density lipoprotein (LDL) in humans depend on sex ($x_1$) and the level of total cholesterol ($x_2$)? Can we predict LDL levels ($y$) from sex ($x_1$) and the level of total cholesterol ($x_2$)?
+		\item[]
+		\item Additive model without an interaction term: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \varepsilon $
+		\item[]
+		\item Dummy codded Sex variable: $x_1 = 0$ if Female, $x_1 = 1$ if Male
+		\begin{itemize}
+			\item Females: $y = \beta_0 + \beta_2 x_2 + \varepsilon $
+			\item Males: $y = \beta_0 + \beta_1 + \beta_2 x_2 + \varepsilon $
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Categorical and continuous variables}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{ldl2}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Categorical and continuous variables}
+	\begin{itemize}
+		\item Additive model without an interaction term: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \varepsilon $
+		\item[]
+		\item Dummy codded Sex variable: $x_1 = 0$ if Female, $x_1 = 1$ if Male
+		\begin{itemize}
+			\item Females: $\hat{y} = -80.1224 + 0.8047 (\text{Total Cholesterol})  $
+			\item Males: $\hat{y} = -80.1224 + 32.6645 + 0.8047(\text{Total Cholesterol}) $
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Categorical and continuous variables}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{cholSex1}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Categorical and continuous variables}{With an interaction term}
+	\begin{itemize}
+		\item Example research question: Does the level of low density lipoprotein (LDL) in humans depend on sex ($x_1$) and the level of total cholesterol ($x_2$)? Can we predict LDL levels ($y$) from sex ($x_1$) and the level of total cholesterol ($x_2$)?
+		\item[]
+		\item Model with an interaction term: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 (x_1 * x_2) + \varepsilon $
+		\item[]
+		\item Dummy codded Sex variable: $x_1 = 0$ if Female, $x_1 = 1$ if Male
+		\begin{itemize}
+			\item Females: $y = \beta_0 + \beta_2 x_2 + \varepsilon $
+			\item Males: $y = \beta_0 + \beta_1 + (\beta_2 + \beta_3) x_2 + \varepsilon $
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Categorical and continuous variables}{With an interaction term}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{ldl3}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Categorical and continuous variables}{With an interaction term}
+	\begin{itemize}
+		\item Model with an interaction term: $y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 (x_1 * x_2) + \varepsilon $
+		\item[]
+		\item Dummy codded Sex variable: $x_1 = 0$ if Female, $x_1 = 1$ if Male
+		\begin{itemize}
+			\item Females: $\hat{y} = -44.6046 + 0.6048 (\text{Total Cholesterol})  $
+			\item Males: $\hat{y} = -44.6046  -38.4245 + (0.6048 + 0.3951)(\text{Total Cholesterol}) $
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Categorical and continuous variables}{With an interaction term}
+	\begin{center}
+		\includegraphics[width = .9\linewidth]{cholSex2}
+	\end{center}
+\end{frame}
+
+\section{Inference in Multiple Regression}
+\begin{frame}{Outline}
+	\tableofcontents[currentsection,subsectionstyle=show/shaded/hide]
+\end{frame}
+
+\begin{frame}{Residuals}
+	\begin{itemize}
+		\item Residuals: $e_i = y_i - \hat{y}_i = y_i - \left(\hat{\beta}_0 + \hat{\beta}_1 x_{i1} + \hat{\beta}_2 x_{i2} + \hdots + \hat{\beta}_p x_{ip} \right)$
+		\item[]
+		\item Recall that $s_{\varepsilon}$ is an estimate of $\sigma_{\varepsilon}$
+		\item[]
+		\item Model standard deviation / residual standard error:
+		\begin{gather*}
+			s_{\varepsilon} = \sqrt{\text{MS}(\text{Residual})} = \sqrt{\frac{\text{SS}(\text{Residual})}{n-p-1}} = \sqrt{\frac{\sum_{i=1}^n e_i^2}{n-p-1}}
+		\end{gather*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Model predictive ability}{$F$-tests}
+	\begin{itemize}
+		\item As with simple linear regression we can evaluate partition the variability of the $y$ values into $\text{SS}(\text{Total}) = \text{SS}(\text{Regression}) + \text{SS}(\text{Residual})$
+		\item[]
+		\item Recall that:
+		\begin{itemize}
+			\item $\text{SS}(\text{Total}) = \sum_{i = 1}^n (y_i - \bar{y})^2 $
+			\item $\text{SS}(\text{Regression}) = \sum_{i = 1}^n (\hat{y}_i - \bar{y})^2 $ 
+			\item $\text{SS}(\text{Residual}) = \sum_{i=1}^n (y_i -\hat{y}_i)^2$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Model predictive ability}{Coefficient of determination}
 	content...
 \end{frame}
 

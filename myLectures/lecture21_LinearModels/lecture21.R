@@ -66,6 +66,7 @@ summary(lm4)
 soil <- carData::Soils
 soilMeans <- apply(soil[, 6:14], 2, mean)
 soilCov <- cov(soil[, 6:14])
+cor(carData::Soils[, 6:14])
 
 set.seed(666-1)
 soilSim <- round(MASS::mvrnorm(n = 14, mu = soilMeans, Sigma = soilCov), 3)
@@ -147,9 +148,13 @@ df1$sexAdd[df1$Sex == "Male"] <- .15 * df1$totCholesterol[df1$Sex == "Male"]
 df1$sexAdd[df1$Sex == "Female"] <- -.2 * df1$totCholesterol[df1$Sex == "Female"] + 30
 
 df1$ldl <- -0.08 * df1$Age + 0.85 * df1$totCholesterol + df1$ethAdd + df1$sexAdd + df1$error
+set.seed(33)
+write.csv(df1[sample(1:nrow(df1), size = nrow(df1)),], file = "Chol.csv")
 
 lmEthnicity <- lm(ldl ~ Ethnicity, data = df1)
 summary(lmEthnicity)
+
+anova(lmEthnicity)
 
 df1Sum <- df1 %>% group_by(Ethnicity) %>% summarize(y = mean(ldl)) %>% as.data.frame()
 df1Sum$x <- 1:4 - .15
@@ -177,9 +182,43 @@ lm3 <- update(lm2, . ~ . + Sex:totCholesterol)
 df1Pred2 <- expand.grid(Sex = c("Male", "Female"), totCholesterol = seq(110, 240, .01))
 df1Pred2$Predicted <- predict(lm3, newdata = df1Pred2)
 
+summary(lm3)
+anova(lm3)
+131679 + 96098 + 5791 + 41568
+(233568 / 3)/(41568 / 396)
+qf(.01, 3, 396, lower.tail = FALSE)
+pf((233568 / 3)/(41568 / 396), 3, 396, lower.tail = FALSE)
+qt(.025, 396, lower.tail = FALSE)
+0.60479 - 1.9660 * (0.03783)
+0.60479 + 1.9660 * (0.03783)
+
+0.80466 - 1.9660 * (0.02835)
+0.80466 + 1.9660 * (0.02835)
+confint(lm2)
+
 png("cholSex2.png", height = 4, width = 6, units = "in", res = 300)
 ggplot(df1Pred2, aes(x = totCholesterol, y = Predicted, color = Sex)) + geom_line(lwd = 1) +
   geom_point(data = df1, mapping = aes(x = totCholesterol, y = ldl, color = Sex), size = 1) + 
+  theme_bw() + labs(x = "Total Cholesterol", y = "LDL") 
+dev.off()
+
+png("cholSex2b.png", height = 4, width = 6, units = "in", res = 300)
+ggplot(df1Pred2, aes(x = totCholesterol, y = Predicted, color = Sex)) + geom_line(lwd = 1) +
+  geom_point(data = df1, mapping = aes(x = totCholesterol, y = ldl, color = Sex), size = 1) +
+  geom_vline(xintercept = 0, lwd = .5, lty = 2) +
+  geom_hline(yintercept = 0, lwd = .5, lty = 2) +
+  theme_bw() + labs(x = "Total Cholesterol", y = "LDL") + xlim(0, 300)
+dev.off()
+
+segmentDF <- data.frame(x = c(135.00, 200.00), y = c(37.04158, 76.35270), 
+                        xend = c(135.00, 200.00), yend = c(51.96548, 116.95804))
+png("cholSex2c.png", height = 4, width = 6, units = "in", res = 300)
+ggplot(df1Pred2, aes(x = totCholesterol, y = Predicted, color = Sex)) + geom_line(lwd = 1) +
+  geom_point(data = df1, mapping = aes(x = totCholesterol, y = ldl, color = Sex), size = 1) + 
+  geom_segment(data = segmentDF, mapping = aes(x = x, y = y, xend = xend, yend = yend,
+               color = NULL), lwd = 1, arrow = arrow(length = unit(0.1, "inches"))) +
+  annotate(geom = "label", x = 147, y = 51, label= "39.31") +
+  annotate(geom = "label", x = 211, y = 100, label= "64.99") +
   theme_bw() + labs(x = "Total Cholesterol", y = "LDL") 
 dev.off()
 
@@ -194,42 +233,34 @@ df1Pred3$Predicted <- predict(lm4, newdata = df1Pred3)
 
 ggplot(df1Pred3, aes(x = totCholesterol, y = Predicted, color = Sex)) + geom_line() + theme_bw()
 
-############ Diabetes data ############
-diab <- read.csv("diabetes.csv")
-diab$bmi <- 703 * diab$weight / diab$height^2
+########### Collinearity ###########
+set.seed(999)
+m1 <- MASS::mvrnorm(n = 100, mu = c(75, 75, 75, 75), 
+      Sigma = matrix(100 * c(1, .95, -.20, -.20,
+                             .95, 1, -.20, -.20,
+                             -.20, -.20, 1, .95, 
+                             -.20, -.20, .95, 1), 
+                     byrow = TRUE, nrow = 4))
+m1 <- round(m1)
+PsychData <- as.data.frame(m1)
+cor(PsychData)
+names(PsychData) <- c("Angry", "ShortTempered", "Compassionate", "Kind")
 
-lm1 <- lm(glyhb ~ age + bmi + gender, data = diab)
-summary(lm1)
-plot(diab$age, diab$bmi)
+write.csv(PsychData, file = "Psych.csv")
 
-############ carData::States ############
-states <- carData::States
-lm1 <- lm(SATM ~ pay * percent, data = states)
-summary(lm1)
+lmAngry <- lm(Angry ~ Compassionate, data = PsychData)
+summary(lmAngry)
 
-############ carData::MplsDemo ############
-mpls <- carData::MplsDemo
-lm1 <- lm(hhIncome ~ black * collegeGrad, data = mpls)
-summary(lm1)
+lmAngry1 <- lm(Angry ~ Kind, data = PsychData)
+summary(lmAngry1)
 
-lm2 <- lm(hhIncome ~ foreignBorn + collegeGrad, data = mpls)
-summary(lm2)
+lmAngry2 <- lm(Angry ~ Compassionate + Kind, data = PsychData)
+summary(lmAngry2)
 
-lm3 <- lm(hhIncome ~ foreignBorn * collegeGrad, data = mpls)
-summary(lm3)
+png(filename = "corplot1.png", height = 5, width = 6, units = "in", res = 300)
+corrplot::corrplot(cor(PsychData), diag = FALSE, addCoef.col = "black", method = "ellipse",
+                   tl.col = "black", col = cm.colors(100))
+dev.off()
 
-############ Reaction Rate versus temperature ############
-x1 <- seq(300, 380, 5)
-f1 <- function(a,b,c,x){
-  return(a*x^2 + b*x + c)
-}
-plot(x1, f1(-0.0006875, 0.4675000, -78.3750000, x1))
-
-y1 <- f1(-0.0006875, 0.4675000, -78.3750000, x1)
-set.seed(99999)
-y1 <- y1 + rnorm(length(y1), 0, .05)
-y1 <- ifelse(y1 < 0, 0, y1)
-plot(x1, y1)
-
-df1 <- data.frame(x = x1, y = y1)
-ggplot(df1, aes(x, y)) + geom_point() + theme_bw()
+lmAngry3 <- lm(Angry ~ Compassionate + ShortTempered, data = PsychData)
+summary(lmAngry3)

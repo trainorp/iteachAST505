@@ -12,7 +12,7 @@
 \title[Lecture 2]{Lecture 2: Study Design / Design of Experiments}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{August 22, 2019}
+\date{January 22, 2020}
 
 \begin{document}
 
@@ -217,7 +217,7 @@ Observational studies can be categorized based on their objectives into descript
 		\begin{itemize}
 			\item Anyone potential passenger who has the option to take a Delta route to their destination
 			\item Frequent travelers \pause
-			\item Managers at companies / government agencies who make travel decisions
+			\item Managers at companies / government agencies who make travel decisions \pause
 		\end{itemize}
 		\item[]
 		\item Sample: \pause
@@ -330,7 +330,7 @@ What type of sampling is employed in the following examples? \pause
 	\begin{itemize}
 		\item Poor recall \pause
 		\item[]
-		\item Leading questions. Example: ``Do you support Virgin Galactic choosing Las Cruces as their headquarters given that they will not provide new jobs for locals and will drive housing prices \pause higher?''
+		\item Leading questions. Example: ``Do you support Virgin Galactic choosing Las Cruces as their headquarters given that they will not provide new jobs for locals and will drive housing prices  higher?'' \pause
 		\item[]
 		\item Unclear wording of questions / lack of precise definitions 
 	\end{itemize}
@@ -478,6 +478,236 @@ What type of sampling is employed in the following examples? \pause
 			\item[]
 		\end{itemize}
 	\item The effect on the response variable of other extraneous factors that are not treatment factors
+	\end{itemize}
+\end{frame}
+
+\subsection{Experimental study designs}
+
+\begin{frame}{Completely random designs}
+	\begin{itemize}
+		\item \textbf{Completely randomized design}: An experimenter randomly assigns experimental units to treatments \pause
+		\begin{itemize}
+			\item We can use when we want to compare some \# of treatments \pause
+			\item[]
+		\end{itemize}
+	\item Example: Matteo's wants to know which drink customers rate the highest. They randomly choose 20 customers and give them a free drink (either Pi\~{n}a colada, or horchata). They ask them to score it from 1 to 10 \pause
+	\begin{itemize}
+		\item Factor: Type of drink \pause
+		\item Factor levels: Pi\~{n}a colada, horchata \pause
+		\item Treatments: Same as factor levels \pause
+		\item Experimental unit: Each chosen customer \pause
+		\item Response variable: Score
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Randomized block design}{The need}
+	\begin{itemize}
+			\item Problem: Matteo's knows that children are more likely to like sweet drinks while adults are less likely \pause
+			\item Their randomized treatment assignment could look like this: \vspace{-1mm} \pause
+			\begin{columns}
+				\begin{column}{.5\linewidth}
+						\begin{flushright}
+						\begin{tabular}{|c|c|}
+							\hline 
+						Child	& Pi\~{n}a colada \\ 
+							\hline 
+						Adult	& horchata \\ 
+							\hline 
+						Child	& Pi\~{n}a colada  \\ 
+							\hline 
+						Adult	& horchata \\ 
+							\hline 
+						Adult	& horchata \\ 
+							\hline 
+						Child	& Pi\~{n}a colada \\ 
+							\hline 
+						Child	& Pi\~{n}a colada \\ 
+							\hline 
+						Adult	& horchata \\ 
+							\hline 
+						Child	& Pi\~{n}a colada\\ 
+							\hline 
+						Adult	& Pi\~{n}a colada  \\ 
+							\hline 
+						\end{tabular} 
+					\end{flushright}
+				\end{column}
+							\begin{column}{.5\linewidth}
+				\begin{flushleft}
+					\begin{tabular}{|c|c|c|}
+						\hline 
+					Adult	&  horchata\\ 
+						\hline 
+					Child	& Pi\~{n}a colada\\ 
+						\hline 
+					Child	& Pi\~{n}a colada  \\ 
+						\hline 
+					Child	& Pi\~{n}a colada \\ 
+						\hline 
+					Adult	& horchata \\ 
+						\hline 
+					Adult	& horchata \\ 
+						\hline 
+					Adult	& horchata \\ 
+						\hline 
+					Child	& Pi\~{n}a colada \\ 
+						\hline 
+					Adult	& horchata \\ 
+						\hline 
+					Child	& horchata\\ 
+						\hline 
+					\end{tabular} 
+				\end{flushleft}
+			\end{column}
+			\end{columns}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Randomized block design}{The need}
+	\begin{itemize}
+		\item If their randomized treatment assignment as you see on the previous slide and the average score for Pi\~{n}a colada was 8 and for horchata was 4 we have two possible explanations: \pause
+		\begin{itemize}
+			\item Customers like Pi\~{n}a colada better than horchata, -or- \pause
+			\item[]
+			\item Children are more likely to like sweet drinks while Adults are less likely to like sweet drinks
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Randomized block design}
+	\begin{itemize}
+		\item \textbf{Randomized block design}: In this design randomization occurs within blocks to remove the effect of a confounding variable \pause
+		\item[]
+		\item This is similar to stratified random sampling \pause
+		\begin{itemize}
+			\item In stratified random sampling (observational study) we randomly sample to choose study units within strata \pause
+			\item In a randomized block design we randomize experimental units to treatments within blocks \pause
+		\end{itemize}
+		\item[]
+		\item Example treating Age as a blocking variable: \pause
+		\begin{center}
+					\begin{tabular}{|c|c|c|}
+				\hline 
+				Age & Pi\~{n}a colada  & horchata \\ 
+				\hline 
+				Child & 5 & 5 \\ 
+				\hline 
+				Adults & 5 & 5 \\ 
+				\hline 
+			\end{tabular} 
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Randomized block design}
+	\begin{itemize}
+		\item Problem: Matteo's knows (or hypothesizes) that children are more likely to like sweet drinks while adults are less likely \pause
+		\item Their randomized treatment assignment could look like this: \vspace{-1mm} \pause
+		\begin{columns}
+			\begin{column}{.5\linewidth}
+				\begin{flushright}
+					\begin{tabular}{|c|c|}
+						\hline 
+						Child	& Pi\~{n}a colada \\ 
+						\hline 
+						Child	& horchata \\ 
+						\hline 
+						Child	& Pi\~{n}a colada  \\ 
+						\hline 
+						Child	& horchata \\ 
+						\hline 
+						Child	& horchata \\ 
+						\hline 
+						Child	& Pi\~{n}a colada \\ 
+						\hline 
+						Child	& Pi\~{n}a colada \\ 
+						\hline 
+						Child	& horchata \\ 
+						\hline 
+						Child	& Pi\~{n}a colada\\ 
+						\hline 
+						Child	& horchata  \\ 
+						\hline 
+					\end{tabular} 
+				\end{flushright}
+			\end{column}
+			\begin{column}{.5\linewidth}
+				\begin{flushleft}
+					\begin{tabular}{|c|c|c|}
+						\hline 
+						Adult	&  horchata\\ 
+						\hline 
+						Adult	& Pi\~{n}a colada\\ 
+						\hline 
+						Adult	& Pi\~{n}a colada  \\ 
+						\hline 
+						Adult	& Pi\~{n}a colada \\ 
+						\hline 
+						Adult	& horchata \\ 
+						\hline 
+						Adult	& horchata \\ 
+						\hline 
+						Adult	& horchata \\ 
+						\hline 
+						Adult	& Pi\~{n}a colada \\ 
+						\hline 
+						Adult	& horchata \\ 
+						\hline 
+						Adult	& Pi\~{n}a colada\\ 
+						\hline 
+					\end{tabular} 
+				\end{flushleft}
+			\end{column}
+		\end{columns}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Randomized block design}
+	\begin{itemize}
+		\item Blocking can be utilized to reduce experimental error  \pause
+		\begin{itemize}
+	\item If we have a ``pool'' of experimental units with variability across an important characteristic related to the response variable then blocking reduces experimental error  \pause
+	\item[]
+	\item In the Matteo's example our ``pool'' of customers (experimental units) varies by age which is related to the response variable \pause
+	\item[]
+	\item Block variables are never the factor variables that we are interested in
+\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Randomized block design}
+	\begin{itemize}
+		\item Some examples of of block variables \pause
+		\begin{itemize}
+			\item Physical characteristics of humans (age, sex, health, education) \pause
+			\item[]
+			\item Groups of units such as animals from the same litter \pause
+			\item[]
+			\item Time or conditions in which experiment is conducted \pause
+			\item[] 
+			\item Personnel conducting the experiment \pause
+			\item[]
+			\item Instrument that made the measurement 
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Covariates}
+	\begin{itemize}
+		\item Blocking is effective because we are ensuring that another variable does not ``interfere'' with our ability to see the relationship between a factor variable and the response variable \pause
+		\item[]
+		\item There are occasions when we need to account for variability in a response variable caused by another variable that is not related to our factor variable (the thing we are interested in) but without randomizing within blocks \pause
+		\item[]
+		\item \textbf{Covariate}: A variable that is related to the response variable, is not related to the experimental manipulation, and the experimenter wishes to account for it's effect to reduce experimental error
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Covariates}
+	\begin{itemize}
+		\item Example: A pharmaceutical company develops a new ARB drug for blood pressure. They want to evaluate whether it is more effective than an older ARB that is already on the market. They randomize 250 participants to the new ARB drug and 250 to the older drug. After participants have been on a drug for 6 weeks they measure blood pressure. The company also measures each participants BMI as they know that it is related to the response variable (blood pressure), but is not of interest to addressing their research question \pause
+		\item[]
+		\item To reduce experimental error covariates can be ``adjusted for'' but we won't discuss this until later in the course
 	\end{itemize}
 \end{frame}
 

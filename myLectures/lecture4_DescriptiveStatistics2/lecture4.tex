@@ -12,7 +12,7 @@
 \title[Lecture 4]{Lecture 4: Descriptive Statistics II}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{August 28, 2019}
+\date{January 29, 2020}
 
 \begin{document}
 	
@@ -683,7 +683,7 @@ Let's calculate the range of teacher pay:
 \begin{itemize}
 	\item The set of numbers below the median is $\{25, 25, 26, 26\}$ \pause
 	\item The median of $\{25, 25, 26, 26\}$ is 25.5. So this is Q1 \pause
-	\item The set of numbers below the median is $\{25, 25, 26, 26\}$ \pause
+	\item The set of numbers above the median is $\{29, 30, 31, 32\}$ \pause
 	\item The median of $\{29, 30, 31, 32\}$ is 30.5. So this is Q3 \pause
 \end{itemize}
 \end{frame}
@@ -831,6 +831,29 @@ Let's calculate the IQR for the teacher pay data:
 			\end{tabular} 
 		\end{center}
 \end{frame}
+
+\begin{frame}{The Sample Variance}
+	Let's calculate the sample variance:
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline 
+			\textbf{State} & \textbf{Teacher pay (1,000's)} &  $y_i-\bar{y}$ & $(y_i-\bar{y})^2$\\ 
+			\hline \hline
+			AZ & 30 & 2 & 4\\ \hline 
+			CO &  31 & 3 & 9\\ \hline 
+			ID & 25  & -3 & 9\\  \hline 
+			MT &  26 & -2 & 4\\ \hline 
+			NV & 32 & 4 & 16\\ \hline 
+			NM &  26 & -2 & 4\\ \hline 
+			UT &  25 & -3 & 9\\ \hline 
+			WY &  29 & 1 & 1\\ \hline 
+		\end{tabular} 
+	\end{center}
+	\begin{gather*}
+	s^2 = \frac{\sum_{i=1}^n (y_i - \bar{y})^2}{n-1} = \frac{56}{7} = 8
+	\end{gather*}
+\end{frame}
+
 
 \begin{frame}{The Standard Deviation}
 	\begin{itemize}

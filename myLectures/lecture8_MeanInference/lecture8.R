@@ -187,8 +187,8 @@ ggplot(data.frame(x = c(-3.5, 3.5)), aes(x)) +
   stat_function(fun = function(x) dnorm(x), lwd = 1, n = 50000) + 
   geom_segment(aes(x = qnorm(.05), xend = qnorm(.05), y = 0, yend = dnorm(qnorm(.05)))) +
   scale_x_continuous(breaks = c(-.5, 0), labels = c(expression(bar(y)), expression(mu[0]))) +
-  annotate("point", x = -.25, y = 0, color = "red", size = 3) +
-  annotate("label", x = -.25, y = .1, label = "Test statistic is not in RR") +
+  annotate("point", x = -.5, y = 0, color = "red", size = 3) +
+  annotate("label", x = -.5, y = .1, label = "Test statistic is not in RR") +
   labs(x = "", y = "Density") + theme_bw() +
   ggtitle(expression(paste("Rejection region for alternative hypothesis: ", mu < mu[0]))) +
   theme(plot.title = element_text(hjust = 0.5)) 

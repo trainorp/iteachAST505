@@ -12,7 +12,7 @@
 \title[Lecture 8]{Lecture 8: Inferences about the mean}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{September 23, 2019}
+\date{February 13, 2020}
 
 \begin{document}
 
@@ -319,28 +319,26 @@
 		\begin{gather*}
 			z_{\alpha / 2} = z_{0.05} = 1.645
 		\end{gather*} \pause
-		
 		For the 99\% confidence interval, $\alpha = .01$ and 
 		\begin{gather*}
 		z_{\alpha / 2} = z_{0.005} = 2.576
 		\end{gather*}  \pause
 		
-		For both the 90\% and 99\% confidence intervals, the other values, such as $\bar{y}$, $\sigma$, and $n$ will remain as before
+		\item For both the 90\% and 99\% confidence intervals, the other values, such as $\bar{y}$, $\sigma$, and $n$ will remain as before
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Confidence intervals for $\mu$}
 	\begin{itemize}
-		\item Example problem 2: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33 \}$ and that the population standard deviation is known, $\sigma = 10.028$. Compute a 90\% confidence interval and a 99\% confidence interval for the population mean\\  \vspace{8pt}
 		
-		For the 90\% confidence interval: 
+		\item For the 90\% confidence interval: 
 		\begin{align*}
 			\bar{y} &\pm z_{\alpha / 2} \times \sigma / \sqrt{n} \\
 			504.026 &\pm (1.645)(10.028)/\sqrt{5} \\
 			(496.649&, 511.403)
 		\end{align*}  \pause
 		
-		For the 99\% confidence interval: 
+		\item For the 99\% confidence interval: 
 		\begin{align*}
 		\bar{y} &\pm z_{\alpha / 2} \times \sigma / \sqrt{n} \\
 		504.026 &\pm (2.576)(10.028)/\sqrt{5} \\
@@ -444,7 +442,7 @@
 	\begin{itemize}
 		\item Example problem 1: Suppose you have the following sample from the fish weights data: $\{501.85, 495.58, 502.94, 508.43, 511.33\}$. Calculate a 95\% confidence interval for $\mu$ using the given sample (we don't know the population $\sigma$)  \pause \\
 		\vspace{10 pt}
-		First we note that $\alpha = 0.05$, so $1-\alpha / 2 = 0.025$; and that $n - 1 = 4$  \pause So the $t$-value that we are looking for is:
+		First we note that $\alpha = 0.05$, so $\alpha / 2 = 0.025$; and that $n - 1 = 4$  \pause So the $t$-value that we are looking for is:
 		\begin{gather*}
 			t_{\alpha / 2, n - 1} = t_{0.025, 4} = 2.776
 		\end{gather*}  \pause
@@ -974,7 +972,7 @@ Clearly, 2.828 is not less than -1.645; the test statistic is not in the rejecti
 	\begin{itemize}
 		\item Case 1. Reject $H_0$ if $t^* \geq t_{\alpha, n-1}$. Significance: $p\text{-value}=P(t \geq t^*)$  \pause
 		\item Case 2. Reject $H_0$ if $t^* \leq -t_{\alpha, n-1}$. Significance: $p\text{-value}=P(t \leq t^*)$  \pause
-		\item Case 3. Reject $H_0$ if $|t^*| \geq t_{1-\alpha / 2, n-1}$. Significance: $p\text{-value}=2 \times P(t \geq |t^*|)$
+		\item Case 3. Reject $H_0$ if $|t^*| \geq t_{\alpha / 2, n-1}$. Significance: $p\text{-value}=2 \times P(t \geq |t^*|)$
 	\end{itemize}
 \end{itemize}
 \end{frame}

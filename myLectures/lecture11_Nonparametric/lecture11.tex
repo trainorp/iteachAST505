@@ -12,7 +12,7 @@
 \title[Lecture 11]{Lecture 11: Nonparametric inference}
 \author[Patrick Trainor]{Patrick Trainor, PhD, MS, MA}
 \institute[NMSU]{New Mexico State University}
-\date{October 7, 2019}
+\date{March 11, 2020}
 
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily D}}}{=}}}
 
@@ -76,7 +76,7 @@
 		\item[]
 		\item If $\Delta > 0$, then the $y$'s are typically larger and the distribution of $y$'s is to the right of $x$'s \pause
 		\item[]
-		\item If $\Delta > 0$, then the $y$'s are typically smaller and the distribution of $y$'s is to the left of $x$'s
+		\item If $\Delta < 0$, then the $y$'s are typically smaller and the distribution of $y$'s is to the left of $x$'s
 	\end{itemize}
 \end{frame}
 
@@ -303,7 +303,7 @@
 	\end{center}
 \end{frame}
 
-\begin{frame}{Example Data}{Test setup}
+\begin{frame}{Example Data}
 \begin{center}{\tiny
 		\begin{tabular}{|c|c|c|}
 			\hline
@@ -323,13 +323,18 @@
 	\end{tabular}}
 \end{center}
 \begin{itemize}
-	\item $H_0$: The population distributions are identical $\Delta = 0$ \pause
-	\item $H_a$: Population 1 (Stage 4 tumors) is shifted to the left of population 2 (Stage 3 tumors) ($\Delta < 0$) \pause
-	\item RR: reject $H_0$ if $T < T_L$ (one-tailed) \pause
+	\item Research question: Are survival times worse (lower) for Stage 4 tumors than Stage 3 tumors? Let's test at $\alpha = 0.025$
+	\item Test setup:
 	\begin{itemize}
-		\item From the table $T_L = 26$ \pause
-		\item We reject the null hypothesis
+		\item $H_0$: The population distributions are identical $\Delta = 0$ \pause
+		\item $H_a$: Population 1 (Stage 4 tumors) is shifted to the left of population 2 (Stage 3 tumors) ($\Delta < 0$) \pause
+		\item RR: reject $H_0$ if $T < T_L$ (one-tailed) \pause
+		\begin{itemize}
+			\item From the table $T_L = 26$ \pause
+			\item We reject the null hypothesis since $T = 25<T_L$
+		\end{itemize}
 	\end{itemize}
+	
 \end{itemize}
 \end{frame}
 
@@ -386,7 +391,7 @@
 		\end{gather*} \pause
 		\item Point estimate formula: $\hat{\Delta} = D_{((M+1)/2)}$ if $M$ is an odd number or $\hat{\Delta} = \frac{1}{2} (D_{(M/2)} + D_{(M/2+1)})$ if $M$ is an even number \pause
 		\item[]
-		\item Point estimate: $\hat{\Delta} = \frac{1}{2} (D_{18} + D_{(19)}) = .5(-31.7 - 31.6) = -31.65$
+		\item Point estimate: $\hat{\Delta} = \frac{1}{2} (D_{(18)} + D_{(19)}) = .5(-31.7 - 31.6) = -31.65$
 		\begin{itemize}
 			\item We estimate that survival times are 31.65 months less for Stage 4 tumors than stage 3 tumors
 		\end{itemize}

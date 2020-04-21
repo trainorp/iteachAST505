@@ -1,3 +1,12 @@
+Recycle <- function (...) 
+{
+  lst <- list(...)
+  maxdim <- max(lengths(lst))
+  res <- lapply(lst, rep, length.out = maxdim)
+  attr(res, "maxdim") <- maxdim
+  return(res)
+}
+
 BinomCI <- function (x, n, conf.level = 0.95, sides = c("two.sided", 
                                              "left", "right"), method = c("wilson", 
                                                                           "wald", "agresti-coull", "jeffreys", "modified wilson", 

@@ -198,3 +198,4 @@ BinomCI <- function (x, n, conf.level = 0.95, sides = c("two.sided",
   rownames(res) <- xn
   return(res)
 }
+                  
